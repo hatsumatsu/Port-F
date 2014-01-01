@@ -34,11 +34,11 @@ title {
   font-family: 'only screen and ( max-width: 48em )';
 }
 a {
-  color: #ff0000;
+  color: #888888;
   text-decoration: none;
 }
 a:visited {
-  color: #f90606;
+  color: #888888;
 }
 a:hover,
 a:focus,
@@ -47,11 +47,11 @@ a:active {
   outline: 0;
 }
 ::selection {
-  background: #ff0000;
+  background: #888888;
   color: #ffffff;
 }
 ::-moz-selection {
-  background: #ff0000;
+  background: #888888;
   color: #ffffff;
 }
 h1,
@@ -107,7 +107,7 @@ p {
 .message {
   margin: 0.65em 0;
   padding: 0.65em 1.3em;
-  background: #ffcccc;
+  background: #e7e7e7;
 }
 .footer_primary {
   margin: 0;
@@ -118,18 +118,6 @@ p {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-.hm-landing-page {
-  text-align: center;
-}
-.hm-landing-page #loginform {
-  margin: 20% auto 0;
-}
-.hm-landing-page #loginform label {
-  display: none;
-}
-.hm-landing-page #loginform .login-remember {
-  display: none;
 }
 .cf {
   zoom: 1;
@@ -179,9 +167,4 @@ p {
 }
 ::-webkit-scrollbar-corner {
   background: #ffffff;
-}
-@media only screen and ( max-width: 48em ) {
-  body {
-    color: red;
-  }
 }
