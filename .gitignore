@@ -1,0 +1,19 @@
+node_modules
+
+# Plugin related files
+inc/before-places.php
+inc/li-places.php
+inc/li-events.php
+inc/li-attachment.php
+landing-page.php
+mobilemenu.css
+mobilemenu.less
+
+# OS related files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

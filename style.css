@@ -1,0 +1,187 @@
+/*
+Theme Name: Port F
+Theme URI: http://hatsumatsu.de
+Description: Starter Theme
+Author: HATSUMATSU, Martin Wecke
+Version: 0.2
+Tags:
+*/
+/*
+   This stylesheet was written in and compiled with LESS
+   See http://lesscss.org for further reference
+*/
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
+  -moz-font-feature-settings: 'liga', 'dlig', 'kern';
+  font-feature-settings: 'liga', 'dlig', 'kern';
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: none;
+}
+html,
+body {
+  min-height: 100%;
+  background: #ffffff;
+}
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.3;
+  color: #111111;
+}
+title {
+  width: 48em;
+  font-family: 'only screen and ( max-width: 48em )';
+}
+a {
+  color: #ff0000;
+  text-decoration: none;
+}
+a:visited {
+  color: #f90606;
+}
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+  outline: 0;
+}
+::selection {
+  background: #ff0000;
+  color: #ffffff;
+}
+::-moz-selection {
+  background: #ff0000;
+  color: #ffffff;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0 0 1em 0;
+  line-height: 1;
+}
+#shell {
+  width: 90%;
+  max-width: 64em;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+#footer {
+  clear: both;
+  margin: 1em 0 0 0;
+}
+.head_primary {
+  margin: 0 0 1em 0;
+  padding: 0;
+  list-style-type: none;
+}
+.head_primary ul {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style-type: none;
+}
+p {
+  margin: 0 0 1.3em 0;
+}
+.postlist {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.postlist > li {
+  margin: 0 0 1.3em 0;
+}
+.imagelist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.filelist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.message {
+  margin: 0.65em 0;
+  padding: 0.65em 1.3em;
+  background: #ffcccc;
+}
+.footer_primary {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#footer .widgets {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.hm-landing-page {
+  text-align: center;
+}
+.hm-landing-page #loginform {
+  margin: 20% auto 0;
+}
+.hm-landing-page #loginform label {
+  display: none;
+}
+.hm-landing-page #loginform .login-remember {
+  display: none;
+}
+.cf {
+  zoom: 1;
+}
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+::-webkit-scrollbar {
+  width: 0.6em;
+  height: 0.6em;
+  background: #ffffff;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb:vertical {
+  border-color: transparent transparent transparent rgba(17, 17, 17, 0.5);
+  border-width: 0 0.3em;
+  border-style: solid;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+  border-color: transparent transparent transparent #111111;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  border-color: rgba(17, 17, 17, 0.5) transparent transparent transparent;
+  border-width: 0.3em 0;
+  border-style: solid;
+}
+::-webkit-scrollbar-thumb:horizontal:hover {
+  border-color: #111111 transparent transparent transparent;
+}
+::-webkit-scrollbar-button {
+  height: 0.6em;
+  width: 0.6em;
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: #ffffff;
+}
+@media only screen and ( max-width: 48em ) {
+  body {
+    color: red;
+  }
+}
