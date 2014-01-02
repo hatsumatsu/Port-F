@@ -34,7 +34,7 @@ function hm_theme_js() {
 add_action( 'wp_enqueue_scripts', 'hm_theme_js', 1 ); /* prints both CSS and JS */
 
 
-/* ### ADD INLINE CODE TO HEADER ### */
+/* ### ADD HTML TO HEADER ### */
 
 function hm_theme_head() { ?>
 <!--[if IE 7]>
@@ -46,7 +46,7 @@ function hm_theme_head() { ?>
 add_action( 'wp_head', 'hm_theme_head', 1 );
 
 
-/* ### ADD INLINE CODE TO FOOTER ### */
+/* ### ADD HTML TO FOOTER ### */
 
 function hm_theme_footer() { ?>
 <!-- W3TC-include-js-head -->
@@ -81,16 +81,12 @@ register_taxonomy(
             'singular_name' => _( 'Project Type' )
     	 ),
     'show_ui' => true,
+    'show_admin_column' => true,
     'rewrite' => array( 
         'slug' => 'project_type' 
     )
     ) 
 );
-
-
-/* ### HIDE ADMIN BAR ### */
-
-add_filter( 'show_admin_bar', '__return_false' );
 
 
 /* ### CUSTOM POST TYPES ### */
@@ -109,9 +105,17 @@ register_post_type(
     	  'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
     	  'public' => true,
     	  'menu_position' => 5,
+          // http://melchoyce.github.io/dashicons/
+          'menu_icon' => 'dashicons-smiley',
     	  'rewrite' => array( 'slug' => 'projects' ),
-    	  'has_archive' => 'projects'
+    	  'has_archive' => 'projects',
+          'taxonomies' => array( 'project_types' )
 ));
+
+
+/* ### HIDE ADMIN BAR ### */
+
+add_filter( 'show_admin_bar', '__return_false' );
 
 
 /* ### MENUS ### */
