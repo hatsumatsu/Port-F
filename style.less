@@ -35,8 +35,6 @@ Tags:
 
 // ### MIXINS ###
 
-@import 'lesshat.less';
-
 
 
 // ### DOCUMENT ### 
@@ -45,12 +43,9 @@ html {
   // enhanced typography
   text-rendering: optimizeLegibility;
 
-  -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
-  -moz-font-feature-settings: 'liga', 'dlig', 'kern';
   font-feature-settings: 'liga', 'dlig', 'kern'; 
 
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: none;
+  text-size-adjust: 100%;
 }
 
 html, body {
@@ -107,11 +102,6 @@ a:active {
 }
 
 ::selection {
-  background: @link;
-  color: @bg;
-}
-
-::-moz-selection {
   background: @link;
   color: @bg;
 }

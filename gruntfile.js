@@ -15,6 +15,13 @@ module.exports = function(grunt){
 		  }
 		},
 
+		autoprefixer: {
+		    style: {
+		      src: 'style.css',
+		      dest: 'style.css'
+		    }
+		},
+
 		uglify: {
 			dependencies: {
 			  files: {
@@ -70,7 +77,7 @@ module.exports = function(grunt){
 
     grunt.registerTask('default', ['build']);
 
-	grunt.registerTask('buildcss',  ['less']);
+	grunt.registerTask('buildcss',  ['less', 'autoprefixer']);
 	grunt.registerTask('buildjs',  ['uglify']);
 	grunt.registerTask('buildimages',  ['imageoptim']);
 

@@ -8,6 +8,7 @@
         "grunt" :                   "~0.4.0",
         "grunt-contrib-watch" : 	"*",
         "grunt-contrib-less" : 		"*",
+        "grunt-autoprefixer" :      "*",
         "grunt-contrib-uglify" :    "*",
         "grunt-imageoptim":			"*",
         "matchdep" :				"*"
