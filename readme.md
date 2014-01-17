@@ -11,15 +11,15 @@ Use `grunt watch` to process LESS and JS on the fly. `grunt build` additionally 
 ### CSS
 
 + [LESS](http://lesscss.org/)
-+ uses [LESSHAT](http://lesshat.com/) for auto-prefixing 
-+ including [normalize.css](http://necolas.github.io/normalize.css/)
++ [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer/) for auto-prefixing 
++ [normalize.css](http://necolas.github.io/normalize.css/)
 + main breakpoint (768px) for RWD, syncd between CSS and JS 
-+ lots of tiny typography fixes
++ tiny typography fixes, micro-clearfix, selection styles, webkit scrollbar styles and much more...
 
 ### Javascript 
 
 + [media query dependant asset loader](http://modernizr.com/docs/#mq), automatically synced with major breakpoint set in LESS.
-+ global debug switch
++ global debug switch (affects console logging and minifying)
 + object oriented JS-boilerplates 
 + [modernizr](http://modernizr.com/) boilerplate
 
