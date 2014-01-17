@@ -3,7 +3,7 @@
 
 **Port F** is a starter theme for Wordpress theme development with lots of features and almost no default design. It's meant as starting point for the development of fully customized wordpress themes. 
 
-**Port F** uses **grunt** to preprocess LESS, minify and combine javascript and optimize images. 
+**Port F** uses [grunt](http://gruntjs.com/) to preprocess LESS, minify and combine javascript and optimize images. 
 Use `grunt watch` to process LESS and JS on the fly. `grunt build` additionally optimizes all images.
 
 ## Features
@@ -38,5 +38,5 @@ Use `grunt watch` to process LESS and JS on the fly. `grunt build` additionally 
 + tinyMCE button/feature configuration 
 + Custom excerpt length 
 + `the_super_title()` shortcode, consisting of Custom Post Type name and title 
-+ rewrite search url to èxample.com/search/query` 
++ rewrite search url to `example.com/search/query` 
 
