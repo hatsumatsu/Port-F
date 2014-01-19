@@ -3,7 +3,7 @@ Theme Name: Port F
 Theme URI: http://hatsumatsu.de
 Description: Starter Theme
 Author: HATSUMATSU, Martin Wecke
-Version: 0.2
+Version: 0.3
 Tags:
 */
 
@@ -42,9 +42,7 @@ Tags:
 html {
   // enhanced typography
   text-rendering: optimizeLegibility;
-
   font-feature-settings: 'liga', 'dlig', 'kern'; 
-
   text-size-adjust: 100%;
 }
 
@@ -74,16 +72,6 @@ title {
 
 
 // ### BASICS ###
-
-* {
-  //  to avoid collapsing margins and borders
-  //
-  //  http://stackoverflow.com/questions/1878997/child-elements-with-margins-within-divs
-  //  http://www.w3.org/TR/CSS2/box.html#collapsing-margins
-
-  // padding: 0 0 0.01px 0;
-  // overflow: auto;
-}
 
 a {
   color: @link;
@@ -261,27 +249,23 @@ h1 a {
 
 .head_primary > li a {
 
-}
 
-.head_primary > li a:hover,
-.head_primary > li a:focus,
-.head_primary > li a:active {
-  
+  &:hover,
+  &:focus,
+  &:active {
+
+  }
 }
 
 .head_primary > li.current-menu-item a,
 .head_primary > li.current-menu-parent a {
   
-}
 
-.head_primary > li.current-menu-item a:hover,
-.head_primary > li.current-menu-item a:focus,
-.head_primary > li.current-menu-item a:active,
+  &:hover,
+  &:focus,
+  &:active {
 
-.head_primary > li.current-menu-parent a:hover,
-.head_primary > li.current-menu-parent a:focus,
-.head_primary > li.current-menu-parent a:active {
-
+  }
 }
 
 // submenu
@@ -296,7 +280,7 @@ h1 a {
 // ### CONTENT ###
 
 p {
-  margin: 0 0 ( 0em + @line-height ) 0;
+  margin: 0 0 ( 0em * @line-height ) 0;
 }
 
 p + p {
@@ -397,26 +381,23 @@ hr {
 
 .footer_primary > li a {
   
-}
 
-.footer_primary > li a:hover,
-.footer_primary > li a:focus,
-.footer_primary > li a:active {
+  &:hover,
+  &:focus,
+  &:active {
+
+  }
 
 }
 
 .footer_primary > li.current_menu_item a,
 .footer_primary > li.current_menu_parent a {
 
-}
+  &:hover,
+  &:focus,
+  &:active {
 
-.footer_primary > li.current_menu_item a:hover,
-.footer_primary > li.current_menu_item a:active,
-.footer_primary > li.current_menu_item a:focus,
-
-.footer_primary > li.current_menu_parent a:hover,
-.footer_primary > li.current_menu_parent a:active,
-.footer_primary > li.current_menu_parent a:focus {
+  }
 
 }
 
@@ -459,7 +440,6 @@ hr {
 
 
 // ### WEBKIT SCROLLBARS ###
-
 
 ::-webkit-scrollbar {
   width: 0.6em;
