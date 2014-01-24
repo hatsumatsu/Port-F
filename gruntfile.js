@@ -25,7 +25,7 @@ module.exports = function(grunt){
 		uglify: {
 			dependencies: {
 			  files: {
-			    'js/dependencies.min.js': ['js/dependencies/*.js']
+			    'js/dependencies-global.min.js': ['js/dependencies-global/*.js']
 			  }
 			},
 			dependenciesLarger: {
@@ -40,7 +40,7 @@ module.exports = function(grunt){
 			},
 			site: {
 				files: {
-					'js/site.min.js': ['js/site.js']
+					'js/site-global.min.js': ['js/site-global.js']
 				}
 			},
 			siteLarger: {

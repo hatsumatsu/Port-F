@@ -4,8 +4,8 @@
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head data-wpurl="<?php bloginfo( 'url' ); ?>">
-    <title><?php bloginfo( "name" ); ?> <?php wp_title( ' - ', 'left' ); ?></title>
     <meta charset="utf-8" />
+    <title><?php bloginfo( "name" ); ?> <?php wp_title( ' – ', 'left' ); ?></title>
     <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" />
     
     <?php wp_head(); ?>
