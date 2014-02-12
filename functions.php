@@ -1,8 +1,5 @@
 <?php
-
-
 /* ### ENQUEUE CSS AND JS ### */
-
 /* css */
 
 function hm_theme_css() {
@@ -82,9 +79,7 @@ register_taxonomy(
     	 ),
     'show_ui' => true,
     'show_admin_column' => true,
-    'rewrite' => array( 
-        'slug' => 'project_type' 
-    )
+    'rewrite' => array( 'slug' => 'project_type' )
     ) 
 );
 
@@ -93,24 +88,30 @@ register_taxonomy(
 
 register_post_type( 
 	'projects', 
-	array( 'labels' => array( 'name' => _( 'Projects' ), 
-							  'singular_name' => _( 'Project' ),
-							  'add_new_item' => _( 'Add new Project' ),
-							  'edit_item' => _( 'Edit Project' ),
-							  'new_item' => _( 'Add Project' ),
-							  'view_item' => _( 'View Project' ),
-        					  'search_items' => _( 'Search Project' )
-					        ),
-    	  'capability_type' => 'post',
-    	  'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
-    	  'public' => true,
-    	  'menu_position' => 5,
-          // http://melchoyce.github.io/dashicons/
-          'menu_icon' => 'dashicons-smiley',
-    	  'rewrite' => array( 'slug' => 'projects' ),
-    	  'has_archive' => 'projects',
-          'taxonomies' => array( 'project_types' )
-));
+	array( 'labels' => array( 
+        'name' => _( 'Projects' ), 
+		'singular_name' => _( 'Project' ),
+		'add_new_item' => _( 'Add new Project' ),
+		'edit_item' => _( 'Edit Project' ),
+		'new_item' => _( 'Add Project' ),
+		'view_item' => _( 'View Project' ),
+        'search_items' => _( 'Search Project' )
+	),
+    'capability_type' => 'post',
+    'supports' => array( 
+        'title', 
+        'editor', 
+        'author', 
+        'thumbnail' ),
+    'public' => true,
+    'menu_position' => 5,
+    // http://melchoyce.github.io/dashicons/
+    'menu_icon' => 'dashicons-smiley',
+    'rewrite' => array( 'slug' => 'projects' ),
+    'has_archive' => 'projects',
+    'taxonomies' => array( 'project_types' )
+    )
+);
 
 
 /* ### HIDE ADMIN BAR ### */
@@ -129,7 +130,8 @@ register_nav_menu( 'footer_primary', _( 'Primary Footer Navigation' ) );
 register_sidebar( array(
 	'name'=> _( 'Footer Widgets' ),
 	'id' => 'footer_widgets'
-	) );	
+	) 
+);	
 
 
 
@@ -165,7 +167,6 @@ add_action( 'admin_menu', 'hm_remove_admin_menus' );
 /* ### REMOVE DASHBOARD WIDGETS ### */
 
 function hm_remove_admin_dashboard_widgets() {
-	
     global $wp_meta_boxes;
 
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
@@ -221,7 +222,6 @@ add_filter( 'mce_buttons', 'hm_tinyMCE_buttons_1' );
 
 
 function hm_tinyMCE_buttons_2( $buttons ) {
-
     return array(); 
 }
 
@@ -231,9 +231,7 @@ add_filter( 'mce_buttons_2', 'hm_tinyMCE_buttons_2' );
 /* ### EDITOR STYLES ### */
 
 function hm_tinymce_custom_css() {
-    
     add_editor_style(); /* defaults to editor-style.css */
-
 }
 
 add_action( 'init', 'hm_tinymce_custom_css' );
@@ -242,9 +240,7 @@ add_action( 'init', 'hm_tinymce_custom_css' );
 /* ### CUSTOM EXCERPT ### */
 
 function hm_custom_excerpt_length( $length ) {
-    
     return 40;
-
 }
 
 add_filter( 'excerpt_length', 'hm_custom_excerpt_length' );
@@ -282,9 +278,7 @@ function get_inc( $type, $context, $fallback ) {
 /* ### CUSTOM TEMPLATE TAGS ### */
 
 function the_post_time() {
-
     echo the_time( get_option( 'date_format' ) ) . ' ' . the_time( get_option( 'time_format' ) );
-
 }
 
 
@@ -454,4 +448,4 @@ $hm_post_meta_config = array(
             ) 
         )
     )
-);  
+);

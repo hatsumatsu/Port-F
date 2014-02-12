@@ -1,16 +1,19 @@
 {
-    "name" : "PortF",
-    "version" : "0.1.0",
-    "author" : "HATSUMATSU",
-    "private" : true,
+    "name":     "PortF",
+    "version":  "0.1.0",
+    "author":   "HATSUMATSU",
+    "private":  true,
 
-    "devDependencies" : {
-        "grunt" :                   "~0.4.0",
-        "grunt-contrib-watch" : 	"*",
-        "grunt-contrib-less" : 		"*",
-        "grunt-autoprefixer" :      "*",
-        "grunt-contrib-uglify" :    "*",
-        "grunt-imageoptim":			"*",
-        "matchdep" :				"*"
+    "devDependencies": {
+        "grunt":                    "~0.4.0",
+        "grunt-contrib-watch":      "*",
+        "grunt-contrib-less": 		"*",
+        "grunt-autoprefixer":       "*",
+        "grunt-modernizr":          "*",
+        "grunt-contrib-uglify":     "*",
+        "grunt-contrib-imagemin":   "*",
+        "grunt-svgmin":             "*",
+        "grunt-svg2png":            "*",
+        "matchdep":                 "*"
     } 
 }

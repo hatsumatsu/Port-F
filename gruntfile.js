@@ -8,9 +8,9 @@ module.exports = function(grunt){
 		less: {
 		  development: {
 		    files: {
-		      "style.css": "style.less",
-		      "mobilemenu.css": "mobilemenu.less",
-		      "editor-styles.css": "editor-styles.less"
+		      'style.css': 'style.less',
+		      'mobilemenu.css': 'mobilemenu.less',
+		      'editor-styles.css': 'editor-styles.less'
 		    }
 		  }
 		},
@@ -19,6 +19,26 @@ module.exports = function(grunt){
 		    style: {
 		      src: 'style.css',
 		      dest: 'style.css'
+		    }
+		},
+
+		modernizr: {
+		    dist: {
+		        'devFile' : 'remote',
+		        'outputFile' : 'js/dependencies-global/modernizr.js',
+		        'extra' : {
+		            'shiv' : true,
+		            'printshiv' : false,
+		            'load' : true,
+		            'mq' : true,
+		            'cssclasses' : true
+		        },
+		        'uglify' : false,
+		        'parseFiles' : true,
+		        'files' : {
+            		'src': ['js/**/*.js', '**/*.css', '!node_modules/**/*', '!js/**/*.min.js']
+        		},
+		        'matchCommunityTests' : false
 		    }
 		},
 
@@ -56,11 +76,42 @@ module.exports = function(grunt){
 
 		},
 
-		imageoptim: {
-		  optim: {
-		    src: ['img']
-		  }
-		},
+		imagemin: {
+			all: {                        
+				files: [{
+					expand: true,  
+					cwd: 'img/src',
+					src: ['**/*.{png,jpeg,jpg,gif}'],
+					dest: 'img/'
+		     	}]
+		    }
+	    },
+
+	    svgmin: {                      
+	        options: {                 
+	            plugins: [
+	              { removeViewBox: false },
+	              { removeUselessStrokeAndFill: false }
+	            ]
+	        },
+	        dist: {                    
+	            files: [{              
+	                expand: true,       
+	                cwd: 'img/src',     
+	                src: ['**/*.svg'],  
+	                dest: 'img/'       
+	            }]
+	        }
+	    },
+
+	    svg2png: {
+	        all: {
+	            files: [{ 
+	            	src: ['img/src/*.svg'], 
+	            	dest: 'img/' 
+	            }]
+	        }
+	    },
 
 		watch: {
 		    css: {
@@ -73,13 +124,14 @@ module.exports = function(grunt){
 		    }
 		}
 
+
     });
 
-    grunt.registerTask('default', ['build']);
+    grunt.registerTask( 'default', ['build'] );
 
-	grunt.registerTask('buildcss',  ['less', 'autoprefixer']);
-	grunt.registerTask('buildjs',  ['uglify']);
-	grunt.registerTask('buildimages',  ['imageoptim']);
+	grunt.registerTask( 'buildcss',  ['less', 'autoprefixer'] );
+	grunt.registerTask( 'buildjs',  ['modernizr', 'uglify'] );
+	grunt.registerTask( 'buildimages',  ['imagemin', 'svgmin', 'svg2png'] );
 
-	grunt.registerTask('build',  ['buildcss', 'buildjs', 'buildimages']);
+	grunt.registerTask( 'build',  ['buildcss', 'buildjs', 'buildimages'] );
 };
