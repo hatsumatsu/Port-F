@@ -25,7 +25,7 @@ module.exports = function(grunt){
 		modernizr: {
 		    dist: {
 		        'devFile' : 'remote',
-		        'outputFile' : 'js/dependencies-global/modernizr.js',
+		        'outputFile' : 'js/src/dependencies-global/modernizr.js',
 		        'extra' : {
 		            'shiv' : true,
 		            'printshiv' : false,
@@ -45,32 +45,32 @@ module.exports = function(grunt){
 		uglify: {
 			dependencies: {
 			  files: {
-			    'js/dependencies-global.min.js': ['js/dependencies-global/*.js']
+			    'js/dependencies-global.min.js': ['js/src/dependencies-global/*.js']
 			  }
 			},
 			dependenciesLarger: {
 			  files: {
-			    'js/dependencies-larger.min.js': ['js/dependencies-larger/*.js']
+			    'js/dependencies-larger.min.js': ['js/src/dependencies-larger/*.js']
 			  }
 			},
 			dependenciesSmaller: {
 			  files: {
-			    'js/dependencies-smaller.min.js': ['js/dependencies-smaller/*.js']
+			    'js/dependencies-smaller.min.js': ['js/src/dependencies-smaller/*.js']
 			  }
 			},
 			site: {
 				files: {
-					'js/site-global.min.js': ['js/site-global.js']
+					'js/site-global.min.js': ['js/src/site-global.js']
 				}
 			},
 			siteLarger: {
 				files: {
-					'js/site-larger.min.js': ['js/site-larger.js']
+					'js/site-larger.min.js': ['js/src/site-larger.js']
 				}
 			},
 			siteSmaller: {
 				files: {
-					'js/site-smaller.min.js': ['js/site-smaller.js']
+					'js/site-smaller.min.js': ['js/src/site-smaller.js']
 				}
 			}
 
@@ -130,8 +130,9 @@ module.exports = function(grunt){
     grunt.registerTask( 'default', ['build'] );
 
 	grunt.registerTask( 'buildcss',  ['less', 'autoprefixer'] );
-	grunt.registerTask( 'buildjs',  ['modernizr', 'uglify'] );
+	grunt.registerTask( 'buildmodernizr', ['modernizr'] );
+	grunt.registerTask( 'buildjs',  ['uglify'] );
 	grunt.registerTask( 'buildimages',  ['imagemin', 'svgmin', 'svg2png'] );
 
-	grunt.registerTask( 'build',  ['buildcss', 'buildjs', 'buildimages'] );
+	grunt.registerTask( 'build',  ['buildcss', 'buildmodernizr', 'buildjs', 'buildimages'] );
 };
