@@ -1,7 +1,5 @@
 jQuery( function( $ ) {
 
-    blogurl = $( 'head' ).attr( 'data-wpurl' );
-
     $( document ).ready( function () {
 
         debuglog( 'site-smaller.js loaded...' );

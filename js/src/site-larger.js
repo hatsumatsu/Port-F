@@ -1,13 +1,9 @@
 jQuery( function( $ ) {
 
-    blogurl = $( 'head' ).attr( 'data-wpurl' );
-
     $( document ).ready( function () {
 
         debuglog( 'site-larger.js loaded...' );
         debuglog( blogurl );
-
-        debuglog( debugmode );
 
         site.init();
 
@@ -27,6 +23,7 @@ jQuery( function( $ ) {
 
 
         }
+
 
         // module 
         var module = ( function() {

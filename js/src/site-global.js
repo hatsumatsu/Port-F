@@ -1,11 +1,13 @@
 // global debug switch
 debugmode = true; 
+blogurl = '';
 
 jQuery( function( $ ) {
 
-    blogurl = $( 'head' ).attr( 'data-wpurl' );
 
     $( document ).ready( function () {
+
+        blogurl = $( 'head' ).attr( 'data-wpurl' );
 
         debuglog( 'site.js loaded...' );
         debuglog( blogurl );
