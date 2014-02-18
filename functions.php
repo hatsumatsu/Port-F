@@ -1,23 +1,22 @@
 <?php
-/* ### ENQUEUE CSS AND JS ### */
-/* css */
-
+/** 
+ * Register theme CSS
+ */
 function hm_theme_css() {
-
     wp_register_style( 'hm_normalize', get_template_directory_uri() . '/normalize.css', 0 );
     wp_register_style( 'hm_theme', get_template_directory_uri() . '/style.css', array( 'hm_normalize' ) );
 
     wp_enqueue_style( 'hm_normalize' );
     wp_enqueue_style( 'hm_theme' );
-
 } 
 
-/* js */
+add_action( 'wp_enqueue_scripts', 'hm_theme_css' );
 
+
+/** 
+ * Register theme JS
+ */
 function hm_theme_js() {
-
-    hm_theme_css();
-
     wp_register_script( 'hm_dependencies', get_template_directory_uri() . '/js/dependencies-global.min.js', 0, false );
     wp_register_script( 'hm_theme', get_template_directory_uri() . '/js/site-global.min.js', array( 'jquery','hm_dependencies' ), 0, false );
     wp_register_script( 'hm_loader', get_template_directory_uri() . '/js/loader.js', array( 'hm_theme' ), 0, false );
@@ -25,14 +24,14 @@ function hm_theme_js() {
     wp_enqueue_script( 'hm_dependencies' );
     wp_enqueue_script( 'hm_theme' );
     wp_enqueue_script( 'hm_loader' );
-
 } 
 
-add_action( 'wp_enqueue_scripts', 'hm_theme_js', 1 ); /* prints both CSS and JS */
+add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
 
 
-/* ### ADD HTML TO HEADER ### */
-
+/** 
+ * Add inline HTML to <head>
+ */
 function hm_theme_head() { ?>
 <!--[if IE 7]>
     <link rel="stylesheet" type="text/css" href="ie7.css" />
@@ -43,8 +42,9 @@ function hm_theme_head() { ?>
 add_action( 'wp_head', 'hm_theme_head', 1 );
 
 
-/* ### ADD HTML TO FOOTER ### */
-
+/** 
+ * Add inline HTML to <div id="footer">
+ */
 function hm_theme_footer() { ?>
 <!-- W3TC-include-js-head -->
 <?php 
@@ -53,21 +53,25 @@ function hm_theme_footer() { ?>
 add_action( 'wp_footer', 'hm_theme_footer', 1 );
 
 
-/* ### CLEAN UP THE HEADER ### */
-
+/** 
+ * Remove unneccessary or unsave <meta> tags
+ */
 remove_action( 'wp_head', 'rsd_link' ); // remove Really Simple Discovery Entry
 remove_action( 'wp_head', 'wlwmanifest_link' );  // remove Windows Live Writer Link 
 remove_action( 'wp_head', 'wp_generator' );  // remove Version number
 
 
-/* ### THEME SUPPORT ### */
-
+/** 
+ * Add theme support 
+ */
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'menus' );
 
 
-/* ### CUSTOM TAXONOMY ### */
-
+/** 
+ * Custom taxonomy
+ * http://codex.wordpress.org/Function_Reference/register_taxonomy
+ */
 register_taxonomy( 
 	'project_types', 
 	array( 'projects' ), 
@@ -84,8 +88,10 @@ register_taxonomy(
 );
 
 
-/* ### CUSTOM POST TYPES ### */
-
+/** 
+ * Custom post type
+ * http://codex.wordpress.org/Function_Reference/register_post_type
+ */
 register_post_type( 
 	'projects', 
 	array( 'labels' => array( 
@@ -114,19 +120,22 @@ register_post_type(
 );
 
 
-/* ### HIDE ADMIN BAR ### */
-
+/** 
+ * Hide admin bar on frontend for all users
+ */
 add_filter( 'show_admin_bar', '__return_false' );
 
 
-/* ### MENUS ### */
-
+/** 
+ * Register navigation menus 
+ */
 register_nav_menu( 'head_primary', _( 'Primary Header Navigation' ) );
 register_nav_menu( 'footer_primary', _( 'Primary Footer Navigation' ) );
 
 
-/* ### CUSTOM WIDGET AREA */
-
+/** 
+ * Register footer widget area 
+ */
 register_sidebar( array(
 	'name'=> _( 'Footer Widgets' ),
 	'id' => 'footer_widgets'
@@ -134,14 +143,15 @@ register_sidebar( array(
 );	
 
 
-
-/* ### CUSTOM IMAGE SIZES ### */
-
+/** 
+ * Define custom image size 
+ */
 add_image_size( '300x200', 300, 200, true );
 
 
-/* ### DEFINE JPEG QUALITY ### */
-
+/** 
+ * Define custom jpeg quality 
+ */
 function hm_jpeg_quality() {
     return 100;
 }
@@ -149,23 +159,23 @@ function hm_jpeg_quality() {
 add_filter( 'jpeg_quality', 'hm_jpeg_quality' );
 
 
-/* ### REMOVE ADMIN MENUS ### */
-
+/** 
+ * Remove unneccessary admin menus 
+ */
 function hm_remove_admin_menus () {
-    
     // remove_menu_page( 'edit.php' );                  /* Posts */
     // remove_menu_page( 'edit.php?post_type=page' );   /* Pages */
     // remove_menu_page( 'upload.php' );                /* Media */
     remove_menu_page( 'edit-comments.php' );            /* Comments */
     // remove_menu_page( 'tools.php' );                 /* Tools */
-
 }
 
 add_action( 'admin_menu', 'hm_remove_admin_menus' );
 
 
-/* ### REMOVE DASHBOARD WIDGETS ### */
-
+/** 
+ * Remove unneccessary admin dashboard widgets 
+ */
 function hm_remove_admin_dashboard_widgets() {
     global $wp_meta_boxes;
 
@@ -182,10 +192,11 @@ function hm_remove_admin_dashboard_widgets() {
 add_action( 'wp_dashboard_setup', 'hm_remove_admin_dashboard_widgets' );
 
 
-/* ### CONFIGURE TINY MCE ### */
-
+/** 
+ * Configure tinyMCE features 
+ * http://www.tinymce.com/wiki.php/Configuration
+ */
 function hm_customize_tinyMCE( $init ) {
-
     /* disable rich text pasting */
     $init['paste_text_sticky'] = true;
     $init['paste_text_sticky_default'] = true;
@@ -194,16 +205,16 @@ function hm_customize_tinyMCE( $init ) {
     $init['theme_advanced_blockformats'] = 'h3,h4,p';
 
     return $init;
-    
 }
 
 add_filter( 'tiny_mce_before_init', 'hm_customize_tinyMCE' );
 
 
-/* ## TINY MCE BUTTON SETUP ### */
-
+/** 
+ * Configure tinyMCE button row 1 
+ * http://www.tinymce.com/wiki.php/TinyMCE3x:Buttons/controls
+ */
 function hm_tinyMCE_buttons_1( $buttons ) {
-    
     return array(
         'formatselect',
         'bold', 
@@ -215,12 +226,15 @@ function hm_tinyMCE_buttons_1( $buttons ) {
         'redo', 
         'removeformat'
     );
-
 }
 
 add_filter( 'mce_buttons', 'hm_tinyMCE_buttons_1' );
 
 
+/** 
+ * Configure tinyMCE button row 2 
+ * http://www.tinymce.com/wiki.php/TinyMCE3x:Buttons/controls
+ */
 function hm_tinyMCE_buttons_2( $buttons ) {
     return array(); 
 }
@@ -228,8 +242,9 @@ function hm_tinyMCE_buttons_2( $buttons ) {
 add_filter( 'mce_buttons_2', 'hm_tinyMCE_buttons_2' );
 
 
-/* ### EDITOR STYLES ### */
-
+/** 
+ * Register tinyMCE editor CSS 
+ */
 function hm_tinymce_custom_css() {
     add_editor_style(); /* defaults to editor-style.css */
 }
@@ -237,8 +252,9 @@ function hm_tinymce_custom_css() {
 add_action( 'init', 'hm_tinymce_custom_css' );
 
 
-/* ### CUSTOM EXCERPT ### */
-
+/** 
+ * Custom excerpt length 
+ */
 function hm_custom_excerpt_length( $length ) {
     return 40;
 }
@@ -246,48 +262,43 @@ function hm_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'hm_custom_excerpt_length' );
 
 
-/* ### GET INC ### */
-
+/** 
+ * Custom template part include 
+ */
 function get_inc( $type, $context, $fallback ) {
-
     if( $context ) {
-
         if( is_file( TEMPLATEPATH . '/inc/' . $type . '-' . $context . '.php' ) ) {
-
             get_template_part( '/inc/' . $type . '-' . $context );
-
         } else {
-
             if( $fallback ) {
-
                 get_template_part( '/inc/' . $type . '-default' );
-
             }
-
         }
-
     } else {
-
         get_template_part( '/inc/' . $type );
-
     }
-
 }
 
 
-/* ### CUSTOM TEMPLATE TAGS ### */
-
+/** 
+ * Custom template tag: the_post_time
+ * Display post date and time based on global WP settings.  
+ */
 function the_post_time() {
     echo the_time( get_option( 'date_format' ) ) . ' ' . the_time( get_option( 'time_format' ) );
 }
 
 
+/** 
+ * Custom template tag: get_the_super_title
+ * Combines post type label and title
+ *
+ * @return     string  super title
+ */
 function get_the_super_title() {
-
     $html = '';
 
     /* archive & single */
-
     if( is_archive () || is_single() || is_home() ) {
         if( get_post_type() == 'post' ) {
             $html = __( 'News' );
@@ -297,23 +308,19 @@ function get_the_super_title() {
     }
 
     /* category, tag or taxonomy archive */
-
     if( is_category() || is_tag() || is_tax() ) {
         $html .= ' &ndash; ' . single_cat_title( '', 0 );
     }
 
     /* pages */
-
     if( is_page() ) {
         $html .= get_the_title();
     }
 
     /* 404 */
-
     if( is_404() ) {
         $html .= __( 'Oouuups...' );
     }
-
     /* search */
 
     if( is_search() ) {
@@ -321,131 +328,17 @@ function get_the_super_title() {
     }
 
     return $html;
-
 }
 
 
-/* ### REWRITE SEARCH TERM ### */
-
+/** 
+ * Rewrite the search page's permalink http://example.com/search/{query} 
+ */
 function hm_rewrite_search() {
-
     if( is_search() && !empty( $_GET['s'] ) ) {
-
         wp_redirect( home_url( '/search/' ) . urlencode( get_query_var( 's' ) ) );
-        
         exit();
-
     }   
 }
 
 add_action( 'template_redirect', 'hm_rewrite_search' );
-
-
-/* ### HM POST META CONFIG ### */
-
-$hm_post_meta_config = array(
-    array(
-        'id' => 'post-options', 
-        'label' => 'Post Options', 
-        'post_types' => array( 
-            'post', 
-            'events' 
-        ), 
-        'fields' => array( 
-            array( 
-                'id' => 'check', 
-                'label' => 'Check', 
-                'type' => 'checkbox',
-                'info' => 'Short description' 
-            ),
-            array( 
-                'id' => 'check_group', 
-                'label' => 'Check Group', 
-                'option_labels' => array( 
-                    'Option One',
-                    'Option Two', 
-                    'Option Three'
-                ), 
-                'option_values' => array( 
-                    1, 
-                    2, 
-                    3
-                ), 
-                'type' => 'checkbox',
-                'info' => 'Short description'
-            ), 
-            array( 
-                'id' => 'radio', 
-                'label' => 'Radio', 
-                'type' => 'radio'
-            ),
-            array( 
-                'id' => 'radio_group', 
-                'label' => 'Radio Group', 
-                'option_labels' => array( 
-                    'Option One', 
-                    'Option Two', 
-                    'Option Three'
-                ), 
-                'option_values' => array( 
-                    1, 
-                    2, 
-                    3
-                ), 
-                'type' => 'radio'
-            ), 
-            array( 
-                'id' => 'text', 
-                'label' => 'Text', 
-                'type' => 'text'
-            ), 
-            array( 
-                'id' => 'text_2', 
-                'label' => 'Text', 
-                'type' => 'text',
-                'info' => 'Long description Long description Long description Long description Long description Long description Long description Long description Long description Long description'
-            ), 
-            array( 
-                'id' => 'text_3', 
-                'label' => 'Text', 
-                'type' => 'text' 
-            ), 
-            array( 
-                'id' => 'text_4', 
-                'label' => 'Text with super-duper long long long labl text that should wrap carefully...', 
-                'type' => 'text',
-                'info' => 'Long description Long description Long description Long description Long description Long description Long description Long description Long description Long description'
-            ),
-            array( 
-                'id' => 'select', 
-                'label' => 'Select', 
-                'option_labels' => array( 
-                    'One', 
-                    'Two', 
-                    'Three' 
-                ), 
-                'option_values' => array( 
-                    1, 
-                    2, 
-                    3 
-                ), 
-                'type' => 'select',
-                'info' => 'Short description' 
-            )
-        )
-    ), 
-    array(
-        'id' => 'post-extras', 
-        'label' => 'Post Extras', 
-        'post_types' => array(
-            'post' 
-        ),  
-        'fields' => array( 
-            array( 
-                'id' => 'extr-text', 
-                'label' => 'Extra Text', 
-                'type' => 'text' 
-            ) 
-        )
-    )
-);
