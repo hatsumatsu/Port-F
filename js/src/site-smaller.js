@@ -1,22 +1,10 @@
 jQuery( function( $ ) {
 
-    $( document ).ready( function () {
-
-        debuglog( 'site-smaller.js loaded...' );
-        debuglog( blogurl );
-    
-        site.init();
-
-    } ); /* end document ready */
-
-
     var site = ( function() {
 
         var init = function() {
-
             debuglog( 'site.init()' );
             bindEventHandlers();
-
         }
 
         var bindEventHandlers = function() {
@@ -28,10 +16,8 @@ jQuery( function( $ ) {
         var module = ( function() {
 
             var init = function() {
-
                 debuglog( 'site.module.init()' );
                 bindEventHandlers();
-
             }
 
             var bindEventHandlers = function() {
@@ -54,9 +40,17 @@ jQuery( function( $ ) {
     /* debuglog */
 
     function debuglog( log ) {
-
         if( debugmode && typeof console != 'undefined' ) console.log( log );
-
     }
+
+
+    $( document ).ready( function () {
+
+        debuglog( 'site-smaller.js loaded...' );
+        debuglog( blogurl );
+    
+        site.init();
+
+    } ); /* end document ready */
 
 } );

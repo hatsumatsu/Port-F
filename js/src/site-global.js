@@ -21,9 +21,7 @@ jQuery( function( $ ) {
     /* debuglog */
 
     function debuglog( log ) {
-
         if( debugmode && typeof console != 'undefined' ) console.log( log );
-
     }
 
 } );
