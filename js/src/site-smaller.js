@@ -1,5 +1,6 @@
 jQuery( function( $ ) {
 
+    // app
     var site = ( function() {
 
         var init = function() {
@@ -29,7 +30,7 @@ jQuery( function( $ ) {
                 init: function() { init(); }
             }
 
-        } ) ();
+        } )();
 
         return {
             init: function() { init(); }
@@ -47,7 +48,7 @@ jQuery( function( $ ) {
     $( document ).ready( function () {
 
         debuglog( 'site-smaller.js loaded...' );
-        debuglog( blogurl );
+        debuglog( config['blogurl'] );
     
         site.init();
 
