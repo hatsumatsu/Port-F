@@ -6,11 +6,50 @@ jQuery( function( $ ) {
         var init = function() {
             debuglog( 'site.init()' );
             bindEventHandlers();
+            win.init();
         }
 
         var bindEventHandlers = function() {
 
         }
+
+        // module win
+        var win = ( function() {
+
+            var winEl;
+            var winScrollTop;
+
+            var init = function() {
+                debuglog( 'site.win.init()' );
+                winEl = $( window );
+                bindEventHandlers()
+                scrollLoop();
+            }
+
+            var bindEventHandlers = function() {
+
+            }
+
+            var scrollLoop = function() {
+                var _winScrollTop = winScrollTop;
+                winScrollTop = winEl.scrollTop();
+
+                if( winScrollTop != _winScrollTop ) {
+                    scroll();
+                }
+
+                requestAnimationFramePolyfill( scrollLoop );
+            }
+
+            var scroll = function() {
+                debuglog( 'site.win.scroll()' );
+            }
+
+            return {
+                init: function() { init(); }
+            }
+
+        } )();
 
         // module 
         var module = ( function() {

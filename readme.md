@@ -19,6 +19,8 @@ Use `grunt watch` to process LESS and JS on the fly. `grunt build` additionally 
 ### Javascript 
 
 + [media query dependant asset loader](http://modernizr.com/docs/#mq), automatically synced with major breakpoint set in LESS.
++ automatic page reload when media query state changes
++ scroll event replaced by requestAnimationFrame polyfill
 + global debug switch (affects console logging and JS minifying)
 + object oriented JS-boilerplates 
 + [grunt-modernizr](http://github.com/Modernizr/grunt-modernizr) generates a custom build of [modernizr](http://modernizr.com)
