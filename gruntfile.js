@@ -10,7 +10,7 @@ module.exports = function(grunt){
 		    files: {
 		      'style.css': 'style.less',
 		      'mobilemenu.css': 'mobilemenu.less',
-		      'editor-styles.css': 'editor-styles.less'
+		      'editor-style.css': 'editor-style.less'
 		    }
 		  }
 		},

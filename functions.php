@@ -332,13 +332,14 @@ function get_the_super_title() {
 
 
 /** 
- * Rewrite the search page's permalink http://example.com/search/{query} 
+ * Rewrite the search page's permalink 
+ * http://example.com/search/{query} 
  */
 function hm_rewrite_search() {
     if( is_search() && !empty( $_GET['s'] ) ) {
         wp_redirect( home_url( '/search/' ) . urlencode( get_query_var( 's' ) ) );
         exit();
-    }   
+    }
 }
 
 add_action( 'template_redirect', 'hm_rewrite_search' );
