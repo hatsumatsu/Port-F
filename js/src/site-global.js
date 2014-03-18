@@ -39,10 +39,12 @@ jQuery( function( $ ) {
             var winEl;
             var resizeDelay;
             var state;
+            var _state;
 
             var init = function() {
                 debuglog( 'site.win.init()' );
             
+                state = Modernizr.mq( config['mediaquery'] );
                 winEl = $( window );
                 bindEventHandlers();
             }
@@ -64,11 +66,9 @@ jQuery( function( $ ) {
             var resize = function() {
                 debuglog( 'site.win.resize()' );
 
-                var _state = state || false;
+                var _state = state;
                 state = Modernizr.mq( config['mediaquery'] );
                 
-                debuglog( 'state: ' + state );
-
                 if( state != _state ) {
                     window.location.reload();
                 }
