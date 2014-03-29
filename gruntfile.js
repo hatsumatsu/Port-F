@@ -80,10 +80,13 @@ module.exports = function(grunt){
 			all: {                        
 				files: [{
 					expand: true,  
-					cwd: 'img/src',
+					cwd: 'img/src/',
 					src: ['**/*.{png,jpeg,jpg,gif}'],
 					dest: 'img/'
-		     	}]
+		     	}],
+		     	options: {
+		     		cache: false
+		     	}
 		    }
 	    },
 
@@ -97,7 +100,7 @@ module.exports = function(grunt){
 	        dist: {                    
 	            files: [{              
 	                expand: true,       
-	                cwd: 'img/src',     
+	                cwd: 'img/src/',     
 	                src: ['**/*.svg'],  
 	                dest: 'img/'       
 	            }]
@@ -113,6 +116,35 @@ module.exports = function(grunt){
 	        }
 	    },
 
+		ftpush: {
+			preview: { 
+				auth: {
+		      		host: 'example.com',
+		      		port: 21,
+		      		authKey: 'key1'
+		    	},
+		    	src: '',
+		    	dest: '/preview/wp-content/themes/port-f',
+		    	exclusions: ['**/.*', '**/Thumbs.db', 'node_modules'],
+		    	// keep: ['/important/images/at/img/*.jpg'],
+		    	simple: false,
+		    	useList: false
+		  	},
+			production: { 
+				auth: {
+		      		host: 'example.com',
+		      		port: 21,
+		      		authKey: 'key1'
+		    	},
+		    	src: '',
+		    	dest: '/wp-content/themes/port-f',
+		    	exclusions: ['**/.*', '**/Thumbs.db', 'node_modules'],
+		    	// keep: ['/important/images/at/img/*.jpg'],
+		    	simple: false,
+		    	useList: false
+		  	}
+		}
+
 		watch: {
 		    css: {
 		        files: ['*.less'],
@@ -121,7 +153,15 @@ module.exports = function(grunt){
 		    js: {
 		    	files: ['js/**/*.js','!js/**/*.min.js'],
 		    	tasks: ['buildjs']
-		    }
+		    },
+			imgraster: {
+		    	files: ['img/src/**/*.{jpg,jpeg,gif,png}'],
+		    	tasks: ['buildimagesraster']
+			},
+			imgvector: {
+		    	files: ['img/src/**/*.svg'],
+		    	tasks: ['buildimagesvector']
+			}
 		}
 
 
@@ -132,7 +172,12 @@ module.exports = function(grunt){
 	grunt.registerTask( 'buildcss',  ['less', 'autoprefixer'] );
 	grunt.registerTask( 'buildmodernizr', ['modernizr'] );
 	grunt.registerTask( 'buildjs',  ['uglify'] );
-	grunt.registerTask( 'buildimages',  ['imagemin', 'svgmin', 'svg2png'] );
+	grunt.registerTask( 'buildimagesraster',  ['imagemin'] );
+	grunt.registerTask( 'buildimagesvector',  ['svgmin', 'svg2png'] );
+	grunt.registerTask( 'buildimages',  ['buildimagesraster', 'buildimagesvector'] );
+
+	grunt.registerTask( 'deploy_preview',  ['ftpush:preview'] );
+	grunt.registerTask( 'deploy_production',  ['ftpush:production'] );
 
 	grunt.registerTask( 'build',  ['buildcss', 'buildmodernizr', 'buildjs', 'buildimages'] );
 };
