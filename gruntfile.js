@@ -33,6 +33,7 @@ module.exports = function(grunt){
 		            'mq' : true,
 		            'cssclasses' : true
 		        },
+		        'tests' : ['touch'],
 		        'uglify' : false,
 		        'parseFiles' : true,
 		        'files' : {
@@ -143,7 +144,7 @@ module.exports = function(grunt){
 		    	simple: false,
 		    	useList: false
 		  	}
-		}
+		},
 
 		watch: {
 		    css: {
