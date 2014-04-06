@@ -17,8 +17,8 @@
     <link rel="icon" href="<?php bloginfo( 'template_directory' ); ?>/img/favicon.png" type="image/png">
 </head>
 <body <?php body_class(); ?>>
-	<div id="shell">
-		<section id="head" class="head" role="banner">
+	<div class="shell">
+		<section class="head" role="banner">
 			
             <h1><a href="<?php bloginfo( 'url' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( "name" ); ?></a></h1>
 			
@@ -28,5 +28,5 @@
             <h2><?php echo get_the_super_title(); ?></h2>
             <?php } ?>
 
-		</section><!-- end #head -->
-		<section id="content" class="content" role="main">
+		</section><!-- end .head -->
+		<section class="content" role="main">
