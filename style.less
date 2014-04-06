@@ -12,7 +12,7 @@ Tags:
    See http://lesscss.org for further reference
 */
 
-// ### VARIABLES ### 
+// VARIABLES 
 
 @bg: #fff;
 
@@ -21,7 +21,7 @@ Tags:
 @link: #888;
 
 @font-one: sans-serif;
-@font-two: sans-serif;
+@font-two: serif;
 
 @line-height: 1.3;
 
@@ -33,11 +33,11 @@ Tags:
 @smaller: ~'only screen and ( max-width: @{smaller-em} )';
 
 
-// ### MIXINS ###
+// MIXINS
 
 
 
-// ### DOCUMENT ### 
+// DOCUMENT
 
 html {
   // enhanced typography
@@ -71,7 +71,7 @@ title {
 }
 
 
-// ### BASICS ###
+// GENERAL
 
 a {
   color: @link;
@@ -200,7 +200,7 @@ h5 {
 }
 
 
-// ### STRUCTURE ###
+// STRUCTURE
 
 .shell {
   width: 90%;
@@ -228,7 +228,7 @@ section {
 }
 
 
-// ### HEADER ###
+// HEADER
 
 h1 {
 
@@ -281,7 +281,7 @@ h1 a {
 }
 
 
-// ### CONTENT ###
+// CONTENT
 
 p {
   margin: 0 0 ( 0em * @line-height ) 0;
@@ -368,8 +368,11 @@ hr {
   background: mix( @bg, @link, 80% );
 }
 
+.warning {
+  .message;
+}
 
-// ### FOOTER ###
+// FOOTER
 
 // navigation
 
@@ -417,14 +420,8 @@ hr {
   
 }
 
-// warnings
 
-.warning {
-  .message;
-}
-
-
-// ### CLEARFIX ###
+// CLEARFIX 
 
 .cf {
 
@@ -443,7 +440,7 @@ hr {
 }
 
 
-// ### WEBKIT SCROLLBARS ###
+// WEBKIT SCROLLBARS 
 
 ::-webkit-scrollbar {
   width: 0.6em;
@@ -500,10 +497,6 @@ hr {
 }
 
 
-
 @media @smaller {
-
-
-
 
 }

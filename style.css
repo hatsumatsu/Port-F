@@ -108,6 +108,11 @@ p {
   padding: 0.65em 1.3em;
   background: #e7e7e7;
 }
+.warning {
+  margin: 0.65em 0;
+  padding: 0.65em 1.3em;
+  background: #e7e7e7;
+}
 .footer_primary {
   margin: 0;
   padding: 0;
@@ -117,11 +122,6 @@ p {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-.warning {
-  margin: 0.65em 0;
-  padding: 0.65em 1.3em;
-  background: #e7e7e7;
 }
 .cf {
   zoom: 1;
