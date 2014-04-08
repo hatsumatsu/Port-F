@@ -336,10 +336,22 @@ function get_the_super_title() {
  * http://example.com/search/{query} 
  */
 function hm_rewrite_search() {
-    if( is_search() && !empty( $_GET['s'] ) ) {
+    if( is_search() && !empty( $_GET['s'] ) && !is_admin() ) {
         wp_redirect( home_url( '/search/' ) . urlencode( get_query_var( 's' ) ) );
         exit();
     }
 }
 
 add_action( 'template_redirect', 'hm_rewrite_search' );
+
+/** 
+ * Set search result post count to infinity 
+ * http://example.com/search/{query} 
+ */
+function hm_search_post_count( $query ) {
+    if( is_search() && !is_admin() ) {
+        $query->set( 'posts_per_page', -1 );
+    }
+}
+
+add_action( 'pre_get_posts', 'hm_search_post_count' );
