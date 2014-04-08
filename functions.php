@@ -346,7 +346,6 @@ add_action( 'template_redirect', 'hm_rewrite_search' );
 
 /** 
  * Set search result post count to infinity 
- * http://example.com/search/{query} 
  */
 function hm_search_post_count( $query ) {
     if( is_search() && !is_admin() ) {
@@ -355,3 +354,24 @@ function hm_search_post_count( $query ) {
 }
 
 add_action( 'pre_get_posts', 'hm_search_post_count' );
+
+/**
+ * Set the media library's default view to 'uploaded to this post'
+ */
+function hm_media_library_default_view() { ?>
+<script>
+jQuery( function( $ ) {
+    var called = 0;
+    $( '#wpcontent' ).ajaxStop( function() {
+        if( 0 == called ) {
+            $( '[value="uploaded"]' ).attr( 'selected', true ).parent().trigger('change');
+            called = 1;
+        }
+    } );
+} );
+</script>
+<?php
+}
+
+add_action( 'admin_footer-post-new.php', 'hm_media_library_default_view' );
+add_action( 'admin_footer-post.php', 'hm_media_library_default_view' );
