@@ -15,7 +15,7 @@ $images = get_posts(
         );
 if ( $images ) { ?>
 
-<h4><?php _e( 'Attached Images' ); ?></h4>
+<h4><?php echo __( 'Attached Images', 'hm_theme' ); ?></h4>
 
 <ul class="imagelist">
 
@@ -27,7 +27,7 @@ if ( $images ) { ?>
 ?>
       
   <li>
-    <a href="<?php echo $original[0]; ?>" title="<?php _e( 'Show Full Size' ); ?> (<?php echo size_format( filesize( get_attached_file( $image->ID ) ) ); ?>)"><img src="<?php echo $thumb[0]; ?>" alt="<?php echo $image->post_title; ?>" /></a>
+    <a href="<?php echo $original[0]; ?>" title="<?php echo __( 'Show Full Size', 'hm_theme' ); ?> (<?php echo size_format( filesize( get_attached_file( $image->ID ) ) ); ?>)"><img src="<?php echo $thumb[0]; ?>" alt="<?php echo $image->post_title; ?>" /></a>
     <h5><?php echo $image->post_title; ?></h5>
     <p><?php echo $image->post_content; ?></p>
   </li>

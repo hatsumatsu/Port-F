@@ -78,8 +78,8 @@ register_taxonomy(
 	array( 
         'hierarchical' => true,
     	'labels' => array( 
-            'name' => _( 'Project Types' ), 
-            'singular_name' => _( 'Project Type' )
+            'name' => __( 'Project Types', 'hm_theme' ), 
+            'singular_name' => __( 'Project Type', 'hm_theme' )
     	 ),
     'show_ui' => true,
     'show_admin_column' => true,
@@ -96,12 +96,12 @@ register_post_type(
 	'projects', 
 	array( 'labels' => array( 
         'name' => _( 'Projects' ), 
-		'singular_name' => _( 'Project' ),
-		'add_new_item' => _( 'Add new Project' ),
-		'edit_item' => _( 'Edit Project' ),
-		'new_item' => _( 'Add Project' ),
-		'view_item' => _( 'View Project' ),
-        'search_items' => _( 'Search Project' )
+		'singular_name' => __( 'Project', 'hm_theme' ),
+		'add_new_item' => __( 'Add new Project', 'hm_theme' ),
+		'edit_item' => __( 'Edit Project', 'hm_theme' ),
+		'new_item' => __( 'Add Project', 'hm_theme' ),
+		'view_item' => __( 'View Project', 'hm_theme' ),
+        'search_items' => __( 'Search Project', 'hm_theme' )
 	),
     'capability_type' => 'post',
     'supports' => array( 
@@ -129,15 +129,15 @@ add_filter( 'show_admin_bar', '__return_false' );
 /** 
  * Register navigation menus 
  */
-register_nav_menu( 'head_primary', _( 'Primary Header Navigation' ) );
-register_nav_menu( 'footer_primary', _( 'Primary Footer Navigation' ) );
+register_nav_menu( 'head_primary', __( 'Primary Header Navigation', 'hm_theme' ) );
+register_nav_menu( 'footer_primary', __( 'Primary Footer Navigation', 'hm_theme' ) );
 
 
 /** 
  * Register footer widget area 
  */
 register_sidebar( array(
-	'name'=> _( 'Footer Widgets' ),
+	'name'=> __( 'Footer Widgets', 'hm_theme' ),
 	'id' => 'footer_widgets'
 	) 
 );	
@@ -301,7 +301,7 @@ function get_the_super_title() {
     /* archive & single */
     if( is_archive () || is_single() || is_home() ) {
         if( get_post_type() == 'post' ) {
-            $html = __( 'News' );
+            $html = __( 'News', 'hm_theme' );
         } else { 
             $html = get_post_type_object( get_post_type() )->labels->name;
         }
@@ -319,12 +319,12 @@ function get_the_super_title() {
 
     /* 404 */
     if( is_404() ) {
-        $html .= __( 'Oouuups...' );
+        $html .= __( 'Oouuups...', 'hm_theme' );
     }
     /* search */
 
     if( is_search() ) {
-        $html .= __( 'Search results' );
+        $html .= __( 'Search results', 'hm_theme' );
     }
 
     return $html;
