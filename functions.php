@@ -197,12 +197,18 @@ add_action( 'wp_dashboard_setup', 'hm_remove_admin_dashboard_widgets' );
  * http://www.tinymce.com/wiki.php/Configuration
  */
 function hm_customize_tinyMCE( $init ) {
-    /* disable rich text pasting */
+    /* tinyMCE 3.X - disable rich text pasting */
     $init['paste_text_sticky'] = true;
     $init['paste_text_sticky_default'] = true;
 
-    /* configre format select entries */ 
+    /* tinyMCE 4.X - disable rich text pasting */
+    $init['paste_as_text'] = true;
+
+    /* tinyMCE 3.X - configre format select entries */ 
     $init['theme_advanced_blockformats'] = 'h3,h4,p';
+
+    /* tinyMCE 4.X - configre format select entries */ 
+    $init['block_formats'] = __( 'Paragraph', 'hm_theme' ) . '=p;' . __( 'Heading 3', 'hm_theme' ) . '=h3;' . __( 'Heading 4', 'hm_theme' ) . '=h4';
 
     return $init;
 }
@@ -344,6 +350,7 @@ function hm_rewrite_search() {
 
 add_action( 'template_redirect', 'hm_rewrite_search' );
 
+
 /** 
  * Set search result post count to infinity 
  */
@@ -355,20 +362,19 @@ function hm_search_post_count( $query ) {
 
 add_action( 'pre_get_posts', 'hm_search_post_count' );
 
+
 /**
  * Set the media library's default view to 'uploaded to this post'
  */
 function hm_media_library_default_view() { ?>
 <script>
-jQuery( function( $ ) {
     var called = 0;
-    $( '#wpcontent' ).ajaxStop( function() {
+    jQuery( '#wpcontent' ).ajaxStop( function() {
         if( 0 == called ) {
-            $( '[value="uploaded"]' ).attr( 'selected', true ).parent().trigger('change');
+            jQuery( '[value="uploaded"]' ).attr( 'selected', true ).parent().trigger('change');
             called = 1;
         }
     } );
-} );
 </script>
 <?php
 }
