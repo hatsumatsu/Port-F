@@ -2,15 +2,15 @@
 
 <?php if( have_posts() ) { ?>
 
-<ul class="postlist <?php echo get_post_type(); ?>list">
+<section class="posts <?php echo get_post_type(); ?>">
 
     <?php while( have_posts() ) { the_post(); ?>
 
-        <?php get_inc( 'li', get_post_type(), true ); ?>
+        <?php get_inc( 'item', get_post_type(), true ); ?>
 
     <?php } /* endwhile */ ?>
 
-</ul>
+</section>
 
 <?php get_inc( 'pagination', 0, 0 ); ?>
 

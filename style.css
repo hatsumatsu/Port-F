@@ -84,13 +84,7 @@ h5 {
 p {
   margin: 0 0 0em 0;
 }
-.postlist {
-  display: block;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.postlist > li {
+.posts > article {
   margin: 0 0 1.3em 0;
 }
 .imagelist {

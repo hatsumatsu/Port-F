@@ -38,7 +38,7 @@ $count = $search->post_count;
 
 <?php if ( have_posts() ) { ?>  
 
-<ul class="postlist searchlist">
+<section class="posts results">
             
 <?php 
 
@@ -58,22 +58,18 @@ foreach( $post_types as $post_type ) {
 
     <?php if ( $query ) { ?>  
 
-    <li>
-
     	<h2><?php echo _( $post_type_label ); ?></h2>        
         
-    	<ul class="postlist <?php echo $post_type; ?>list">
+    	<section class="posts <?php echo $post_type; ?>">
 
     	<?php while ( have_posts( )) { the_post(); ?>  
       
-            <?php get_inc( 'li', get_post_type(), true ); ?>
+            <?php get_inc( 'item', get_post_type(), true ); ?>
 
     	<?php } /* endwhile */ ?>  
       
-    	</ul> 
+    	</section> 
       
-    </li> 
-
     <?php } ?>        
 
 
@@ -81,7 +77,7 @@ foreach( $post_types as $post_type ) {
 
 <?php } ?>
       
-</ul>       
+</section>       
             
 <?php } /* endif */ ?>  
 

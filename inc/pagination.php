@@ -21,4 +21,4 @@ if ( $wp_rewrite->using_permalinks() )
 if ( !empty( $wp_query->query_vars[ 's' ] ) )
     $pagination[ 'add_args' ] = array( 's' => get_query_var( 's' ) );
 
-echo '<div class="pagination">' . paginate_links( $pagination ) . '</div>';
+echo '<nav class="pagination">' . paginate_links( $pagination ) . '</nav>';

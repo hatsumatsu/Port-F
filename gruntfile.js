@@ -44,6 +44,9 @@ module.exports = function(grunt){
 		},
 
 		uglify: {
+			options: {
+				mangle: false
+			},
 			dependencies: {
 			  files: {
 			    'js/dependencies-global.min.js': ['js/src/dependencies-global/*.js']

@@ -1,9 +1,9 @@
-<li>
+<article>
 
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-    <span class="posttime"><?php the_post_time(); ?></span>
+    <time class="posttime"><?php the_post_time(); ?></time>
     
     <?php the_content(); ?>
 
-</li>
+</article>
