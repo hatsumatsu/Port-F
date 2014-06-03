@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head data-wpurl="<?php bloginfo( 'url' ); ?>">
     <meta charset="utf-8">
-    <title><?php bloginfo( "name" ); ?> <?php wp_title( ' – ', 'left' ); ?></title>
+    <title><?php wp_title( ' – ', true, 'right' ); ?><?php bloginfo( "name" ); ?> </title>
     <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>">
     
     <?php wp_head(); ?>
