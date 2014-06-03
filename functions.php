@@ -1,4 +1,10 @@
 <?php
+/**
+ * i11n
+ */
+load_theme_textdomain( 'hm_theme' );
+
+
 /** 
  * Register theme CSS
  */
@@ -95,7 +101,7 @@ register_taxonomy(
 register_post_type( 
 	'projects', 
 	array( 'labels' => array( 
-        'name' => _( 'Projects' ), 
+        'name' => __( 'Projects', 'hm_theme' ), 
 		'singular_name' => __( 'Project', 'hm_theme' ),
 		'add_new_item' => __( 'Add new Project', 'hm_theme' ),
 		'edit_item' => __( 'Edit Project', 'hm_theme' ),
