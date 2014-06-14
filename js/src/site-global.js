@@ -114,6 +114,8 @@ jQuery( function( $ ) {
         config['mediaquery'] = $( 'title' ).css( 'fontFamily' )
             .replace( /'/g, '' )
             .replace( /"/g, '' );
+        config['transition-duration'] = parseFloat( $( 'title' ).css( 'transitionDuration' ) * 1000 );
+
 
         debuglog( 'site-global.js loaded...' );
         debuglog( config['blogurl'] );

@@ -378,9 +378,9 @@ add_action( 'pre_get_posts', 'hm_search_post_count' );
  */
 function hm_media_library_default_view() { ?>
 <script>
-    var called = 0;
     jQuery( '#wpcontent' ).ajaxStop( function() {
-        if( 0 == called ) {
+        var called = 0;
+        if( 0 == called && jQuery( '[value="uploaded"]' ).length > 0 ) {
             jQuery( '[value="uploaded"]' ).attr( 'selected', true ).parent().trigger('change');
             called = 1;
         }

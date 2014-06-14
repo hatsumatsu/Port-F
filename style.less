@@ -32,10 +32,13 @@ Tags:
 @smaller-em: 48em;
 @smaller: ~'only screen and ( max-width: @{smaller-em} )';
 
+@transition-duration: 250ms;
 
 // MIXINS
 
-
+.transition {
+  transition: all @transition-duration ease;
+}
 
 // DOCUMENT
 
@@ -67,7 +70,7 @@ title {
   width: @smaller-em;
   // whole media query
   font-family: '@{smaller}';
-
+  transition-duration: @transition-duration;
 }
 
 
@@ -277,7 +280,6 @@ h1 a {
   padding: 0;
   list-style-type: none;
 }
-
 
 // CONTENT
 
