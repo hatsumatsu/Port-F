@@ -1,0 +1,10 @@
+.message {
+  margin: ( @line-height * 1em / 2 ) 0;
+  padding: ( @line-height * 1em / 2 ) ( @line-height * 1em );
+
+  background: mix( @bg, @text, 80% );
+}
+
+.warning {
+  .message;
+}

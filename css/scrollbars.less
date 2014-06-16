@@ -1,0 +1,53 @@
+::-webkit-scrollbar {
+  width: 0.6em;
+  height: 0.6em;
+
+  background: @bg;
+}
+ 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  border-color: transparent transparent transparent fade( @scrollbar-color, @scrollbar-color-alpha );
+  border-width: 0 0.3em;
+  border-style: solid;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  border-color: transparent transparent transparent fade( @scrollbar-color, @scrollbar-color-alpha-hover ) ;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  border-color: fade( @scrollbar-color, @scrollbar-color-alpha ) transparent transparent transparent;
+  border-width: 0.3em 0;
+  border-style: solid;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  border-color: fade( @scrollbar-color, @scrollbar-color-alpha-hover ) transparent transparent transparent;
+}
+
+::-webkit-scrollbar-button {
+  height: 0.6em;
+  width: 0.6em;
+
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background: @bg;
+}

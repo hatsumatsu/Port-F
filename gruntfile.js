@@ -9,7 +9,6 @@ module.exports = function(grunt){
 		  development: {
 		    files: {
 		      'style.css': 'style.less',
-		      'mobilemenu.css': 'mobilemenu.less',
 		      'editor-style.css': 'editor-style.less'
 		    }
 		  }
@@ -151,7 +150,7 @@ module.exports = function(grunt){
 
 		watch: {
 		    css: {
-		        files: ['*.less'],
+		        files: ['**/*.less'],
 		        tasks: ['buildcss']
 		    },
 		    js: {

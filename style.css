@@ -10,6 +10,21 @@ Tags:
    This stylesheet was written in and compiled with LESS
    See http://lesscss.org for further reference
 */
+.transition {
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+.cf {
+  zoom: 1;
+}
+.cf:before,
+.cf:after {
+  content: ' ';
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
 html {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
@@ -31,6 +46,8 @@ body {
 title {
   width: 48em;
   font-family: 'only screen and ( max-width: 48em )';
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
 }
 a {
   color: #888888;
@@ -61,6 +78,9 @@ h5 {
   margin: 0 0 1em 0;
   line-height: 1;
 }
+p {
+  margin: 0 0 0em 0;
+}
 .shell {
   width: 90%;
   max-width: 64em;
@@ -80,9 +100,6 @@ h5 {
   margin: 0 0 0 1em;
   padding: 0;
   list-style-type: none;
-}
-p {
-  margin: 0 0 0em 0;
 }
 .posts > article {
   margin: 0 0 1.3em 0;
@@ -116,17 +133,6 @@ p {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-.cf {
-  zoom: 1;
-}
-.cf:before,
-.cf:after {
-  content: " ";
-  display: table;
-}
-.cf:after {
-  clear: both;
 }
 ::-webkit-scrollbar {
   width: 0.6em;
