@@ -29,4 +29,4 @@
             <?php } ?>
 
 		</section><!-- end .head -->
-		<section class="content" role="main">
+		<section class="content" role="main" id="content">
