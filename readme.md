@@ -14,6 +14,7 @@ Use `grunt watch` to process LESS/CSS, JS and images on the fly. `grunt build` a
 + [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer/) 
 + [normalize.css](http://necolas.github.io/normalize.css/) 
 + main breakpoint (768px) for RWD, syncd between CSS and JS 
++ CSS-only mobile drawer navigation 
 + tiny typography fixes, micro-clearfix, selection styles, webkit scrollbar styles and much more...
 
 ### Javascript 
@@ -34,7 +35,7 @@ Use `grunt watch` to process LESS/CSS, JS and images on the fly. `grunt build` a
 + Secondary footer navigation 
 + Footer widget area 
 + Custom image size 
-+ Custom JPEG compression quality 
++ Custom JPEG quality 
 + Hide admin menu entries
 + Hide admin dashboard widgets 
 + tinyMCE button/feature configuration 
