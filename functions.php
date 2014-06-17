@@ -39,8 +39,8 @@ add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
  * Add inline HTML to <head>
  */
 function hm_theme_head() { ?>
-<!--[if IE 7]>
-    <link rel="stylesheet" type="text/css" href="ie7.css" />
+<!--[if IE lte 8]>
+    <link rel="stylesheet" type="text/css" href="ie-lte8.css" />
 <![endif]-->
 <?php 
 }
