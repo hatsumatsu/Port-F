@@ -36,7 +36,7 @@ jQuery( function( $ ) {
         // module window
         var win = ( function() {
 
-            var winEl;
+            var el;
             var resizeDelay;
             var state;
             var _state;
@@ -45,14 +45,14 @@ jQuery( function( $ ) {
                 debuglog( 'site.win.init()' );
             
                 state = Modernizr.mq( config['mediaquery'] );
-                winEl = $( window );
+                el = $( window );
                 bindEventHandlers();
             }
 
             var bindEventHandlers = function() {
 
                 // throttle resize event
-                winEl.on( 'resize', function() {
+                el.on( 'resize', function() {
                     
                     if( resizeDelay ) { 
                         clearTimeout( resizeDelay );

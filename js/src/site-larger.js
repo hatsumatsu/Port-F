@@ -16,12 +16,12 @@ jQuery( function( $ ) {
         // module win
         var win = ( function() {
 
-            var winEl;
+            var el;
             var winScrollTop;
 
             var init = function() {
                 debuglog( 'site.win.init()' );
-                winEl = $( window );
+                el = $( window );
                 bindEventHandlers()
                 scrollLoop();
             }
@@ -32,7 +32,7 @@ jQuery( function( $ ) {
 
             var scrollLoop = function() {
                 var _winScrollTop = winScrollTop;
-                winScrollTop = winEl.scrollTop();
+                winScrollTop = el.scrollTop();
 
                 if( winScrollTop != _winScrollTop ) {
                     scroll();
