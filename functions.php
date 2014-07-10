@@ -125,7 +125,8 @@ register_post_type(
         'title', 
         'editor', 
         'author', 
-        'thumbnail' ),
+        'thumbnail' 
+        ),
     'public' => true,
     'menu_position' => 5,
     // http://melchoyce.github.io/dashicons/
@@ -159,11 +160,14 @@ register_nav_menu( 'footer_primary', __( 'Primary Footer Navigation', 'hm_theme'
 function hm_nav_add_toggle( $args = '' ) {
 
     if( $args['theme_location'] == 'head_primary' ) {
-        $html = '';
+        $html  = '';
+        $html .= '<nav class="%2$s-container" role="navigation"><a href="#content" title="' . __( 'Skip Navigation', 'hm_theme' ) . '">' . __( 'Skip Navigation', 'hm_theme' ) . '</a>';
         $html .= '<input type="checkbox" id="' . $args['theme_location'] . '-toggle" class="toggle ' . $args['theme_location'] . '-toggle" />';
         $html .= '<label class="toggle ' . $args['theme_location'] . '-toggle" for="' . $args['theme_location'] . '-toggle">' . __( 'Navigation', 'hm_theme' ) . '</label>';
+        $html .= '<ul id="%1$s" class="%2$s">%3$s</ul>';
+        $html .= '</nav>';
 
-        $args[ 'items_wrap' ] = '<nav class="%2$s-container" role="navigation"><a href="#content" title="' . __( 'Skip Navigation', 'hm_theme' ) . '">' . __( 'Skip Navigation', 'hm_theme' ) . '</a>' . $html . '<ul id="%1$s" class="%2$s">%3$s</ul></nav>';
+        $args[ 'items_wrap' ] = $html;
     }
 
     return $args;
