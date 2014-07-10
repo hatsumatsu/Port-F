@@ -118,7 +118,7 @@ module.exports = function(grunt){
 	        all: {
 	            files: [{ 
 	            	src: ['img/src/*.svg'], 
-	            	dest: 'img/' 
+	            	dest: '' 
 	            }]
 	        }
 	    },
