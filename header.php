@@ -1,8 +1,8 @@
 <!doctype html>
-<html class="no-js"<?php language_attributes(); ?>>
+<html class="no-js" <?php language_attributes(); ?>>
 <head data-wpurl="<?php bloginfo( 'url' ); ?>">
     <meta charset="utf-8">
-    <title><?php wp_title( ' – ', true, 'right' ); ?><?php bloginfo( "name" ); ?> </title>
+    <title><?php wp_title( ' – ', true, 'right' ); ?><?php bloginfo( "name" ); ?></title>
     <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>">
     
     <?php wp_head(); ?>
@@ -17,7 +17,7 @@
 	<div class="shell">
 		<section class="head" role="banner">
 			
-            <h1><a href="<?php bloginfo( 'url' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( "name" ); ?></a></h1>
+            <h1><a href="<?php home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( "name" ); ?></a></h1>
 			
             <?php get_template_part( '/inc/nav-head-primary' ); ?>
 			
