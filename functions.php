@@ -372,7 +372,7 @@ function get_the_super_title() {
 
     /* 404 */
     if( is_404() ) {
-        $html .= __( 'Oouuups...', 'hm_theme' );
+        $html .= __( '404', 'hm_theme' );
     }
     /* search */
 
