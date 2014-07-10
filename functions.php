@@ -324,7 +324,7 @@ function get_inc( $type, $context, $fallback ) {
             get_template_part( '/inc/' . $type . '-' . $context );
         } else {
             if( $fallback ) {
-                get_template_part( '/inc/' . $type . '-default' );
+                get_template_part( '/inc/' . $type );
             }
         }
     } else {
