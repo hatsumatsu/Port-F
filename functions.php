@@ -299,7 +299,7 @@ add_filter( 'mce_buttons_2', 'hm_tinyMCE_buttons_2' );
  * Register tinyMCE editor CSS 
  */
 function hm_tinymce_custom_css() {
-    add_editor_style(); /* defaults to editor-style.css */
+    add_editor_style( 'css/editor.css' );
 }
 
 add_action( 'init', 'hm_tinymce_custom_css' );

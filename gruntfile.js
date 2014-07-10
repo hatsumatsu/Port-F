@@ -9,7 +9,7 @@ module.exports = function(grunt){
 		  development: {
 		    files: {
 		      'style.css': 'style.less',
-		      'editor-style.css': 'editor-style.less'
+		      'css/editor.css': 'css/editor.less'
 		    }
 		  }
 		},
@@ -18,6 +18,10 @@ module.exports = function(grunt){
 		    style: {
 		      src: 'style.css',
 		      dest: 'style.css'
+		    },
+		    editor: {
+		      src: 'css/editor.css',
+		      dest: 'css/editor.css'
 		    }
 		},
 
