@@ -374,8 +374,8 @@ function get_the_super_title() {
     if( is_404() ) {
         $html .= __( '404', 'hm_theme' );
     }
+    
     /* search */
-
     if( is_search() ) {
         $html .= __( 'Search results', 'hm_theme' );
     }
