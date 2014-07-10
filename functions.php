@@ -72,6 +72,14 @@ remove_action( 'wp_head', 'wp_generator' );  // remove Version number
  */
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'menus' );
+add_theme_support( 'html5', array( 
+    'comment-list', 
+    'comment-form', 
+    'search-form', 
+    'gallery', 
+    'caption' 
+    ) 
+);
 
 
 /** 
