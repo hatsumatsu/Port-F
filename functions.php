@@ -97,7 +97,7 @@ register_taxonomy(
     	 ),
     'show_ui' => true,
     'show_admin_column' => true,
-    'rewrite' => array( 'slug' => 'project_type' )
+    'rewrite' => array( 'slug' => 'projects/filter' )
     ) 
 );
 
