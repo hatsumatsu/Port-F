@@ -35,14 +35,14 @@ jQuery( function( $ ) {
                 winScrollTop = el.scrollTop();
 
                 if( winScrollTop != _winScrollTop ) {
-                    scroll();
+                    onScroll();
                 }
 
                 requestAnimationFramePolyfill( scrollLoop );
             }
 
-            var scroll = function() {
-                debuglog( 'site.win.scroll()' );
+            var onScroll = function() {
+                debuglog( 'site.win.onScroll()' );
             }
 
             return {

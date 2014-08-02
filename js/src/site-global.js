@@ -58,13 +58,13 @@ jQuery( function( $ ) {
                         clearTimeout( resizeDelay );
                     }
 
-                    resizeDelay = setTimeout( resize, 1000 );
+                    resizeDelay = setTimeout( onResize, 1000 );
                 } );
 
             }
 
-            var resize = function() {
-                debuglog( 'site.win.resize()' );
+            var onResize = function() {
+                debuglog( 'site.win.onResize()' );
 
                 var _state = state;
                 state = Modernizr.mq( config['mediaquery'] );
