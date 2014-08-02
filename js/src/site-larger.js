@@ -16,12 +16,13 @@ jQuery( function( $ ) {
         // module win
         var win = ( function() {
 
-            var el;
-            var winScrollTop;
+            var settings = {};
 
             var init = function() {
                 debuglog( 'site.win.init()' );
-                el = $( window );
+                
+                settings.el = $( window );
+                
                 bindEventHandlers()
                 scrollLoop();
             }
@@ -31,10 +32,10 @@ jQuery( function( $ ) {
             }
 
             var scrollLoop = function() {
-                var _winScrollTop = winScrollTop;
-                winScrollTop = el.scrollTop();
+                settings._winScrollTop = settings.winScrollTop;
+                settings.winScrollTop = settings.el.scrollTop();
 
-                if( winScrollTop != _winScrollTop ) {
+                if( settings.winScrollTop != settings._winScrollTop ) {
                     onScroll();
                 }
 
@@ -54,13 +55,14 @@ jQuery( function( $ ) {
         // module 
         var module = ( function() {
 
+            config = {};
+
             var init = function() {
                 debuglog( 'site.module.init()' );
                 bindEventHandlers();
             }
 
             var bindEventHandlers = function() {
-
 
             }
 
@@ -77,9 +79,7 @@ jQuery( function( $ ) {
     } )();
 
     $( document ).ready( function () {
-
         debuglog( 'site-larger.js loaded...' );
-        debuglog( config['blogurl'] );
 
         site.init();
 

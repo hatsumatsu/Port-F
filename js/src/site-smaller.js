@@ -16,6 +16,8 @@ jQuery( function( $ ) {
         // module 
         var module = ( function() {
 
+            var settings = {};
+
             var init = function() {
                 debuglog( 'site.module.init()' );
                 bindEventHandlers();
@@ -38,17 +40,8 @@ jQuery( function( $ ) {
 
     } )();
 
-    /* debuglog */
-
-    function debuglog( log ) {
-        if( debugmode && typeof console != 'undefined' ) console.log( log );
-    }
-
-
     $( document ).ready( function () {
-
         debuglog( 'site-smaller.js loaded...' );
-        debuglog( config['blogurl'] );
     
         site.init();
 

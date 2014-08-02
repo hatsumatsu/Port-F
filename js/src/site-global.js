@@ -1,9 +1,11 @@
 // global debug switch
-debugmode = true; 
+globals = {};
+
+globals.debug = true;
 
 // debuglog
 debuglog = function( log ) {
-    if( debugmode && typeof console != 'undefined' ) console.log( log );
+    if( globals.debug && typeof console != 'undefined' ) console.log( log );
 }
 
 // requestAnimationFrame polyfill
@@ -15,8 +17,6 @@ requestAnimationFramePolyfill =
       window.oRequestAnimationFrame ||
       function( callback ) { window.setTimeout( callback, 1000/60 ) }
 
-// global vars
-config = new Array();
 
 jQuery( function( $ ) {
 
@@ -36,29 +36,27 @@ jQuery( function( $ ) {
         // module window
         var win = ( function() {
 
-            var el;
-            var resizeDelay;
-            var state;
-            var _state;
+            var settings = {};
 
             var init = function() {
                 debuglog( 'site.win.init()' );
             
-                state = Modernizr.mq( config['mediaquery'] );
-                el = $( window );
+                settings.state = Modernizr.mq( globals.mediaQuery );
+                settings.el = $( window );
+
                 bindEventHandlers();
             }
 
             var bindEventHandlers = function() {
 
                 // throttle resize event
-                el.on( 'resize', function() {
+                settings.el.on( 'resize', function() {
                     
-                    if( resizeDelay ) { 
-                        clearTimeout( resizeDelay );
+                    if( settings.resizeDelay ) { 
+                        clearTimeout( settings.resizeDelay );
                     }
 
-                    resizeDelay = setTimeout( onResize, 1000 );
+                    settings.resizeDelay = setTimeout( onResize, 1000 );
                 } );
 
             }
@@ -66,10 +64,12 @@ jQuery( function( $ ) {
             var onResize = function() {
                 debuglog( 'site.win.onResize()' );
 
-                var _state = state;
-                state = Modernizr.mq( config['mediaquery'] );
+                settings._state = settings.state;
+                settings.state = Modernizr.mq( globals.mediaQuery );
                 
-                if( state != _state ) {
+                debuglog( settings );
+
+                if( settings.state != settings._state ) {
                     window.location.reload();
                 }
             }
@@ -83,13 +83,14 @@ jQuery( function( $ ) {
         // module 
         var module = ( function() {
 
+            config = {};
+
             var init = function() {
                 debuglog( 'site.module.init()' );
                 bindEventHandlers();
             }
 
             var bindEventHandlers = function() {
-
 
             }
 
@@ -107,23 +108,21 @@ jQuery( function( $ ) {
 
     // document ready
     $( document ).ready( function () {
+        debuglog( 'site-global.js loaded...' );
 
-        // init config vars
-        config['blogurl'] = $( 'head' ).attr( 'data-wpurl' );
-        config['breakpoint'] = $( 'title' ).css( 'width' );
-        config['mediaquery'] = $( 'title' ).css( 'fontFamily' )
+        // init globals
+        globals.blogurl = $( 'head' ).attr( 'data-wpurl' );
+        globals.breakpoint = $( 'title' ).css( 'width' );
+        globals.mediaQuery = $( 'title' ).css( 'fontFamily' )
             .replace( /'/g, '' )
             .replace( /"/g, '' );
-        config['transition-duration'] = parseFloat( $( 'title' ).css( 'transitionDuration' ) * 1000 );
+        globals.transitionDuration = ( parseFloat( $( 'title' ).css( 'transitionDuration' ) ) * 1000 ) || 500;
 
-
-        debuglog( 'site-global.js loaded...' );
-        debuglog( config['blogurl'] );
+        debuglog( globals );
 
         site.init();
 
         $( 'html' ).removeClass( 'no-js' );
-
     } );
 
 } );
