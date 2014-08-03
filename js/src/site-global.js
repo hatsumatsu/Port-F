@@ -1,21 +1,13 @@
-// global debug switch
+// globals
 globals = {};
 
-globals.debug = true;
 
 // debuglog
 debuglog = function( log ) {
     if( globals.debug && typeof console != 'undefined' ) console.log( log );
 }
 
-// requestAnimationFrame polyfill
-requestAnimationFramePolyfill = 
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      function( callback ) { window.setTimeout( callback, 1000/60 ) }
+globals.debug = true;
 
 
 jQuery( function( $ ) {
