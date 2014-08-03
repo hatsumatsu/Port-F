@@ -25,7 +25,6 @@ jQuery( function( $ ) {
 
             var bindEventHandlers = function() {
 
-
             }
 
             return {
@@ -44,7 +43,6 @@ jQuery( function( $ ) {
         debuglog( 'site-smaller.js loaded...' );
     
         site.init();
-
-    } ); /* end document ready */
+    } ); 
 
 } );

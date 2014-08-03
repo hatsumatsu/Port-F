@@ -113,8 +113,6 @@ jQuery( function( $ ) {
         debuglog( globals );
 
         site.init();
-
-        $( 'html' ).removeClass( 'no-js' );
     } );
 
 } );

@@ -13,7 +13,7 @@ jQuery( function( $ ) {
 
         }
 
-        // module win
+        // module window
         var win = ( function() {
 
             var settings = {};
@@ -39,7 +39,7 @@ jQuery( function( $ ) {
                     onScroll();
                 }
 
-                requestAnimationFramePolyfill( scrollLoop );
+                requestAnimationFrame( scrollLoop );
             }
 
             var onScroll = function() {
@@ -82,7 +82,6 @@ jQuery( function( $ ) {
         debuglog( 'site-larger.js loaded...' );
 
         site.init();
-
-    } ); /* end document ready */
+    } );
 
 } );
