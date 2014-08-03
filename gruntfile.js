@@ -1,9 +1,9 @@
-module.exports = function(grunt){
+module.exports = function( grunt ) {
 
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+    grunt.initConfig( {
+        pkg: grunt.file.readJSON( 'package.json' ),
 
 		less: {
 		  development: {
