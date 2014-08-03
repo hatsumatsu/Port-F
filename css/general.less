@@ -1,0 +1,144 @@
+// links
+a {
+  color: @link;
+  text-decoration: none;
+}
+
+a:visited {
+  color: desaturate( @link, 5% );
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+  outline: 0; // do somethig else for a11y
+}
+
+// selection
+::selection {
+  background: @link;
+  color: @bg;
+}
+
+// headings
+h1,
+h2,
+h3,
+h4,
+h5 {
+
+  margin: 0 0 1em 0;
+
+  line-height: 1;
+
+  & a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+
+  }
+
+}
+
+h1 {
+
+
+  & a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+
+  }
+
+}
+
+h2 {
+
+
+  & a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+
+  }
+
+}
+
+h3 {
+
+
+  & a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+
+  }
+
+}
+
+h4 {
+
+
+  & a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+
+  }
+
+}
+
+h5 {
+
+
+  & a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+
+  }
+
+}
+
+// content elements
+
+section {
+  
+}
+
+p {
+  margin: 0 0 ( 0em * @line-height ) 0;
+}
+
+p + p {
+
+}
+
+hr {
+
+}

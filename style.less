@@ -15,8 +15,10 @@ Tags:
 // VARIABLES 
 @import 'css/variables';
 
+
 // MIXINS
 @import 'css/mixins';
+
 
 // DOCUMENT
 html {
@@ -40,157 +42,16 @@ body {
   color: @text;
 }
 
-// sync breakpoints between CSS and JS
+// sync variables between CSS and JS
 title {
-  // em value only
+  // media query: break point
   width: @smaller-em;
-  // whole media query
+  // media query: string
   font-family: '@{smaller}';
+  // transition duration
   transition-duration: @transition-duration;
 }
 
-
-// GENERAL
-// links
-a {
-  color: @link;
-  text-decoration: none;
-}
-
-a:visited {
-  color: desaturate( @link, 5% );
-}
-
-a:hover,
-a:focus,
-a:active {
-  text-decoration: underline;
-  outline: 0; // do somethig else for a11y
-}
-
-::selection {
-  background: @link;
-  color: @bg;
-}
-
-// headings
-h1,
-h2,
-h3,
-h4,
-h5 {
-
-  margin: 0 0 1em 0;
-
-  line-height: 1;
-
-  & a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-
-    }
-
-  }
-
-}
-
-h1 {
-
-
-  & a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-
-    }
-
-  }
-
-}
-
-h2 {
-
-
-  & a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-
-    }
-
-  }
-
-}
-
-h3 {
-
-
-  & a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-
-    }
-
-  }
-
-}
-
-h4 {
-
-
-  & a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-
-    }
-
-  }
-
-}
-
-h5 {
-
-
-  & a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-
-    }
-
-  }
-
-}
-
-p {
-  margin: 0 0 ( 0em * @line-height ) 0;
-}
-
-p + p {
-
-}
-
-hr {
-
-}
-
-
-// STRUCTURE
 .shell {
   width: 90%;
   max-width: 64em;
@@ -199,30 +60,21 @@ hr {
   padding: 2em 0;
 }
 
-section {
-  
-}
 
+// GENERAL
+@import 'css/general';
+
+
+// HEADER
 .head {
 
 }
 
-.content {
-
-}
-
-.footer {
-  clear: both;
-  margin: 1em 0 0 0;
-}
-
-
-// HEADER
 h1 {
 
 }
 
-h1 a {
+h1 > a {
 
 }
 
@@ -231,6 +83,10 @@ h1 a {
 
 
 // MAIN CONTENT
+.content {
+
+}
+
 // posts
 @import 'css/posts';
 
@@ -248,6 +104,11 @@ h1 a {
 
 
 // FOOTER
+.footer {
+  clear: both;
+  margin: 1em 0 0 0;
+}
+
 // navigation
 @import 'css/nav-footer';
 

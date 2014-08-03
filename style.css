@@ -57,6 +57,12 @@ title {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
 }
+.shell {
+  width: 90%;
+  max-width: 64em;
+  margin: 0 auto;
+  padding: 2em 0;
+}
 a {
   color: #888888;
   text-decoration: none;
@@ -88,16 +94,6 @@ h5 {
 }
 p {
   margin: 0 0 0em 0;
-}
-.shell {
-  width: 90%;
-  max-width: 64em;
-  margin: 0 auto;
-  padding: 2em 0;
-}
-.footer {
-  clear: both;
-  margin: 1em 0 0 0;
 }
 .head_primary-container [href='#content'] {
   position: absolute;
@@ -285,6 +281,10 @@ p {
   margin: 0.65em 0;
   padding: 0.65em 1.3em;
   background: #cfcfcf;
+}
+.footer {
+  clear: both;
+  margin: 1em 0 0 0;
 }
 .footer_primary {
   margin: 0;
