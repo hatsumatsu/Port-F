@@ -32,10 +32,10 @@ jQuery( function( $ ) {
             }
 
             var scrollLoop = function() {
-                settings._winScrollTop = settings.winScrollTop;
-                settings.winScrollTop = settings.el.scrollTop();
+                settings._scrollTop = settings.scrollTop;
+                settings.scrollTop = settings.el.scrollTop();
 
-                if( settings.winScrollTop != settings._winScrollTop ) {
+                if( settings.scrollTop != settings._scrollTop ) {
                     onScroll();
                 }
 
