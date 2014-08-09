@@ -38,7 +38,7 @@ $count = $search->post_count;
 
 <?php if ( have_posts() ) { ?>  
 
-<section class="posts results">
+<section class="results">
             
 <?php 
 
@@ -60,7 +60,7 @@ foreach( $post_types as $post_type ) {
 
     	<h2><?php echo _( $post_type_label ); ?></h2>        
         
-    	<section class="posts <?php echo $post_type; ?>">
+    	<section class="posts posts<?php echo $post_type; ?>">
 
     	<?php while ( have_posts( )) { the_post(); ?>  
       

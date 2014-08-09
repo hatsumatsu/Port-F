@@ -1,4 +1,4 @@
-<article>
+<article class="post post-<?php echo get_post_type(); ?>">
 
     <h2><?php the_title(); ?></h2>
 

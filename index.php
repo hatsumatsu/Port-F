@@ -2,7 +2,7 @@
 
 <?php if( have_posts() ) { ?>
 
-<section class="posts <?php echo get_post_type(); ?>">
+<section class="posts posts-<?php echo get_post_type(); ?>">
 
     <?php while( have_posts() ) { the_post(); ?>
 
