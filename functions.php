@@ -2,7 +2,7 @@
 /**
  * i11n
  */
-load_theme_textdomain( 'hm_theme' );
+load_theme_textdomain( 'hm_theme', get_stylesheet_directory() . '/languages' );
 
 
 /** 
