@@ -55,7 +55,7 @@ jQuery( function( $ ) {
         // module 
         var module = ( function() {
 
-            config = {};
+            settings = {};
 
             var init = function() {
                 debuglog( 'site.module.init()' );
