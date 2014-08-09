@@ -338,7 +338,7 @@ function get_inc( $type, $context, $fallback ) {
  * Display post date and time based on global WP settings.  
  */
 function the_post_time() {
-    echo the_time( get_option( 'date_format' ) ) . ' ' . the_time( get_option( 'time_format' ) );
+    echo get_the_time( get_option( 'date_format' ) ) . ' ' . get_the_time( get_option( 'time_format' ) );
 }
 
 
