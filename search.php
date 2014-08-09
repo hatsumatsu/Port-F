@@ -36,14 +36,14 @@ foreach( $post_types as $post_type ) {
     $query = query_posts( $query_string . '&posts_per_page=-1&post_type=' . $post_type ); 
     $post_type_label = get_post_type_object( $post_type )->labels->name; 
 
-    if( $query ) { 
+    if( $query ) {
 
 ?>  
 
-    	<h2><?php echo __( $post_type_label, 'hm_theme' ); ?></h2>        
+    	<h2><?php echo $post_type_label; ?></h2>        
     	<section class="posts posts-<?php echo $post_type; ?>">
 
-    	<?php while ( have_posts( )) { the_post(); ?>  
+    	<?php while( have_posts( ) ) { the_post(); ?>  
       
             <?php get_inc( 'item', $post_type, true ); ?>
 
