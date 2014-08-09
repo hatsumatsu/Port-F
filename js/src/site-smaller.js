@@ -10,7 +10,6 @@ jQuery( function( $ ) {
 
         var bindEventHandlers = function() {
 
-
         }
 
         // module 
