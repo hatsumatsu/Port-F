@@ -3,8 +3,10 @@
   position: absolute;
   left: -9999em;
   top: auto;
+
   width: 1px;
   height: 1px;
+  
   overflow: hidden; 	
 }
 
@@ -13,8 +15,16 @@
   transition: all @transition-duration ease;
 }
 
-// clearfix
+.no-transition {
+  transition: none !important;
+}
 
+// performance
+.new-layer {
+  transform: translateZ( 0 );
+}
+
+// clearfix
 .cf {
   &:before,
   &:after {
