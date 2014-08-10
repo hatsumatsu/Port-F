@@ -9,7 +9,7 @@ load_theme_textdomain( 'hm_theme', get_stylesheet_directory() . '/languages' );
  * Register theme CSS
  */
 function hm_theme_css() {
-    wp_register_style( 'hm_normalize', get_template_directory_uri() . '/normalize.css', 0 );
+    wp_register_style( 'hm_normalize', get_template_directory_uri() . '/css/normalize.css', 0 );
     wp_register_style( 'hm_theme', get_template_directory_uri() . '/style.css', array( 'hm_normalize' ) );
 
     wp_enqueue_style( 'hm_normalize' );
@@ -40,7 +40,7 @@ add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
  */
 function hm_theme_head() { ?>
 <!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="ie-lte8.css" />
+    <link rel="stylesheet" type="text/css" href="css/ie-lte8.css" />
 <![endif]-->
 <?php 
 }

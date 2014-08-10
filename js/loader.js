@@ -16,7 +16,7 @@ jQuery( function( $ ) {
         { 
         test: Modernizr.mq( 'only all' ),
         // for IE lte 8 and browsers not supporting media queries
-        nope: [ globals.blogurl + '/wp-content/themes/port-f/js/dependencies-larger.min.js' ]
+        nope: []
         } 
         ] );
 

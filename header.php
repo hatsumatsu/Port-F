@@ -2,7 +2,7 @@
 <html class="no-js" <?php language_attributes(); ?>>
 <head data-wpurl="<?php bloginfo( 'url' ); ?>">
     <meta charset="utf-8">
-    <title><?php wp_title( ' – ', true, 'right' ); ?><?php bloginfo( "name" ); ?></title>
+    <title><?php wp_title( ' – ', true, 'right' ); ?><?php bloginfo( 'name' ); ?></title>
     <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>">
     
     <?php wp_head(); ?>
@@ -21,7 +21,7 @@
 			
             <?php get_template_part( '/inc/nav-head-primary' ); ?>
 			
-            <?php if ( get_the_super_title() != '' ) { ?>
+            <?php if( get_the_super_title() != '' ) { ?>
             <h2><?php echo get_the_super_title(); ?></h2>
             <?php } ?>
 
