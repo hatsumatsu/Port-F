@@ -13,7 +13,7 @@ Use `grunt watch` to process LESS/CSS, JS and images on the fly. `grunt build` a
 + [LESS](http://lesscss.org/) 
 + [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer/) 
 + [normalize.css](http://necolas.github.io/normalize.css/) 
-+ main breakpoint (768px) for RWD, syncd between CSS and JS 
++ main breakpoint for RWD, syncd between CSS and JS 
 + CSS-only mobile drawer navigation 
 + tiny typography fixes, micro-clearfix, selection styles, webkit scrollbar styles and much more...
 
@@ -23,7 +23,7 @@ Use `grunt watch` to process LESS/CSS, JS and images on the fly. `grunt build` a
 + automatic page reload when media query state changes
 + scroll event replaced by requestAnimationFrame polyfill
 + global debug switch (affects console logging and JS minifying)
-+ object oriented JS-boilerplates 
++ JS-boilerplates following the Revealing Module Pattern
 + [grunt-modernizr](http://github.com/Modernizr/grunt-modernizr) generates a custom build of [modernizr](http://modernizr.com)
 
 ### functions.php
@@ -42,4 +42,5 @@ Use `grunt watch` to process LESS/CSS, JS and images on the fly. `grunt build` a
 + Custom excerpt length 
 + `the_super_title()` shortcode, combining custom post type name and title 
 + rewrite search url to `example.com/search/{query}` 
++ and much more
 
