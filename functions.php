@@ -111,14 +111,14 @@ register_post_type(
 	array( 'labels' => array( 
         'name' => __( 'Projects', 'hm_theme' ), 
         'singular_name' => __( 'Project', 'hm_theme' ),
-        'menu_name' => __( 'Project', 'hm_theme' ),
+        'menu_name' => __( 'Projects', 'hm_theme' ),
         'menu_admin_bar' => __( 'Project', 'hm_theme' ),
 		'all_items' => __( 'All Projects', 'hm_theme' ),
 		'add_new_item' => __( 'Add new Project', 'hm_theme' ),
 		'edit_item' => __( 'Edit Project', 'hm_theme' ),
 		'new_item' => __( 'Add Project', 'hm_theme' ),
 		'view_item' => __( 'View Project', 'hm_theme' ),
-        'search_items' => __( 'Search Project', 'hm_theme' )
+        'search_items' => __( 'Search Projects', 'hm_theme' )
 	),
     'capability_type' => 'post',
     'supports' => array( 
