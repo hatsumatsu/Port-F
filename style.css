@@ -18,6 +18,13 @@ Tags:
   height: 1px;
   overflow: hidden;
 }
+.pseudo-box {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+}
 .transition {
   -webkit-transition: all 250ms ease;
   transition: all 250ms ease;
