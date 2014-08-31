@@ -1,59 +1,69 @@
 <?php get_header(); ?>
 
 <?php 
-        
-$search = &new WP_Query( 's=' . $s . '&showposts=-1' ); 
-$key = wp_specialchars( $s, 1 ); 
-$count = $search->post_count;
 
-?>
-
-<?php get_search_form(); ?>
-
-<p class="message">
-<?php 
+global $wp_query;
+$count = $wp_query->post_count;
 
 if( $count > 0 ) { 
-    printf( __( 'There are %1$s search results for <em>%2$s.</em>', 'hm_theme' ), $count, $key ); 
-} elseif( $count == 1 ) { 
-    printf( __( 'There is one search result for <em>%1$s.</em>', 'hm_theme' ), $key ); 
-} else {
-    printf( __( 'There are no search results for <em>%1$s.</em>', 'hm_theme' ), $key ); 
-} 
+    $message = sprintf( __( 'There are %1$s search results for ', 'hm_theme' ), $count );
+} elseif( $count == 1 ) {
+    $message = __( 'There is one search result for ', 'hm_theme' );
+} else { 
+    $message = __( 'Sorry, we couldn&apos;t find anything that matches ', 'hm_theme' );
+}
+
+$key = wp_specialchars( $s, 1 ); 
+
+get_search_form(); 
 
 ?>
-</p>  
+
+<div class="message">
+    <?php echo esc_html( $message ); ?>
+</div>
 
 <?php if( have_posts() ) { ?>  
 
-<section class="results">
+<section class="posts results">
             
 <?php 
 
-$post_types = get_post_types( array( 'public' => true ) );
+$post_types = get_post_types( 
+    array( 
+        'public' => true,
+        'exclude_from_search' => false
+        ) 
+    );
+
+
 foreach( $post_types as $post_type ) { 
 
-    $query = query_posts( $query_string . '&posts_per_page=-1&post_type=' . $post_type ); 
-    $post_type_label = get_post_type_object( $post_type )->labels->name; 
+    wp_reset_query();
+    $query = new WP_Query( 
+        array(
+            'post_type' => $post_type,
+            'showposts' => -1,
+            's' => $key
+        ) 
+    );
 
-    if( $query ) {
+    $post_type_object = get_post_type_object( $post_type );
 
-?>  
+    if( $query->post_count > 0 ) { ?>  
 
-    	<h2><?php echo $post_type_label; ?></h2>        
-    	<section class="posts posts-<?php echo $post_type; ?>">
+        <section class="posts posts-<?php echo $post_type; ?>">
+            <h4><?php echo esc_html( $post_type_object->labels->name;  ); ?></h4>
 
-    	<?php while( have_posts( ) ) { the_post(); ?>  
+        <?php while( $query->have_posts() ) { $query->the_post(); ?>  
       
             <?php get_inc( 'item', $post_type, true ); ?>
 
-    	<?php } /* endwhile */ ?>  
+        <?php } /* endwhile */ ?>  
       
-    	</section> 
+        </section> 
       
-    <?php } ?>        
-
-    <?php wp_reset_query(); ?>
+    <?php } /* endif */ ?>        
 
 <?php } ?>
       

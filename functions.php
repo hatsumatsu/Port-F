@@ -448,9 +448,5 @@ function get_post_type_advanced() {
         $post_type = get_taxonomy( get_queried_object()->taxonomy )->object_type[0];
     }
 
-    if( is_search() ) {
-        $post_type = 'results';
-    }
-
     return $post_type;
 }
