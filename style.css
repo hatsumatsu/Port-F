@@ -49,6 +49,12 @@ Tags:
 .cf:after {
   clear: both;
 }
+@-webkit-keyframes foo {
+  
+}
+@keyframes foo {
+  
+}
 html {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
