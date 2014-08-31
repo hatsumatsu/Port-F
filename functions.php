@@ -428,3 +428,29 @@ function hm_media_library_default_view() { ?>
 
 add_action( 'admin_footer-post-new.php', 'hm_media_library_default_view' );
 add_action( 'admin_footer-post.php', 'hm_media_library_default_view' );
+
+
+/**
+ * Returns post type when get_post_type() is unreliable
+ * p.e. outside of loop or on taxonomy archives
+ * 
+ * @return  string  post type
+ */
+function get_post_type_advanced() {
+
+    $post_type = get_post_type();
+
+    if( is_post_type_archive() ) {
+        $post_type = get_query_var( 'post_type' );
+    }
+
+    if( is_tax() ) {
+        $post_type = get_taxonomy( get_queried_object()->taxonomy )->object_type[0];
+    }
+
+    if( is_search() ) {
+        $post_type = 'results';
+    }
+
+    return $post_type;
+}

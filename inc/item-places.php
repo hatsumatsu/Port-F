@@ -1,4 +1,4 @@
-<article class="post post-<?php echo get_post_type(); ?>">
+<article class="post post-<?php echo get_post_type_advanced(); ?>">
 
     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
     
