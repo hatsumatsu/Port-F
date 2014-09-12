@@ -450,3 +450,33 @@ function get_post_type_advanced() {
 
     return $post_type;
 }
+
+
+/**
+ * Save IDs of images inserted inline to a post or page
+ * to later exclude them from imagelist.php
+ * @param  integer $post_id post ID
+ */
+function hm_save_inline_images( $post_id ) {
+    $post = get_post( $post_id );
+
+    $exclude = array();
+    preg_match_all( '/wp-image-([0-9]*)/i', $post->post_content, $exclude );
+
+    $exclude = $exclude[1];
+
+    // convert strings to integers
+    $i = 0;
+    foreach( $exclude as $id ) {
+        $exlude[$i] = intval( $exclude[$i] );
+        $i++;
+    }
+
+    // add post thumbnail ID to exlude array
+    $exclude[] = get_post_thumbnail_id( $post_id );
+
+    // save as postmeta
+    update_post_meta( $post_id, 'inline-images', json_encode( $exclude ) );
+}
+
+add_action( 'save_post', 'hm_save_inline_images' );

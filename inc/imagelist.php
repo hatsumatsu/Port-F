@@ -1,7 +1,10 @@
 <?php
 
-/* attached images */
-
+/**
+ * Get all attached images
+ * Exclude inline images (see functions.php)
+ */
+$exclude = ( get_post_meta( get_the_ID(), 'inline-images', true ) ) ? json_decode( get_post_meta( get_the_ID(), 'inline-images', true ), true ) : array();
 $images = get_posts(
           array(
           'numberposts' => -1,
@@ -10,7 +13,7 @@ $images = get_posts(
           'post_mime_type' => 'image',
           'order' => 'ASC',
           'orderby' => 'menu_order',
-          'exclude' => get_post_thumbnail_id( get_the_ID() )
+          'exclude' => $exclude
                )
         );
 if ( $images ) { ?>
