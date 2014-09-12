@@ -431,6 +431,12 @@ add_action( 'admin_footer-post.php', 'hm_media_library_default_view' );
 
 
 /**
+ * Set default of link field to 'none' in media library modal
+ */
+update_option( 'image_default_link_type', 'none' );
+
+
+/**
  * Returns post type when get_post_type() is unreliable
  * p.e. outside of loop or on taxonomy archives
  * 
