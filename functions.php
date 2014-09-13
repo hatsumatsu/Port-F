@@ -474,7 +474,7 @@ function hm_save_inline_images( $post_id ) {
     // convert strings to integers
     $i = 0;
     foreach( $exclude as $id ) {
-        $exlude[$i] = intval( $exclude[$i] );
+        $exclude[$i] = intval( $exclude[$i] );
         $i++;
     }
 
