@@ -60,7 +60,7 @@ add_action( 'wp_footer', 'hm_theme_footer', 1 );
 
 
 /** 
- * Remove unneccessary or unsave <meta> tags
+ * Remove unneccessary or unsafe <meta> tags
  */
 remove_action( 'wp_head', 'rsd_link' ); // remove Really Simple Discovery Entry
 remove_action( 'wp_head', 'wlwmanifest_link' );  // remove Windows Live Writer Link 
@@ -251,10 +251,10 @@ function hm_customize_tinyMCE( $init ) {
     /* tinyMCE 4.X - disable rich text pasting */
     $init['paste_as_text'] = true;
 
-    /* tinyMCE 3.X - configre format select entries */ 
+    /* tinyMCE 3.X - format select entries */ 
     $init['theme_advanced_blockformats'] = 'h3,h4,p';
 
-    /* tinyMCE 4.X - configre format select entries */ 
+    /* tinyMCE 4.X - format select entries */ 
     $init['block_formats'] = __( 'Paragraph', 'hm_theme' ) . '=p;' . __( 'Heading 3', 'hm_theme' ) . '=h3;' . __( 'Heading 4', 'hm_theme' ) . '=h4';
 
     return $init;

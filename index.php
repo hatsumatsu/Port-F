@@ -6,7 +6,7 @@
 
     <?php while( have_posts() ) { the_post(); ?>
 
-        <?php get_inc( 'item', get_post_type(), true ); ?>
+        <?php get_inc( 'post', get_post_type(), true ); ?>
 
     <?php } /* endwhile */ ?>
 

@@ -56,7 +56,7 @@ foreach( $post_types as $post_type ) {
 
         <?php while( $query->have_posts() ) { $query->the_post(); ?>  
       
-            <?php get_inc( 'item', $post_type, true ); ?>
+            <?php get_inc( 'post', $post_type, true ); ?>
 
         <?php } /* endwhile */ ?>  
       
