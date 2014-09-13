@@ -472,11 +472,10 @@ function hm_save_inline_images( $post_id ) {
     $exclude = $exclude[1];
 
     // convert strings to integers
-    $i = 0;
-    foreach( $exclude as $id ) {
-        $exclude[$i] = intval( $exclude[$i] );
-        $i++;
+    foreach( $exclude as &$id ) {
+        $id = intval( $id );
     }
+    unset( $id );
 
     // add post thumbnail ID to exlude array
     $exclude[] = get_post_thumbnail_id( $post_id );
