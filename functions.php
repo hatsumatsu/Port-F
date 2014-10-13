@@ -461,6 +461,7 @@ function get_post_type_advanced() {
 /**
  * Save IDs of images inserted inline to a post or page
  * to later exclude them from imagelist.php
+ * 
  * @param  integer $post_id post ID
  */
 function hm_save_inline_images( $post_id ) {

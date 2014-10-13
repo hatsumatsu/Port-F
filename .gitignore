@@ -2,9 +2,9 @@ node_modules
 
 # Plugin related files
 inc/before-places.php
-inc/item-places.php
-inc/item-events.php
-inc/item-attachment.php
+inc/post-places.php
+inc/post-events.php
+inc/post-attachment.php
 landing-page.php
 mobilemenu.css
 mobilemenu.less
