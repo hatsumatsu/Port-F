@@ -100,7 +100,6 @@ jQuery( function( $ ) {
 
     // document ready
     $( document ).ready( function () {
-        debuglog( 'site-global.js loaded...' );
 
         // init globals
         globals.blogurl = $( 'head' ).attr( 'data-wpurl' );
@@ -110,6 +109,12 @@ jQuery( function( $ ) {
             .replace( /"/g, '' );
         globals.transitionDuration = ( parseFloat( $( 'title' ).css( 'transitionDuration' ) ) * 1000 ) || 500;
 
+        // mute debuglog on live sites
+        if( globals.blogurl.indexOf( 'local' ) < 0 ) {
+            globals.debug = false;
+        }
+
+        debuglog( 'site-global.js loaded...' );
         debuglog( globals );
 
         site.init();
