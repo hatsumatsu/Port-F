@@ -3,8 +3,8 @@ globals = {};
 
 
 // debuglog
-debuglog = function( log ) {
-    if( globals.debug && typeof console != 'undefined' ) console.log( log );
+debuglog = function( log, force ) {
+    if( ( globals.debug || force ) && typeof console != 'undefined' ) console.log( log );
 }
 
 globals.debug = true;
