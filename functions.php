@@ -82,6 +82,17 @@ add_theme_support( 'html5', array(
 );
 
 
+/**
+ * Enable page excerpts
+ *
+ */
+function hm_page_excerpts() {
+    add_post_type_support( 'page', 'excerpt' );
+}
+
+add_filter( 'init', 'hm_page_excerpts' );
+
+
 /** 
  * Custom taxonomy
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
@@ -541,7 +552,9 @@ function hm_site_title( $separator = ' – ' ) {
     if( !empty( $wp_query->query_vars['term'] ) ) {
         $taxonomy_labels = get_taxonomy_labels( get_taxonomy( $wp_query->query_vars['taxonomy'] ) );
         $term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
-        $title['term'] = $taxonomy_labels->name . ': ' . $term->name;
+        if( $taxonomy_labels && $term ) {
+            $title['term'] = $taxonomy_labels->name . ': ' . $term->name;
+        }
     }
 
     // author
@@ -562,4 +575,57 @@ function hm_site_title( $separator = ' – ' ) {
     $title_string .= $title['global'];
 
     return $title_string;
+}
+
+
+/**
+ * Get <meta> description
+ * @return string description text
+ */
+function hm_site_description() {
+    global $wp_query,
+           $post;
+
+    $description = get_bloginfo( 'description' );
+
+    // single / page
+    if( is_single() || is_page() ) {
+        $excerpt = $post->post_content;
+        $description = ( !empty( $excerpt ) ) ? $excerpt : $description;
+    }
+
+    // custom taxonomy terms
+    if( !empty( $wp_query->query_vars['term'] ) ) {
+        $term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+        if( $term ) {
+            $description = ( !empty( $term->description ) ) ? $term->description : $description;
+        }
+    }
+
+    // tags
+    if( is_tag() ) {
+        $tag = get_term_by( 'slug', $wp_query->query['tag'], 'post_tag' );
+        if( $tag ) {
+            $description = ( !empty( $tag->description ) ) ? $tag->description : $description;
+        }
+    }
+
+    // category
+    if( is_category() ) {
+        $category = get_term_by( 'slug', $wp_query->query['category_name'], 'category' );
+        if( $category ) {
+            $description = ( !empty( $category->description ) ) ? $category->description : $description;
+        }
+    }
+
+    // author
+    if( !empty( $wp_query->query['author_name'] ) ) {
+        $author = get_user_by( 'slug', $wp_query->query['author_name'] );
+        if( $author ) {
+            $biography = get_the_author_meta( 'description', $author->ID );
+            $description = ( !empty( $biography ) ) ? $biography : $description;
+        }    
+    }
+
+    return wp_trim_words( strip_tags( $description ), 40 );
 }

@@ -3,7 +3,7 @@
 <head data-wpurl="<?php bloginfo( 'url' ); ?>">
     <meta charset="utf-8">
     <title><?php echo esc_html( hm_site_title() ); ?></title>
-    <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>">
+    <meta name="description" content="<?php echo esc_attr( hm_site_description() ); ?>">
     
     <?php wp_head(); ?>
 
@@ -17,6 +17,8 @@
 	<div class="shell">
 		<section class="head" role="banner">
 			
+            <?php echo esc_html( hm_site_description() ); ?>
+
             <h1><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( "name" ); ?></a></h1>
 			
             <?php get_template_part( '/inc/nav-head-primary' ); ?>
