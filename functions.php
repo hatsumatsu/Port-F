@@ -486,3 +486,80 @@ function hm_save_inline_images( $post_id ) {
 }
 
 add_action( 'save_post', 'hm_save_inline_images' );
+
+
+/**
+ * Build <title>
+ * @param  string $separator String separator
+ * @return string            title text
+ */
+function hm_site_title( $separator = ' – ' ) {
+    global $wp_query;
+
+    $title = array();
+
+    // site title
+    $title['global'] = get_bloginfo( 'name' );
+
+    // single / page
+    $title['single'] = ( is_single() || is_page() ) ? get_the_title() : 0;
+
+    // custom post type 
+    $title['post_type'] = 0;
+    if( !empty( $wp_query->query['post_type'] ) ) {
+        $post_type = get_post_type_object( $wp_query->query['post_type'] );
+        $title['post_type'] = $post_type->labels->name;
+    }
+
+    // paged
+    $title['paged'] = ( !empty( $wp_query->query['paged'] ) ) ? __( 'Page' ) . ' ' . $wp_query->query['paged'] : 0;
+
+    // date archive
+    $title['date'] = 0;
+    if( is_date() ) {
+        if( is_year() ) {
+            $title['date'] = $wp_query->query['year'];
+        }
+
+        if( is_month() ) {
+            $title['date'] = $wp_query->query['monthnum'] . $separator . $wp_query->query['year'];
+        }
+
+        if( is_day() ) {
+            $title['date'] = $wp_query->query['day'] . $separator . $wp_query->query['monthnum'] . $separator . $wp_query->query['year'];
+        }
+    }
+
+    // tags
+    $title['tag'] = ( is_tag() ) ? __( 'Tag' ) . ': ' . single_cat_title( '', false ) : 0;   
+
+    //categories
+    $title['tag'] = ( is_category() ) ? __( 'Category' ) . ': ' . single_cat_title( '', false ) : 0;   
+
+    // custom taxonomy terms
+    $title['term'] = 0;
+    if( !empty( $wp_query->query_vars['term'] ) ) {
+        $taxonomy_labels = get_taxonomy_labels( get_taxonomy( $wp_query->query_vars['taxonomy'] ) );
+        $term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+        $title['term'] = $taxonomy_labels->name . ': ' . $term->name;
+    }
+
+    // author
+    $title['author'] = 0;
+    if( !empty( $wp_query->query['author_name'] ) ) {
+        $author = get_user_by( 'slug', $wp_query->query['author_name'] );
+        $title['author'] = $author->first_name . ' ' . $author->last_name;
+    }
+        
+    $title_string = '';
+    $title_string .= ( $title['single'] ) ? $title['single'] . $separator : '';
+    $title_string .= ( $title['term'] ) ? $title['term'] . $separator : '';
+    $title_string .= ( $title['tag'] ) ? $title['tag'] . $separator : '';
+    $title_string .= ( $title['post_type'] ) ? $title['post_type'] . $separator : '';
+    $title_string .= ( $title['date'] ) ? $title['date'] . $separator : '';
+    $title_string .= ( $title['author'] ) ? $title['author'] . $separator : '';
+    $title_string .= ( $title['paged'] ) ? $title['paged'] . $separator : '';
+    $title_string .= $title['global'];
+
+    return $title_string;
+}

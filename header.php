@@ -2,7 +2,7 @@
 <html class="no-js" <?php language_attributes(); ?>>
 <head data-wpurl="<?php bloginfo( 'url' ); ?>">
     <meta charset="utf-8">
-    <title><?php wp_title( ' – ', true, 'right' ); ?><?php bloginfo( 'name' ); ?></title>
+    <title><?php echo esc_html( hm_site_title() ); ?></title>
     <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>">
     
     <?php wp_head(); ?>
