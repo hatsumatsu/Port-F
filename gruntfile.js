@@ -79,7 +79,18 @@ module.exports = function( grunt ) {
 				files: {
 					'js/site-smaller.min.js': ['js/src/site-smaller.js']
 				}
+			},
+			allLarger: {
+				files: {
+					'js/all-larger.min.js': ['js/src/site-larger.js', 'js/dependencies-larger.min.js']
+				}
+			},
+			allSmaller: {
+				files: {
+					'js/all-smaller.min.js': ['js/src/site-smaller.js', 'js/dependencies-smaller.min.js']
+				}
 			}
+
 
 		},
 
