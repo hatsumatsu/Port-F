@@ -14,10 +14,4 @@
 
 <?php get_inc( 'filelist', 0, 0 ); ?>
 
-<?php 
-if( function_exists( 'the_posts_on_page' ) ) { 
-	the_posts_on_page();
-}
-?>
-
 <?php get_footer(); ?>
