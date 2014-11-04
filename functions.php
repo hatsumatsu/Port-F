@@ -172,9 +172,8 @@ function hm_nav_add_toggle( $args = '' ) {
 
     if( $args['theme_location'] == 'head_primary' ) {
         $html  = '';
-        $html .= '<nav class="%2$s-container" role="navigation"><a href="#content" title="' . __( 'Skip Navigation', 'hm_theme' ) . '">' . __( 'Skip Navigation', 'hm_theme' ) . '</a>';
-        $html .= '<input type="checkbox" id="' . $args['theme_location'] . '-toggle" class="toggle ' . $args['theme_location'] . '-toggle" />';
-        $html .= '<label class="toggle ' . $args['theme_location'] . '-toggle" for="' . $args['theme_location'] . '-toggle">' . __( 'Navigation', 'hm_theme' ) . '</label>';
+        $html .= '<nav class="nav-%2$s" role="navigation" id="nav-%2$s"><a href="#content" title="' . __( 'Skip Navigation', 'hm_theme' ) . '">' . __( 'Skip Navigation', 'hm_theme' ) . '</a>';
+        $html .= '<a class="toggle ' . $args['theme_location'] . '-toggle" title="' . __( 'Toggle Navigation', 'hm_theme' ) . '">' . __( 'Navigation', 'hm_theme' ) . '</a>';
         $html .= '<ul id="%1$s" class="%2$s">%3$s</ul>';
         $html .= '</nav>';
 

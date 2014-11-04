@@ -19,6 +19,7 @@ jQuery( function( $ ) {
             debuglog( 'site.init()' );
             bindEventHandlers();
             win.init();
+            nav.init();
         }
 
         var bindEventHandlers = function() {
@@ -71,6 +72,37 @@ jQuery( function( $ ) {
             }
 
         } )();
+
+
+        // nav 
+        var nav = ( function() {
+
+            var settings = {
+                id: 'head_primary'
+            };
+
+            var init = function() {
+                debuglog( 'site.nav.init()' );
+
+                settings.el = $( '.nav-' + settings.id );
+
+                bindEventHandlers();
+            }
+
+            var bindEventHandlers = function() {
+                settings.el
+                    .on( 'click', '.toggle', function( e ) {
+                        e.preventDefault();
+                        $( 'html' ).toggleClass( 'show-' + settings.id );
+                    } );
+            }
+
+            return {
+                init: function() { init(); }
+            }
+
+        } )();
+
 
         // module 
         var module = ( function() {

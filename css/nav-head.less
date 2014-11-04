@@ -1,5 +1,5 @@
 // skip link
-.head_primary-container [href='#content'] {
+.nav-head_primary [href='#content'] {
   .hide-but-read;
 }
 
@@ -53,49 +53,26 @@
 
   // toggle
   .head_primary-toggle {
-    display: block;
-  }
-
-  .head_primary-toggle {
       position: fixed;
       left: 0;
       top: 0;
-
-      display: block;
-      width: 4em;
-      height: 4em;
-      margin: 0;
-
-      cursor: pointer;
-      user-select: none;
-
-      .transition;
-  }
-
-  .head_primary-toggle:checked,
-  .head_primary-toggle:checked ~ .head_primary-toggle {
-      left: 100%;
-
-      margin-left: -4em;
-  }
-
-  input.head_primary-toggle {
-      z-index: 15;
-
-      opacity: 0;
-  }
-
-  label.head_primary-toggle {
       z-index: 13;
 
+      display: block;
       width: auto;
       height: auto;
+      margin: 0;
       padding: 1.5em 1em 1.5em 4em;
 
       line-height: 1em;
       color: @bg;
       
       background: @text;
+
+      cursor: pointer;
+      user-select: none;
+
+      .transition;
 
       &::before {
           content: '\2261';
@@ -113,40 +90,43 @@
           text-indent: 0;
           text-align: center;
       }
+
+      &::after {
+        content: ' ';
+
+        position: fixed;
+        right: 0;
+        top: 4em;
+        bottom: 0;
+
+        display: block;
+        width: 0;
+        margin: 0 0 0 -4em;
+
+        background: @bg;
+
+        opacity: 0;
+
+        .transition;  
+        transition-property: width, opacity;
+        transition-delay: 0ms, @transition-duration;
+      }
   }
 
+  .show-head_primary .head_primary-toggle {
+      left: 100%;
 
-  input.head_primary-toggle ~ label::before {
-      content: '\2261';
-  }
+      margin-left: -4em;
 
-  input.head_primary-toggle:checked ~ label::before {
-      content: '\2715';
-  }
+      &::before {
+        content: '\2715';
+      }
 
-  input.head_primary-toggle:checked ~ label::after {
-      content: ' ';
+      &::after {
+        width: 4em;
 
-      position: fixed;
-      right: 0;
-      top: 4em;
-      bottom: 0;
-
-      display: block;
-      width: 0;
-      margin: 0 0 0 -4em;
-
-      background: @bg;
-
-      opacity: 0;
-
-      .transition;
-  }
-
-  input.head_primary-toggle:checked ~ label::after {
-      width: 4em;
-
-      opacity: 0.8;
+        opacity: 0.8;    
+      }
   }
 
   .head_primary {
@@ -187,7 +167,7 @@
       }
   }
 
-  input.head_primary-toggle:checked ~ .head_primary {
+  .show-head_primary .head_primary {
       left: -4em;
       right: 4em;
 
