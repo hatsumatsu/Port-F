@@ -21,6 +21,29 @@
   display: block;
 }
 
+// background images
+// data-uri
+.data-uri( @url ) {
+  background-image: data-uri( 'img/@{url}' );
+}
+
+// PNG fallback for SVG
+.svg( @handle, @data-uri: false ) when ( @data-uri = false ) {
+  background-image: url( 'img/@{handle}.svg' );
+
+  .no-svg & {
+      background-image: url( 'img/@{handle}.png' );
+  }
+}
+
+.svg( @handle, @data-uri: false ) when ( @data-uri = true ) {
+  background-image: data-uri( 'image/svg+xml;charset=UTF-8', 'img/@{handle}.svg' );
+
+  .no-svg & {
+      .data-uri( '@{handle}.png' );
+  }
+}
+
 // transitions
 .transition {
   transition: all @transition-duration ease;
