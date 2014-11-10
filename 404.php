@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-<h2><?php _e( 'Ouuups...' ); ?></h2>
+<h2><?php echo __( 'Ouuups...', 'hm_theme' ); ?></h2>
 
-<p class="message">
-    <?php _e( 'This page doesn&rsquo;t exist.' ); ?>
+<p>
+    <?php echo __( 'This page doesn&apos;t exist.', 'hm_theme' ); ?>
 </p>
 
 <?php get_footer(); ?>
