@@ -361,7 +361,7 @@ function the_post_time() {
 function get_the_super_title() {
     $html = '';
 
-    /* archive & single */
+    // archive & single
     if( is_archive () || is_single() || is_home() ) {
         if( get_post_type() == 'post' ) {
             $html = __( 'News', 'hm_theme' );
@@ -370,22 +370,22 @@ function get_the_super_title() {
         }
     }
 
-    /* category, tag or taxonomy archive */
+    // category, tag or taxonomy archive
     if( is_category() || is_tag() || is_tax() ) {
         $html .= ' &ndash; ' . single_cat_title( '', 0 );
     }
 
-    /* pages */
+    // pages 
     if( is_page() ) {
         $html .= get_the_title();
     }
 
-    /* 404 */
+    // 404 
     if( is_404() ) {
         $html .= __( '404', 'hm_theme' );
     }
     
-    /* search */
+    // search 
     if( is_search() ) {
         $html .= __( 'Search results', 'hm_theme' );
     }
