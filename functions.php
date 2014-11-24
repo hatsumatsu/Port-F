@@ -9,8 +9,8 @@ load_theme_textdomain( 'hm_theme', get_stylesheet_directory() . '/languages' );
  * Register theme CSS
  */
 function hm_theme_css() {
-    wp_register_style( 'hm_normalize', get_template_directory_uri() . '/css/normalize.css', 0 );
-    wp_register_style( 'hm_theme', get_template_directory_uri() . '/style.css', array( 'hm_normalize' ) );
+    wp_register_style( 'hm_normalize', get_template_directory_uri() . '/css/normalize.css', 0, 'screen' );
+    wp_register_style( 'hm_theme', get_template_directory_uri() . '/style.css', array( 'hm_normalize' ), 0, 'screen' );
 
     wp_enqueue_style( 'hm_normalize' );
     wp_enqueue_style( 'hm_theme' );

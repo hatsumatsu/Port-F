@@ -16,6 +16,7 @@ $images = get_posts(
           'exclude' => $exclude
                )
         );
+
 if ( $images ) { ?>
 
 <h4><?php echo __( 'Attached Images', 'hm_theme' ); ?></h4>
