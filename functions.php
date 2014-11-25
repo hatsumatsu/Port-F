@@ -628,3 +628,51 @@ function hm_site_description() {
 
     return wp_trim_words( strip_tags( $description ), 40 );
 }
+
+
+/**
+ * Responsive image template tag
+ * Needs picturefill.js included
+ * Example:
+ * the_responsive_image( 
+ *     $image_id, 
+ *     array( 
+ *         'medium', 
+ *         'large', 
+ *         'full' 
+ *     ), 
+ *     array( 
+ *         'sizes' => '100vw', 
+ *         'alt' => 'Alt text', 
+ *         'class' => 'wp-image' 
+ *     ) 
+ *  )
+ * 
+ * @param  integer $id        image ID
+ * @param  array $sizes       array of image size key words
+ * @param  array $attributes  array of attribute / value pairs
+ * @return string             HTML image tag
+ */
+function the_responsive_image( $id, $sizes, $attributes ) {
+    $html = '';
+    $html .= '<img';
+
+    $html .= ' srcset="';
+
+    foreach( $sizes as $size ) {
+        $src = wp_get_attachment_image_src( $id, $size );
+        $html .= $src[0] . ' ' . $src[1] . 'w,';
+    }
+
+    $html = rtrim( $html, ',' );
+
+    $html .= '"';
+
+    foreach( $attributes as $attribute => $value ) {
+        $html .= ' ' . $attribute . '="' . $value . '"';
+    }    
+
+    $html .= '>';
+
+    echo $html;
+}
