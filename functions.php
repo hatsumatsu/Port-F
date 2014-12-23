@@ -643,7 +643,7 @@ function hm_site_description() {
  *     ), 
  *     array( 
  *         'sizes' => '100vw', 
- *         'alt' => 'Alt text', 
+ *         'alt' => 'Image of a sloth', 
  *         'class' => 'wp-image' 
  *     ) 
  *  )
