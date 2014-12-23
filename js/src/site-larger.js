@@ -21,17 +21,17 @@ jQuery( function( $ ) {
             var init = function() {
                 debuglog( 'site.win.init()' );
                 
-                settings.el = $( window );
+                settings.element = $( window );
                 
                 bindEventHandlers()
-                scrollLoop();
+                loop();
             }
 
             var bindEventHandlers = function() {
 
             }
 
-            var scrollLoop = function() {
+            var loop = function() {
                 settings._scrollTop = settings.scrollTop;
                 settings.scrollTop = settings.el.scrollTop();
 
@@ -39,7 +39,7 @@ jQuery( function( $ ) {
                     onScroll();
                 }
 
-                requestAnimationFrame( scrollLoop );
+                requestAnimationFrame( loop );
             }
 
             var onScroll = function() {
