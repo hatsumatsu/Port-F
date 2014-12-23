@@ -97,16 +97,24 @@ jQuery( function( $ ) {
             var init = function() {
                 debuglog( 'site.nav.init()' );
 
-                settings.el = $( '.nav-' + settings.id );
+                settings.element = $( '.nav-' + settings.id );
 
                 bindEventHandlers();
             }
 
             var bindEventHandlers = function() {
-                settings.el
+                settings.element
                     .on( 'click', '.toggle', function( e ) {
                         e.preventDefault();
+
+                        if( $( 'html' ).hasClass( 'show-' + settings.id  ) ) {
+                            $( document ).trigger( 'nav/hide' );
+                        } else {
+                            $( document ).trigger( 'nav/show' );
+                        }
+
                         $( 'html' ).toggleClass( 'show-' + settings.id );
+
                     } );
             }
 
