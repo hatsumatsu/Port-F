@@ -8,6 +8,7 @@ inc/post-attachment.php
 landing-page.php
 mobilemenu.css
 mobilemenu.less
+hm-post-meta.json
 
 # OS related files
 .DS_Store
@@ -17,3 +18,4 @@ mobilemenu.less
 .Trashes
 ehthumbs.db
 Thumbs.db
+.gitignore

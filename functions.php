@@ -676,3 +676,38 @@ function the_responsive_image( $id, $sizes, $attributes ) {
 
     echo $html;
 }
+
+
+/**
+ * Force minimum images dimensions on upload
+ * @param  array $file file object
+ * @return array       file object
+ */
+function minimum_image_dimensions( $file ) {
+    $minimum = array( 
+        'width' => 800, 
+        'height' => 600 
+        );
+    
+    $mimes = array( 
+        'image/jpeg', 
+        'image/png', 
+        'image/gif' 
+        );
+
+    if( !in_array( $file['type'], $mimes ) ) { 
+        return $file;
+    }
+
+    $image = getimagesize( $file['tmp_name'] );
+
+    if ( $image[0] < $minimum['width'] ) {
+        $file['error'] = sprintf( __( 'Image too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm_theme' ), $minimum['width'], $image[0] );
+    } elseif ( $image[1] < $minimum['height'] ) {
+        $file['error'] = sprintf( __( 'Image too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm_theme' ), $minimum['width'], $image[0] );
+    }
+
+    return $file;
+}
+
+add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' ); 
