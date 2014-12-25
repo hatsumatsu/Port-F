@@ -35,6 +35,18 @@ function hm_theme_js() {
 add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
 
 
+/**
+ * Register admin CSS
+ */
+function hm_admin_css() {
+    wp_register_style( 'hm_admin', get_template_directory_uri() . '/css/admin.css', array(), 0 );
+    wp_enqueue_style( 'hm_admin' );
+}
+
+add_action( 'admin_print_styles', 'hm_admin_css' );
+add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
+
+
 /** 
  * Add inline HTML to <head>
  */
