@@ -82,12 +82,12 @@ module.exports = function( grunt ) {
 			},
 			allLarger: {
 				files: {
-					'js/all-larger.min.js': ['js/src/site-larger.js', 'js/dependencies-larger.min.js']
+					'js/all-larger.min.js': ['js/dependencies-larger.min.js',' js/src/site-larger.js']
 				}
 			},
 			allSmaller: {
 				files: {
-					'js/all-smaller.min.js': ['js/src/site-smaller.js', 'js/dependencies-smaller.min.js']
+					'js/all-smaller.min.js': ['js/dependencies-smaller.min.js', 'js/src/site-smaller.js']
 				}
 			}
 
