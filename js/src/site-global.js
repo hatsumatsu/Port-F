@@ -35,7 +35,7 @@ jQuery( function( $ ) {
                 debuglog( 'site.win.init()' );
             
                 settings.state = Modernizr.mq( globals.mediaQuery );
-                settings.el = $( window );
+                settings.element = $( window );
 
                 bindEventHandlers();
             }

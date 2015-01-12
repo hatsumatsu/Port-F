@@ -33,7 +33,7 @@ jQuery( function( $ ) {
 
             var loop = function() {
                 settings._scrollTop = settings.scrollTop;
-                settings.scrollTop = settings.el.scrollTop();
+                settings.scrollTop = settings.element.scrollTop();
 
                 if( settings.scrollTop != settings._scrollTop ) {
                     onScroll();
