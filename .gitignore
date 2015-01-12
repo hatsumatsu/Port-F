@@ -9,6 +9,7 @@ landing-page.php
 mobilemenu.css
 mobilemenu.less
 hm-post-meta.json
+hm-attachments.json
 
 # OS related files
 .DS_Store

@@ -91,7 +91,6 @@ module.exports = function( grunt ) {
 				}
 			}
 
-
 		},
 
 		imagemin: {
@@ -166,7 +165,10 @@ module.exports = function( grunt ) {
 		watch: {
 		    css: {
 		        files: ['**/*.less'],
-		        tasks: ['buildcss']
+		        tasks: ['buildcss'],
+		        options: {
+			        livereload: true
+		        }
 		    },
 		    js: {
 		    	files: ['js/**/*.js','!js/**/*.min.js'],
@@ -182,8 +184,7 @@ module.exports = function( grunt ) {
 			}
 		}
 
-
-    });
+    } );
 
     grunt.registerTask( 'default', ['build'] );
 

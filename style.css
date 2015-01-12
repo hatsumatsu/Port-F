@@ -27,16 +27,15 @@ Tags:
 }
 .transition {
   -webkit-transition: all 250ms ease;
-  transition: all 250ms ease;
+          transition: all 250ms ease;
 }
 .no-transition {
   -webkit-transition: none !important;
-  transition: none !important;
+          transition: none !important;
 }
 .new-layer {
   -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+          transform: translateZ(0);
 }
 .cf {
   zoom: 1;
@@ -58,9 +57,11 @@ Tags:
 html {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
-  -moz-font-feature-settings: 'liga', 'dlig', 'kern';
-  font-feature-settings: 'liga', 'dlig', 'kern';
-  text-size-adjust: 100%;
+     -moz-font-feature-settings: 'liga', 'dlig', 'kern';
+          font-feature-settings: 'liga', 'dlig', 'kern';
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
 }
 html,
 body {
@@ -77,7 +78,7 @@ title {
   width: 48em;
   font-family: 'only screen and ( max-width: 48em )';
   -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
+          transition-duration: 250ms;
 }
 .shell {
   width: 90%;
@@ -154,11 +155,11 @@ p {
     background: #111111;
     cursor: pointer;
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     -webkit-transition: all 250ms ease;
-    transition: all 250ms ease;
+            transition: all 250ms ease;
   }
   .head_primary-toggle::before {
     content: '\2261';
@@ -185,11 +186,11 @@ p {
     background: #ffffff;
     opacity: 0;
     -webkit-transition: all 250ms ease;
-    transition: all 250ms ease;
+            transition: all 250ms ease;
     -webkit-transition-property: width, opacity;
-    transition-property: width, opacity;
+            transition-property: width, opacity;
     -webkit-transition-delay: 0ms, 250ms;
-    transition-delay: 0ms, 250ms;
+            transition-delay: 0ms, 250ms;
   }
   .show-head_primary .head_primary-toggle {
     left: 100%;
@@ -216,7 +217,7 @@ p {
     background: #111111;
     overflow: auto;
     -webkit-transition: all 250ms ease;
-    transition: all 250ms ease;
+            transition: all 250ms ease;
   }
   .head_primary::after {
     content: ' ';
@@ -227,11 +228,10 @@ p {
     display: block;
     height: 4em;
     margin: 0 4em 0 0;
-    background: -webkit-gradient(linear, left bottom, left top, from(#111111), to(rgba(17, 17, 17, 0)));
     background: -webkit-linear-gradient(bottom, #111111, rgba(17, 17, 17, 0));
     background: linear-gradient(to top, #111111, rgba(17, 17, 17, 0));
     -webkit-transition: all 250ms ease;
-    transition: all 250ms ease;
+            transition: all 250ms ease;
   }
   .show-head_primary .head_primary {
     left: -4em;
