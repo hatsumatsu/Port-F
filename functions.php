@@ -723,3 +723,19 @@ function minimum_image_dimensions( $file ) {
 }
 
 add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' ); 
+
+
+/**
+ * Retrieve the currently viewed archive URL without page number 
+ *
+ * @return  int  $url URL of the archive 
+ */
+function get_current_archive_url() {
+    global $wp;
+
+    $url = home_url( $wp->request );
+    $url = explode( 'page/', $url );
+    $url = trailingslashit( $url[0] );
+
+    return $url;
+}
