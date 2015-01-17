@@ -11,31 +11,49 @@ Use `grunt watch` to process LESS/CSS, JS and images on the fly. `grunt build` a
 ### CSS
 
 + [LESS](http://lesscss.org/) 
-+ [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer/) 
 + [normalize.css](http://necolas.github.io/normalize.css/) 
-+ main breakpoint for RWD, syncd between CSS and JS 
-+ CSS-only mobile drawer navigation 
-+ tiny typography fixes, micro-clearfix, selection styles, webkit scrollbar styles and much more...
++ Main breakpoint for RWD, syncd between CSS and JS 
++ Mobile drawer navigation 
++ Tiny typography fixes, micro-clearfix, selection styles, webkit scrollbar styles and more...
 
 ### Javascript 
 
-+ [media query dependant asset loader](http://modernizr.com/docs/#mq), automatically synced with major breakpoint set in LESS.
-+ automatic page reload when media query state changes
-+ scroll event replaced by requestAnimationFrame polyfill
-+ global debug switch (affects console logging and JS minifying)
++ [Media query based asset loader](http://modernizr.com/docs/#mq), automatically synced with main breakpoint set in LESS
++ Automatic page reload when media query state changes 
++ Scroll event replaced by requestAnimationFrame polyfill 
++ Improved window resize events
++ Global debug switch (affects console logging and JS minifying)
 + JS-boilerplates following the Revealing Module Pattern
 + [grunt-modernizr](http://github.com/Modernizr/grunt-modernizr) generates a custom build of [modernizr](http://modernizr.com)
 
+### Automation 
+
++ Preprocess LESS and combine CSS
++ Autoprefix CSS
++ Minify and concetenate JS
++ Create a custom modernizr build 
++ Optimize raster images
++ Optimize SVGs
++ Create fallback PNG images for SVGs
++ FTP deployment
+
+
 ### functions.php
 
-+ Smart include system to resuse template snippets depending on post types
++ Smart include system to reuse template snippets based on post types
 + `<head>` cleaned from WP-bloat 
 + Custom Post Type and Custom Taxonomy boilerplates 
 + Primary header navigation
 + Secondary footer navigation 
 + Footer widget area 
++ Page excerpts 
++ Extended `<title>` text
++ Extended site description 
++ Responsive image template tag
 + Custom image size 
 + Custom JPEG quality 
++ Minimum image size for uploaded files
++ Admin CSS
 + Hide admin menu entries
 + Hide admin dashboard widgets 
 + tinyMCE button/feature configuration 
