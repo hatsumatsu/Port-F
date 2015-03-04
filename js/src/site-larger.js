@@ -4,7 +4,7 @@ jQuery( function( $ ) {
     var site = ( function() {
 
         var init = function() {
-            debuglog( 'site.init()' );
+            debuglog( 'larger.init()' );
             bindEventHandlers();
             win.init();
         }
@@ -19,7 +19,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'site.win.init()' );
+                debuglog( 'larger.win.init()' );
                 
                 settings.element = $( window );
                 
@@ -43,7 +43,7 @@ jQuery( function( $ ) {
             }
 
             var onScroll = function() {
-                debuglog( 'site.win.onScroll()' );
+                debuglog( 'larger.win.onScroll()' );
             }
 
             return {
@@ -58,7 +58,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'site.module.init()' );
+                debuglog( 'larger.module.init()' );
                 bindEventHandlers();
             }
 

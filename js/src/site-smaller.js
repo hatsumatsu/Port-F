@@ -4,7 +4,7 @@ jQuery( function( $ ) {
     var site = ( function() {
 
         var init = function() {
-            debuglog( 'site.init()' );
+            debuglog( 'smaller.init()' );
             bindEventHandlers();
         }
 
@@ -18,7 +18,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'site.module.init()' );
+                debuglog( 'smaller.module.init()' );
                 bindEventHandlers();
             }
 

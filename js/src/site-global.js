@@ -16,7 +16,7 @@ jQuery( function( $ ) {
     var site = ( function() {
 
         var init = function() {
-            debuglog( 'site.init()' );
+            debuglog( 'global.init()' );
             bindEventHandlers();
             win.init();
             nav.init();
@@ -32,7 +32,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'site.win.init()' );
+                debuglog( 'global.win.init()' );
             
                 settings.state = Modernizr.mq( globals.mediaQuery );
                 settings.element = $( window );
@@ -68,7 +68,7 @@ jQuery( function( $ ) {
             }
 
             var onResizeFinish = function() {
-                debuglog( 'site.win.onResizeFinish()' );
+                debuglog( 'global.win.onResizeFinish()' );
 
                 settings._state = settings.state;
                 settings.state = Modernizr.mq( globals.mediaQuery );
@@ -95,7 +95,7 @@ jQuery( function( $ ) {
             };
 
             var init = function() {
-                debuglog( 'site.nav.init()' );
+                debuglog( 'global.nav.init()' );
 
                 settings.element = $( '.nav-' + settings.id );
 
@@ -131,7 +131,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'site.module.init()' );
+                debuglog( 'global.module.init()' );
                 bindEventHandlers();
             }
 
