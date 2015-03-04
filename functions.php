@@ -739,3 +739,15 @@ function get_current_archive_url() {
 
     return $url;
 }
+
+
+/**
+ * Get the theme directory name
+ * @return string directory name
+ */
+function get_theme_directory_name() {
+    $url = get_template_directory_uri();
+    $url = str_replace( '/', '', str_replace( get_theme_root_uri(), '', $url ) );
+
+    return $url;
+}

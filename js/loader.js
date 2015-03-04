@@ -7,10 +7,10 @@ jQuery( function( $ ) {
             Modernizr.load( [
                 {
                     test: Modernizr.mq( globals.mediaQuery ),
-                    yep : [ globals.blogurl + '/wp-content/themes/port-f/js/dependencies-smaller.min.js',
-                            globals.blogurl + '/wp-content/themes/port-f/js/src/site-smaller.js' ],
-                    nope: [ globals.blogurl + '/wp-content/themes/port-f/js/dependencies-larger.min.js',
-                            globals.blogurl + '/wp-content/themes/port-f/js/src/site-larger.js' ]
+                    yep : [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-smaller.min.js',
+                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/src/site-smaller.js' ],
+                    nope: [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-larger.min.js',
+                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/src/site-larger.js' ]
                 }
             ] );
 
@@ -19,8 +19,8 @@ jQuery( function( $ ) {
             Modernizr.load( [
                 {
                     test: Modernizr.mq( globals.mediaQuery ),
-                    yep : [ globals.blogurl + '/wp-content/themes/port-f/js/all-smaller.min.js' ],
-                    nope: [ globals.blogurl + '/wp-content/themes/port-f/js/all-larger.min.js' ]
+                    yep : [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/all-smaller.min.js' ],
+                    nope: [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/all-larger.min.js' ]
                 }
             ] );
 

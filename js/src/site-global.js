@@ -156,6 +156,7 @@ jQuery( function( $ ) {
 
         // init globals
         globals.blogurl = $( 'head' ).attr( 'data-wpurl' );
+        globals.theme = $( 'head' ).attr( 'data-project' );
         globals.breakpoint = $( 'title' ).css( 'width' );
         globals.mediaQuery = $( 'title' ).css( 'fontFamily' )
             .replace( /'/g, '' )
