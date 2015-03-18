@@ -655,17 +655,19 @@ function hm_site_description() {
  *     ), 
  *     array( 
  *         'sizes' => '100vw', 
- *         'alt' => 'Image of a sloth', 
+ *         'alt' => 'Alt text', 
  *         'class' => 'wp-image' 
- *     ) 
+ *     ),
+ *     true 
  *  )
  * 
- * @param  integer $id        image ID
- * @param  array $sizes       array of image size key words
- * @param  array $attributes  array of attribute / value pairs
- * @return string             HTML image tag
+ * @param  integer $id         image ID
+ * @param  array $sizes        array of image size key words
+ * @param  array $attributes   array of attribute / value pairs
+ * @param  boolean $dimensions add dimension attributes to <img>
+ * @return string              HTML <img> tag
  */
-function the_responsive_image( $id, $sizes, $attributes ) {
+function the_responsive_image( $id, $sizes, $attributes, $dimensions = false ) {
     $html = '';
     $html .= '<img';
 
@@ -674,11 +676,21 @@ function the_responsive_image( $id, $sizes, $attributes ) {
     foreach( $sizes as $size ) {
         $src = wp_get_attachment_image_src( $id, $size );
         $html .= $src[0] . ' ' . $src[1] . 'w,';
+
+        if( $dimensions ) {
+            $width = $src[1];
+            $height = $src[2];
+        }
     }
 
     $html = rtrim( $html, ',' );
 
     $html .= '"';
+
+    if( $dimensions ) {
+        $attributes['width'] = $width;
+        $attributes['height'] = $height;
+    }
 
     foreach( $attributes as $attribute => $value ) {
         $html .= ' ' . $attribute . '="' . $value . '"';
