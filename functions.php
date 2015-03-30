@@ -20,12 +20,19 @@ add_action( 'wp_enqueue_scripts', 'hm_theme_css' );
 
 
 /** 
- * Register theme JS
+ * Register theme JS 
  */
 function hm_theme_js() {
-    wp_register_script( 'hm_dependencies', get_template_directory_uri() . '/js/dependencies-global.min.js', 0, false );
-    wp_register_script( 'hm_theme', get_template_directory_uri() . '/js/site-global.min.js', array( 'jquery','hm_dependencies' ), 0, false );
-    wp_register_script( 'hm_loader', get_template_directory_uri() . '/js/loader.js', array( 'hm_theme' ), 0, false );
+    // load the bundled jQuery in the footer 
+    if( !is_admin() ) {  
+        wp_deregister_script( 'jquery' );  
+        wp_register_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array(), '1.11.1', true );  
+        wp_enqueue_script('jquery');  
+    }  
+
+    wp_register_script( 'hm_dependencies', get_template_directory_uri() . '/js/dependencies-global.min.js', array( 'jquery' ), '0.4', true );
+    wp_register_script( 'hm_theme', get_template_directory_uri() . '/js/site-global.min.js', array( 'hm_dependencies' ), '0.4', true );
+    wp_register_script( 'hm_loader', get_template_directory_uri() . '/js/loader.js', array( 'hm_theme' ), '0.4', true );
     
     wp_enqueue_script( 'hm_dependencies' );
     wp_enqueue_script( 'hm_theme' );
