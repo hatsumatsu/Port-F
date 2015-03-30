@@ -16,18 +16,38 @@ jQuery( function( $ ) {
         // module window
         var win = ( function() {
 
-            var settings = {};
+            var settings = {
+                scrollDetectionMode: 'scrollEvent', // 'scrollEvent' or 'requestAnimationFrame'
+                now: new Date().getTime()
+            };
 
             var init = function() {
                 debuglog( 'larger.win.init()' );
                 
                 settings.element = $( window );
                 
-                bindEventHandlers()
-                loop();
+                bindEventHandlers();
+
+                if( settings.scrollDetectionMode == 'requestAnimationFrame' ) {
+                    loop();
+                }
             }
 
             var bindEventHandlers = function() {
+
+                if( settings.scrollDetectionMode == 'scrollEvent' ) {
+
+                    settings.element.on( 'scroll', function() {
+                        if( new Date().getTime() - settings.now > 16 ) {
+                            settings.now = new Date().getTime();
+
+                            settings.scrollTop = settings.element.scrollTop();
+                            onScroll();
+                        }
+                      
+                    } );
+
+                }
 
             }
 
