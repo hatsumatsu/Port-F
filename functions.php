@@ -210,7 +210,7 @@ add_filter( 'wp_nav_menu_args', 'hm_nav_add_toggle' );
  */
 register_sidebar( array(
 	'name'=> __( 'Footer Widgets', 'hm-theme' ),
-	'id' => 'footer_widgets',
+	'id' => 'footer_widgets', 
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
@@ -363,7 +363,8 @@ function get_inc( $type, $context, $fallback ) {
 
 
 /** 
- * Custom template tag: the_post_time
+ * Template tag: 
+ * the_post_time
  * Display post date and time based on global WP settings.  
  */
 function the_post_time() {
@@ -372,7 +373,8 @@ function the_post_time() {
 
 
 /** 
- * Custom template tag: get_the_super_title
+ * Template tag: 
+ * get_the_super_title
  * Combines post type label and title
  *
  * @return     string  super title
@@ -440,33 +442,13 @@ add_action( 'pre_get_posts', 'hm_search_post_count' );
 
 
 /**
- * Set the media library's default view to 'uploaded to this post'
- */
-function hm_media_library_default_view() { ?>
-<script>
-    jQuery( '#wpcontent' ).ajaxStop( function() {
-        var called = 0;
-        if( 0 == called && jQuery( '[value="uploaded"]' ).length > 0 ) {
-            jQuery( '[value="uploaded"]' ).attr( 'selected', true ).parent().trigger('change');
-            called = 1;
-        }
-    } );
-</script>
-<?php
-}
-
-add_action( 'admin_footer-post-new.php', 'hm_media_library_default_view' );
-add_action( 'admin_footer-post.php', 'hm_media_library_default_view' );
-
-
-/**
  * Set default of link field to 'none' in media library modal
  */
 update_option( 'image_default_link_type', 'none' );
 
 
 /**
- * Returns post type when get_post_type() is unreliable
+ * Get post type wherever get_post_type() is unreliable
  * p.e. outside of loop or on taxonomy archives
  * 
  * @return  string  post type
@@ -518,16 +500,17 @@ add_action( 'save_post', 'hm_save_inline_images' );
 
 
 /**
- * Build <title>
+ * Template tag:
+ * Get <title> text
  * @param  string $separator String separator
  * @return string            title text
  */
-function hm_site_title( $separator = ' – ' ) {
+function get_site_title( $separator = ' – ' ) {
     global $wp_query;
 
     $title = array();
 
-    // site title
+    // global site title
     $title['global'] = get_bloginfo( 'name' );
 
     // single / page
@@ -597,10 +580,11 @@ function hm_site_title( $separator = ' – ' ) {
 
 
 /**
+ * Template tag:
  * Get <meta> description
  * @return string description text
  */
-function hm_site_description() {
+function get_site_description() {
     global $wp_query,
            $post;
 
@@ -746,7 +730,6 @@ add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' );
 
 /**
  * Get the current archive URL without page number 
- *
  * @return  int  $url URL of the archive 
  */
 function get_current_archive_url() {
