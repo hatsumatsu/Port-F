@@ -7,11 +7,11 @@ $count = $wp_query->post_count;
 $key = get_search_query(); 
 
 if( $count == 1 ) { 
-    $message = sprintf( __( 'There is one search result for <em>%1$s.</em>', 'hm_theme' ), esc_html( $key ) );
+    $message = sprintf( __( 'There is one search result for <em>%1$s.</em>', 'hm-theme' ), esc_html( $key ) );
 } elseif( $count > 1 ) {
-    $message = sprintf( __( 'There are %1$s search results for <em>%2$s.</em>', 'hm_theme' ), esc_html( $count ), esc_html( $key ) );
+    $message = sprintf( __( 'There are %1$s search results for <em>%2$s.</em>', 'hm-theme' ), esc_html( $count ), esc_html( $key ) );
 } else { 
-    $message = sprintf( __( 'Sorry, we couldn&apos;t find anything that matches <em>%1$s.</em>', 'hm_theme' ), esc_html( $key ) );
+    $message = sprintf( __( 'Sorry, we couldn&apos;t find anything that matches <em>%1$s.</em>', 'hm-theme' ), esc_html( $key ) );
 }
 
 get_search_form(); 

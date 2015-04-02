@@ -2,7 +2,7 @@
 /**
  * i11n
  */
-load_theme_textdomain( 'hm_theme', get_stylesheet_directory() . '/languages' );
+load_theme_textdomain( 'hm-theme', get_stylesheet_directory() . '/languages' );
 
 
 /** 
@@ -122,8 +122,8 @@ register_taxonomy(
 	array( 
         'hierarchical' => true,
     	'labels' => array( 
-            'name' => __( 'Project Types', 'hm_theme' ), 
-            'singular_name' => __( 'Project Type', 'hm_theme' )
+            'name' => __( 'Project Types', 'hm-theme' ), 
+            'singular_name' => __( 'Project Type', 'hm-theme' )
     	 ),
     'show_ui' => true,
     'show_admin_column' => true,
@@ -139,16 +139,16 @@ register_taxonomy(
 register_post_type( 
 	'projects', 
 	array( 'labels' => array( 
-        'name' => __( 'Projects', 'hm_theme' ), 
-        'singular_name' => __( 'Project', 'hm_theme' ),
-        'menu_name' => __( 'Projects', 'hm_theme' ),
-        'menu_admin_bar' => __( 'Project', 'hm_theme' ),
-		'all_items' => __( 'All Projects', 'hm_theme' ),
-		'add_new_item' => __( 'Add new Project', 'hm_theme' ),
-		'edit_item' => __( 'Edit Project', 'hm_theme' ),
-		'new_item' => __( 'Add Project', 'hm_theme' ),
-		'view_item' => __( 'View Project', 'hm_theme' ),
-        'search_items' => __( 'Search Projects', 'hm_theme' )
+        'name' => __( 'Projects', 'hm-theme' ), 
+        'singular_name' => __( 'Project', 'hm-theme' ),
+        'menu_name' => __( 'Projects', 'hm-theme' ),
+        'menu_admin_bar' => __( 'Project', 'hm-theme' ),
+		'all_items' => __( 'All Projects', 'hm-theme' ),
+		'add_new_item' => __( 'Add new Project', 'hm-theme' ),
+		'edit_item' => __( 'Edit Project', 'hm-theme' ),
+		'new_item' => __( 'Add Project', 'hm-theme' ),
+		'view_item' => __( 'View Project', 'hm-theme' ),
+        'search_items' => __( 'Search Projects', 'hm-theme' )
 	),
     'capability_type' => 'post',
     'supports' => array( 
@@ -177,8 +177,8 @@ add_filter( 'show_admin_bar', '__return_false' );
 /** 
  * Register navigation menus 
  */
-register_nav_menu( 'head_primary', __( 'Primary Header Navigation', 'hm_theme' ) );
-register_nav_menu( 'footer_primary', __( 'Primary Footer Navigation', 'hm_theme' ) );
+register_nav_menu( 'head_primary', __( 'Primary Header Navigation', 'hm-theme' ) );
+register_nav_menu( 'footer_primary', __( 'Primary Footer Navigation', 'hm-theme' ) );
 
 
 /**
@@ -191,8 +191,8 @@ function hm_nav_add_toggle( $args = '' ) {
 
     if( $args['theme_location'] == 'head_primary' ) {
         $html  = '';
-        $html .= '<nav class="nav-%2$s" role="navigation" id="nav-%2$s"><a href="#content" title="' . __( 'Skip Navigation', 'hm_theme' ) . '">' . __( 'Skip Navigation', 'hm_theme' ) . '</a>';
-        $html .= '<a class="toggle ' . $args['theme_location'] . '-toggle" title="' . __( 'Toggle Navigation', 'hm_theme' ) . '">' . __( 'Navigation', 'hm_theme' ) . '</a>';
+        $html .= '<nav class="nav-%2$s" role="navigation" id="nav-%2$s"><a href="#content" title="' . __( 'Skip Navigation', 'hm-theme' ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
+        $html .= '<a class="toggle ' . $args['theme_location'] . '-toggle" title="' . __( 'Toggle Navigation', 'hm-theme' ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
         $html .= '<ul id="%1$s" class="%2$s">%3$s</ul>';
         $html .= '</nav>';
 
@@ -209,7 +209,7 @@ add_filter( 'wp_nav_menu_args', 'hm_nav_add_toggle' );
  * Register footer widget area 
  */
 register_sidebar( array(
-	'name'=> __( 'Footer Widgets', 'hm_theme' ),
+	'name'=> __( 'Footer Widgets', 'hm-theme' ),
 	'id' => 'footer_widgets',
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
     'after_widget'  => '</div>',
@@ -284,7 +284,7 @@ function hm_customize_tinyMCE( $init ) {
     $init['theme_advanced_blockformats'] = 'h3,h4,p';
 
     /* tinyMCE 4.X - format select entries */ 
-    $init['block_formats'] = __( 'Paragraph', 'hm_theme' ) . '=p;' . __( 'Heading 3', 'hm_theme' ) . '=h3;' . __( 'Heading 4', 'hm_theme' ) . '=h4';
+    $init['block_formats'] = __( 'Paragraph', 'hm-theme' ) . '=p;' . __( 'Heading 3', 'hm-theme' ) . '=h3;' . __( 'Heading 4', 'hm-theme' ) . '=h4';
 
     return $init;
 }
@@ -383,7 +383,7 @@ function get_the_super_title() {
     // archive & single
     if( is_archive () || is_single() || is_home() ) {
         if( get_post_type() == 'post' ) {
-            $html = __( 'News', 'hm_theme' );
+            $html = __( 'News', 'hm-theme' );
         } else { 
             $html = get_post_type_object( get_post_type() )->labels->name;
         }
@@ -401,12 +401,12 @@ function get_the_super_title() {
 
     // 404 
     if( is_404() ) {
-        $html .= __( '404', 'hm_theme' );
+        $html .= __( '404', 'hm-theme' );
     }
     
     // search 
     if( is_search() ) {
-        $html .= __( 'Search results', 'hm_theme' );
+        $html .= __( 'Search results', 'hm-theme' );
     }
 
     return $html;
@@ -733,9 +733,9 @@ function minimum_image_dimensions( $file ) {
     $image = getimagesize( $file['tmp_name'] );
 
     if ( $image[0] < $minimum['width'] ) {
-        $file['error'] = sprintf( __( 'Image too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm_theme' ), $minimum['width'], $image[0] );
+        $file['error'] = sprintf( __( 'Image too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm-theme' ), $minimum['width'], $image[0] );
     } elseif ( $image[1] < $minimum['height'] ) {
-        $file['error'] = sprintf( __( 'Image too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm_theme' ), $minimum['width'], $image[0] );
+        $file['error'] = sprintf( __( 'Image too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm-theme' ), $minimum['width'], $image[0] );
     }
 
     return $file;
