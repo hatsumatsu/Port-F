@@ -607,7 +607,7 @@ function hm_site_description() {
     $description = get_bloginfo( 'description' );
 
     // single / page
-    if( is_single() || is_page() ) {
+    if( ( is_single() || is_page() ) && !is_front_page() ) {
         $excerpt = $post->post_content;
         $description = ( !empty( $excerpt ) ) ? $excerpt : $description;
     }
@@ -645,7 +645,7 @@ function hm_site_description() {
         }    
     }
 
-    return wp_trim_words( strip_tags( $description ), 40 );
+    return wp_trim_words( $description, 115, null );
 }
 
 
@@ -745,7 +745,7 @@ add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' );
 
 
 /**
- * Retrieve the currently viewed archive URL without page number 
+ * Get the current archive URL without page number 
  *
  * @return  int  $url URL of the archive 
  */
