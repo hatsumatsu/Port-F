@@ -662,11 +662,11 @@ function the_responsive_image( $id, $sizes, $attributes, $dimensions = false ) {
     $html = '';
     $html .= '<img';
 
-    $html .= ' srcset="';
+    $srcset = '';
 
     foreach( $sizes as $size ) {
         $src = wp_get_attachment_image_src( $id, $size );
-        $html .= $src[0] . ' ' . $src[1] . 'w,';
+        $srcset .= $src[0] . ' ' . $src[1] . 'w,';
 
         if( $dimensions ) {
             $width = $src[1];
@@ -674,9 +674,8 @@ function the_responsive_image( $id, $sizes, $attributes, $dimensions = false ) {
         }
     }
 
-    $html = rtrim( $html, ',' );
-
-    $html .= '"';
+    $srcset = rtrim( $srcset, ',' );
+    $attributes['width'] = $srcset;
 
     if( $dimensions ) {
         $attributes['width'] = $width;
@@ -684,7 +683,7 @@ function the_responsive_image( $id, $sizes, $attributes, $dimensions = false ) {
     }
 
     foreach( $attributes as $attribute => $value ) {
-        $html .= ' ' . $attribute . '="' . $value . '"';
+        $html .= ' ' . $attribute . '="' . esc_attr( $value ) . '"';
     }    
 
     $html .= '>';
