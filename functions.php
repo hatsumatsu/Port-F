@@ -649,21 +649,23 @@ function get_site_description() {
  *         'alt' => 'Alt text', 
  *         'class' => 'wp-image' 
  *     ),
+ *     true,
  *     true 
  *  )
  * 
- * @param  integer $id         image ID
- * @param  array $sizes        array of image size key words
- * @param  array $attributes   array of attribute / value pairs
- * @param  boolean $dimensions add dimension attributes to <img>
- * @return string              HTML <img> tag
+ * @param  integer $id               image ID
+ * @param  array $sizes              array of image size key words
+ * @param  array $attributes         array of attribute / value pairs
+ * @param  boolean $dimensions       add dimension attributes to <img>
+ * @param  boolean|string $fallback  true to use first item in sizes array as fallback src, string to define custom fallback image size
+ * @return string                    HTML <img> tag
  */
-function the_responsive_image( $id, $sizes, $attributes, $dimensions = false ) {
+function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array(), $dimensions = false, $fallback = false ) {
     $html = '';
     $html .= '<img';
 
+    // srcset
     $srcset = '';
-
     foreach( $sizes as $size ) {
         $src = wp_get_attachment_image_src( $id, $size );
         $srcset .= $src[0] . ' ' . $src[1] . 'w,';
@@ -675,13 +677,26 @@ function the_responsive_image( $id, $sizes, $attributes, $dimensions = false ) {
     }
 
     $srcset = rtrim( $srcset, ',' );
-    $attributes['width'] = $srcset;
+    $attributes['srcset'] = $srcset;
 
+    // dimensions
     if( $dimensions ) {
         $attributes['width'] = $width;
         $attributes['height'] = $height;
     }
 
+    // src
+    if( $fallback ) {
+        if( is_string( $fallback ) ) {
+            $src = wp_get_attachment_image_src( $id, $fallback )[0];
+        } else  {
+            $src = wp_get_attachment_image_src( $id, $sizes[0] )[0];        
+        }
+
+        $attributes['src'] = $src;        
+    }
+
+    // attributes
     foreach( $attributes as $attribute => $value ) {
         $html .= ' ' . $attribute . '="' . esc_attr( $value ) . '"';
     }    
