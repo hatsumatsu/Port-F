@@ -1,6 +1,8 @@
 // globals
 globals = {};
-
+siteGlobal = {};
+siteSmaller = {};
+siteLarger = {};
 
 // debuglog
 debuglog = function( log, force ) {
@@ -13,10 +15,10 @@ globals.debug = true;
 jQuery( function( $ ) {
 
     // app
-    var site = ( function() {
+    siteGlobal = ( function() {
 
         var init = function() {
-            debuglog( 'global.init()' );
+            debuglog( 'siteGlobal.init()' );
             bindEventHandlers();
             win.init();
             nav.init();
@@ -32,7 +34,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'global.win.init()' );
+                debuglog( 'siteGlobal.win.init()' );
             
                 settings.state = Modernizr.mq( globals.mediaQuery );
                 settings.element = $( window );
@@ -68,7 +70,7 @@ jQuery( function( $ ) {
             }
 
             var onResizeFinish = function() {
-                debuglog( 'global.win.onResizeFinish()' );
+                debuglog( 'siteGlobal.win.onResizeFinish()' );
 
                 settings._state = settings.state;
                 settings.state = Modernizr.mq( globals.mediaQuery );
@@ -95,7 +97,7 @@ jQuery( function( $ ) {
             };
 
             var init = function() {
-                debuglog( 'global.nav.init()' );
+                debuglog( 'siteGlobal.nav.init()' );
 
                 settings.element = $( '.nav-' + settings.id );
 
@@ -131,7 +133,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'global.module.init()' );
+                debuglog( 'siteGlobal.module.init()' );
                 bindEventHandlers();
             }
 
@@ -171,7 +173,7 @@ jQuery( function( $ ) {
         debuglog( 'site-global.js loaded...' );
         debuglog( globals );
 
-        site.init();
+        siteGlobal.init();
     } );
 
 } );

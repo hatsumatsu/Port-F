@@ -1,10 +1,10 @@
 jQuery( function( $ ) {
 
     // app
-    var site = ( function() {
+    siteSmaller = ( function() {
 
         var init = function() {
-            debuglog( 'smaller.init()' );
+            debuglog( 'siteSmaller.init()' );
             bindEventHandlers();
         }
 
@@ -18,7 +18,7 @@ jQuery( function( $ ) {
             var settings = {};
 
             var init = function() {
-                debuglog( 'smaller.module.init()' );
+                debuglog( 'siteSmaller.module.init()' );
                 bindEventHandlers();
             }
 
@@ -41,7 +41,7 @@ jQuery( function( $ ) {
     $( document ).ready( function () {
         debuglog( 'site-smaller.js loaded...' );
     
-        site.init();
+        siteSmaller.init();
     } ); 
 
 } );
