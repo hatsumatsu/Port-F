@@ -91,7 +91,7 @@ jQuery( function( $ ) {
         var nav = ( function() {
 
             var settings = {
-                id: 'head_primary'
+                id: 'head-primary'
             };
 
             var init = function() {

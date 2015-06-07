@@ -1,6 +1,6 @@
 ﻿<?php get_header(); ?>
 
-<section class="posts posts-<?php echo get_post_type_advanced(); ?>"
+<section class="posts posts--<?php echo get_post_type_advanced(); ?>"
 	data-url="<?php echo esc_attr( get_current_archive_url() ); ?>"
 	data-page="<?php echo esc_attr( get_query_var( 'paged' ) ); ?>" 
 	data-pages-total="<?php echo esc_attr( $wp_query->max_num_pages ); ?>">

@@ -9,11 +9,11 @@ load_theme_textdomain( 'hm-theme', get_stylesheet_directory() . '/languages' );
  * Register theme CSS
  */
 function hm_theme_css() {
-    wp_register_style( 'hm_normalize', get_template_directory_uri() . '/css/normalize.css', 0, 'screen' );
-    wp_register_style( 'hm_theme', get_template_directory_uri() . '/style.css', array( 'hm_normalize' ), 0, 'screen' );
+    wp_register_style( 'hm-normalize', get_template_directory_uri() . '/css/normalize.css', 0, 'screen' );
+    wp_register_style( 'hm-theme', get_template_directory_uri() . '/style.css', array( 'hm-normalize' ), 0, 'screen' );
 
-    wp_enqueue_style( 'hm_normalize' );
-    wp_enqueue_style( 'hm_theme' );
+    wp_enqueue_style( 'hm-normalize' );
+    wp_enqueue_style( 'hm-theme' );
 } 
 
 add_action( 'wp_enqueue_scripts', 'hm_theme_css' );
@@ -30,13 +30,13 @@ function hm_theme_js() {
         wp_enqueue_script('jquery');  
     }  
 
-    wp_register_script( 'hm_dependencies', get_template_directory_uri() . '/js/dependencies-global.min.js', array( 'jquery' ), '0.4', true );
-    wp_register_script( 'hm_theme', get_template_directory_uri() . '/js/site-global.min.js', array( 'hm_dependencies' ), '0.4', true );
-    wp_register_script( 'hm_loader', get_template_directory_uri() . '/js/loader.js', array( 'hm_theme' ), '0.4', true );
+    wp_register_script( 'hm-dependencies', get_template_directory_uri() . '/js/dependencies-global.min.js', array( 'jquery' ), '0.4', true );
+    wp_register_script( 'hm-theme', get_template_directory_uri() . '/js/site-global.min.js', array( 'hm-dependencies' ), '0.4', true );
+    wp_register_script( 'hm-loader', get_template_directory_uri() . '/js/loader.js', array( 'hm-theme' ), '0.4', true );
     
-    wp_enqueue_script( 'hm_dependencies' );
-    wp_enqueue_script( 'hm_theme' );
-    wp_enqueue_script( 'hm_loader' );
+    wp_enqueue_script( 'hm-dependencies' );
+    wp_enqueue_script( 'hm-theme' );
+    wp_enqueue_script( 'hm-loader' );
 } 
 
 add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
@@ -46,8 +46,8 @@ add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
  * Register admin CSS
  */
 function hm_admin_css() {
-    wp_register_style( 'hm_admin', get_template_directory_uri() . '/css/admin.css', array(), 0 );
-    wp_enqueue_style( 'hm_admin' );
+    wp_register_style( 'hm-admin', get_template_directory_uri() . '/css/admin.css', array(), 0 );
+    wp_enqueue_style( 'hm-admin' );
 }
 
 add_action( 'admin_print_styles', 'hm_admin_css' );
@@ -177,8 +177,8 @@ add_filter( 'show_admin_bar', '__return_false' );
 /** 
  * Register navigation menus 
  */
-register_nav_menu( 'head_primary', __( 'Primary Header Navigation', 'hm-theme' ) );
-register_nav_menu( 'footer_primary', __( 'Primary Footer Navigation', 'hm-theme' ) );
+register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'hm-theme' ) );
+register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'hm-theme' ) );
 
 
 /**
@@ -189,7 +189,7 @@ register_nav_menu( 'footer_primary', __( 'Primary Footer Navigation', 'hm-theme'
  */
 function hm_nav_add_toggle( $args = '' ) {
 
-    if( $args['theme_location'] == 'head_primary' ) {
+    if( $args['theme_location'] == 'head-primary' ) {
         $html  = '';
         $html .= '<nav class="nav-%2$s" role="navigation" id="nav-%2$s"><a href="#content" title="' . __( 'Skip Navigation', 'hm-theme' ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
         $html .= '<a class="toggle ' . $args['theme_location'] . '-toggle" title="' . __( 'Toggle Navigation', 'hm-theme' ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
@@ -210,8 +210,8 @@ add_filter( 'wp_nav_menu_args', 'hm_nav_add_toggle' );
  */
 register_sidebar( array(
 	'name'=> __( 'Footer Widgets', 'hm-theme' ),
-	'id' => 'footer_widgets', 
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'id' => 'footer', 
+    'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
     'after_title'   => '</h4>'
@@ -349,8 +349,8 @@ add_filter( 'excerpt_length', 'hm_custom_excerpt_length' );
  */
 function get_inc( $type, $context, $fallback ) {
     if( $context ) {
-        if( is_file( TEMPLATEPATH . '/inc/' . $type . '-' . $context . '.php' ) ) {
-            get_template_part( '/inc/' . $type . '-' . $context );
+        if( is_file( TEMPLATEPATH . '/inc/' . $type . '--' . $context . '.php' ) ) {
+            get_template_part( '/inc/' . $type . '--' . $context );
         } else {
             if( $fallback ) {
                 get_template_part( '/inc/' . $type );

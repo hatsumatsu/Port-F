@@ -1,25 +1,25 @@
 // skip link
-.nav-head_primary [href='#content'] {
+.nav-head-primary [href='#content'] {
   .hide-but-read;
 }
 
 // toggle
-.head_primary-toggle {
+.head-primary-toggle {
   display: none;
 }
 
-.head_primary {
+.head-primary {
   margin: 0 0 1em 0;
   padding: 0;
 
   list-style-type: none;
 }
 
-.head_primary > li {
+.head-primary > li {
 
 }
 
-.head_primary > li a {
+.head-primary > li a {
 
 
   &:hover,
@@ -29,8 +29,8 @@
   }
 }
 
-.head_primary > li.current-menu-item a,
-.head_primary > li.current-menu-parent a {
+.head-primary > li.current-menu-item a,
+.head-primary > li.current-menu-parent a {
   
 
   &:hover,
@@ -42,7 +42,7 @@
 
 // submenu
 
-.head_primary ul {
+.head-primary ul {
   margin: 0 0 0 1em;
   padding: 0;
 
@@ -52,7 +52,7 @@
 @media @smaller {
 
   // toggle
-  .head_primary-toggle {
+  .head-primary-toggle {
       position: fixed;
       left: 0;
       top: 0;
@@ -113,7 +113,7 @@
       }
   }
 
-  .show-head_primary .head_primary-toggle {
+  .show-head-primary .head-primary-toggle {
       left: 100%;
 
       margin-left: -4em;
@@ -129,7 +129,7 @@
       }
   }
 
-  .head_primary {
+  .head-primary {
       position: fixed;
       left: -100%;
       right: 100%;
@@ -167,7 +167,7 @@
       }
   }
 
-  .show-head_primary .head_primary {
+  .show-head-primary .head-primary {
       left: -4em;
       right: 4em;
 
@@ -177,16 +177,16 @@
       }
   }
 
-  .head_primary li {
+  .head-primary li {
       margin: 0;
       padding: 0;   
   }
 
-  .head_primary > li:last-child {
+  .head-primary > li:last-child {
     margin-bottom: 4em;
   }
 
-  .head_primary li a {
+  .head-primary li a {
       display: block;
       margin: 0;
       padding: 1.5em 1em;
@@ -195,26 +195,26 @@
       color: @bg;      
   }
 
-  .head_primary  li a:hover,
-  .head_primary  li a:active,
-  .head_primary  li a:focus,
-  .head_primary  li.current-menu-item a {
+  .head-primary  li a:hover,
+  .head-primary  li a:active,
+  .head-primary  li a:focus,
+  .head-primary  li.current-menu-item a {
       text-decoration: none;
 
       background: lighten( @text, 10% );
   }
 
   // submenu 
-  .head_primary li ul {
+  .head-primary li ul {
       margin: 0;
       padding: 0;
   }
 
-  .head_primary li ul li {
+  .head-primary li ul li {
 
   }
 
-  .head_primary li ul li a {
+  .head-primary li ul li a {
       padding-left: 2em;
   }
 

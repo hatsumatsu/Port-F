@@ -24,7 +24,7 @@ get_search_form();
 
 <?php if( have_posts() ) { ?>  
 
-<section class="posts results">
+<section class="posts posts--results">
             
 <?php 
 
@@ -51,7 +51,7 @@ foreach( $post_types as $post_type ) {
 
     if( $query->post_count > 0 ) { ?>  
 
-        <section class="posts posts-<?php echo $post_type; ?>">
+        <section class="posts posts--<?php echo $post_type; ?>">
             <h4><?php echo esc_html( $post_type_object->labels->name ) ?></h4>
 
         <?php while( $query->have_posts() ) { $query->the_post(); ?>  

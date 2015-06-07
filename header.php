@@ -17,9 +17,13 @@
 	<div class="shell">
 		<section class="head" role="banner">
 
-            <h1><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( "name" ); ?></a></h1>
+            <h1>
+                <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                    <?php bloginfo( 'name' ); ?>
+                </a>
+            </h1>
 			
-            <?php get_template_part( '/inc/nav-head-primary' ); ?>
+            <?php get_template_part( '/inc/nav--head-primary' ); ?>
 			
             <?php if( get_the_super_title() != '' ) { ?>
             <h2><?php echo get_the_super_title(); ?></h2>
