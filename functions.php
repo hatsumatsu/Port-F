@@ -858,3 +858,24 @@ function get_theme_directory_name() {
 
     return $url;
 }
+
+
+/**
+ * Wrap oembed in <div>
+ * @param  string $html  original markup
+ * @param  string $url  URL
+ * @param  array $attributes  config
+ * @param  int $id  post ID
+ * @return string   modified markup
+ */
+function wrap_oembed( $html, $url, $attributes, $id ) {
+    $class = '';
+
+    if( strpos( $url, 'youtu' ) || strpos( $url, 'vimeo' ) ) {
+        $class .= ' embed-video';
+    }
+
+    return '<div class="' . esc_attr( $class ) . '">' . $html . '</div>';
+}
+
+add_filter( 'embed_oembed_html', 'wrap_oembed', 99, 4 );
