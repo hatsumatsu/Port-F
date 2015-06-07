@@ -688,12 +688,12 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
     // src
     if( $fallback ) {
         if( is_string( $fallback ) ) {
-            $src = wp_get_attachment_image_src( $id, $fallback )[0];
+            $src = wp_get_attachment_image_src( $id, $fallback );
         } else  {
-            $src = wp_get_attachment_image_src( $id, $sizes[0] )[0];        
+            $src = wp_get_attachment_image_src( $id, $sizes[0] );        
         }
 
-        $attributes['src'] = $src;        
+        $attributes['src'] = $src[0];        
     }
 
     // attributes
@@ -705,6 +705,97 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
 
     echo $html;
 }
+
+
+/**
+ * Modify markup of inline images added via the visual editor
+ * to follow the srcset responsive image pattern
+ * @param  string $html  original image markup
+ * @param  int    $id    attachment ID
+ * @param  string $alt   alt text 
+ * @param  string $title image title
+ * @return string        modified markup
+ */
+function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size = null ) {
+    $orientation = get_post_meta( $id, 'orientation', true );
+
+    $class = '';
+    $class .= ( $orientation ) ? ' orientation--' . $orientation : '';
+    $class .= ( $align ) ? ' align--' . $align : '';
+
+    $html = '';
+    $html .= '<figure class="' . esc_attr( $class ) . '">';
+
+    $fallback = wp_get_attachment_image_src( $id, 'thumbnail' );
+    $html .= get_responsive_image( 
+        $id, 
+        array(
+            'thumbnail',
+            'medium',
+            'large',
+            'full'
+        ),
+        array( 
+            'alt'   => $alt,
+            'title' => $title,
+            'src'   => $fallback[0],
+            'class' => 'inline-image'
+        ), 
+        true 
+    );
+
+    if( $title ) {
+        $html .= '<figcaption>';
+        $html .= $title;
+        $html .= '</figcaption>';
+    }
+
+    $html .= '</figure>';
+
+    return $html;
+}
+
+add_filter( 'get_image_tag', 'responsive_image_embed', 10, 4 );
+
+
+/**
+ * Modify output of [caption] shortcode
+ * @param  ?? $empty        ??
+ * @param  array $attr      shortcode attribuutes
+ * @param  string $content  the image markup inside [caption][/caption]
+ * @return strings          HTML makrup          
+ */
+function modify_caption_shortcode( $empty, $attr, $content ){
+    $attr = shortcode_atts( array(
+        'id'      => '',
+        'align'   => '',
+        'width'   => '',
+        'caption' => ''
+    ), $attr );
+
+    $id = ( $attr['id'] ) ? intval( str_replace( 'attachment_', '', $attr['id'] ) ) : null;
+
+    $classes = '';
+    $classes .= ( get_post_meta( $id, 'orientation', true ) ) ? ' orientation--' .  get_post_meta( $id, 'orientation', true ) : '';
+    $classes .= ( $attr['align'] ) ? ' align--' .  $attr['align'] : '';
+
+    $html = '';
+    $html .= '<figure class="' . esc_attr( $classes ) . '">';
+
+    $html .= do_shortcode( strip_tags( $content, '<img><img/><figcaption>' ) );
+
+    if( $attr['caption'] ) {
+        $html .= '<figcaption>';
+        $html .= $attr['caption'];
+        $html .= '</figcaption>';
+    }
+
+    $html .= '</figure>';
+
+    return $html;
+}
+
+add_filter( 'img_caption_shortcode', 'modify_caption_shortcode', 10, 3 );
 
 
 /**
