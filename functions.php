@@ -345,6 +345,44 @@ add_filter( 'excerpt_length', 'hm_custom_excerpt_length' );
 
 
 /** 
+ * Customize auto excerpt
+ * + custom word count
+ * + Add ellispsis to auto-excerpts when text is too long 
+ * + keep basic text formats
+ */
+function customize_auto_excerpt( $text ) {
+    global $post;
+
+    $raw_excerpt = $text;
+
+    if( !$post->post_excerpt || $post->post_excerpt == '' ) {
+        $text = get_the_content();
+        $text = strip_shortcodes( $text );
+        $text = apply_filters( 'the_content', $text );
+        $text = str_replace( '\]\]\>', ']]&gt;', $text );
+        $text = preg_replace( '@<script[^>]*?>.*?</script>@si', '', $text );
+        $text = strip_tags( $text, '<strong><b><em><i><code><p>' );
+        $words = explode( ' ', $text, 40 + 1 );
+
+        $words = preg_split( "/[\n\r\t ]+/", $text, 40 + 1, PREG_SPLIT_NO_EMPTY );
+        
+        if( count( $words ) > 40 ) {
+            array_pop( $words );
+            array_push( $words, '&hellip;' );
+            $text = implode( ' ', $words );
+
+            $text = force_balance_tags( $text );
+        } 
+
+    } 
+
+    return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
+}
+
+add_filter( 'get_the_excerpt', 'customize_auto_excerpt' );
+
+
+/** 
  * Custom template part include 
  */
 function get_inc( $type, $context, $fallback ) {
