@@ -28,7 +28,7 @@ module.exports = function( grunt ) {
 		modernizr: {
 		    dist: {
 		        'devFile' : 'remote',
-		        'outputFile' : 'js/src/dependencies-global/modernizr.js',
+		        'outputFile' : 'js/src/critical/00-modernizr.js',
 		        'extra' : {
 		            'shiv' : true,
 		            'printshiv' : false,
@@ -49,6 +49,11 @@ module.exports = function( grunt ) {
 		uglify: {
 			options: {
 				mangle: false
+			},
+			critical: {
+			  files: {
+			    'js/critical.min.js': ['js/src/critical/*.js']
+			  }
 			},
 			dependencies: {
 			  files: {
@@ -80,14 +85,32 @@ module.exports = function( grunt ) {
 					'js/site-smaller.min.js': ['js/src/site-smaller.js']
 				}
 			},
+			all: {
+				files: {
+					'js/all-global.min.js': [
+						'js/dependencies-global.min.js',
+						'js/src/site-global.js'
+					]
+				}
+			},
 			allLarger: {
 				files: {
-					'js/all-larger.min.js': ['js/dependencies-larger.min.js',' js/src/site-larger.js']
+					'js/all-larger.min.js': [
+						'js/dependencies-global.min.js', 
+						'js/src/site-global.js', 
+						'js/dependencies-larger.min.js', 
+						'js/src/site-larger.js'
+					]
 				}
 			},
 			allSmaller: {
 				files: {
-					'js/all-smaller.min.js': ['js/dependencies-smaller.min.js', 'js/src/site-smaller.js']
+					'js/all-smaller.min.js': [
+						'js/dependencies-global.min.js', 
+						'js/src/site-global.js', 
+						'js/dependencies-smaller.min.js', 
+						'js/src/site-smaller.js'
+					]
 				}
 			}
 
