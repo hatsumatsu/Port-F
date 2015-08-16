@@ -87,19 +87,20 @@ remove_action( 'wp_head', 'wp_generator' );  // remove Version number
  */
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'menus' );
-add_theme_support( 'html5', array( 
-    'comment-list', 
-    'comment-form', 
-    'search-form', 
-    'gallery', 
-    'caption' 
+add_theme_support( 
+    'html5', 
+    array( 
+        'comment-list', 
+        'comment-form', 
+        'search-form', 
+        'gallery', 
+        'caption' 
     ) 
 );
 
 
 /**
  * Enable page excerpts
- *
  */
 function hm_page_excerpts() {
     add_post_type_support( 'page', 'excerpt' );
@@ -121,9 +122,9 @@ register_taxonomy(
             'name' => __( 'Project Types', 'hm-theme' ), 
             'singular_name' => __( 'Project Type', 'hm-theme' )
     	 ),
-    'show_ui' => true,
-    'show_admin_column' => true,
-    'rewrite' => array( 'slug' => 'projects/filter' )
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'rewrite' => array( 'slug' => 'projects/filter' )
     ) 
 );
 
@@ -134,32 +135,33 @@ register_taxonomy(
  */
 register_post_type( 
 	'projects', 
-	array( 'labels' => array( 
-        'name' => __( 'Projects', 'hm-theme' ), 
-        'singular_name' => __( 'Project', 'hm-theme' ),
-        'menu_name' => __( 'Projects', 'hm-theme' ),
-        'menu_admin_bar' => __( 'Project', 'hm-theme' ),
-		'all_items' => __( 'All Projects', 'hm-theme' ),
-		'add_new_item' => __( 'Add new Project', 'hm-theme' ),
-		'edit_item' => __( 'Edit Project', 'hm-theme' ),
-		'new_item' => __( 'Add Project', 'hm-theme' ),
-		'view_item' => __( 'View Project', 'hm-theme' ),
-        'search_items' => __( 'Search Projects', 'hm-theme' )
-	),
-    'capability_type' => 'post',
-    'supports' => array( 
-        'title', 
-        'editor', 
-        'author', 
-        'thumbnail' 
+	array( 
+        'labels' => array( 
+            'name'                  => __( 'Projects', 'hm-theme' ), 
+            'singular_name'         => __( 'Project', 'hm-theme' ),
+            'menu_name'             => __( 'Projects', 'hm-theme' ),
+            'menu_admin_bar'        => __( 'Project', 'hm-theme' ),
+            'all_items'             => __( 'All Projects', 'hm-theme' ),
+            'add_new_item'          => __( 'Add new Project', 'hm-theme' ),
+            'edit_item'             => __( 'Edit Project', 'hm-theme' ),
+            'new_item'              => __( 'Add Project', 'hm-theme' ),
+            'view_item'             => __( 'View Project', 'hm-theme' ),
+            'search_items'          => __( 'Search Projects', 'hm-theme' )
+	   ),
+        'capability_type' => 'post',
+        'supports' => array( 
+            'title', 
+            'editor', 
+            'author', 
+            'thumbnail' 
         ),
-    'public' => true,
-    'menu_position' => 5,
-    // http://melchoyce.github.io/dashicons/
-    'menu_icon' => 'dashicons-smiley',
-    'rewrite' => array( 'slug' => 'projects' ),
-    'has_archive' => 'projects',
-    'taxonomies' => array( 'project_types' )
+        'public' => true,
+        'menu_position' => 5,
+        // http://melchoyce.github.io/dashicons/
+        'menu_icon' => 'dashicons-smiley',
+        'rewrite' => array( 'slug' => 'projects' ),
+        'has_archive' => 'projects',
+        'taxonomies' => array( 'project_types' )
     )
 );
 
