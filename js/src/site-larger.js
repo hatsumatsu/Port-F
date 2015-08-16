@@ -18,7 +18,8 @@ jQuery( function( $ ) {
 
             var settings = {
                 scrollDetectionMode: 'scrollEvent', // 'scrollEvent' or 'requestAnimationFrame'
-                now: new Date().getTime()
+                now: Date.now(),
+                fps: ( 1000 / 60 )
             };
 
             var init = function() {
@@ -38,13 +39,15 @@ jQuery( function( $ ) {
                 if( settings.scrollDetectionMode == 'scrollEvent' ) {
 
                     settings.element.on( 'scroll', function() {
-                        if( new Date().getTime() - settings.now > 16 ) {
-                            settings.now = new Date().getTime();
+                        var now = Date.now();
+                        var elapsed = now - settings.now;
+                        
+                        if( elapsed > settings.fps ) {
+                            settings.now = now - ( elapsed % settings.fps );
 
                             settings.scrollTop = settings.element.scrollTop();
                             onScroll();
                         }
-                      
                     } );
 
                 }
@@ -52,14 +55,21 @@ jQuery( function( $ ) {
             }
 
             var loop = function() {
-                settings._scrollTop = settings.scrollTop;
-                settings.scrollTop = settings.element.scrollTop();
-
-                if( settings.scrollTop != settings._scrollTop ) {
-                    onScroll();
-                }
-
                 requestAnimationFrame( loop );
+                
+                var now = Date.now();
+                var elapsed = now - settings.now;
+                
+                if( elapsed > settings.fps ) {
+                    settings.now = now - ( elapsed % settings.fps );
+                  
+                    settings._scrollTop = settings.scrollTop;
+                    settings.scrollTop = settings.element.scrollTop();
+
+                    if( settings.scrollTop != settings._scrollTop ) {
+                        onScroll();
+                    }
+                }
             }
 
             var onScroll = function() {
