@@ -1,5 +1,10 @@
+// <nav>
+.nav--head-primary {
+
+}
+
 // skip link
-.nav-head-primary [href='#content'] {
+.head-primary-skip {
   .hide-but-read;
 }
 
@@ -8,18 +13,19 @@
   display: none;
 }
 
-.head-primary {
+// <ul>
+.head-primary-list {
   margin: 0 0 1em 0;
   padding: 0;
 
   list-style-type: none;
 }
 
-.head-primary > li {
+.head-primary-list > li {
 
 }
 
-.head-primary > li a {
+.head-primary-list > li a {
 
 
   &:hover,
@@ -29,8 +35,8 @@
   }
 }
 
-.head-primary > li.current-menu-item a,
-.head-primary > li.current-menu-parent a {
+.head-primary-list > li.current-menu-item a,
+.head-primary-list > li.current-menu-parent a {
   
 
   &:hover,
@@ -41,13 +47,13 @@
 }
 
 // submenu
-
-.head-primary ul {
+.head-primary-list ul {
   margin: 0 0 0 1em;
   padding: 0;
 
   list-style-type: none;
 }
+
 
 @media @smaller {
 
@@ -129,7 +135,7 @@
       }
   }
 
-  .head-primary {
+  .head-primary-list {
       position: fixed;
       left: -100%;
       right: 100%;
@@ -167,7 +173,7 @@
       }
   }
 
-  .show-head-primary .head-primary {
+  .show-head-primary .head-primary-list {
       left: -4em;
       right: 4em;
 
@@ -177,16 +183,16 @@
       }
   }
 
-  .head-primary li {
+  .head-primary-list li {
       margin: 0;
       padding: 0;   
   }
 
-  .head-primary > li:last-child {
+  .head-primary-list > li:last-child {
     margin-bottom: 4em;
   }
 
-  .head-primary li a {
+  .head-primary-list li a {
       display: block;
       margin: 0;
       padding: 1.5em 1em;
@@ -195,26 +201,26 @@
       color: @bg;      
   }
 
-  .head-primary  li a:hover,
-  .head-primary  li a:active,
-  .head-primary  li a:focus,
-  .head-primary  li.current-menu-item a {
+  .head-primary-list li a:hover,
+  .head-primary-list li a:active,
+  .head-primary-list li a:focus,
+  .head-primary-list li.current-menu-item a {
       text-decoration: none;
 
       background: lighten( @text, 10% );
   }
 
   // submenu 
-  .head-primary li ul {
+  .head-primary-list li ul {
       margin: 0;
       padding: 0;
   }
 
-  .head-primary li ul li {
+  .head-primary-list li ul li {
 
   }
 
-  .head-primary li ul li a {
+  .head-primary-list li ul li a {
       padding-left: 2em;
   }
 

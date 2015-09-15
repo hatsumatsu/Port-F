@@ -207,22 +207,25 @@ register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'hm-theme'
  * @param   array   $args options of wp_nav_menu()
  * @return  array   $args
  */
-function hm_nav_add_toggle( $args = '' ) {
+function modify_nav_markup( $args = '' ) {
+    $html  = '';
+    $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation">';
+    $html .= '<a href="#content" class="skip ' . esc_attr( $args['theme_location'] ) . '-skip" title="' . esc_attr( __( 'Skip Navigation', 'hm-theme' ) ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
 
     if( $args['theme_location'] == 'head-primary' ) {
-        $html  = '';
-        $html .= '<nav class="nav-%2$s" role="navigation" id="nav-%2$s"><a href="#content" title="' . __( 'Skip Navigation', 'hm-theme' ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
-        $html .= '<a class="toggle ' . $args['theme_location'] . '-toggle" title="' . __( 'Toggle Navigation', 'hm-theme' ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
-        $html .= '<ul id="%1$s" class="%2$s">%3$s</ul>';
-        $html .= '</nav>';
-
-        $args[ 'items_wrap' ] = $html;
+        $html .= '<a class="toggle ' . esc_attr( $args['theme_location'] ) . '-toggle" title="' . esc_attr( __( 'Toggle Navigation', 'hm-theme' ) ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
     }
+    
+    $html .= '<ul class="' . esc_attr( $args['theme_location'] ) . '-list">%3$s</ul>';
+    $html .= '</nav>';
+
+    $args['items_wrap'] = $html;
+    $args['container']  = false;
 
     return $args;
 }
 
-add_filter( 'wp_nav_menu_args', 'hm_nav_add_toggle' );
+add_filter( 'wp_nav_menu_args', 'modify_nav_markup' );
 
 
 /** 

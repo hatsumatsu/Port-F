@@ -85,7 +85,7 @@ jQuery( function( $ ) {
             var init = function() {
                 debuglog( 'siteGlobal.nav.init()' );
 
-                settings.element = $( '.nav-' + settings.id );
+                settings.element = $( '.nav--' + settings.id );
 
                 bindEventHandlers();
             }
@@ -102,14 +102,13 @@ jQuery( function( $ ) {
                         }
 
                         $( 'html' ).toggleClass( 'show-' + settings.id );
-
                     } );
             }
 
             return {
                 init: function() { init(); }
             }
-
+            
         } )();
 
 
