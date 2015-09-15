@@ -117,14 +117,31 @@ register_taxonomy(
 	'project_types', 
 	array( 'projects' ), 
 	array( 
-        'hierarchical' => true,
-    	'labels' => array( 
-            'name' => __( 'Project Types', 'hm-theme' ), 
-            'singular_name' => __( 'Project Type', 'hm-theme' )
+        'hierarchical'      => true,
+    	'labels'            => array( 
+            'name'                          => __( 'Project Types', 'hm-theme' ), 
+            'singular_name'                 => __( 'Project Type', 'hm-theme' ),
+            'menu_name'                     => __( 'Project Typea', 'hm-theme' ),
+            'all_items'                     => __( 'All Types', 'hm-theme' ),
+            'edit_item'                     => __( 'Edit Type', 'hm-theme' ),
+            'view_item'                     => __( 'View Type', 'hm-theme' ),
+            'update_item'                   => __( 'Update Type', 'hm-theme' ),
+            'add_new_item'                  => __( 'Add New Type', 'hm-theme' ),
+            'new_item_name'                 => __( 'New Type Name', 'hm-theme' ),
+            'parent_item'                   => __( 'Parent Type', 'hm-theme' ),
+            'parent_item_colon'             => __( 'Parent Type:', 'hm-theme' ),
+            'search_items'                  => __( 'Search Types', 'hm-theme' ),
+            'popular_items'                 => __( 'Popular Types', 'hm-theme' ),
+            'separate_items_with_commas'    => __( 'Separate types with commas', 'hm-theme' ), 
+            'add_or_remove_items'           => __( 'Add or remove types', 'hm-theme' ),
+            'choose_from_most_used'         => __( 'Choose from the most used types', 'hm-theme' ),
+            'not_found'                     => __( 'No types found.', 'hm-theme' )
     	 ),
-        'show_ui' => true,
+        'show_ui'           => true,
         'show_admin_column' => true,
-        'rewrite' => array( 'slug' => 'projects/filter' )
+        'rewrite'           => array( 
+            'slug' => 'projects/filter' 
+        )
     ) 
 );
 
@@ -136,32 +153,37 @@ register_taxonomy(
 register_post_type( 
 	'projects', 
 	array( 
-        'labels' => array( 
+        'labels'            => array( 
             'name'                  => __( 'Projects', 'hm-theme' ), 
             'singular_name'         => __( 'Project', 'hm-theme' ),
             'menu_name'             => __( 'Projects', 'hm-theme' ),
             'menu_admin_bar'        => __( 'Project', 'hm-theme' ),
             'all_items'             => __( 'All Projects', 'hm-theme' ),
+            'add_new'               => __( 'Add new', 'hm-theme' ),
             'add_new_item'          => __( 'Add new Project', 'hm-theme' ),
             'edit_item'             => __( 'Edit Project', 'hm-theme' ),
             'new_item'              => __( 'Add Project', 'hm-theme' ),
             'view_item'             => __( 'View Project', 'hm-theme' ),
-            'search_items'          => __( 'Search Projects', 'hm-theme' )
-	   ),
-        'capability_type' => 'post',
-        'supports' => array( 
+            'search_items'          => __( 'Search Projects', 'hm-theme' ),
+            'not_found'             => __( 'No Projects found', 'hm-theme' ),
+            'not_found_in_trash'    => __( 'No Projects found in trash', 'hm-theme' ),
+            'parent_item_colon'     => __( 'Parent Project:', 'hm-theme' )
+	    ),
+        'capability_type'   => 'post',
+        'supports'          => array( 
             'title', 
             'editor', 
             'author', 
             'thumbnail' 
         ),
-        'public' => true,
-        'menu_position' => 5,
-        // http://melchoyce.github.io/dashicons/
-        'menu_icon' => 'dashicons-smiley',
-        'rewrite' => array( 'slug' => 'projects' ),
-        'has_archive' => 'projects',
-        'taxonomies' => array( 'project_types' )
+        'public'            => true,
+        'menu_position'     => 5,
+        'menu_icon'         => 'dashicons-smiley',
+        'rewrite'           => array( 
+            'slug' => 'projects' 
+        ),
+        'has_archive'       => 'projects',
+        'taxonomies'        => array( 'project_types' )
     )
 );
 
