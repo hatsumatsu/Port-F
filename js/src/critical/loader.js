@@ -4,7 +4,7 @@ jQuery( function( $ ) {
 
         if( globals.debug ) {
 
-            Modernizr.load( [
+            yepnope( [
                 {
                     test: Modernizr.mq( globals.mediaQuery ),
                     yep : [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-global.min.js',
@@ -20,7 +20,7 @@ jQuery( function( $ ) {
 
         } else {
 
-            Modernizr.load( [
+            yepnope( [
                 {
                     test: Modernizr.mq( globals.mediaQuery ),
                     yep : [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/all-smaller.min.js' ],

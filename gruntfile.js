@@ -27,24 +27,29 @@ module.exports = function( grunt ) {
 
 		modernizr: {
 		    dist: {
-		        'devFile' : 'remote',
-		        'outputFile' : 'js/src/critical/00-modernizr.js',
-		        'extra' : {
-		            'shiv' : true,
-		            'printshiv' : false,
-		            'load' : true,
-		            'mq' : true,
-		            'cssclasses' : true
-		        },
-		        'tests' : ['touch'],
-		        'uglify' : false,
-		        'parseFiles' : true,
-		        'files' : {
-            		'src': ['js/**/*.js', '**/*.css', '!node_modules/**/*', '!js/**/*.min.js']
-        		},
-		        'matchCommunityTests' : false
+		        'dest' : 'js/src/critical/00-modernizr.js',
+				'options' : [
+				    'setClasses',
+				    'addTest',
+				    'html5printshiv',
+				    'testProp',
+				    'fnBind',
+				    'mq'
+				],
+				'tests' : [
+					'touchevents',
+					'pointerevents'
+				],
+				'files' : {
+			        'src': [
+			        	'js/**/*.js', 
+			        	'**/*.css', 
+			        	'!node_modules/**/*', 
+			        	'!js/**/*.min.js'
+			        ]
+			    }		    
 		    }
-		},
+		},				
 
 		uglify: {
 			options: {
