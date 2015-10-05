@@ -482,12 +482,30 @@ function get_the_super_title() {
  */
 function hm_rewrite_search() {
     if( is_search() && !empty( $_GET['s'] ) && !is_admin() ) {
-        wp_redirect( home_url( '/search/' ) . urlencode( get_query_var( 's' ) ) );
+        wp_redirect( home_url( '/' . __( 'search', 'hm-theme' ) . '/' ) . urlencode( get_query_var( 's' ) ) );
         exit();
     }
 }
 
 add_action( 'template_redirect', 'hm_rewrite_search' );
+
+
+/**
+ * Modify WP's search permalink fragment
+ * @param  array $rules original rewrite rules
+ * @return array        modified rules
+ */
+function hm_search_rewrite_rules( $rules ) {
+    foreach( $rules as $rule => $target ) {
+    
+        $new_rule = str_replace( 'search', __( 'search', 'hm-theme' ), $rule );
+        unset( $rules[$rule] );
+        $rules[$new_rule] = $target;
+    }
+    return $rules;
+}
+
+add_filter( 'search_rewrite_rules', 'hm_search_rewrite_rules' );
 
 
 /** 
