@@ -10,6 +10,8 @@
     	<?php the_post_time(); ?>
     </time>
     
-    <?php the_content(); ?>
+    <div class="post-content post-content--<?php echo get_post_type_advanced(); ?> inline-content">
+    	<?php the_content(); ?>
+    </div>
 
 </article>
