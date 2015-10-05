@@ -46,11 +46,17 @@ jQuery( function( $ ) {
                             settings.now = now - ( elapsed % settings.fps );
 
                             settings.scrollTop = settings.element.scrollTop();
-                            onScroll();
+                            $( document ).trigger( 'win/scroll' );
                         }
                     } );
 
                 }
+
+                $( document )
+                    .on( 'win/scroll', function() {
+                        onScroll();
+                    } );
+
 
             }
 
@@ -67,7 +73,7 @@ jQuery( function( $ ) {
                     settings.scrollTop = settings.element.scrollTop();
 
                     if( settings.scrollTop != settings._scrollTop ) {
-                        onScroll();
+                        $( document ).trigger( 'win/scroll' );
                     }
                 }
             }
