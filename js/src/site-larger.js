@@ -17,6 +17,9 @@ jQuery( function( $ ) {
         var win = ( function() {
 
             var settings = {
+                width: 0,
+                height: 0,
+                scrollTop: 0,
                 scrollDetectionMode: 'scrollEvent', // 'scrollEvent' or 'requestAnimationFrame'
                 now: Date.now(),
                 fps: ( 1000 / 60 )
@@ -27,6 +30,8 @@ jQuery( function( $ ) {
                 
                 settings.element = $( window );
                 
+                onResizeFinish();
+
                 bindEventHandlers();
 
                 if( settings.scrollDetectionMode == 'requestAnimationFrame' ) {
@@ -55,11 +60,17 @@ jQuery( function( $ ) {
                 $( document )
                     .on( 'win/scroll', function() {
                         onScroll();
+                    } )
+                    .on( 'win/resize/finish', function() {
+                        onResizeFinish();
                     } );
 
 
             }
 
+            /**
+             * requestAnimationFrame loop throttled at 60fps 
+             */
             var loop = function() {
                 requestAnimationFrame( loop );
                 
@@ -78,12 +89,34 @@ jQuery( function( $ ) {
                 }
             }
 
+            var onResizeFinish = function() {
+                debuglog( 'siteLarger.win.onResizeFinish()' );
+
+                settings.width = settings.element.width();
+                settings.height = settings.element.height();
+            }
+
             var onScroll = function() {
                 debuglog( 'siteLarger.win.onScroll()' );
             }
 
+            var getWidth = function() {
+                return settings.width;
+            }
+
+            var getHeight = function() {
+                return settings.height;
+            }
+
+            var getScrollTop = function() {
+                return settings.scrollTop;
+            }            
+
             return {
-                init: function() { init(); }
+                init:           function() { init(); },
+                getWidth:       function() { return getWidth() },
+                getHeight:      function() { return getHeight() },
+                getScrollTop:   function() { return getScrollTop() }
             }
 
         } )();
