@@ -11,8 +11,6 @@
 
 <?php } /* endif */ ?>
 
-<?php get_inc( 'imagelist', 0, 0 ); ?>
-
 <?php get_inc( 'filelist', 0, 0 ); ?>
 
 <?php get_footer(); ?>
