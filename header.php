@@ -23,7 +23,7 @@
                 </a>
             </h1>
 			
-            <?php get_template_part( '/inc/nav--head-primary' ); ?>
+            <?php get_inc( 'nav', 'head-primary', 0 ); ?>
 			
 		</section><!-- end .head -->
 		<section class="content" role="main" id="content">
