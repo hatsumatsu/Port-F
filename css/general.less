@@ -1,17 +1,17 @@
 // links
 a {
-  color: @link;
-  text-decoration: none;
+	color: @link;
+	text-decoration: none;
 }
 
 a:visited {
-  color: desaturate( @link, 5% );
+	color: desaturate( @link, 5% );
 }
 
 a:hover,
 a:focus {
-  text-decoration: underline;
-  outline: 0; // do somethig else for a11y
+	text-decoration: underline;
+	outline: 0; // do somethig else for a11y
 }
 
 a:active {
@@ -20,8 +20,8 @@ a:active {
 
 // selection
 ::selection {
-  color: @bg;
-  background: @link;
+	color: @bg;
+	background: @link;
 }
 
 // headings
@@ -30,87 +30,87 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 0 0 1em 0;
+	margin: 0 0 1em 0;
 
-  line-height: 1;
+	line-height: 1;
 
-  & a {
+	& a {
 
-    &:hover,
-    &:active,
-    &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 
-    }
-  }
+		}
+	}
 }
 
 h1 {
 
-  & a {
+	& a {
 
-    &:hover,
-    &:active,
-    &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 
-    }
-  }
+		}
+	}
 }
 
 h2 {
 
-  & a {
+	& a {
 
-    &:hover,
-    &:active,
-    &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 
-    }
-  }
+		}
+	}
 }
 
 h3 {
 
-  & a {
+	& a {
 
-    &:hover,
-    &:active,
-    &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 
-    }
-  }
+		}
+	}
 }
 
 h4 {
 
-  & a {
+	& a {
 
-    &:hover,
-    &:active,
-    &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 
-    }
-  }
+		}
+	}
 }
 
 h5 {
 
-  & a {
+	& a {
 
-    &:hover,
-    &:active,
-    &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 
-    }
-  }
+		}
+	}
 }
 
 // content elements
 section {
-  
+	
 }
 
 p {
-  margin: 0 0 ( 1 * @line-height * 1em ) 0;
+	margin: 0 0 ( 1 * @line-height * 1em ) 0;
 }
 
 p + p {

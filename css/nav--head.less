@@ -5,20 +5,20 @@
 
 // skip link
 .head-primary-skip {
-  .hide-but-read;
+	.hide-but-read;
 }
 
 // toggle
 .head-primary-toggle {
-  display: none;
+	display: none;
 }
 
 // <ul>
 .head-primary-list {
-  margin: 0 0 1em 0;
-  padding: 0;
+	margin: 0 0 1em 0;
+	padding: 0;
 
-  list-style-type: none;
+	list-style-type: none;
 }
 
 .head-primary-list > li {
@@ -28,200 +28,200 @@
 .head-primary-list > li a {
 
 
-  &:hover,
-  &:focus,
-  &:active {
+	&:hover,
+	&:focus,
+	&:active {
 
-  }
+	}
 }
 
 .head-primary-list > li.current-menu-item a,
 .head-primary-list > li.current-menu-parent a {
-  
+	
 
-  &:hover,
-  &:focus,
-  &:active {
+	&:hover,
+	&:focus,
+	&:active {
 
-  }
+	}
 }
 
 // submenu
 .head-primary-list ul {
-  margin: 0 0 0 1em;
-  padding: 0;
+	margin: 0 0 0 1em;
+	padding: 0;
 
-  list-style-type: none;
+	list-style-type: none;
 }
 
 
 @media @smaller {
 
-  // toggle
-  .head-primary-toggle {
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 13;
+	// toggle
+	.head-primary-toggle {
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 13;
 
-      display: block;
-      width: auto;
-      height: auto;
-      margin: 0;
-      padding: 1.5em 1em 1.5em 4em;
+		display: block;
+		width: auto;
+		height: auto;
+		margin: 0;
+		padding: 1.5em 1em 1.5em 4em;
 
-      line-height: 1em;
-      color: @bg;
-      
-      background: @text;
+		line-height: 1em;
+		color: @bg;
+		
+		background: @text;
 
-      cursor: pointer;
-      user-select: none;
+		cursor: pointer;
+		user-select: none;
 
-      .transition;
+		.transition;
 
-      &::before {
-          content: '\2261';
-          
-          position: absolute;
-          left: 0;
-          top: 0;
+		&::before {
+			content: '\2261';
+			
+			position: absolute;
+			left: 0;
+			top: 0;
 
-          display: block;
-          width: 2em;
-          height: 2em;
+			display: block;
+			width: 2em;
+			height: 2em;
 
-          font-size: 200%;
-          line-height: 2em;
-          text-indent: 0;
-          text-align: center;
-      }
+			font-size: 200%;
+			line-height: 2em;
+			text-indent: 0;
+			text-align: center;
+		}
 
-      &::after {
-        content: ' ';
+		&::after {
+			content: ' ';
 
-        position: fixed;
-        right: 0;
-        top: 4em;
-        bottom: 0;
+			position: fixed;
+			right: 0;
+			top: 4em;
+			bottom: 0;
 
-        display: block;
-        width: 0;
-        margin: 0 0 0 -4em;
+			display: block;
+			width: 0;
+			margin: 0 0 0 -4em;
 
-        background: @bg;
+			background: @bg;
 
-        opacity: 0;
+			opacity: 0;
 
-        .transition;  
-        transition-property: width, opacity;
-        transition-delay: 0ms, @transition-duration;
-      }
-  }
+			.transition;  
+			transition-property: width, opacity;
+			transition-delay: 0ms, @transition-duration;
+		}
+	}
 
-  .show-head-primary .head-primary-toggle {
-      left: 100%;
+	.show-head-primary .head-primary-toggle {
+		left: 100%;
 
-      margin-left: -4em;
+		margin-left: -4em;
 
-      &::before {
-        content: '\2715';
-      }
+		&::before {
+			content: '\2715';
+		}
 
-      &::after {
-        width: 4em;
+		&::after {
+			width: 4em;
 
-        opacity: 0.8;    
-      }
-  }
+			opacity: 0.8;    
+		}
+	}
 
-  .head-primary-list {
-      position: fixed;
-      left: -100%;
-      right: 100%;
-      top: 0;
-      z-index: 11;
+	.head-primary-list {
+		position: fixed;
+		left: -100%;
+		right: 100%;
+		top: 0;
+		z-index: 11;
 
-      display: block;
-      height: 100%;
-      margin: 0;
-      padding: 0 0 0 4em;
+		display: block;
+		height: 100%;
+		margin: 0;
+		padding: 0 0 0 4em;
 
-      color: @bg;
+		color: @bg;
 
-      background: @text;
+		background: @text;
 
-      overflow: auto;
+		overflow: auto;
 
-      .transition;
+		.transition;
 
-      &::after {
-        content: ' ';
+		&::after {
+			content: ' ';
 
-        position: fixed;
-        left: -100%;
-        right: 100%;
-        bottom: 0;
+			position: fixed;
+			left: -100%;
+			right: 100%;
+			bottom: 0;
 
-        display: block;
-        height: 4em;
-        margin: 0 4em 0 0;
+			display: block;
+			height: 4em;
+			margin: 0 4em 0 0;
 
-        background: linear-gradient( to top, @text, fade( @text, 0% ) );
+			background: linear-gradient( to top, @text, fade( @text, 0% ) );
 
-        .transition;
-      }
-  }
+			.transition;
+		}
+	}
 
-  .show-head-primary .head-primary-list {
-      left: -4em;
-      right: 4em;
+	.show-head-primary .head-primary-list {
+		left: -4em;
+		right: 4em;
 
-      &::after {
-        left: 0;
-        right: 0;
-      }
-  }
+		&::after {
+			left: 0;
+			right: 0;
+		}
+	}
 
-  .head-primary-list li {
-      margin: 0;
-      padding: 0;   
-  }
+	.head-primary-list li {
+		margin: 0;
+		padding: 0;   
+	}
 
-  .head-primary-list > li:last-child {
-    margin-bottom: 4em;
-  }
+	.head-primary-list > li:last-child {
+		margin-bottom: 4em;
+	}
 
-  .head-primary-list li a {
-      display: block;
-      margin: 0;
-      padding: 1.5em 1em;
+	.head-primary-list li a {
+		display: block;
+		margin: 0;
+		padding: 1.5em 1em;
 
-      line-height: 1em;
-      color: @bg;      
-  }
+		line-height: 1em;
+		color: @bg;      
+	}
 
-  .head-primary-list li a:hover,
-  .head-primary-list li a:active,
-  .head-primary-list li a:focus,
-  .head-primary-list li.current-menu-item a {
-      text-decoration: none;
+	.head-primary-list li a:hover,
+	.head-primary-list li a:active,
+	.head-primary-list li a:focus,
+	.head-primary-list li.current-menu-item a {
+		text-decoration: none;
 
-      background: lighten( @text, 10% );
-  }
+		background: lighten( @text, 10% );
+	}
 
-  // submenu 
-  .head-primary-list li ul {
-      margin: 0;
-      padding: 0;
-  }
+	// submenu 
+	.head-primary-list li ul {
+		margin: 0;
+		padding: 0;
+	}
 
-  .head-primary-list li ul li {
+	.head-primary-list li ul li {
 
-  }
+	}
 
-  .head-primary-list li ul li a {
-      padding-left: 2em;
-  }
+	.head-primary-list li ul li a {
+		padding-left: 2em;
+	}
 
 }
