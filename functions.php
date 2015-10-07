@@ -437,49 +437,6 @@ function the_post_time() {
 
 
 /** 
- * Template tag: 
- * get_the_super_title
- * Combines post type label and title
- *
- * @return     string  super title
- */
-function get_the_super_title() {
-    $html = '';
-
-    // archive & single
-    if( is_archive () || is_single() || is_home() ) {
-        if( get_post_type() == 'post' ) {
-            $html = __( 'News', 'hm-theme' );
-        } else { 
-            $html = get_post_type_object( get_post_type() )->labels->name;
-        }
-    }
-
-    // category, tag or taxonomy archive
-    if( is_category() || is_tag() || is_tax() ) {
-        $html .= ' &ndash; ' . single_cat_title( '', 0 );
-    }
-
-    // pages 
-    if( is_page() ) {
-        $html .= get_the_title();
-    }
-
-    // 404 
-    if( is_404() ) {
-        $html .= __( '404', 'hm-theme' );
-    }
-    
-    // search 
-    if( is_search() ) {
-        $html .= __( 'Search results', 'hm-theme' );
-    }
-
-    return $html;
-}
-
-
-/** 
  * Rewrite the search page's permalink 
  * http://example.com/search/{query} 
  */

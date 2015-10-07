@@ -25,9 +25,5 @@
 			
             <?php get_template_part( '/inc/nav--head-primary' ); ?>
 			
-            <?php if( get_the_super_title() != '' ) { ?>
-            <h2><?php echo get_the_super_title(); ?></h2>
-            <?php } ?>
-
 		</section><!-- end .head -->
 		<section class="content" role="main" id="content">
