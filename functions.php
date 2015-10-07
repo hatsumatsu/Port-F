@@ -511,6 +511,19 @@ function hm_search_rewrite_rules( $rules ) {
 add_filter( 'search_rewrite_rules', 'hm_search_rewrite_rules' );
 
 
+/**
+ * Force minimum search term length
+ */
+function cancel_search( $query ) {
+    if( is_search() && $query->is_main_query() && strlen( get_query_var( 's' ) ) < 3 ) {
+        $query->set( 'post__in', array( 0 ) );
+        $query->set( 'error--search-term-length', true );
+    }
+}
+
+add_action( 'pre_get_posts', 'cancel_search' );
+
+
 /** 
  * Set search result post count to infinity 
  */
