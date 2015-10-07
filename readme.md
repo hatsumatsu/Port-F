@@ -1,8 +1,6 @@
 # Port F
 ## A Wordpress Starter Theme 
 
-**Port F** is a Wordpress theme skeleton.
-
 ## Features
 
 ### CSS
@@ -17,11 +15,11 @@
 
 + [Media query based asset loader](http://modernizr.com/docs/#mq), automatically synced with main breakpoint set in LESS
 + Automatic page reload when media query state changes 
-+ Scroll event replaced by requestAnimationFrame polyfill 
-+ Improved window resize events
++ throttled scroll event based on requestAnimationFrame 
++ throttled window resize events
 + Global debug switch (affects console logging and JS minifying)
 + JS-boilerplates following the Revealing Module Pattern
-+ [grunt-modernizr](http://github.com/Modernizr/grunt-modernizr) generates a custom build of [modernizr](http://modernizr.com)
++ [grunt-modernizr](http://github.com/Modernizr/grunt-modernizr) generates a custom build of [modernizr](http://modernizr.com) based on the test you need.
 
 ### Automation 
 
@@ -54,8 +52,8 @@
 + Hide admin menu entries
 + Hide admin dashboard widgets 
 + tinyMCE button/feature configuration 
-+ Custom excerpt length 
-+ `the_super_title()` shortcode, combining custom post type name and title 
-+ rewrite search url to `example.com/search/{query}` 
-+ and much more
++ Custom excerpt length and format
++ Rewrite search url to `example.com/search/{query}` 
++ Force minimum search term length
++ much more ...
 
