@@ -31,7 +31,6 @@ function hm_theme_js() {
     }  
 
     wp_register_script( 'hm-critical', get_template_directory_uri() . '/js/critical.min.js', array( 'jquery' ), '0.4', true );
-    
     wp_enqueue_script( 'hm-critical' );
 } 
 
@@ -53,7 +52,8 @@ add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
 /** 
  * Add inline HTML to <head>
  */
-function hm_theme_head() { ?>
+function hm_theme_head() { 
+?>
 <!--[if lte IE 8]>
     <link rel="stylesheet" type="text/css" href="css/ie-lte8.css" />
 <![endif]-->
@@ -66,7 +66,8 @@ add_action( 'wp_head', 'hm_theme_head', 1 );
 /** 
  * Add inline HTML to <div id="footer">
  */
-function hm_theme_footer() { ?>
+function hm_theme_footer() { 
+?>
 <!-- W3TC-include-js-head -->
 <?php 
 }
@@ -77,9 +78,9 @@ add_action( 'wp_footer', 'hm_theme_footer', 1 );
 /** 
  * Remove unneccessary or unsafe <meta> tags
  */
-remove_action( 'wp_head', 'rsd_link' ); // remove Really Simple Discovery Entry
-remove_action( 'wp_head', 'wlwmanifest_link' );  // remove Windows Live Writer Link 
-remove_action( 'wp_head', 'wp_generator' );  // remove Version number
+remove_action( 'wp_head', 'rsd_link' );             // remove Really Simple Discovery Entry
+remove_action( 'wp_head', 'wlwmanifest_link' );     // remove Windows Live Writer Link 
+remove_action( 'wp_head', 'wp_generator' );         // remove Version number
 
 
 /** 
@@ -110,82 +111,84 @@ add_filter( 'init', 'hm_page_excerpts' );
 
 
 /** 
- * Custom taxonomy
- * http://codex.wordpress.org/Function_Reference/register_taxonomy
+ * Register custom post types and taxonomies
  */
-register_taxonomy( 
-	'project_types', 
-	array( 'projects' ), 
-	array( 
-        'hierarchical'      => true,
-    	'labels'            => array( 
-            'name'                          => __( 'Project Types', 'hm-theme' ), 
-            'singular_name'                 => __( 'Project Type', 'hm-theme' ),
-            'menu_name'                     => __( 'Project Typea', 'hm-theme' ),
-            'all_items'                     => __( 'All Types', 'hm-theme' ),
-            'edit_item'                     => __( 'Edit Type', 'hm-theme' ),
-            'view_item'                     => __( 'View Type', 'hm-theme' ),
-            'update_item'                   => __( 'Update Type', 'hm-theme' ),
-            'add_new_item'                  => __( 'Add New Type', 'hm-theme' ),
-            'new_item_name'                 => __( 'New Type Name', 'hm-theme' ),
-            'parent_item'                   => __( 'Parent Type', 'hm-theme' ),
-            'parent_item_colon'             => __( 'Parent Type:', 'hm-theme' ),
-            'search_items'                  => __( 'Search Types', 'hm-theme' ),
-            'popular_items'                 => __( 'Popular Types', 'hm-theme' ),
-            'separate_items_with_commas'    => __( 'Separate types with commas', 'hm-theme' ), 
-            'add_or_remove_items'           => __( 'Add or remove types', 'hm-theme' ),
-            'choose_from_most_used'         => __( 'Choose from the most used types', 'hm-theme' ),
-            'not_found'                     => __( 'No types found.', 'hm-theme' )
-    	 ),
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'rewrite'           => array( 
-            'slug' => 'projects/filter' 
+function hm_register_data_structure() {
+    register_taxonomy( 
+    	'project_types', 
+    	array( 
+            'projects' 
+        ), 
+    	array( 
+            'hierarchical'      => true,
+        	'labels'            => array( 
+                'name'                          => __( 'Project Types', 'hm-theme' ), 
+                'singular_name'                 => __( 'Project Type', 'hm-theme' ),
+                'menu_name'                     => __( 'Project Typea', 'hm-theme' ),
+                'all_items'                     => __( 'All Types', 'hm-theme' ),
+                'edit_item'                     => __( 'Edit Type', 'hm-theme' ),
+                'view_item'                     => __( 'View Type', 'hm-theme' ),
+                'update_item'                   => __( 'Update Type', 'hm-theme' ),
+                'add_new_item'                  => __( 'Add New Type', 'hm-theme' ),
+                'new_item_name'                 => __( 'New Type Name', 'hm-theme' ),
+                'parent_item'                   => __( 'Parent Type', 'hm-theme' ),
+                'parent_item_colon'             => __( 'Parent Type:', 'hm-theme' ),
+                'search_items'                  => __( 'Search Types', 'hm-theme' ),
+                'popular_items'                 => __( 'Popular Types', 'hm-theme' ),
+                'separate_items_with_commas'    => __( 'Separate types with commas', 'hm-theme' ), 
+                'add_or_remove_items'           => __( 'Add or remove types', 'hm-theme' ),
+                'choose_from_most_used'         => __( 'Choose from the most used types', 'hm-theme' ),
+                'not_found'                     => __( 'No types found.', 'hm-theme' )
+        	 ),
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'rewrite'           => array( 
+                'slug' => 'projects/filter' 
+            )
+        ) 
+    );
+
+    register_post_type( 
+    	'projects', 
+    	array( 
+            'labels'            => array( 
+                'name'                  => __( 'Projects', 'hm-theme' ), 
+                'singular_name'         => __( 'Project', 'hm-theme' ),
+                'menu_name'             => __( 'Projects', 'hm-theme' ),
+                'menu_admin_bar'        => __( 'Project', 'hm-theme' ),
+                'all_items'             => __( 'All Projects', 'hm-theme' ),
+                'add_new'               => __( 'Add new', 'hm-theme' ),
+                'add_new_item'          => __( 'Add new Project', 'hm-theme' ),
+                'edit_item'             => __( 'Edit Project', 'hm-theme' ),
+                'new_item'              => __( 'Add Project', 'hm-theme' ),
+                'view_item'             => __( 'View Project', 'hm-theme' ),
+                'search_items'          => __( 'Search Projects', 'hm-theme' ),
+                'not_found'             => __( 'No Projects found', 'hm-theme' ),
+                'not_found_in_trash'    => __( 'No Projects found in trash', 'hm-theme' ),
+                'parent_item_colon'     => __( 'Parent Project:', 'hm-theme' )
+    	    ),
+            'capability_type'   => 'post',
+            'supports'          => array( 
+                'title', 
+                'editor', 
+                'author', 
+                'thumbnail' 
+            ),
+            'public'            => true,
+            'menu_position'     => 5,
+            'menu_icon'         => 'dashicons-smiley',
+            'rewrite'           => array( 
+                'slug' => 'projects' 
+            ),
+            'has_archive'       => 'projects',
+            'taxonomies'        => array( 
+                'project_types' 
+            )
         )
-    ) 
-);
+    );
+}
 
-
-/** 
- * Custom post type
- * http://codex.wordpress.org/Function_Reference/register_post_type
- */
-register_post_type( 
-	'projects', 
-	array( 
-        'labels'            => array( 
-            'name'                  => __( 'Projects', 'hm-theme' ), 
-            'singular_name'         => __( 'Project', 'hm-theme' ),
-            'menu_name'             => __( 'Projects', 'hm-theme' ),
-            'menu_admin_bar'        => __( 'Project', 'hm-theme' ),
-            'all_items'             => __( 'All Projects', 'hm-theme' ),
-            'add_new'               => __( 'Add new', 'hm-theme' ),
-            'add_new_item'          => __( 'Add new Project', 'hm-theme' ),
-            'edit_item'             => __( 'Edit Project', 'hm-theme' ),
-            'new_item'              => __( 'Add Project', 'hm-theme' ),
-            'view_item'             => __( 'View Project', 'hm-theme' ),
-            'search_items'          => __( 'Search Projects', 'hm-theme' ),
-            'not_found'             => __( 'No Projects found', 'hm-theme' ),
-            'not_found_in_trash'    => __( 'No Projects found in trash', 'hm-theme' ),
-            'parent_item_colon'     => __( 'Parent Project:', 'hm-theme' )
-	    ),
-        'capability_type'   => 'post',
-        'supports'          => array( 
-            'title', 
-            'editor', 
-            'author', 
-            'thumbnail' 
-        ),
-        'public'            => true,
-        'menu_position'     => 5,
-        'menu_icon'         => 'dashicons-smiley',
-        'rewrite'           => array( 
-            'slug' => 'projects' 
-        ),
-        'has_archive'       => 'projects',
-        'taxonomies'        => array( 'project_types' )
-    )
-);
+add_action( 'init', 'hm_register_data_structure' );
 
 
 /** 
