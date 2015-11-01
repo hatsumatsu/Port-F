@@ -269,7 +269,7 @@ add_image_size( '300x200', 300, 200, true );
  * Define custom jpeg quality 
  */
 function hm_jpeg_quality() {
-    return 94;
+    return 90;
 }
 
 add_filter( 'jpeg_quality', 'hm_jpeg_quality' );
