@@ -143,7 +143,9 @@ function hm_register_data_structure() {
                 'separate_items_with_commas'    => __( 'Separate types with commas', 'hm-theme' ), 
                 'add_or_remove_items'           => __( 'Add or remove types', 'hm-theme' ),
                 'choose_from_most_used'         => __( 'Choose from the most used types', 'hm-theme' ),
-                'not_found'                     => __( 'No types found.', 'hm-theme' )
+                'not_found'                     => __( 'No types found.', 'hm-theme' ),
+                'items_list_navigation'         => __( 'Project Types list navigation', 'hm-theme' ),
+                'items_list'                    => __( 'Project Types list', 'hm-theme' )                
         	 ),
             'show_ui'           => true,
             'show_admin_column' => true,
@@ -170,7 +172,10 @@ function hm_register_data_structure() {
                 'search_items'          => __( 'Search Projects', 'hm-theme' ),
                 'not_found'             => __( 'No Projects found', 'hm-theme' ),
                 'not_found_in_trash'    => __( 'No Projects found in trash', 'hm-theme' ),
-                'parent_item_colon'     => __( 'Parent Project:', 'hm-theme' )
+                'parent_item_colon'     => __( 'Parent Project:', 'hm-theme' ),
+                'filter_items_list'     => __( 'Filter Projects list', 'hm-theme' ),
+                'items_list_navigation' => __( 'Projects list navigation', 'hm-theme' ),
+                'items_list'            => __( 'Projects list', 'hm-theme' )                
     	    ),
             'capability_type'   => 'post',
             'supports'          => array( 
