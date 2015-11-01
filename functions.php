@@ -86,18 +86,23 @@ remove_action( 'wp_head', 'wp_generator' );         // remove Version number
 /** 
  * Add theme support 
  */
-add_theme_support( 'post-thumbnails' );
-add_theme_support( 'menus' );
-add_theme_support( 
-    'html5', 
-    array( 
-        'comment-list', 
-        'comment-form', 
-        'search-form', 
-        'gallery', 
-        'caption' 
-    ) 
-);
+function hm_theme_setup() {
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'menus' );
+    add_theme_support( 
+        'html5', 
+        array( 
+            'comment-list', 
+            'comment-form', 
+            'search-form', 
+            'gallery', 
+            'caption' 
+        ) 
+    );
+}
+
+add_action( 'after_setup_theme', 'hm_theme_setup' );
 
 
 /**
@@ -629,6 +634,36 @@ function get_site_title( $separator = ' – ' ) {
 
     return $title_string;
 }
+
+
+/**
+ * Modify the separator of the automatic <title>
+ * @param  [type] $separator [description]
+ * @return [type]            [description]
+ */
+function modify_document_title_separator( $separator ){
+    $separator = '•';    
+    
+    return $separator; 
+}
+
+add_filter( 'document_title_separator', 'modify_document_title_separator', 10 );
+
+
+/**
+ * Modify the parts of the automatic <title>
+ * @param  array $title original title parts
+ * @return array        modified title parts
+ */
+function modify_post_title( $title ){
+    if( is_home() ) { 
+        $title['tagline'] = null; 
+    }
+    
+    return $title; 
+}
+
+add_filter( 'document_title_parts', 'modify_post_title', 10 );
 
 
 /**
