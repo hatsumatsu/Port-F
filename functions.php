@@ -313,18 +313,31 @@ add_action( 'wp_dashboard_setup', 'hm_remove_admin_dashboard_widgets' );
  * http://www.tinymce.com/wiki.php/Configuration
  */
 function hm_customize_tinyMCE( $init ) {
-    /* tinyMCE 3.X - disable rich text pasting */
-    $init['paste_text_sticky'] = true;
-    $init['paste_text_sticky_default'] = true;
 
-    /* tinyMCE 4.X - disable rich text pasting */
+    // disable rich text pasting
     $init['paste_as_text'] = true;
 
-    /* tinyMCE 3.X - format select entries */ 
-    $init['theme_advanced_blockformats'] = 'h3,h4,p';
-
-    /* tinyMCE 4.X - format select entries */ 
+    // format select entries
     $init['block_formats'] = __( 'Paragraph', 'hm-theme' ) . '=p;' . __( 'Heading 3', 'hm-theme' ) . '=h3;' . __( 'Heading 4', 'hm-theme' ) . '=h4';
+
+
+    // style formats
+    $style_formats = array(  
+        array(  
+            'title' => __( 'Bigger', 'hm-theme' ),  
+            'block' => 'p',  
+            'classes' => 'bigger',
+            'wrapper' => false
+        ),
+        array(  
+            'title' => __( 'Button', 'hm-theme' ),  
+            'selector' => 'a',  
+            'classes' => 'button',
+            'wrapper' => false
+        )
+    );  
+
+    $init['style_formats'] = json_encode( $style_formats );
 
     return $init;
 }
@@ -339,6 +352,7 @@ add_filter( 'tiny_mce_before_init', 'hm_customize_tinyMCE' );
 function hm_tinyMCE_buttons_1( $buttons ) {
     return array(
         'formatselect',
+        'styleselect',
         'bold', 
         'italic', 
         'bullist', 
