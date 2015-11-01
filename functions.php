@@ -559,7 +559,7 @@ function hm_save_inline_images( $post_id ) {
     $post = get_post( $post_id );
 
     $exclude = array();
-    preg_match_all( '/wp-image-([0-9]*)/i', $post->post_content, $exclude );
+    preg_match_all( '/data-id="([0-9]*)"/i', $post->post_content, $exclude );
 
     $exclude = $exclude[1];
 
@@ -568,9 +568,6 @@ function hm_save_inline_images( $post_id ) {
         $id = intval( $id );
     }
     unset( $id );
-
-    // add post thumbnail ID to exlude array
-    $exclude[] = get_post_thumbnail_id( $post_id );
 
     // save as postmeta
     update_post_meta( $post_id, 'inline-images', json_encode( $exclude ) );
@@ -874,11 +871,12 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
             'full'
         ),
         array( 
-            'sizes' => '100vw',
-            'alt'   => $alt,
-            'title' => $title,
-            'src'   => $fallback[0],
-            'class' => 'inline-image ' . $align
+            'sizes'   => '100vw',
+            'alt'     => $alt,
+            'title'   => $title,
+            'src'     => $fallback[0],
+            'class'   => 'inline-image ' . $align,
+            'data-id' => $id
         ), 
         true,
         true 
