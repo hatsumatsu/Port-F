@@ -53,11 +53,7 @@ add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
  * Add inline HTML to <head>
  */
 function hm_theme_head() { 
-?>
-<!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="css/ie-lte8.css" />
-<![endif]-->
-<?php 
+    // add HTML here
 }
 
 add_action( 'wp_head', 'hm_theme_head', 1 );
