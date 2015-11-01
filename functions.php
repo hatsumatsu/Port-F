@@ -734,8 +734,8 @@ function get_site_description() {
 
 
 /**
- * Responsive image template tag
- * Needs picturefill.js included
+ * Print responsive image template tag
+ * Needs picturefill.js
  * Example:
  * the_responsive_image( 
  *     $image_id, 
@@ -761,6 +761,38 @@ function get_site_description() {
  * @return string                    HTML <img> tag
  */
 function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array(), $dimensions = false, $fallback = false ) {
+    echo get_the_responsive_image( $id, $sizes, $attributes, $dimensions, $fallback );
+}
+
+
+/**
+ * Get responsive image template tag
+ * Needs picturefill.js
+ * Example:
+ * get_the_responsive_image( 
+ *     $image_id, 
+ *     array( 
+ *         'medium', 
+ *         'large', 
+ *         'full' 
+ *     ), 
+ *     array( 
+ *         'sizes' => '100vw', 
+ *         'alt' => 'Alt text', 
+ *         'class' => 'wp-image' 
+ *     ),
+ *     true,
+ *     true 
+ *  )
+ * 
+ * @param  integer $id               image ID
+ * @param  array $sizes              array of image size key words
+ * @param  array $attributes         array of attribute / value pairs
+ * @param  boolean $dimensions       add dimension attributes to <img>
+ * @param  boolean|string $fallback  true to use first item in sizes array as fallback src, string to define custom fallback image size
+ * @return string                    HTML <img> tag
+ */
+function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array(), $dimensions = false, $fallback = false ) {
     $html = '';
     $html .= '<img';
 
@@ -803,7 +835,7 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
 
     $html .= '>';
 
-    echo $html;
+    return $html;
 }
 
 
@@ -821,11 +853,9 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
  * @return string        modified markup
  */
 function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size = null ) {
-    $orientation = get_post_meta( $id, 'orientation', true );
-
     $html = '';
 
-    $html .= get_responsive_image( 
+    $html .= get_the_responsive_image( 
         $id, 
         array(
             'thumbnail',
@@ -834,6 +864,7 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
             'full'
         ),
         array( 
+            'sizes' => '100vw',
             'alt'   => $alt,
             'title' => $title,
             'src'   => $fallback[0],
@@ -846,7 +877,7 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
     return $html;
 }
 
-add_filter( 'get_image_tag', 'responsive_image_embed', 10, 4 );
+add_filter( 'get_image_tag', 'responsive_image_embed', 10, 6 );
 
 
 /**
@@ -918,6 +949,31 @@ function minimum_image_dimensions( $file ) {
 }
 
 add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' ); 
+
+
+/**
+ * Add custom meta data to uploaded images
+ * + orientation
+ * @param  array $metadata original meta data
+ * @param  int   $id       attachment ID
+ * @return array           modified meta data
+ */
+function add_image_meta_data( $metadata, $id ) {    
+    // orientation
+    if( intval( $metadata['width'] ) == intval( $metadata['height'] ) ) {
+        $orientation = 'square';
+    } elseif( intval( $metadata['width'] ) < intval( $metadata['height'] ) ) {
+        $orientation = 'portrait';
+    } else {
+        $orientation = 'landscape';        
+    }
+
+    update_post_meta( $id, 'orientation', $orientation );    
+
+    return $metadata;
+}
+
+add_filter( 'wp_generate_attachment_metadata', 'add_image_meta_data', 10, 2 );
 
 
 /**
