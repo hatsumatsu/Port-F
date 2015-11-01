@@ -210,8 +210,12 @@ add_filter( 'show_admin_bar', '__return_false' );
 /** 
  * Register navigation menus 
  */
-register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'hm-theme' ) );
-register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'hm-theme' ) );
+function register_navigation() {
+    register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'hm-theme' ) );
+    register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'hm-theme' ) );
+}
+
+add_action( 'after_setup_theme', 'register_navigation' );
 
 
 /**
@@ -244,15 +248,19 @@ add_filter( 'wp_nav_menu_args', 'modify_nav_markup' );
 /** 
  * Register footer widget area 
  */
-register_sidebar( array(
-	'name'=> __( 'Footer Widgets', 'hm-theme' ),
-	'id' => 'footer', 
-    'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h4>',
-    'after_title'   => '</h4>'
-	) 
-);	
+function register_widgets() {
+    register_sidebar( array(
+    	'name'=> __( 'Footer Widgets', 'hm-theme' ),
+    	'id' => 'footer', 
+        'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>'
+    	) 
+    );	
+}
+
+add_action( 'widgets_init', 'register_widgets' );
 
 
 /** 
