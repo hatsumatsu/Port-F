@@ -34,9 +34,7 @@ jQuery( function( $ ) {
 
                 bindEventHandlers();
 
-                if( settings.scrollDetectionMode == 'requestAnimationFrame' ) {
-                    loop();
-                }
+                loop();
             }
 
             var bindEventHandlers = function() {
@@ -65,7 +63,6 @@ jQuery( function( $ ) {
                         onResizeFinish();
                     } );
 
-
             }
 
             /**
@@ -77,14 +74,18 @@ jQuery( function( $ ) {
                 var now = Date.now();
                 var elapsed = now - settings.now;
                 
+                // the actual 'loop'
                 if( elapsed > settings.fps ) {
                     settings.now = now - ( elapsed % settings.fps );
                   
-                    settings._scrollTop = settings.scrollTop;
-                    settings.scrollTop = settings.element.scrollTop();
+                    // scrollTop
+                    if( settings.scrollDetectionMode == 'requestAnimationFrame' ) {                  
+                        settings._scrollTop = settings.scrollTop;
+                        settings.scrollTop = settings.element.scrollTop();
 
-                    if( settings.scrollTop != settings._scrollTop ) {
-                        $( document ).trigger( 'win/scroll' );
+                        if( settings.scrollTop != settings._scrollTop ) {
+                            $( document ).trigger( 'win/scroll' );
+                        }
                     }
                 }
             }
