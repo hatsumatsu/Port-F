@@ -54,7 +54,16 @@ See http://lesscss.org for further reference
 @keyframes foo {
   
 }
+html,
+body {
+  min-height: 100%;
+  background: #ffffff;
+}
 html {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.3;
+  color: #111111;
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
      -moz-font-feature-settings: 'liga', 'dlig', 'kern';
@@ -62,17 +71,6 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
-}
-html,
-body {
-  min-height: 100%;
-  background: #ffffff;
-}
-body {
-  font-family: sans-serif;
-  font-size: 100%;
-  line-height: 1.3;
-  color: #111111;
 }
 title {
   width: 48em;
@@ -114,9 +112,6 @@ h5 {
   margin: 0 0 1em 0;
   line-height: 1;
 }
-p {
-  margin: 0 0 1.3em 0;
-}
 .head-primary-skip {
   position: absolute;
   left: -9999em;
@@ -129,12 +124,12 @@ p {
   display: none;
 }
 .head-primary-list {
-  margin: 0 0 1em 0;
+  margin: 0 0 1rem 0;
   padding: 0;
   list-style-type: none;
 }
 .head-primary-list ul {
-  margin: 0 0 0 1em;
+  margin: 0 0 0 1rem;
   padding: 0;
   list-style-type: none;
 }
@@ -148,8 +143,8 @@ p {
     width: auto;
     height: auto;
     margin: 0;
-    padding: 1.5em 1em 1.5em 4em;
-    line-height: 1em;
+    padding: 1.5rem 1rem 1.5rem 4rem;
+    line-height: 1;
     color: #ffffff;
     background: #111111;
     cursor: pointer;
@@ -161,27 +156,29 @@ p {
             transition: all 250ms ease;
   }
   .head-primary-toggle::before {
-    content: '\2261';
+    content: '+';
     position: absolute;
     left: 0;
     top: 0;
     display: block;
-    width: 2em;
-    height: 2em;
-    font-size: 200%;
-    line-height: 2em;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    line-height: 2;
     text-indent: 0;
     text-align: center;
+    -webkit-transition: all 250ms ease;
+            transition: all 250ms ease;
   }
   .head-primary-toggle::after {
     content: ' ';
     position: fixed;
     right: 0;
-    top: 4em;
+    top: 4rem;
     bottom: 0;
     display: block;
     width: 0;
-    margin: 0 0 0 -4em;
+    margin: 0 0 0 -4rem;
     background: #ffffff;
     opacity: 0;
     -webkit-transition: all 250ms ease;
@@ -191,15 +188,22 @@ p {
     -webkit-transition-delay: 0ms, 250ms;
             transition-delay: 0ms, 250ms;
   }
+  .head-primary-toggle:hover,
+  .head-primary-toggle:focus {
+    text-decoration: none;
+    background: #2b2b2b;
+  }
   .show-head-primary .head-primary-toggle {
     left: 100%;
-    margin-left: -4em;
+    margin-left: -4rem;
   }
   .show-head-primary .head-primary-toggle::before {
-    content: '\2715';
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
   }
   .show-head-primary .head-primary-toggle::after {
-    width: 4em;
+    width: 4rem;
     opacity: 0.8;
   }
   .head-primary-list {
@@ -211,7 +215,7 @@ p {
     display: block;
     height: 100%;
     margin: 0;
-    padding: 0 0 0 4em;
+    padding: 0 0 0 4rem;
     color: #ffffff;
     background: #111111;
     overflow: auto;
@@ -225,16 +229,16 @@ p {
     right: 100%;
     bottom: 0;
     display: block;
-    height: 4em;
-    margin: 0 4em 0 0;
+    height: 4rem;
+    margin: 0 4rem 0 0;
     background: -webkit-linear-gradient(bottom, #111111, rgba(17, 17, 17, 0));
     background: linear-gradient(to top, #111111, rgba(17, 17, 17, 0));
     -webkit-transition: all 250ms ease;
             transition: all 250ms ease;
   }
   .show-head-primary .head-primary-list {
-    left: -4em;
-    right: 4em;
+    left: -4rem;
+    right: 4rem;
   }
   .show-head-primary .head-primary-list::after {
     left: 0;
@@ -245,17 +249,16 @@ p {
     padding: 0;
   }
   .head-primary-list > li:last-child {
-    margin-bottom: 4em;
+    margin-bottom: 4rem;
   }
   .head-primary-list li a {
     display: block;
     margin: 0;
-    padding: 1.5em 1em;
-    line-height: 1em;
+    padding: 1.5rem 1rem;
+    line-height: 1;
     color: #ffffff;
   }
   .head-primary-list li a:hover,
-  .head-primary-list li a:active,
   .head-primary-list li a:focus,
   .head-primary-list li.current-menu-item a {
     text-decoration: none;
@@ -266,11 +269,14 @@ p {
     padding: 0;
   }
   .head-primary-list li ul li a {
-    padding-left: 2em;
+    padding-left: 2rem;
   }
 }
 .post {
-  margin: 0 0 1.3em 0;
+  margin: 0 0 1rem 0;
+}
+.post:last-child {
+  margin-bottom: 0;
 }
 .filelist {
   margin: 0;
@@ -278,18 +284,13 @@ p {
   list-style-type: none;
 }
 .message {
-  margin: 1.3em 0;
-  padding: 1.3em 1.3em;
-  background: #cfcfcf;
-}
-.warning {
-  margin: 1.3em 0;
-  padding: 1.3em 1.3em;
+  margin: 1rem 0;
+  padding: 1rem 1rem;
   background: #cfcfcf;
 }
 .footer {
   clear: both;
-  margin: 1em 0 0 0;
+  margin: 1rem 0 0 0;
 }
 .footer-primary-skip {
   position: absolute;

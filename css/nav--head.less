@@ -15,7 +15,7 @@
 
 // <ul>
 .head-primary-list {
-	margin: 0 0 1em 0;
+	margin: 0 0 1rem 0;
 	padding: 0;
 
 	list-style-type: none;
@@ -29,8 +29,7 @@
 
 
 	&:hover,
-	&:focus,
-	&:active {
+	&:focus {
 
 	}
 }
@@ -40,15 +39,14 @@
 	
 
 	&:hover,
-	&:focus,
-	&:active {
+	&:focus {
 
 	}
 }
 
 // submenu
 .head-primary-list ul {
-	margin: 0 0 0 1em;
+	margin: 0 0 0 1rem;
 	padding: 0;
 
 	list-style-type: none;
@@ -68,12 +66,12 @@
 		width: auto;
 		height: auto;
 		margin: 0;
-		padding: 1.5em 1em 1.5em 4em;
+		padding: 1.5rem 1rem 1.5rem 4rem;
 
-		line-height: 1em;
-		color: @bg;
+		line-height: 1;
+		color: @color--bg;
 		
-		background: @text;
+		background: @color--text;
 
 		cursor: pointer;
 		user-select: none;
@@ -81,20 +79,22 @@
 		.transition;
 
 		&::before {
-			content: '\2261';
+			content: '+';
 			
 			position: absolute;
 			left: 0;
 			top: 0;
 
 			display: block;
-			width: 2em;
-			height: 2em;
+			width: 4rem;
+			height: 4rem;
 
-			font-size: 200%;
-			line-height: 2em;
+			font-size: 2rem;
+			line-height: 2;
 			text-indent: 0;
 			text-align: center;
+
+			.transition;
 		}
 
 		&::after {
@@ -102,14 +102,14 @@
 
 			position: fixed;
 			right: 0;
-			top: 4em;
+			top: 4rem;
 			bottom: 0;
 
 			display: block;
 			width: 0;
-			margin: 0 0 0 -4em;
+			margin: 0 0 0 -4rem;
 
-			background: @bg;
+			background: @color--bg;
 
 			opacity: 0;
 
@@ -117,19 +117,27 @@
 			transition-property: width, opacity;
 			transition-delay: 0ms, @transition-duration;
 		}
+
+		&:hover,
+		&:focus {
+			text-decoration: none;
+
+			background: lighten( @color--text, 10% );			
+		}
 	}
 
 	.show-head-primary .head-primary-toggle {
 		left: 100%;
 
-		margin-left: -4em;
+		margin-left: -4rem;
 
 		&::before {
-			content: '\2715';
+
+			transform: rotate( 45deg );
 		}
 
 		&::after {
-			width: 4em;
+			width: 4rem;
 
 			opacity: 0.8;    
 		}
@@ -145,11 +153,11 @@
 		display: block;
 		height: 100%;
 		margin: 0;
-		padding: 0 0 0 4em;
+		padding: 0 0 0 4rem;
 
-		color: @bg;
+		color: @color--bg;
 
-		background: @text;
+		background: @color--text;
 
 		overflow: auto;
 
@@ -164,18 +172,18 @@
 			bottom: 0;
 
 			display: block;
-			height: 4em;
-			margin: 0 4em 0 0;
+			height: 4rem;
+			margin: 0 4rem 0 0;
 
-			background: linear-gradient( to top, @text, fade( @text, 0% ) );
+			background: linear-gradient( to top, @color--text, fade( @color--text, 0% ) );
 
 			.transition;
 		}
 	}
 
 	.show-head-primary .head-primary-list {
-		left: -4em;
-		right: 4em;
+		left: -4rem;
+		right: 4rem;
 
 		&::after {
 			left: 0;
@@ -189,25 +197,24 @@
 	}
 
 	.head-primary-list > li:last-child {
-		margin-bottom: 4em;
+		margin-bottom: 4rem;
 	}
 
 	.head-primary-list li a {
 		display: block;
 		margin: 0;
-		padding: 1.5em 1em;
+		padding: 1.5rem 1rem;
 
-		line-height: 1em;
-		color: @bg;      
+		line-height: 1;
+		color: @color--bg;      
 	}
 
 	.head-primary-list li a:hover,
-	.head-primary-list li a:active,
 	.head-primary-list li a:focus,
 	.head-primary-list li.current-menu-item a {
 		text-decoration: none;
 
-		background: lighten( @text, 10% );
+		background: lighten( @color--text, 10% );
 	}
 
 	// submenu 
@@ -221,7 +228,7 @@
 	}
 
 	.head-primary-list li ul li a {
-		padding-left: 2em;
+		padding-left: 2rem;
 	}
 
 }

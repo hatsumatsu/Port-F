@@ -1,11 +1,11 @@
 // links
 a {
-	color: @link;
+	color: @color--link;
 	text-decoration: none;
 }
 
 a:visited {
-	color: desaturate( @link, 5% );
+	color: desaturate( @color--link, 5% );
 }
 
 a:hover,
@@ -20,8 +20,8 @@ a:active {
 
 // selection
 ::selection {
-	color: @bg;
-	background: @link;
+	color: @color--bg;
+	background: @color--link;
 }
 
 // headings
@@ -37,7 +37,6 @@ h5 {
 	& a {
 
 		&:hover,
-		&:active,
 		&:focus {
 
 		}
@@ -49,7 +48,6 @@ h1 {
 	& a {
 
 		&:hover,
-		&:active,
 		&:focus {
 
 		}
@@ -61,7 +59,6 @@ h2 {
 	& a {
 
 		&:hover,
-		&:active,
 		&:focus {
 
 		}
@@ -73,7 +70,6 @@ h3 {
 	& a {
 
 		&:hover,
-		&:active,
 		&:focus {
 
 		}
@@ -85,7 +81,6 @@ h4 {
 	& a {
 
 		&:hover,
-		&:active,
 		&:focus {
 
 		}
@@ -97,26 +92,8 @@ h5 {
 	& a {
 
 		&:hover,
-		&:active,
 		&:focus {
 
 		}
 	}
-}
-
-// content elements
-section {
-	
-}
-
-p {
-	margin: 0 0 ( 1 * @line-height * 1em ) 0;
-}
-
-p + p {
-
-}
-
-hr {
-
 }
