@@ -21,7 +21,8 @@ jQuery( function( $ ) {
                 height: 0,
                 scrollTop: 0,
                 scrollDetectionMode: 'scrollEvent', // 'scrollEvent' or 'requestAnimationFrame'
-                now: Date.now(),
+                nowScroll: Date.now(),
+                nowLoop: Date.now(),
                 fps: ( 1000 / 60 )
             };
 
@@ -43,10 +44,10 @@ jQuery( function( $ ) {
 
                     settings.element.on( 'scroll', function() {
                         var now = Date.now();
-                        var elapsed = now - settings.now;
+                        var elapsed = now - settings.nowScroll;
                         
                         if( elapsed > settings.fps ) {
-                            settings.now = now - ( elapsed % settings.fps );
+                            settings.nowScroll = now - ( elapsed % settings.fps );
 
                             settings.scrollTop = settings.element.scrollTop();
                             $( document ).trigger( 'win/scroll' );
@@ -72,11 +73,11 @@ jQuery( function( $ ) {
                 requestAnimationFrame( loop );
                 
                 var now = Date.now();
-                var elapsed = now - settings.now;
+                var elapsed = now - settings.nowLoop;
                 
                 // the actual 'loop'
                 if( elapsed > settings.fps ) {
-                    settings.now = now - ( elapsed % settings.fps );
+                    settings.nowLoop = now - ( elapsed % settings.fps );
                   
                     // scrollTop
                     if( settings.scrollDetectionMode == 'requestAnimationFrame' ) {                  
