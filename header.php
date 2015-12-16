@@ -5,6 +5,11 @@
     
     <?php wp_head(); ?>
 
+    <script>
+        document.getElementsByTagName( 'html' )[0].className += ' js';
+        document.getElementsByTagName( 'html' )[0].className = document.getElementsByTagName( 'html' )[0].className.replace( ' no-js', '' );
+    </script>    
+
     <meta name="description" content="<?php echo esc_attr( get_site_description() ); ?>">
     
     <meta name="HandheldFriendly" content="True">
