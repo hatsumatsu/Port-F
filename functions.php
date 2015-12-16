@@ -874,7 +874,6 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
             'sizes'   => '100vw',
             'alt'     => $alt,
             'title'   => $title,
-            'src'     => $fallback[0],
             'class'   => 'inline-image ' . $align,
             'data-id' => $id
         ), 
