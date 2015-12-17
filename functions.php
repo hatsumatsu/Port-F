@@ -984,6 +984,24 @@ add_filter( 'wp_generate_attachment_metadata', 'add_image_meta_data', 10, 2 );
 
 
 /**
+ * Sanitize upload file names to prevent encoding problem in perticular server / browser environments
+ * namely NFD / NFC confusion
+ * + normalize NFD > NFC
+ * + remove accents
+ * @param  string $filename file name
+ * @return string           file name
+ */
+function hm_sanitize_file_name( $filename ) {
+    $filename = normalizer_normalize( $filename );
+    $filename = remove_accents( $filename );
+
+    return $filename;
+}
+
+add_filter( 'sanitize_file_name', 'hm_sanitize_file_name' ); 
+
+
+/**
  * Get the current archive URL without page number 
  * @return  int  $url URL of the archive 
  */
