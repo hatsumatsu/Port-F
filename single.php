@@ -17,6 +17,6 @@
 	}
 ?>
 
-<?php get_inc( 'filelist', 0, 0 ); ?>
+<?php get_inc( 'downloads', 0, 0 ); ?>
 
 <?php get_footer(); ?>

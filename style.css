@@ -278,10 +278,11 @@ h5 {
 .post:last-child {
   margin-bottom: 0;
 }
-.filelist {
+.downloads {
   margin: 0;
-  padding: 0;
-  list-style-type: none;
+}
+.download {
+  display: block;
 }
 .message {
   margin: 1rem 0;
