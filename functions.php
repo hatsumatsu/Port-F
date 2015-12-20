@@ -897,9 +897,11 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
     $html .= get_the_responsive_image( 
         $id, 
         array(
+            'tiny',
             'thumbnail',
             'medium',
             'large',
+            'larger',
             'full'
         ),
         array( 
