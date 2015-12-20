@@ -550,6 +550,18 @@ add_action( 'pre_get_posts', 'hm_search_post_count' );
 
 
 /**
+ * Modify pagination permalink fragment
+ */
+function modify_pagination_permalink_slug() {
+    global $wp_rewrite;
+
+    $wp_rewrite->pagination_base = __( 'page', 'hm-theme' );
+}
+
+add_action( 'init', 'modify_pagination_permalink_slug', 1 );
+
+
+/**
  * Set default of link field to 'none' in media library modal
  */
 update_option( 'image_default_link_type', 'none' );
@@ -1043,7 +1055,7 @@ function get_current_archive_url() {
     global $wp;
 
     $url = home_url( $wp->request );
-    $url = explode( 'page/', $url );
+    $url = explode( __( 'page', 'hm-theme' ) . '/', $url );
     $url = trailingslashit( $url[0] );
 
     return $url;
