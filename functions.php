@@ -260,9 +260,37 @@ add_action( 'widgets_init', 'register_widgets' );
 
 
 /** 
- * Define custom image size 
+ * Define image sizes
+ * tiny:          80 x  120px  
+ * thumbnail:    400 x  600px  
+ * medium:       800 x 1200px  
+ * large:       1200 x 1800px  
+ * larger:      1800 x 2700px  
  */
-add_image_size( '300x200', 300, 200, true );
+function modify_image_sizes() {
+    // tiny
+    add_image_size( 'tiny', 80, 120, false );
+
+    // thumbnail
+    update_option( 'thumbnail_size_w', 400 );
+    update_option( 'thumbnail_size_h', 600 );
+    update_option( 'thumbnail_crop', 0 );
+
+    // medium
+    update_option( 'medium_size_w', 800 );
+    update_option( 'medium_size_h', 1200 );
+    update_option( 'medium_crop', 0 );
+
+    // large
+    update_option( 'large_size_w', 1200 );
+    update_option( 'large_size_h', 1800 );
+    update_option( 'large_crop', 0 );
+
+    // larger
+    add_image_size( 'larger', 1800, 2700, false );
+}
+
+add_action( 'after_setup_theme', 'modify_image_sizes' );
 
 
 /** 
