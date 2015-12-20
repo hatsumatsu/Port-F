@@ -1047,3 +1047,17 @@ function wrap_oembed( $html, $url, $attributes, $id ) {
 }
 
 add_filter( 'embed_oembed_html', 'wrap_oembed', 99, 4 );
+
+
+/**
+ * Redirect views not used by the theme
+ * + author archive > home
+ */
+function redirect_views() {
+    if( is_author() ) {
+        wp_redirect( home_url() ); 
+        exit;
+    }
+}
+
+add_action( 'template_redirect', 'redirect_views' );
