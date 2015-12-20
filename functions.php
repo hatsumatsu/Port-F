@@ -513,11 +513,11 @@ add_action( 'template_redirect', 'hm_rewrite_search' );
  */
 function hm_search_rewrite_rules( $rules ) {
     foreach( $rules as $rule => $target ) {
-    
         $new_rule = str_replace( 'search', __( 'search', 'hm-theme' ), $rule );
         unset( $rules[$rule] );
         $rules[$new_rule] = $target;
     }
+
     return $rules;
 }
 
@@ -706,6 +706,10 @@ add_filter( 'document_title_separator', 'modify_document_title_separator', 10 );
 function modify_post_title( $title ){
     if( is_home() ) { 
         $title['tagline'] = null; 
+    }
+
+    if( !is_home() && is_front_page() ) {
+        $title['title'] = null;         
     }
     
     return $title; 
