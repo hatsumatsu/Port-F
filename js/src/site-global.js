@@ -75,40 +75,41 @@ jQuery( function( $ ) {
         } )();
 
 
-        // nav 
+        // module nav 
         var nav = ( function() {
 
             var settings = {
-                id: 'head-primary'
+
             };
 
             var init = function() {
                 debuglog( 'siteGlobal.nav.init()' );
 
-                settings.element = $( '.nav--' + settings.id );
-
                 bindEventHandlers();
             }
 
             var bindEventHandlers = function() {
-                settings.element
-                    .on( 'click', '.toggle', function( e ) {
+                $( document )
+                    .on( 'click', '.nav-toggle', function( e ) {
                         e.preventDefault();
 
-                        if( $( 'html' ).hasClass( 'show-' + settings.id  ) ) {
+                        var navigation = $( this ).closest( 'nav' );
+                        var id = navigation.attr( 'data-theme-location' );
+
+                        if( $( 'html' ).hasClass( 'visible--' + id  ) ) {
                             $( document ).trigger( 'nav/hide' );
                         } else {
                             $( document ).trigger( 'nav/show' );
                         }
 
-                        $( 'html' ).toggleClass( 'show-' + settings.id );
+                        $( 'html' ).toggleClass( 'visible--' + id );
                     } );
             }
 
             return {
                 init: function() { init(); }
             }
-            
+
         } )();
 
 

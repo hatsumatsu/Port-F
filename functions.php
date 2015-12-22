@@ -222,14 +222,14 @@ add_action( 'after_setup_theme', 'register_navigation' );
  */
 function modify_nav_markup( $args = '' ) {
     $html  = '';
-    $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation">';
-    $html .= '<a href="#content" class="skip ' . esc_attr( $args['theme_location'] ) . '-skip" title="' . esc_attr( __( 'Skip Navigation', 'hm-theme' ) ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
+    $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-theme-location="' . esc_attr( $args['theme_location'] ) . '">';
+    $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'hm-theme' ) ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
 
     if( $args['theme_location'] == 'head-primary' ) {
-        $html .= '<a class="toggle ' . esc_attr( $args['theme_location'] ) . '-toggle" title="' . esc_attr( __( 'Toggle Navigation', 'hm-theme' ) ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
+        $html .= '<a class="nav-toggle nav-toggle--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Toggle Navigation', 'hm-theme' ) ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
     }
     
-    $html .= '<ul class="' . esc_attr( $args['theme_location'] ) . '-list">%3$s</ul>';
+    $html .= '<ul class="nav-list nav-list--' . esc_attr( $args['theme_location'] ) . '">%3$s</ul>';
     $html .= '</nav>';
 
     $args['items_wrap'] = $html;
