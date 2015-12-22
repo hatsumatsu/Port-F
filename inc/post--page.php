@@ -6,7 +6,7 @@
     	</a>
     </h2>
 
-    <time class="post-time" datetime="<?php the_time( 'Y-m-d\TH:i' ); ?>">
+    <time class="post-time post-time--<?php echo get_post_type_advanced(); ?>" datetime="<?php the_time( 'Y-m-d\TH:i' ); ?>">
     	<?php the_post_time(); ?>
     </time>
     
