@@ -15,8 +15,8 @@
 
 + [Media query based asset loader](http://modernizr.com/docs/#mq), automatically synced with main breakpoint set in LESS
 + Automatic page reload when media query state changes 
-+ throttled scroll event based on requestAnimationFrame 
-+ throttled window resize events
++ 60fps throttled scroll event based on requestAnimationFrame 
++ debounced window resize events
 + Global debug switch (affects console logging and JS minifying)
 + JS-boilerplates following the Revealing Module Pattern
 + [grunt-modernizr](http://github.com/Modernizr/grunt-modernizr) generates a custom build of [modernizr](http://modernizr.com) based on the test you need.
@@ -32,7 +32,6 @@
 + Create fallback PNG images for SVGs
 + FTP deployment
 
-
 ### functions.php
 
 + Smart include system to reuse template snippets based on post types
@@ -47,7 +46,8 @@
 + Responsive image template tag
 + Custom image size 
 + Custom JPEG quality 
-+ Minimum image size for uploaded files
++ Minimum dimensions size for uploaded files
++ WP Editor CSS
 + Admin CSS
 + Hide admin menu entries
 + Hide admin dashboard widgets 
@@ -55,5 +55,4 @@
 + Custom excerpt length and format
 + Rewrite search url to `example.com/search/{query}` 
 + Force minimum search term length
-+ much more ...
-
++ ...
