@@ -142,7 +142,7 @@ function hm_register_data_structure() {
         	'labels'            => array( 
                 'name'                          => __( 'Project Types', 'port-f' ), 
                 'singular_name'                 => __( 'Project Type', 'port-f' ),
-                'menu_name'                     => __( 'Project Typea', 'port-f' ),
+                'menu_name'                     => __( 'Project Types', 'port-f' ),
                 'all_items'                     => __( 'All Types', 'port-f' ),
                 'edit_item'                     => __( 'Edit Type', 'port-f' ),
                 'view_item'                     => __( 'View Type', 'port-f' ),
