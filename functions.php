@@ -60,7 +60,7 @@ add_action( 'wp_head', 'hm_theme_head', 1 );
 
 
 /** 
- * Add inline HTML to <div id="footer">
+ * Add inline HTML to <section class="footer">
  */
 function hm_theme_footer() { 
 ?>
