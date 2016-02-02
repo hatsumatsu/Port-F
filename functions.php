@@ -2,7 +2,7 @@
 /**
  * i11n
  */
-load_theme_textdomain( 'hm-theme', get_stylesheet_directory() . '/languages' );
+load_theme_textdomain( 'port-f', get_stylesheet_directory() . '/languages' );
 
 
 /** 
@@ -10,10 +10,10 @@ load_theme_textdomain( 'hm-theme', get_stylesheet_directory() . '/languages' );
  */
 function hm_theme_css() {
     wp_register_style( 'hm-normalize', get_template_directory_uri() . '/css/normalize.css', 0, 'screen' );
-    wp_register_style( 'hm-theme', get_template_directory_uri() . '/style.css', array( 'hm-normalize' ), 0, 'screen' );
+    wp_register_style( 'port-f', get_template_directory_uri() . '/style.css', array( 'hm-normalize' ), 0, 'screen' );
 
     wp_enqueue_style( 'hm-normalize' );
-    wp_enqueue_style( 'hm-theme' );
+    wp_enqueue_style( 'port-f' );
 } 
 
 add_action( 'wp_enqueue_scripts', 'hm_theme_css' );
@@ -109,7 +109,7 @@ function test_server() {
 ?>
 <div class="error notice">
     <p>
-        <?php echo __( 'It seems that <strong>PHP Intl</strong> is missing on the server. File names are not santized safely on upload.', 'hm-theme' ); ?>
+        <?php echo __( 'It seems that <strong>PHP Intl</strong> is missing on the server. File names are not santized safely on upload.', 'port-f' ); ?>
     </p>
 </div>
 <?php
@@ -140,25 +140,25 @@ function hm_register_data_structure() {
     	array( 
             'hierarchical'      => true,
         	'labels'            => array( 
-                'name'                          => __( 'Project Types', 'hm-theme' ), 
-                'singular_name'                 => __( 'Project Type', 'hm-theme' ),
-                'menu_name'                     => __( 'Project Typea', 'hm-theme' ),
-                'all_items'                     => __( 'All Types', 'hm-theme' ),
-                'edit_item'                     => __( 'Edit Type', 'hm-theme' ),
-                'view_item'                     => __( 'View Type', 'hm-theme' ),
-                'update_item'                   => __( 'Update Type', 'hm-theme' ),
-                'add_new_item'                  => __( 'Add New Type', 'hm-theme' ),
-                'new_item_name'                 => __( 'New Type Name', 'hm-theme' ),
-                'parent_item'                   => __( 'Parent Type', 'hm-theme' ),
-                'parent_item_colon'             => __( 'Parent Type:', 'hm-theme' ),
-                'search_items'                  => __( 'Search Types', 'hm-theme' ),
-                'popular_items'                 => __( 'Popular Types', 'hm-theme' ),
-                'separate_items_with_commas'    => __( 'Separate types with commas', 'hm-theme' ), 
-                'add_or_remove_items'           => __( 'Add or remove types', 'hm-theme' ),
-                'choose_from_most_used'         => __( 'Choose from the most used types', 'hm-theme' ),
-                'not_found'                     => __( 'No types found.', 'hm-theme' ),
-                'items_list_navigation'         => __( 'Project Types list navigation', 'hm-theme' ),
-                'items_list'                    => __( 'Project Types list', 'hm-theme' )                
+                'name'                          => __( 'Project Types', 'port-f' ), 
+                'singular_name'                 => __( 'Project Type', 'port-f' ),
+                'menu_name'                     => __( 'Project Typea', 'port-f' ),
+                'all_items'                     => __( 'All Types', 'port-f' ),
+                'edit_item'                     => __( 'Edit Type', 'port-f' ),
+                'view_item'                     => __( 'View Type', 'port-f' ),
+                'update_item'                   => __( 'Update Type', 'port-f' ),
+                'add_new_item'                  => __( 'Add New Type', 'port-f' ),
+                'new_item_name'                 => __( 'New Type Name', 'port-f' ),
+                'parent_item'                   => __( 'Parent Type', 'port-f' ),
+                'parent_item_colon'             => __( 'Parent Type:', 'port-f' ),
+                'search_items'                  => __( 'Search Types', 'port-f' ),
+                'popular_items'                 => __( 'Popular Types', 'port-f' ),
+                'separate_items_with_commas'    => __( 'Separate types with commas', 'port-f' ), 
+                'add_or_remove_items'           => __( 'Add or remove types', 'port-f' ),
+                'choose_from_most_used'         => __( 'Choose from the most used types', 'port-f' ),
+                'not_found'                     => __( 'No types found.', 'port-f' ),
+                'items_list_navigation'         => __( 'Project Types list navigation', 'port-f' ),
+                'items_list'                    => __( 'Project Types list', 'port-f' )                
         	 ),
             'show_ui'           => true,
             'show_admin_column' => true,
@@ -172,23 +172,23 @@ function hm_register_data_structure() {
     	'projects', 
     	array( 
             'labels'            => array( 
-                'name'                  => __( 'Projects', 'hm-theme' ), 
-                'singular_name'         => __( 'Project', 'hm-theme' ),
-                'menu_name'             => __( 'Projects', 'hm-theme' ),
-                'menu_admin_bar'        => __( 'Project', 'hm-theme' ),
-                'all_items'             => __( 'All Projects', 'hm-theme' ),
-                'add_new'               => __( 'Add new', 'hm-theme' ),
-                'add_new_item'          => __( 'Add new Project', 'hm-theme' ),
-                'edit_item'             => __( 'Edit Project', 'hm-theme' ),
-                'new_item'              => __( 'Add Project', 'hm-theme' ),
-                'view_item'             => __( 'View Project', 'hm-theme' ),
-                'search_items'          => __( 'Search Projects', 'hm-theme' ),
-                'not_found'             => __( 'No Projects found', 'hm-theme' ),
-                'not_found_in_trash'    => __( 'No Projects found in trash', 'hm-theme' ),
-                'parent_item_colon'     => __( 'Parent Project:', 'hm-theme' ),
-                'filter_items_list'     => __( 'Filter Projects list', 'hm-theme' ),
-                'items_list_navigation' => __( 'Projects list navigation', 'hm-theme' ),
-                'items_list'            => __( 'Projects list', 'hm-theme' )                
+                'name'                  => __( 'Projects', 'port-f' ), 
+                'singular_name'         => __( 'Project', 'port-f' ),
+                'menu_name'             => __( 'Projects', 'port-f' ),
+                'menu_admin_bar'        => __( 'Project', 'port-f' ),
+                'all_items'             => __( 'All Projects', 'port-f' ),
+                'add_new'               => __( 'Add new', 'port-f' ),
+                'add_new_item'          => __( 'Add new Project', 'port-f' ),
+                'edit_item'             => __( 'Edit Project', 'port-f' ),
+                'new_item'              => __( 'Add Project', 'port-f' ),
+                'view_item'             => __( 'View Project', 'port-f' ),
+                'search_items'          => __( 'Search Projects', 'port-f' ),
+                'not_found'             => __( 'No Projects found', 'port-f' ),
+                'not_found_in_trash'    => __( 'No Projects found in trash', 'port-f' ),
+                'parent_item_colon'     => __( 'Parent Project:', 'port-f' ),
+                'filter_items_list'     => __( 'Filter Projects list', 'port-f' ),
+                'items_list_navigation' => __( 'Projects list navigation', 'port-f' ),
+                'items_list'            => __( 'Projects list', 'port-f' )                
     	    ),
             'capability_type'   => 'post',
             'supports'          => array( 
@@ -224,8 +224,8 @@ add_filter( 'show_admin_bar', '__return_false' );
  * Register navigation menus 
  */
 function register_navigation() {
-    register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'hm-theme' ) );
-    register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'hm-theme' ) );
+    register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'port-f' ) );
+    register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'port-f' ) );
 }
 
 add_action( 'after_setup_theme', 'register_navigation' );
@@ -240,10 +240,10 @@ add_action( 'after_setup_theme', 'register_navigation' );
 function modify_nav_markup( $args = '' ) {
     $html  = '';
     $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-theme-location="' . esc_attr( $args['theme_location'] ) . '">';
-    $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'hm-theme' ) ) . '">' . __( 'Skip Navigation', 'hm-theme' ) . '</a>';
+    $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
 
     if( $args['theme_location'] == 'head-primary' ) {
-        $html .= '<a class="nav-toggle nav-toggle--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Toggle Navigation', 'hm-theme' ) ) . '">' . __( 'Navigation', 'hm-theme' ) . '</a>';
+        $html .= '<a class="nav-toggle nav-toggle--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Toggle Navigation', 'port-f' ) ) . '">' . __( 'Navigation', 'port-f' ) . '</a>';
     }
     
     $html .= '<ul class="nav-list nav-list--' . esc_attr( $args['theme_location'] ) . '">%3$s</ul>';
@@ -263,7 +263,7 @@ add_filter( 'wp_nav_menu_args', 'modify_nav_markup' );
  */
 function register_widgets() {
     register_sidebar( array(
-    	'name'=> __( 'Footer Widgets', 'hm-theme' ),
+    	'name'=> __( 'Footer Widgets', 'port-f' ),
     	'id' => 'footer', 
         'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
         'after_widget'  => '</div>',
@@ -363,19 +363,19 @@ function hm_customize_tinyMCE( $init ) {
     $init['paste_as_text'] = true;
 
     // format select entries
-    $init['block_formats'] = __( 'Paragraph', 'hm-theme' ) . '=p;' . __( 'Heading 3', 'hm-theme' ) . '=h3;' . __( 'Heading 4', 'hm-theme' ) . '=h4';
+    $init['block_formats'] = __( 'Paragraph', 'port-f' ) . '=p;' . __( 'Heading 3', 'port-f' ) . '=h3;' . __( 'Heading 4', 'port-f' ) . '=h4';
 
 
     // style formats
     $style_formats = array(  
         array(  
-            'title' => __( 'Bigger', 'hm-theme' ),  
+            'title' => __( 'Bigger', 'port-f' ),  
             'block' => 'p',  
             'classes' => 'bigger',
             'wrapper' => false
         ),
         array(  
-            'title' => __( 'Button', 'hm-theme' ),  
+            'title' => __( 'Button', 'port-f' ),  
             'selector' => 'a',  
             'classes' => 'button',
             'wrapper' => false
@@ -515,7 +515,7 @@ function the_post_time() {
  */
 function hm_rewrite_search() {
     if( is_search() && !empty( $_GET['s'] ) && !is_admin() ) {
-        wp_redirect( home_url( '/' . __( 'search', 'hm-theme' ) . '/' ) . urlencode( get_query_var( 's' ) ) );
+        wp_redirect( home_url( '/' . __( 'search', 'port-f' ) . '/' ) . urlencode( get_query_var( 's' ) ) );
         exit();
     }
 }
@@ -530,7 +530,7 @@ add_action( 'template_redirect', 'hm_rewrite_search' );
  */
 function hm_search_rewrite_rules( $rules ) {
     foreach( $rules as $rule => $target ) {
-        $new_rule = str_replace( 'search', __( 'search', 'hm-theme' ), $rule );
+        $new_rule = str_replace( 'search', __( 'search', 'port-f' ), $rule );
         unset( $rules[$rule] );
         $rules[$new_rule] = $target;
     }
@@ -572,7 +572,7 @@ add_action( 'pre_get_posts', 'hm_search_post_count' );
 function modify_pagination_permalink_slug() {
     global $wp_rewrite;
 
-    $wp_rewrite->pagination_base = __( 'page', 'hm-theme' );
+    $wp_rewrite->pagination_base = __( 'page', 'port-f' );
 }
 
 add_action( 'init', 'modify_pagination_permalink_slug', 1 );
@@ -1010,9 +1010,9 @@ function minimum_image_dimensions( $file ) {
     $image = getimagesize( $file['tmp_name'] );
 
     if ( $image[0] < $minimum['width'] ) {
-        $file['error'] = sprintf( __( 'Image is too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'hm-theme' ), $minimum['width'], $image[0] );
+        $file['error'] = sprintf( __( 'Image is too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'port-f' ), $minimum['width'], $image[0] );
     } elseif ( $image[1] < $minimum['height'] ) {
-        $file['error'] = sprintf( __( 'Image is too small. Minimum height is %1$spx. Uploaded image height is %2$spx', 'hm-theme' ), $minimum['height'], $image[0] );
+        $file['error'] = sprintf( __( 'Image is too small. Minimum height is %1$spx. Uploaded image height is %2$spx', 'port-f' ), $minimum['height'], $image[0] );
     }
 
     return $file;
@@ -1075,7 +1075,7 @@ function get_current_archive_url() {
     global $wp;
 
     $url = home_url( $wp->request );
-    $url = explode( __( 'page', 'hm-theme' ) . '/', $url );
+    $url = explode( __( 'page', 'port-f' ) . '/', $url );
     $url = trailingslashit( $url[0] );
 
     return $url;
