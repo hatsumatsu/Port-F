@@ -163,7 +163,7 @@ function hm_register_data_structure() {
             'show_ui'           => true,
             'show_admin_column' => true,
             'rewrite'           => array( 
-                'slug' => 'projects/filter' 
+                'slug' => __( 'projects', 'port-f' ) . '/' . __( 'filter', 'port-f' ) 
             )
         ) 
     );
@@ -201,9 +201,9 @@ function hm_register_data_structure() {
             'menu_position'     => 5,
             'menu_icon'         => 'dashicons-smiley',
             'rewrite'           => array( 
-                'slug' => 'projects' 
+                'slug' => __( 'projects', 'port-f' ) 
             ),
-            'has_archive'       => 'projects',
+            'has_archive'       => __( 'projects', 'port-f' ),
             'taxonomies'        => array( 
                 'project_types' 
             )
