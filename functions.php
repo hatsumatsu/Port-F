@@ -921,6 +921,12 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
  * @return string        modified markup
  */
 function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size = null ) {
+    $orientation = get_post_meta( $id, 'orientation', true );
+
+    $class = '';
+    $class .= ( $orientation ) ? ' orientation--' . $orientation : '';
+    $class .= ( $align ) ? ' align--' . str_replace( 'align', '', $align ) : '';
+
     $html = '';
 
     $html .= get_the_responsive_image( 
@@ -937,7 +943,7 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
             'sizes'   => '100vw',
             'alt'     => $alt,
             'title'   => $title,
-            'class'   => 'inline-image ' . $align,
+            'class'   => 'inline-image ' . $class,
             'data-id' => $id
         ), 
         true,
@@ -967,8 +973,24 @@ function modify_caption_shortcode( $empty, $attr, $content ){
 
     $id = ( $attr['id'] ) ? intval( str_replace( 'attachment_', '', $attr['id'] ) ) : null;
 
+    // hack to get the orientation of the child image
+    if( strpos( $content, 'orientation--portrait' ) != false  ) {
+        $orientation = 'portrait';
+    } elseif( strpos( $content, 'orientation--square' ) != false ) {
+        $orientation = 'square';
+    } elseif( strpos( $content, 'orientation--landscape' ) != false ) {
+        $orientation = 'landscape';
+    } else {
+        $orientation = false;
+    }
+
+    $class = '';
+    // $classes .= ( get_post_meta( $id, 'orientation', true ) ) ? ' orientation--' .  get_post_meta( $id, 'orientation', true ) : '';
+    $class .= ( $orientation ) ? ' orientation--' . $orientation : '';
+    $class .= ( $attr['align'] ) ? ' align--' .  str_replace( 'align', '', $attr['align'] ) : '';
+
     $html = '';
-    $html .= '<figure class="' . $attr['align'] . '">';
+    $html .= '<figure class="' . esc_attr( $class ) . '">';
 
     $html .= do_shortcode( strip_tags( $content, '<img><img/><figcaption>' ) );
 
