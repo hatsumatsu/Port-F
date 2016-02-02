@@ -102,6 +102,23 @@ add_action( 'after_setup_theme', 'hm_theme_setup' );
 
 
 /**
+ * Show admin warnings
+ */
+function test_server() {
+    if( !function_exists( 'normalizer_normalize' ) ) {
+?>
+<div class="error notice">
+    <p>
+        <?php echo __( 'It seems that <strong>PHP Intl</strong> is missing on the server. File names are not santized safely on upload.', 'hm-theme' ); ?>
+    </p>
+</div>
+<?php
+    }
+}
+add_action( 'admin_notices', 'test_server' );
+
+
+/**
  * Enable page excerpts
  */
 function hm_page_excerpts() {
@@ -1038,10 +1055,13 @@ add_filter( 'wp_generate_attachment_metadata', 'add_image_meta_data', 10, 2 );
  * @return string           file name
  */
 function hm_sanitize_file_name( $filename ) {
-    $filename = normalizer_normalize( $filename );
+    if( function_exists( 'normalizer_normalize' ) ) {
+        $filename = normalizer_normalize( $filename );
+    } 
+    
     $filename = remove_accents( $filename );
-
-    return $filename;
+    
+    return $filename;    
 }
 
 add_filter( 'sanitize_file_name', 'hm_sanitize_file_name' ); 
