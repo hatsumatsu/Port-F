@@ -1,4 +1,4 @@
-// a11y
+// A11Y
 .hide-but-read {
 	position: absolute;
 	left: -9999em;
@@ -10,7 +10,8 @@
 	overflow: hidden;
 }
 
-// layout 
+
+// LAYOUT 
 .pseudo-box {
 	content: ' ';
 
@@ -21,7 +22,8 @@
 	display: block;
 }
 
-// background images
+
+// BACKGROUND IMAGES
 // data-uri
 .data-uri( @url ) {
 	background-image: data-uri( 'img/@{url}' );
@@ -32,19 +34,28 @@
 	background-image: url( 'img/@{handle}.svg' );
 
 	.no-svg & {
-			background-image: url( 'img/@{handle}.png' );
+		background-image: url( 'img/@{handle}.png' );
 	}
 }
 
-.svg( @handle, @data-uri: false ) when ( @data-uri = true ) {
+.svg( @handle, @data-uri: false ) when ( @data-uri = true ), ( @inline-svg = true ) {
+	background-image: url( 'img/@{handle}.svg' );
 	background-image: data-uri( 'image/svg+xml;charset=UTF-8', 'img/@{handle}.svg' );
 
 	.no-svg & {
-			.data-uri( '@{handle}.png' );
+		background-image: url( 'img/@{handle}.png' );
 	}
 }
 
-// transitions
+// icon
+.icon( @handle, @data-uri: false ) {
+	.svg( @handle, @data-uri );
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+// TRANSITION
 .transition {
 	transition: all @transition-duration ease;
 }
@@ -53,12 +64,14 @@
 	transition: none !important;
 }
 
-// performance
+
+// PERFORMANCE
 .new-layer {
 	transform: translateZ( 0 );
 }
 
-// clearfix
+
+// CLEARFIX
 .cf {
 	&:before,
 	&:after {
