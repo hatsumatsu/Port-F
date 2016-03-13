@@ -65,9 +65,9 @@ html {
   line-height: 1.3;
   color: #111111;
   text-rendering: optimizeLegibility;
-  -webkit-font-feature-settings: 'liga', 'dlig', 'kern';
-     -moz-font-feature-settings: 'liga', 'dlig', 'kern';
-          font-feature-settings: 'liga', 'dlig', 'kern';
+  -webkit-font-feature-settings: 'liga', 'kern';
+     -moz-font-feature-settings: 'liga', 'kern';
+          font-feature-settings: 'liga', 'kern';
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
