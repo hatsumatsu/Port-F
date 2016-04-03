@@ -25,6 +25,20 @@ See http://lesscss.org for further reference
   top: 0;
   display: block;
 }
+.scroll {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-y {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .transition {
   -webkit-transition: all 250ms ease;
           transition: all 250ms ease;
@@ -48,16 +62,10 @@ See http://lesscss.org for further reference
 .cf:after {
   clear: both;
 }
-@-webkit-keyframes foo {
-  
-}
-@keyframes foo {
-  
-}
 html,
 body {
   min-height: 100%;
-  background: #ffffff;
+  background: #fff;
 }
 html {
   font-family: sans-serif;
@@ -85,7 +93,7 @@ title {
   padding: 2em 0;
 }
 a {
-  color: #888888;
+  color: #888;
   text-decoration: none;
 }
 a:visited {
@@ -97,12 +105,12 @@ a:focus {
   outline: 0;
 }
 ::-moz-selection {
-  color: #ffffff;
-  background: #888888;
+  color: #fff;
+  background: #888;
 }
 ::selection {
-  color: #ffffff;
-  background: #888888;
+  color: #fff;
+  background: #888;
 }
 h1,
 h2,
@@ -145,7 +153,7 @@ h5 {
     margin: 0;
     padding: 1.5rem 1rem 1.5rem 4rem;
     line-height: 1;
-    color: #ffffff;
+    color: #fff;
     background: #111111;
     cursor: pointer;
     -webkit-user-select: none;
@@ -179,7 +187,7 @@ h5 {
     display: block;
     width: 0;
     margin: 0 0 0 -4rem;
-    background: #ffffff;
+    background: #fff;
     opacity: 0;
     -webkit-transition: all 250ms ease;
             transition: all 250ms ease;
@@ -199,7 +207,6 @@ h5 {
   }
   .visible--head-primary .nav-toggle--head-primary::before {
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
             transform: rotate(45deg);
   }
   .visible--head-primary .nav-toggle--head-primary::after {
@@ -216,9 +223,11 @@ h5 {
     height: 100%;
     margin: 0;
     padding: 0 0 0 4rem;
-    color: #ffffff;
+    color: #fff;
     background: #111111;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     -webkit-transition: all 250ms ease;
             transition: all 250ms ease;
   }
@@ -256,7 +265,7 @@ h5 {
     margin: 0;
     padding: 1.5rem 1rem;
     line-height: 1;
-    color: #ffffff;
+    color: #fff;
   }
   .nav-list--head-primary li a:hover,
   .nav-list--head-primary li a:focus,
@@ -313,7 +322,7 @@ h5 {
 ::-webkit-scrollbar {
   width: 0.6em;
   height: 0.6em;
-  background: #ffffff;
+  background: #fff;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -346,5 +355,5 @@ h5 {
   background: transparent;
 }
 ::-webkit-scrollbar-corner {
-  background: #ffffff;
+  background: #fff;
 }
