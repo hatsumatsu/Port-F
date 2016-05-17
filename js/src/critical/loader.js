@@ -2,19 +2,19 @@ jQuery( function( $ ) {
 
     $( document ).ready( function() {
 
-        if( globals.debug ) {
+        if( Debug.isActive() ) {
 
             yepnope( [
                 {
-                    test: Modernizr.mq( globals.mediaQuery ),
-                    yep : [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-global.min.js',
-                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/src/site-global.js',
-                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-smaller.min.js',
-                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/src/site-smaller.js' ],
-                    nope: [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-global.min.js',
-                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/src/site-global.js', 
-                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/dependencies-larger.min.js',
-                            globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/src/site-larger.js' ]
+                    test: Modernizr.mq( Globals.get( 'mediaQuery' ) ),
+                    yep : [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-global.min.js',
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-global.min.js',
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-smaller.min.js',
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-smaller.min.js' ],
+                    nope: [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-global.min.js',
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-global.min.js', 
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-larger.min.js',
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-larger.min.js' ]
                 }
             ] );
 
@@ -22,9 +22,9 @@ jQuery( function( $ ) {
 
             yepnope( [
                 {
-                    test: Modernizr.mq( globals.mediaQuery ),
-                    yep : [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/all-smaller.min.js' ],
-                    nope: [ globals.blogurl + '/wp-content/themes/' + globals.theme + '/js/all-larger.min.js' ]
+                    test: Modernizr.mq( Globals.get( 'mediaQuery' ) ),
+                    yep : [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/all-smaller.min.js' ],
+                    nope: [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/all-larger.min.js' ]
                 }
             ] );
 
