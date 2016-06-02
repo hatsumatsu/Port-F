@@ -5,7 +5,14 @@ Debug = ( function() {
 
 	var settings = {
 		isLocal: false,
-		isActive: true
+		isActive: true,
+		keyboard: {
+			key: 		68,
+			count: 		0,
+			countMax: 	7,
+			timeDuration: 	5000,
+			timer: 		null
+		},
 	}
 
 	var init = function() {
@@ -16,11 +23,31 @@ Debug = ( function() {
 	}
 
 	var bindEventHandlers = function() {
+		document
+			.addEventListener( 'keyup', function( event ) {
+				if( event.which == settings.keyboard.key ) {
+					log( 'hit the toggle key' );
 
+	 				if( settings.keyboard.timer ) {
+						clearTimeout( settings.keyboard.timer );
+					}
+
+					settings.keyboard.timer = setTimeout( function() {
+						settings.keyboard.count = 0;
+						clearTimeout( settings.keyboard.timer );
+					}, settings.keyboard.timeDuration );
+
+					settings.keyboard.count = settings.keyboard.count + 1;
+					if( settings.keyboard.count == settings.keyboard.countMax ) {
+						settings.isActive = !settings.isActive;
+						log( 'toggle logging', settings.isActive );
+					}
+				}
+			} );
 	}
 
 	var log = function() {
-		if( settings.isLocal || settings.isActive ) {
+		if( settings.isActive ) {
 			console.log.apply( console, arguments );
 		}
 	}
