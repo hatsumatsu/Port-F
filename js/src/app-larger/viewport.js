@@ -42,23 +42,6 @@ jQuery( function( $ ) {
         }
 
         var bindEventHandlers = function() {
-            // throttle resize event
-            settings.element.on( 'resize', function() {
-                if( settings.resizeDelay ) {
-                    clearTimeout( settings.resizeDelay );
-                    settings.resizeDelay = null;
-                } else {
-                    $( 'html' ).addClass( 'resizing' );
-                    $( document ).trigger( 'viewport/resize/start' );
-                }
-             
-                settings.resizeDelay = setTimeout( function() {
-                    $( 'html' ).removeClass( 'resizing' );
-                    $( document ).trigger( 'viewport/resize/finish' );
-                    settings.resizeDelay = null;
-                }, 500 );
-            } );   
-
             // scroll event
             if( settings.scrollDetectionMode == 'scrollEvent' ) {
                 settings.element.on( 'scroll', function() {                        
