@@ -3,14 +3,14 @@
  */
 jQuery( function( $ ) {
 
-    var Nav = ( function() {
+    AppGlobal.Nav = ( function() {
 
         var settings = {
 
         };
 
         var init = function() {
-            Debug.log( 'Nav.init()' );
+            Debug.log( 'AppGlobal.Nav.init()' );
 
             bindEventHandlers();
         }
@@ -40,7 +40,7 @@ jQuery( function( $ ) {
     } )();
 
     $( document ).ready( function () {
-        Nav.init();
+        AppGlobal.Nav.init();
     } );    
 
 } );

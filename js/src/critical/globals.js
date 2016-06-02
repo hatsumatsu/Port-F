@@ -1,6 +1,10 @@
 /**
  * Globals
  */
+AppGlobal = {}
+AppSmaller = {}
+AppLarger = {}
+
 jQuery( function( $ ) {
 
 	Globals = ( function() {

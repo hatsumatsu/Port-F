@@ -3,12 +3,12 @@
  */
 jQuery( function( $ ) {
 
-    var Viewport = ( function() {
+    AppGlobal.Viewport = ( function() {
 
         var settings = {};
 
         var init = function() {
-            Debug.log( 'Viewport.init()' );
+            Debug.log( 'AppGlobal.Viewport.init()' );
         
             settings.state = Modernizr.mq( Globals.get( 'mediaQuery' ) );
             settings.element = $( window );
@@ -44,7 +44,7 @@ jQuery( function( $ ) {
         }
 
         var onResizeFinish = function() {
-            Debug.log( 'Viewport.onResizeFinish()' );
+            Debug.log( 'AppGlobal.Viewport.onResizeFinish()' );
 
             settings._state = settings.state;
             settings.state = Modernizr.mq( Globals.get( 'mediaQuery' ) );
@@ -63,7 +63,7 @@ jQuery( function( $ ) {
     } )();
 
     $( document ).ready( function () {
-        Viewport.init();
+        AppGlobal.Viewport.init();
     } );    
 
 } );

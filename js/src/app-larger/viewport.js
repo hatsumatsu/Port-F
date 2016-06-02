@@ -3,7 +3,7 @@
  */
 jQuery( function( $ ) {
 
-    var Viewport = ( function() {
+    AppLarger.Viewport = ( function() {
         
         var settings = {
             width: 0,
@@ -29,7 +29,7 @@ jQuery( function( $ ) {
         };
 
         var init = function() {
-            Debug.log( 'Viewport.init()' );
+            Debug.log( 'AppLarger.Viewport.init()' );
             
             settings.element = $( window );
             
@@ -142,7 +142,7 @@ jQuery( function( $ ) {
         }
 
         var onResizeFinish = function() {
-            Debug.log( 'Viewport.onResizeFinish()' );
+            Debug.log( 'AppLarger.Viewport.onResizeFinish()' );
 
             settings.width = settings.element.width();
             settings.height = settings.element.height();
@@ -151,7 +151,7 @@ jQuery( function( $ ) {
         }
 
         var onScroll = function() {
-            Debug.log( 'Viewport.onScroll()' );
+            Debug.log( 'AppLarger.Viewport.onScroll()' );
 
             settings.scrollFactor = settings.scrollTop / ( settings.height - settings.documentHeight ) * -1;
 
@@ -217,8 +217,7 @@ jQuery( function( $ ) {
         }
 
         var scrollTo = function( target, offset, animate ) {
-            Debug.log( 'Viewport.scrollTo()' );
-            Debug.log( target );
+            Debug.log( 'AppLarger.Viewport.scrollTo()', target, offset, animate );
      
             var top = 0;
      
@@ -284,7 +283,7 @@ jQuery( function( $ ) {
     } )();
 
     $( document ).ready( function() {
-        Viewport.init();
+        AppLarger.Viewport.init();
     } );
 
 } );
