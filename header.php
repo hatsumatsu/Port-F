@@ -17,6 +17,10 @@
     <meta http-equiv="cleartype" content="on"> 
 
     <link rel="icon" href="<?php bloginfo( 'template_directory' ); ?>/img/favicon.png" type="image/png">
+
+    <?php get_inc( 'head', 'facebook', 0 ); ?>
+    
+    <?php get_inc( 'head', 'twitter', 0 ); ?>    
 </head>
 <body <?php body_class(); ?>>
 	<div class="shell">
