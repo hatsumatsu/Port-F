@@ -79,6 +79,13 @@ remove_action( 'wp_head', 'wlwmanifest_link' );     // remove Windows Live Write
 remove_action( 'wp_head', 'wp_generator' );         // remove Version number
 
 
+/**
+ * Remove emoji inline CSS and JS from <head>
+ */
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+
 /** 
  * Add theme support 
  */
@@ -866,16 +873,22 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
 
     // srcset
     $srcset = '';
+    $widths = array();
     foreach( $sizes as $size ) {
         $src = wp_get_attachment_image_src( $id, $size );
-        $srcset .= $src[0] . ' ' . $src[1] . 'w,';
+        // check if width is equal to one of the previous versions
+        if( !in_array( $src[1], $widths ) ) {
+            $srcset .= $src[0] . ' ' . $src[1] . 'w,';
 
-        if( $dimensions ) {
-            $width = $src[1];
-            $height = $src[2];
+            $widths[] = $src[1];
+
+            if( $dimensions ) {
+                $width = $src[1];
+                $height = $src[2];
+            }
         }
     }
-
+    
     $srcset = rtrim( $srcset, ',' );
     $attributes['srcset'] = $srcset;
 

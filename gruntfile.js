@@ -27,7 +27,7 @@ module.exports = function( grunt ) {
 
 		modernizr: {
 		    dist: {
-		        'dest' : 'js/src/critical/00-modernizr.js',
+		        'dest' : 'js/src/critical/modernizr.min.js',
 				'options' : [
 				    'setClasses',
 				    'addTest',
@@ -53,58 +53,65 @@ module.exports = function( grunt ) {
 
 		uglify: {
 			options: {
-				mangle: false
+				mangle: false,
+				sourceMap: true,
+				sourceMapName: function( filename ) {
+					var parts = filename.split( '/' );
+					return 'js/sourcemaps/' + parts[parts.length-1] + '.map'
+				}
 			},
 			critical: {
 			  files: {
-			    'js/critical.min.js': ['js/src/critical/*.js']
+			    'js/critical.min.js': [
+			    	'js/src/critical/modernizr.min.js',
+			    	'js/src/critical/yepnope.1.5.4.min.js',
+			    	'js/src/critical/globals.js',
+			    	'js/src/critical/debug.js',
+			    	'js/src/critical/loader.js'
+			    ]
 			  }
 			},
-			dependencies: {
+			dependenciesGlobal: {
 			  files: {
 			    'js/dependencies-global.min.js': ['js/src/dependencies-global/*.js']
-			  }
-			},
-			dependenciesLarger: {
-			  files: {
-			    'js/dependencies-larger.min.js': ['js/src/dependencies-larger/*.js']
 			  }
 			},
 			dependenciesSmaller: {
 			  files: {
 			    'js/dependencies-smaller.min.js': ['js/src/dependencies-smaller/*.js']
 			  }
+			},			
+			dependenciesLarger: {
+			  files: {
+			    'js/dependencies-larger.min.js': ['js/src/dependencies-larger/*.js']
+			  }
 			},
-			site: {
+			appGlobal: {
 				files: {
-					'js/site-global.min.js': ['js/src/site-global.js']
-				}
-			},
-			siteLarger: {
-				files: {
-					'js/site-larger.min.js': ['js/src/site-larger.js']
-				}
-			},
-			siteSmaller: {
-				files: {
-					'js/site-smaller.min.js': ['js/src/site-smaller.js']
-				}
-			},
-			all: {
-				files: {
-					'js/all-global.min.js': [
-						'js/dependencies-global.min.js',
-						'js/src/site-global.js'
+					'js/app-global.min.js': [
+						'js/src/app-global/debug.js',
+						'js/src/app-global/viewport.js',
+						'js/src/app-global/nav.js'
 					]
 				}
 			},
-			allLarger: {
+			appSmaller: {
 				files: {
-					'js/all-larger.min.js': [
-						'js/dependencies-global.min.js', 
-						'js/src/site-global.js', 
-						'js/dependencies-larger.min.js', 
-						'js/src/site-larger.js'
+					'js/app-smaller.min.js': []
+				}
+			},			
+			appLarger: {
+				files: {
+					'js/app-larger.min.js': [
+						'js/src/app-larger/viewport.js'
+					]
+				}
+			},
+			allGlobal: {
+				files: {
+					'js/all-global.min.js': [
+						'js/dependencies-global.min.js',
+						'js/src/app-global.min.js'
 					]
 				}
 			},
@@ -112,13 +119,22 @@ module.exports = function( grunt ) {
 				files: {
 					'js/all-smaller.min.js': [
 						'js/dependencies-global.min.js', 
-						'js/src/site-global.js', 
+						'js/src/app-global.min.js', 
 						'js/dependencies-smaller.min.js', 
-						'js/src/site-smaller.js'
+						'js/src/app-smaller.min.js'
+					]
+				}
+			},			
+			allLarger: {
+				files: {
+					'js/all-larger.min.js': [
+						'js/dependencies-global.min.js', 
+						'js/src/app-global.min.js', 
+						'js/dependencies-larger.min.js', 
+						'js/src/app-larger.min.js'
 					]
 				}
 			}
-
 		},
 
 		imagemin: {
