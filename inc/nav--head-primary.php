@@ -1,7 +1,7 @@
-<?php 
+<?php
 
-wp_nav_menu( 
-	array( 
-		'theme_location' => 'head-primary'
-	) 
+wp_nav_menu(
+    array(
+        'theme_location' => 'head-primary'
+    )
 );

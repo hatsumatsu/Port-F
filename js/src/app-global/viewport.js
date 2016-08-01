@@ -9,7 +9,7 @@ jQuery( function( $ ) {
 
         var init = function() {
             Debug.log( 'AppGlobal.Viewport.init()' );
-        
+
             settings.state = Modernizr.mq( Globals.get( 'mediaQuery' ) );
             settings.element = $( window );
 
@@ -20,7 +20,7 @@ jQuery( function( $ ) {
 
             // throttle resize event
             settings.element.on( 'resize', function() {
-                
+
                 if( settings.resizeDelay ) {
                     clearTimeout( settings.resizeDelay );
                     settings.resizeDelay = null;
@@ -28,14 +28,14 @@ jQuery( function( $ ) {
                     $( 'html' ).addClass( 'resizing' );
                     $( document ).trigger( 'viewport/resize/start' );
                 }
-             
+
                 settings.resizeDelay = setTimeout( function() {
                     $( 'html' ).removeClass( 'resizing' );
                     $( document ).trigger( 'viewport/resize/finish' );
                     settings.resizeDelay = null;
                 }, 500 );
-            
-            } ); 
+
+            } );
 
             $( document ).on( 'viewport/resize/finish', function() {
                 onResizeFinish();
@@ -48,7 +48,7 @@ jQuery( function( $ ) {
 
             settings._state = settings.state;
             settings.state = Modernizr.mq( Globals.get( 'mediaQuery' ) );
-            
+
             Debug.log( settings );
 
             if( settings.state != settings._state ) {
@@ -64,6 +64,6 @@ jQuery( function( $ ) {
 
     $( document ).ready( function () {
         AppGlobal.Viewport.init();
-    } );    
+    } );
 
 } );

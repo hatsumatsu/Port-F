@@ -41,6 +41,6 @@ jQuery( function( $ ) {
 
     $( document ).ready( function () {
         AppGlobal.Nav.init();
-    } );    
+    } );
 
 } );

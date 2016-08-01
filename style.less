@@ -12,7 +12,7 @@ This stylesheet was written in and compiled with LESS
 See http://lesscss.org for further reference
 */
 
-// VARIABLES 
+// VARIABLES
 @import 'css/variables';
 
 
@@ -25,24 +25,24 @@ See http://lesscss.org for further reference
 
 
 // DOCUMENT
-html, 
+html,
 body {
-	min-height: 100%;
-	
-	background: @color--bg;
+    min-height: 100%;
+
+    background: @color--bg;
 }
 
 html {
-	font-family: @font--1;
-	font-size: 100%;
-	line-height: @line-height;
-	
-	color: @color--text;
+    font-family: @font--1;
+    font-size: 100%;
+    line-height: @line-height;
 
-	// enhanced typography
-	text-rendering: optimizeLegibility;
-	font-feature-settings: 'liga', 'kern'; 
-	text-size-adjust: 100%;
+    color: @color--text;
+
+    // enhanced typography
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga', 'kern';
+    text-size-adjust: 100%;
 }
 
 body {
@@ -51,20 +51,20 @@ body {
 
 // sync variables between CSS and JS
 title {
-	// media query: break point
-	width: @smaller-em;
-	// media query: string
-	font-family: '@{smaller}';
-	// transition duration
-	transition-duration: @transition-duration;
+    // media query: break point
+    width: @smaller-em;
+    // media query: string
+    font-family: '@{smaller}';
+    // transition duration
+    transition-duration: @transition-duration;
 }
 
 .shell {
-	width: 90%;
-	max-width: 64em;
-	
-	margin: 0 auto;
-	padding: 2em 0;
+    width: 90%;
+    max-width: 64em;
+
+    margin: 0 auto;
+    padding: 2em 0;
 }
 
 
@@ -89,7 +89,7 @@ title {
 // downloads
 @import 'css/downloads';
 
-// pagination 
+// pagination
 @import 'css/pagination';
 
 // messages
@@ -108,7 +108,7 @@ title {
 @import 'css/widgets--footer';
 
 
-// WEBKIT SCROLLBARS 
+// WEBKIT SCROLLBARS
 @import 'css/scrollbars';
 
 

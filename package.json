@@ -7,7 +7,7 @@
     "devDependencies": {
         "grunt":                    "*",
         "grunt-contrib-watch":      "*",
-        "grunt-contrib-less": 		"*",
+        "grunt-contrib-less":       "*",
         "grunt-autoprefixer":       "*",
         "grunt-modernizr":          "*",
         "grunt-contrib-uglify":     "*",
@@ -16,5 +16,5 @@
         "grunt-svg2png":            "*",
         "grunt-ftpush":             "*",
         "matchdep":                 "*"
-    } 
+    }
 }
