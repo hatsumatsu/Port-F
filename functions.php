@@ -5,7 +5,7 @@
 load_theme_textdomain( 'port-f', get_stylesheet_directory() . '/languages' );
 
 
-/** 
+/**
  * Register theme CSS
  */
 function hm_theme_css() {
@@ -14,25 +14,25 @@ function hm_theme_css() {
 
     wp_enqueue_style( 'hm-normalize' );
     wp_enqueue_style( 'port-f' );
-} 
+}
 
 add_action( 'wp_enqueue_scripts', 'hm_theme_css' );
 
 
-/** 
- * Register theme JS 
+/**
+ * Register theme JS
  */
 function hm_theme_js() {
-    // load the bundled jQuery in the footer 
-    if( !is_admin() ) {  
-        wp_deregister_script( 'jquery' );  
-        wp_register_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array(), '1.11.1', true );  
-        wp_enqueue_script('jquery');  
-    }  
+    // load the bundled jQuery in the footer
+    if( !is_admin() ) {
+        wp_deregister_script( 'jquery' );
+        wp_register_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array(), '1.11.1', true );
+        wp_enqueue_script('jquery');
+    }
 
     wp_register_script( 'hm-critical', get_template_directory_uri() . '/js/critical.min.js', array( 'jquery' ), '0.4', true );
     wp_enqueue_script( 'hm-critical' );
-} 
+}
 
 add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
 
@@ -49,33 +49,33 @@ add_action( 'admin_print_styles', 'hm_admin_css' );
 add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
 
 
-/** 
+/**
  * Add inline HTML to <head>
  */
-function hm_theme_head() { 
+function hm_theme_head() {
     // add HTML here
 }
 
 add_action( 'wp_head', 'hm_theme_head', 1 );
 
 
-/** 
+/**
  * Add inline HTML to <section class="footer">
  */
-function hm_theme_footer() { 
+function hm_theme_footer() {
 ?>
 <!-- W3TC-include-js-head -->
-<?php 
+<?php
 }
 
 add_action( 'wp_footer', 'hm_theme_footer', 1 );
 
 
-/** 
+/**
  * Remove unneccessary or unsafe <meta> tags
  */
 remove_action( 'wp_head', 'rsd_link' );             // remove Really Simple Discovery Entry
-remove_action( 'wp_head', 'wlwmanifest_link' );     // remove Windows Live Writer Link 
+remove_action( 'wp_head', 'wlwmanifest_link' );     // remove Windows Live Writer Link
 remove_action( 'wp_head', 'wp_generator' );         // remove Version number
 
 
@@ -86,22 +86,22 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 
-/** 
- * Add theme support 
+/**
+ * Add theme support
  */
 function hm_theme_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'menus' );
-    add_theme_support( 
-        'html5', 
-        array( 
-            'comment-list', 
-            'comment-form', 
-            'search-form', 
-            'gallery', 
-            'caption' 
-        ) 
+    add_theme_support(
+        'html5',
+        array(
+            'comment-list',
+            'comment-form',
+            'search-form',
+            'gallery',
+            'caption'
+        )
     );
 }
 
@@ -135,19 +135,19 @@ function hm_page_excerpts() {
 add_filter( 'init', 'hm_page_excerpts' );
 
 
-/** 
+/**
  * Register custom post types and taxonomies
  */
 function hm_register_data_structure() {
-    register_taxonomy( 
-    	'project_types', 
-    	array( 
-            'projects' 
-        ), 
-    	array( 
+    register_taxonomy(
+        'project_types',
+        array(
+            'projects'
+        ),
+        array(
             'hierarchical'      => true,
-        	'labels'            => array( 
-                'name'                          => __( 'Project Types', 'port-f' ), 
+            'labels'            => array(
+                'name'                          => __( 'Project Types', 'port-f' ),
                 'singular_name'                 => __( 'Project Type', 'port-f' ),
                 'menu_name'                     => __( 'Project Types', 'port-f' ),
                 'all_items'                     => __( 'All Types', 'port-f' ),
@@ -160,26 +160,26 @@ function hm_register_data_structure() {
                 'parent_item_colon'             => __( 'Parent Type:', 'port-f' ),
                 'search_items'                  => __( 'Search Types', 'port-f' ),
                 'popular_items'                 => __( 'Popular Types', 'port-f' ),
-                'separate_items_with_commas'    => __( 'Separate types with commas', 'port-f' ), 
+                'separate_items_with_commas'    => __( 'Separate types with commas', 'port-f' ),
                 'add_or_remove_items'           => __( 'Add or remove types', 'port-f' ),
                 'choose_from_most_used'         => __( 'Choose from the most used types', 'port-f' ),
                 'not_found'                     => __( 'No types found.', 'port-f' ),
                 'items_list_navigation'         => __( 'Project Types list navigation', 'port-f' ),
-                'items_list'                    => __( 'Project Types list', 'port-f' )                
-        	 ),
+                'items_list'                    => __( 'Project Types list', 'port-f' )
+             ),
             'show_ui'           => true,
             'show_admin_column' => true,
-            'rewrite'           => array( 
-                'slug' => __( 'projects', 'port-f' ) . '/' . __( 'filter', 'port-f' ) 
+            'rewrite'           => array(
+                'slug' => __( 'projects', 'port-f' ) . '/' . __( 'filter', 'port-f' )
             )
-        ) 
+        )
     );
 
-    register_post_type( 
-    	'projects', 
-    	array( 
-            'labels'            => array( 
-                'name'                  => __( 'Projects', 'port-f' ), 
+    register_post_type(
+        'projects',
+        array(
+            'labels'            => array(
+                'name'                  => __( 'Projects', 'port-f' ),
                 'singular_name'         => __( 'Project', 'port-f' ),
                 'menu_name'             => __( 'Projects', 'port-f' ),
                 'menu_admin_bar'        => __( 'Project', 'port-f' ),
@@ -195,24 +195,24 @@ function hm_register_data_structure() {
                 'parent_item_colon'     => __( 'Parent Project:', 'port-f' ),
                 'filter_items_list'     => __( 'Filter Projects list', 'port-f' ),
                 'items_list_navigation' => __( 'Projects list navigation', 'port-f' ),
-                'items_list'            => __( 'Projects list', 'port-f' )                
-    	    ),
+                'items_list'            => __( 'Projects list', 'port-f' )
+            ),
             'capability_type'   => 'post',
-            'supports'          => array( 
-                'title', 
-                'editor', 
-                'author', 
-                'thumbnail' 
+            'supports'          => array(
+                'title',
+                'editor',
+                'author',
+                'thumbnail'
             ),
             'public'            => true,
             'menu_position'     => 5,
             'menu_icon'         => 'dashicons-smiley',
-            'rewrite'           => array( 
-                'slug' => __( 'projects', 'port-f' ) 
+            'rewrite'           => array(
+                'slug' => __( 'projects', 'port-f' )
             ),
             'has_archive'       => __( 'projects', 'port-f' ),
-            'taxonomies'        => array( 
-                'project_types' 
+            'taxonomies'        => array(
+                'project_types'
             )
         )
     );
@@ -221,14 +221,14 @@ function hm_register_data_structure() {
 add_action( 'init', 'hm_register_data_structure' );
 
 
-/** 
+/**
  * Hide admin bar on frontend for all users
  */
 add_filter( 'show_admin_bar', '__return_false' );
 
 
-/** 
- * Register navigation menus 
+/**
+ * Register navigation menus
  */
 function register_navigation() {
     register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'port-f' ) );
@@ -252,7 +252,7 @@ function modify_nav_markup( $args = '' ) {
     if( $args['theme_location'] == 'head-primary' ) {
         $html .= '<a class="nav-toggle nav-toggle--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Toggle Navigation', 'port-f' ) ) . '">' . __( 'Navigation', 'port-f' ) . '</a>';
     }
-    
+
     $html .= '<ul class="nav-list nav-list--' . esc_attr( $args['theme_location'] ) . '">%3$s</ul>';
     $html .= '</nav>';
 
@@ -265,31 +265,31 @@ function modify_nav_markup( $args = '' ) {
 add_filter( 'wp_nav_menu_args', 'modify_nav_markup' );
 
 
-/** 
- * Register footer widget area 
+/**
+ * Register footer widget area
  */
 function register_widgets() {
     register_sidebar( array(
-    	'name'=> __( 'Footer Widgets', 'port-f' ),
-    	'id' => 'footer', 
+        'name'=> __( 'Footer Widgets', 'port-f' ),
+        'id' => 'footer',
         'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4>',
         'after_title'   => '</h4>'
-    	) 
-    );	
+        )
+    );
 }
 
 add_action( 'widgets_init', 'register_widgets' );
 
 
-/** 
+/**
  * Define image sizes
- * tiny:          80 x  120px  
- * thumbnail:    400 x  600px  
- * medium:       800 x 1200px  
- * large:       1200 x 1800px  
- * larger:      1800 x 2700px  
+ * tiny:          80 x  120px
+ * thumbnail:    400 x  600px
+ * medium:       800 x 1200px
+ * large:       1200 x 1800px
+ * larger:      1800 x 2700px
  */
 function modify_image_sizes() {
     // tiny
@@ -317,8 +317,8 @@ function modify_image_sizes() {
 add_action( 'after_setup_theme', 'modify_image_sizes' );
 
 
-/** 
- * Define custom jpeg quality 
+/**
+ * Define custom jpeg quality
  */
 function hm_jpeg_quality() {
     return 90;
@@ -327,8 +327,8 @@ function hm_jpeg_quality() {
 add_filter( 'jpeg_quality', 'hm_jpeg_quality' );
 
 
-/** 
- * Remove unneccessary admin menus 
+/**
+ * Remove unneccessary admin menus
  */
 function hm_remove_admin_menus () {
     // remove_menu_page( 'edit.php' );                  /* Posts */
@@ -341,27 +341,27 @@ function hm_remove_admin_menus () {
 add_action( 'admin_menu', 'hm_remove_admin_menus' );
 
 
-/** 
- * Remove unneccessary admin dashboard widgets 
+/**
+ * Remove unneccessary admin dashboard widgets
  */
 function hm_remove_admin_dashboard_widgets() {
     global $wp_meta_boxes;
 
-	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
-//	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'] );
-	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] );
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments'] );
-	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
-	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
+    unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
+//  unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
+    unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
+    unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'] );
+    unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] );
+    unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments'] );
+    unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
+    unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
 }
 
 add_action( 'wp_dashboard_setup', 'hm_remove_admin_dashboard_widgets' );
 
 
-/** 
- * Configure tinyMCE features 
+/**
+ * Configure tinyMCE features
  * http://www.tinymce.com/wiki.php/Configuration
  */
 function hm_customize_tinyMCE( $init ) {
@@ -374,20 +374,20 @@ function hm_customize_tinyMCE( $init ) {
 
 
     // style formats
-    $style_formats = array(  
-        array(  
-            'title' => __( 'Bigger', 'port-f' ),  
-            'block' => 'p',  
+    $style_formats = array(
+        array(
+            'title' => __( 'Bigger', 'port-f' ),
+            'block' => 'p',
             'classes' => 'bigger',
             'wrapper' => false
         ),
-        array(  
-            'title' => __( 'Button', 'port-f' ),  
-            'selector' => 'a',  
+        array(
+            'title' => __( 'Button', 'port-f' ),
+            'selector' => 'a',
             'classes' => 'button',
             'wrapper' => false
         )
-    );  
+    );
 
     $init['style_formats'] = json_encode( $style_formats );
 
@@ -397,21 +397,21 @@ function hm_customize_tinyMCE( $init ) {
 add_filter( 'tiny_mce_before_init', 'hm_customize_tinyMCE' );
 
 
-/** 
- * Configure tinyMCE button row 1 
+/**
+ * Configure tinyMCE button row 1
  * http://www.tinymce.com/wiki.php/TinyMCE3x:Buttons/controls
  */
 function hm_tinyMCE_buttons_1( $buttons ) {
     return array(
         'formatselect',
         'styleselect',
-        'bold', 
-        'italic', 
-        'bullist', 
-        'link', 
-        'unlink', 
-        'undo', 
-        'redo', 
+        'bold',
+        'italic',
+        'bullist',
+        'link',
+        'unlink',
+        'undo',
+        'redo',
         'removeformat'
     );
 }
@@ -419,19 +419,19 @@ function hm_tinyMCE_buttons_1( $buttons ) {
 add_filter( 'mce_buttons', 'hm_tinyMCE_buttons_1' );
 
 
-/** 
- * Configure tinyMCE button row 2 
+/**
+ * Configure tinyMCE button row 2
  * http://www.tinymce.com/wiki.php/TinyMCE3x:Buttons/controls
  */
 function hm_tinyMCE_buttons_2( $buttons ) {
-    return array(); 
+    return array();
 }
 
 add_filter( 'mce_buttons_2', 'hm_tinyMCE_buttons_2' );
 
 
-/** 
- * Register tinyMCE editor CSS 
+/**
+ * Register tinyMCE editor CSS
  */
 function hm_tinymce_custom_css() {
     add_editor_style( 'css/editor.css' );
@@ -440,8 +440,8 @@ function hm_tinymce_custom_css() {
 add_action( 'init', 'hm_tinymce_custom_css' );
 
 
-/** 
- * Custom excerpt length 
+/**
+ * Custom excerpt length
  */
 function hm_custom_excerpt_length( $length ) {
     return 40;
@@ -450,10 +450,10 @@ function hm_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'hm_custom_excerpt_length' );
 
 
-/** 
+/**
  * Customize auto excerpt
  * + custom word count
- * + Add ellispsis to auto-excerpts when text is too long 
+ * + Add ellispsis to auto-excerpts when text is too long
  * + keep basic text formats
  */
 function customize_auto_excerpt( $text ) {
@@ -471,16 +471,16 @@ function customize_auto_excerpt( $text ) {
         $words = explode( ' ', $text, 40 + 1 );
 
         $words = preg_split( "/[\n\r\t ]+/", $text, 40 + 1, PREG_SPLIT_NO_EMPTY );
-        
+
         if( count( $words ) > 40 ) {
             array_pop( $words );
             array_push( $words, '&hellip;' );
             $text = implode( ' ', $words );
 
             $text = force_balance_tags( $text );
-        } 
+        }
 
-    } 
+    }
 
     return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
@@ -488,8 +488,8 @@ function customize_auto_excerpt( $text ) {
 add_filter( 'get_the_excerpt', 'customize_auto_excerpt' );
 
 
-/** 
- * Custom template part include 
+/**
+ * Custom template part include
  */
 function get_inc( $type, $context, $fallback ) {
     if( $context ) {
@@ -506,19 +506,19 @@ function get_inc( $type, $context, $fallback ) {
 }
 
 
-/** 
- * Template tag: 
+/**
+ * Template tag:
  * the_post_time
- * Display post date and time based on global WP settings.  
+ * Display post date and time based on global WP settings.
  */
 function the_post_time() {
     echo get_the_time( get_option( 'date_format' ) ) . ' ' . get_the_time( get_option( 'time_format' ) );
 }
 
 
-/** 
- * Rewrite the search page's permalink 
- * http://example.com/search/{query} 
+/**
+ * Rewrite the search page's permalink
+ * http://example.com/search/{query}
  */
 function hm_rewrite_search() {
     if( is_search() && !empty( $_GET['s'] ) && !is_admin() ) {
@@ -561,8 +561,8 @@ function cancel_search( $query ) {
 add_action( 'pre_get_posts', 'cancel_search' );
 
 
-/** 
- * Set search result post count to infinity 
+/**
+ * Set search result post count to infinity
  */
 function hm_search_post_count( $query ) {
     if( is_search() && !is_admin() ) {
@@ -594,7 +594,7 @@ update_option( 'image_default_link_type', 'none' );
 /**
  * Get post type wherever get_post_type() is unreliable
  * p.e. outside of loop or on taxonomy archives
- * 
+ *
  * @return  string  post type
  */
 function get_post_type_advanced() {
@@ -616,7 +616,7 @@ function get_post_type_advanced() {
 /**
  * Save IDs of images inserted inline to a post or page
  * to later exclude them from imagelist.php
- * 
+ *
  * @param  integer $post_id post ID
  */
 function hm_save_inline_images( $post_id ) {
@@ -657,7 +657,7 @@ function get_site_title( $separator = ' – ' ) {
     // single / page
     $title['single'] = ( is_single() || is_page() ) ? get_the_title() : 0;
 
-    // custom post type 
+    // custom post type
     $title['post_type'] = 0;
     if( !empty( $wp_query->query['post_type'] ) ) {
         $post_type = get_post_type_object( $wp_query->query['post_type'] );
@@ -684,10 +684,10 @@ function get_site_title( $separator = ' – ' ) {
     }
 
     // tags
-    $title['tag'] = ( is_tag() ) ? __( 'Tag' ) . ': ' . single_cat_title( '', false ) : 0;   
+    $title['tag'] = ( is_tag() ) ? __( 'Tag' ) . ': ' . single_cat_title( '', false ) : 0;
 
     //categories
-    $title['tag'] = ( is_category() ) ? __( 'Category' ) . ': ' . single_cat_title( '', false ) : 0;   
+    $title['tag'] = ( is_category() ) ? __( 'Category' ) . ': ' . single_cat_title( '', false ) : 0;
 
     // custom taxonomy terms
     $title['term'] = 0;
@@ -705,7 +705,7 @@ function get_site_title( $separator = ' – ' ) {
         $author = get_user_by( 'slug', $wp_query->query['author_name'] );
         $title['author'] = $author->first_name . ' ' . $author->last_name;
     }
-        
+
     $title_string = '';
     $title_string .= ( $title['single'] ) ? $title['single'] . $separator : '';
     $title_string .= ( $title['term'] ) ? $title['term'] . $separator : '';
@@ -726,9 +726,9 @@ function get_site_title( $separator = ' – ' ) {
  * @return [type]            [description]
  */
 function modify_document_title_separator( $separator ){
-    $separator = '•';    
-    
-    return $separator; 
+    $separator = '•';
+
+    return $separator;
 }
 
 add_filter( 'document_title_separator', 'modify_document_title_separator', 10 );
@@ -740,15 +740,15 @@ add_filter( 'document_title_separator', 'modify_document_title_separator', 10 );
  * @return array        modified title parts
  */
 function modify_post_title( $title ){
-    if( is_home() ) { 
-        $title['tagline'] = null; 
+    if( is_home() ) {
+        $title['tagline'] = null;
     }
 
     if( !is_home() && is_front_page() ) {
-        $title['title'] = null;         
+        $title['title'] = null;
     }
-    
-    return $title; 
+
+    return $title;
 }
 
 add_filter( 'document_title_parts', 'modify_post_title', 10 );
@@ -801,7 +801,7 @@ function get_site_description() {
         if( $author ) {
             $biography = get_the_author_meta( 'description', $author->ID );
             $description = ( !empty( $biography ) ) ? $biography : $description;
-        }    
+        }
     }
 
     return wp_trim_words( $description, 115, null );
@@ -812,22 +812,22 @@ function get_site_description() {
  * Print responsive image template tag
  * Needs picturefill.js
  * Example:
- * the_responsive_image( 
- *     $image_id, 
- *     array( 
- *         'medium', 
- *         'large', 
- *         'full' 
- *     ), 
- *     array( 
- *         'sizes' => '100vw', 
- *         'alt' => 'Alt text', 
- *         'class' => 'wp-image' 
+ * the_responsive_image(
+ *     $image_id,
+ *     array(
+ *         'medium',
+ *         'large',
+ *         'full'
+ *     ),
+ *     array(
+ *         'sizes' => '100vw',
+ *         'alt' => 'Alt text',
+ *         'class' => 'wp-image'
  *     ),
  *     true,
- *     true 
+ *     true
  *  )
- * 
+ *
  * @param  integer $id               image ID
  * @param  array $sizes              array of image size key words
  * @param  array $attributes         array of attribute / value pairs
@@ -844,22 +844,22 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
  * Get responsive image template tag
  * Needs picturefill.js
  * Example:
- * get_the_responsive_image( 
- *     $image_id, 
- *     array( 
- *         'medium', 
- *         'large', 
- *         'full' 
- *     ), 
- *     array( 
- *         'sizes' => '100vw', 
- *         'alt' => 'Alt text', 
- *         'class' => 'wp-image' 
+ * get_the_responsive_image(
+ *     $image_id,
+ *     array(
+ *         'medium',
+ *         'large',
+ *         'full'
+ *     ),
+ *     array(
+ *         'sizes' => '100vw',
+ *         'alt' => 'Alt text',
+ *         'class' => 'wp-image'
  *     ),
  *     true,
- *     true 
+ *     true
  *  )
- * 
+ *
  * @param  integer $id               image ID
  * @param  array $sizes              array of image size key words
  * @param  array $attributes         array of attribute / value pairs
@@ -888,7 +888,7 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
             }
         }
     }
-    
+
     $srcset = rtrim( $srcset, ',' );
     $attributes['srcset'] = $srcset;
 
@@ -903,16 +903,16 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
         if( is_string( $fallback ) ) {
             $src = wp_get_attachment_image_src( $id, $fallback );
         } else  {
-            $src = wp_get_attachment_image_src( $id, $sizes[0] );        
+            $src = wp_get_attachment_image_src( $id, $sizes[0] );
         }
 
-        $attributes['src'] = $src[0];        
+        $attributes['src'] = $src[0];
     }
 
     // attributes
     foreach( $attributes as $attribute => $value ) {
         $html .= ' ' . $attribute . '="' . esc_attr( $value ) . '"';
-    }    
+    }
 
     $html .= '>';
 
@@ -925,11 +925,11 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
  * to follow the srcset responsive image pattern
  *
  * This filter is used when an image is added via the media modal.
- * Do not add <figure> tags here, because when we add a caption later 
+ * Do not add <figure> tags here, because when we add a caption later
  * we end up with a nested <figure>[caption]<img> structure...
  * @param  string $html  original image markup
  * @param  int    $id    attachment ID
- * @param  string $alt   alt text 
+ * @param  string $alt   alt text
  * @param  string $title image title
  * @return string        modified markup
  */
@@ -942,8 +942,8 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
 
     $html = '';
 
-    $html .= get_the_responsive_image( 
-        $id, 
+    $html .= get_the_responsive_image(
+        $id,
         array(
             'tiny',
             'thumbnail',
@@ -952,15 +952,15 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
             'larger',
             'full'
         ),
-        array( 
+        array(
             'sizes'   => '100vw',
             'alt'     => $alt,
             'title'   => $title,
             'class'   => 'inline-image ' . $class,
             'data-id' => $id
-        ), 
+        ),
         true,
-        true 
+        true
     );
 
     return $html;
@@ -974,7 +974,7 @@ add_filter( 'get_image_tag', 'responsive_image_embed', 10, 6 );
  * @param  ?? $empty        ??
  * @param  array $attr      shortcode attributes
  * @param  string $content  the image markup inside [caption][/caption]
- * @return strings          HTML makrup          
+ * @return strings          HTML makrup
  */
 function modify_caption_shortcode( $empty, $attr, $content ){
     $attr = shortcode_atts( array(
@@ -1027,18 +1027,18 @@ add_filter( 'img_caption_shortcode', 'modify_caption_shortcode', 10, 3 );
  * @return array       file object
  */
 function minimum_image_dimensions( $file ) {
-    $minimum = array( 
-        'width' => 800, 
-        'height' => 600 
-        );
-    
-    $mimes = array( 
-        'image/jpeg', 
-        'image/png', 
-        'image/gif' 
+    $minimum = array(
+        'width' => 800,
+        'height' => 600
         );
 
-    if( !in_array( $file['type'], $mimes ) ) { 
+    $mimes = array(
+        'image/jpeg',
+        'image/png',
+        'image/gif'
+        );
+
+    if( !in_array( $file['type'], $mimes ) ) {
         return $file;
     }
 
@@ -1053,7 +1053,7 @@ function minimum_image_dimensions( $file ) {
     return $file;
 }
 
-add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' ); 
+add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' );
 
 
 /**
@@ -1063,17 +1063,17 @@ add_filter( 'wp_handle_upload_prefilter', 'minimum_image_dimensions' );
  * @param  int   $id       attachment ID
  * @return array           modified meta data
  */
-function add_image_meta_data( $metadata, $id ) {    
+function add_image_meta_data( $metadata, $id ) {
     // orientation
     if( intval( $metadata['width'] ) == intval( $metadata['height'] ) ) {
         $orientation = 'square';
     } elseif( intval( $metadata['width'] ) < intval( $metadata['height'] ) ) {
         $orientation = 'portrait';
     } else {
-        $orientation = 'landscape';        
+        $orientation = 'landscape';
     }
 
-    update_post_meta( $id, 'orientation', $orientation );    
+    update_post_meta( $id, 'orientation', $orientation );
 
     return $metadata;
 }
@@ -1092,19 +1092,19 @@ add_filter( 'wp_generate_attachment_metadata', 'add_image_meta_data', 10, 2 );
 function hm_sanitize_file_name( $filename ) {
     if( function_exists( 'normalizer_normalize' ) ) {
         $filename = normalizer_normalize( $filename );
-    } 
-    
+    }
+
     $filename = remove_accents( $filename );
-    
-    return $filename;    
+
+    return $filename;
 }
 
-add_filter( 'sanitize_file_name', 'hm_sanitize_file_name' ); 
+add_filter( 'sanitize_file_name', 'hm_sanitize_file_name' );
 
 
 /**
- * Get the current archive URL without page number 
- * @return  int  $url URL of the archive 
+ * Get the current archive URL without page number
+ * @return  int  $url URL of the archive
  */
 function get_current_archive_url() {
     global $wp;
@@ -1156,7 +1156,7 @@ add_filter( 'embed_oembed_html', 'wrap_oembed', 99, 4 );
  */
 function redirect_views() {
     if( is_author() ) {
-        wp_redirect( home_url() ); 
+        wp_redirect( home_url() );
         exit;
     }
 }

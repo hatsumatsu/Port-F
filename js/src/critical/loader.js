@@ -12,7 +12,7 @@ jQuery( function( $ ) {
                             Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-smaller.min.js',
                             Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-smaller.min.js' ],
                     nope: [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-global.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-global.min.js', 
+                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-global.min.js',
                             Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-larger.min.js',
                             Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-larger.min.js' ]
                 }

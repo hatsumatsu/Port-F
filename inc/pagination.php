@@ -1,6 +1,6 @@
-<?php 
-global $wp_rewrite;     
-    
+<?php
+global $wp_rewrite;
+
 $current = ( $wp_query->query_vars['paged'] > 1 ) ? $wp_query->query_vars['paged'] : 1;
 $pagination = array(
     'base'      => @add_query_arg( 'page', '%#%' ),
