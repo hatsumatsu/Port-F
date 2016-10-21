@@ -10,35 +10,6 @@ Tags:
 This stylesheet was written in and compiled with LESS
 See http://lesscss.org for further reference
 */
-.hide-but-read {
-  position: absolute;
-  left: -9999em;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.pseudo-box {
-  content: ' ';
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-}
-.scroll {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.scroll-x {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-.scroll-y {
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
 .transition {
   -webkit-transition: all 250ms ease;
           transition: all 250ms ease;
@@ -46,10 +17,6 @@ See http://lesscss.org for further reference
 .no-transition {
   -webkit-transition: none !important;
           transition: none !important;
-}
-.new-layer {
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
 }
 .cf {
   zoom: 1;

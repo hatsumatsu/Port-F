@@ -1,5 +1,5 @@
 // A11Y
-.hide-but-read {
+.hide-but-read() {
     position: absolute;
     left: -9999em;
     top: auto;
@@ -12,7 +12,7 @@
 
 
 // LAYOUT
-.pseudo-box {
+.pseudo-box() {
     content: ' ';
 
     position: absolute;
@@ -22,18 +22,18 @@
     display: block;
 }
 
-.scroll {
+.scroll() {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 
-.scroll-x {
+.scroll-x() {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 }
 
-.scroll-y {
+.scroll-y() {
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -83,13 +83,14 @@
 
 
 // PERFORMANCE
-.new-layer {
+.new-layer() {
     transform: translateZ( 0 );
 }
 
 
 // CLEARFIX
 .cf {
+
     &:before,
     &:after {
         content: ' ';
