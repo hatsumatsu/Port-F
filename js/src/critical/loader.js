@@ -1,35 +1,29 @@
 jQuery( function( $ ) {
 
-    $( document ).ready( function() {
+    Loader = ( function() {
 
-        if( Debug.isActive() ) {
-
-            yepnope( [
-                {
-                    test: Modernizr.mq( Globals.get( 'mediaQuery' ) ),
-                    yep : [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-global.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-global.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-smaller.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-smaller.min.js' ],
-                    nope: [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-global.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-global.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/dependencies-larger.min.js',
-                            Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/app-larger.min.js' ]
-                }
-            ] );
-
-        } else {
-
-            yepnope( [
-                {
-                    test: Modernizr.mq( Globals.get( 'mediaQuery' ) ),
-                    yep : [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/all-smaller.min.js' ],
-                    nope: [ Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/all-larger.min.js' ]
-                }
-            ] );
-
+        var init = function() {
+            if( Modernizr.mq( Globals.get( 'mediaQuery' ) ) ) {
+                loadJS( Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/package-smaller.min.js' );
+            } else {
+                loadJS( Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/package-larger.min.js' );
+            }
         }
 
-  } );
+        var loadJS = function( url ) {
+            var script = document.createElement( 'script' );
+            script.type = 'text/javascript';
+            script.src = url;
 
+            $( 'head' ).append( script );
+        }
+
+        return {
+            init: function() { init(); }
+        }
+    } )();
+
+    $( document ).ready( function() {
+        Loader.init();
+    } );
 } );
