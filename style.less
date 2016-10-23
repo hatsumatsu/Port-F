@@ -3,13 +3,8 @@ Theme Name: Port F
 Theme URI: http://hatsumatsu.de
 Description: Starter Theme
 Author: HATSUMATSU, Martin Wecke
-Version: 0.4
+Version: 0.5
 Tags:
-*/
-
-/*
-This stylesheet was written in and compiled with LESS
-See http://lesscss.org for further reference
 */
 
 // VARIABLES
@@ -25,51 +20,19 @@ See http://lesscss.org for further reference
 
 
 // DOCUMENT
-html,
-body {
-    min-height: 100%;
-
-    background: @color--bg;
-}
-
-html {
-    font-family: @font--1;
-    font-size: 100%;
-    line-height: @line-height;
-
-    color: @color--text;
-
-    // enhanced typography
-    text-rendering: optimizeLegibility;
-    font-feature-settings: 'liga', 'kern';
-    text-size-adjust: 100%;
-}
-
-body {
-
-}
-
-// sync variables between CSS and JS
-title {
-    // media query: break point
-    width: @smaller-em;
-    // media query: string
-    font-family: '@{smaller}';
-    // transition duration
-    transition-duration: @transition-duration;
-}
-
-.shell {
-    width: 90%;
-    max-width: 64em;
-
-    margin: 0 auto;
-    padding: 2em 0;
-}
+@import 'css/document';
 
 
-// GENERAL
-@import 'css/general';
+// LINKS
+@import 'css/links';
+
+
+// HEADINGS
+@import 'css/headings';
+
+
+// INLINE CONTENT
+@import 'css/inline-content';
 
 
 // HEADER
@@ -81,7 +44,6 @@ title {
 
 // MAIN CONTENT
 @import 'css/content';
-@import 'css/inline-content';
 
 // posts
 @import 'css/posts';
@@ -92,11 +54,9 @@ title {
 // pagination
 @import 'css/pagination';
 
-// messages
-@import 'css/messages';
-
 // searchform
 @import 'css/searchform';
+
 
 // FOOTER
 @import 'css/footer';

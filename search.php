@@ -18,9 +18,9 @@
     get_search_form();
 ?>
 
-<div class="message">
+<p class="posts-message posts-message--results">
     <?php echo $message; ?>
-</div>
+</p>
 
 <?php
     if( have_posts() ) {

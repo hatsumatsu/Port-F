@@ -1,0 +1,18 @@
+a {
+    color: @color--link;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        outline: 0; // do somethig else for a11y
+    }
+
+    &:active {
+
+    }
+
+    &:visited {
+        color: lighten( @color--link, 5% );
+    }
+}

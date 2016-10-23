@@ -3,12 +3,8 @@ Theme Name: Port F
 Theme URI: http://hatsumatsu.de
 Description: Starter Theme
 Author: HATSUMATSU, Martin Wecke
-Version: 0.4
+Version: 0.5
 Tags:
-*/
-/*
-This stylesheet was written in and compiled with LESS
-See http://lesscss.org for further reference
 */
 .transition {
   -webkit-transition: all 250ms ease;
@@ -59,18 +55,6 @@ title {
   margin: 0 auto;
   padding: 2em 0;
 }
-a {
-  color: #888;
-  text-decoration: none;
-}
-a:visited {
-  color: #888888;
-}
-a:hover,
-a:focus {
-  text-decoration: underline;
-  outline: 0;
-}
 ::-moz-selection {
   color: #fff;
   background: #888;
@@ -79,12 +63,23 @@ a:focus {
   color: #fff;
   background: #888;
 }
+a {
+  color: #888;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: 0;
+}
+a:visited {
+  color: #959595;
+}
 h1,
 h2,
 h3,
-h4,
-h5 {
-  margin: 0 0 1em 0;
+h4 {
+  margin: 0 0 1rem 0;
   line-height: 1;
 }
 .nav-skip--head-primary {
@@ -259,11 +254,6 @@ h5 {
 }
 .download {
   display: block;
-}
-.message {
-  margin: 1rem 0;
-  padding: 1rem 1rem;
-  background: #cfcfcf;
 }
 .footer {
   clear: both;
