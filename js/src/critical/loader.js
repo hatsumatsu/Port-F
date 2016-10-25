@@ -4,9 +4,9 @@ jQuery( function( $ ) {
 
         var init = function() {
             if( Modernizr.mq( Globals.get( 'mediaQuery' ) ) ) {
-                loadJS( Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/package-smaller.min.js' );
+                loadJS( Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/package--smaller.min.js' );
             } else {
-                loadJS( Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/package-larger.min.js' );
+                loadJS( Globals.get( 'blogurl' ) + '/wp-content/themes/' + Globals.get( 'theme' ) + '/js/package--larger.min.js' );
             }
         }
 

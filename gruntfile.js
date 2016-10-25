@@ -76,7 +76,7 @@ module.exports = function( grunt ) {
                     compress: false
                 },
                 files: {
-                    'js/dependencies-global.js': ['js/src/dependencies-global/*.js']
+                    'js/dependencies--global.js': ['js/src/dependencies--global/*.js']
                 }
             },
             dependenciesSmaller: {
@@ -84,7 +84,7 @@ module.exports = function( grunt ) {
                     compress: false
                 },
                 files: {
-                    'js/dependencies-smaller.js': ['js/src/dependencies-smaller/*.js']
+                    'js/dependencies--smaller.js': ['js/src/dependencies--smaller/*.js']
                 }
             },
             dependenciesLarger: {
@@ -92,7 +92,7 @@ module.exports = function( grunt ) {
                     compress: false
                 },
                 files: {
-                    'js/dependencies-larger.js': ['js/src/dependencies-larger/*.js']
+                    'js/dependencies--larger.js': ['js/src/dependencies--larger/*.js']
                 }
             },
             appGlobal: {
@@ -100,10 +100,10 @@ module.exports = function( grunt ) {
                     compress: false
                 },
                 files: {
-                    'js/app-global.js': [
-                        'js/src/app-global/debug.js',
-                        'js/src/app-global/viewport.js',
-                        'js/src/app-global/nav.js'
+                    'js/app--global.js': [
+                        'js/src/app--global/debug.js',
+                        'js/src/app--global/viewport.js',
+                        'js/src/app--global/nav.js'
                     ]
                 }
             },
@@ -112,8 +112,8 @@ module.exports = function( grunt ) {
                     compress: false
                 },
                 files: {
-                    'js/app-smaller.js': [
-                        'js/src/app-smaller/module.js'
+                    'js/app--smaller.js': [
+                        'js/src/app--smaller/module.js'
                     ]
                 }
             },
@@ -122,37 +122,37 @@ module.exports = function( grunt ) {
                     compress: false
                 },
                 files: {
-                    'js/app-larger.js': [
-                        'js/src/app-larger/viewport.js',
-                        'js/src/app-larger/module.js'
+                    'js/app--larger.js': [
+                        'js/src/app--larger/viewport.js',
+                        'js/src/app--larger/module.js'
                     ]
                 }
             },
             packageGlobal: {
                 files: {
-                    'js/package-global.min.js': [
-                        'js/dependencies-global.js',
-                        'js/app-global.js'
+                    'js/package--global.min.js': [
+                        'js/dependencies--global.js',
+                        'js/app--global.js'
                     ]
                 }
             },
             packageSmaller: {
                 files: {
-                    'js/package-smaller.min.js': [
-                        'js/dependencies-global.js',
-                        'js/app-global.js',
-                        'js/dependencies-smaller.js',
-                        'js/app-smaller.js'
+                    'js/package--smaller.min.js': [
+                        'js/dependencies--global.js',
+                        'js/app--global.js',
+                        'js/dependencies--smaller.js',
+                        'js/app--smaller.js'
                     ]
                 }
             },
             packageLarger: {
                 files: {
-                    'js/package-larger.min.js': [
-                        'js/dependencies-global.js',
-                        'js/app-global.js',
-                        'js/dependencies-larger.js',
-                        'js/app-larger.js'
+                    'js/package--larger.min.js': [
+                        'js/dependencies--global.js',
+                        'js/app--global.js',
+                        'js/dependencies--larger.js',
+                        'js/app--larger.js'
                     ]
                 }
             }
