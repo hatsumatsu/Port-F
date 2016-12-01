@@ -4,6 +4,7 @@ module.exports = function( grunt ) {
 
     grunt.initConfig( {
         pkg: grunt.file.readJSON( 'package.json' ),
+        ftp: grunt.file.readJSON( '.ftppass' ),
 
         less: {
           development: {
@@ -201,27 +202,25 @@ module.exports = function( grunt ) {
         ftpush: {
             preview: {
                 auth: {
-                    host: 'example.com',
+                    host: '<%= ftp.key1.host %>',
                     port: 21,
                     authKey: 'key1'
                 },
                 src: '',
                 dest: '/preview/wp-content/themes/port-f',
                 exclusions: ['**/.*', '**/Thumbs.db', 'node_modules'],
-                // keep: ['/important/images/at/img/*.jpg'],
                 simple: false,
                 useList: false
             },
             production: {
                 auth: {
-                    host: 'example.com',
+                    host: '<%= ftp.key2.host %>',
                     port: 21,
                     authKey: 'key1'
                 },
                 src: '',
                 dest: '/wp-content/themes/port-f',
                 exclusions: ['**/.*', '**/Thumbs.db', 'node_modules'],
-                // keep: ['/important/images/at/img/*.jpg'],
                 simple: false,
                 useList: false
             }
