@@ -20,7 +20,10 @@
 
 
 // BREAKPOINTS
-@smaller-em: 48em;
+@medium-em: 1080px;
+@smaller: ~'only screen and ( max-width: @{medium-em} )';
+
+@smaller-em: 690px;
 @smaller: ~'only screen and ( max-width: @{smaller-em} )';
 
 

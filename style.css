@@ -44,8 +44,8 @@ html {
           text-size-adjust: 100%;
 }
 title {
-  width: 48em;
-  font-family: 'only screen and ( max-width: 48em )';
+  width: 690px;
+  font-family: 'only screen and ( max-width: 690px )';
   -webkit-transition-duration: 250ms;
           transition-duration: 250ms;
 }
@@ -103,7 +103,7 @@ h4 {
   padding: 0;
   list-style-type: none;
 }
-@media only screen and ( max-width: 48em ) {
+@media only screen and ( max-width: 690px ) {
   .nav-toggle--head-primary {
     position: fixed;
     left: 0;
