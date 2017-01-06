@@ -906,7 +906,11 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
             $src = wp_get_attachment_image_src( $id, $sizes[0] );
         }
 
-        $attributes['src'] = $src[0];
+        if( $base64 = get_base64( $src[0] ) ) {
+            $attributes['src'] = 'data:' . get_post_mime_type( $id ) . ';base64,' . $base64;
+        } else {
+            $attributes['src'] = $src[0];
+        }
     }
 
     // attributes
@@ -1100,6 +1104,24 @@ function hm_sanitize_file_name( $filename ) {
 }
 
 add_filter( 'sanitize_file_name', 'hm_sanitize_file_name' );
+
+
+/**
+ * Get the base64 encoded content of a file
+ * @param  string $url file URL
+ * @return string      base64 encoded file content
+ */
+function get_base64( $url ) {
+    $file = @file_get_contents( $url );
+
+    if( !$file ) {
+        return false;
+    }
+
+    $string = base64_encode( $file );
+
+    return $string;
+}
 
 
 /**
