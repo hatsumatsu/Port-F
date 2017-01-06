@@ -1184,3 +1184,16 @@ function redirect_views() {
 }
 
 add_action( 'template_redirect', 'redirect_views' );
+
+
+/**
+ * Load polyfill for PHP Normalizer when not available
+ */
+function load_normalizer_polyfill() {
+    if( !function_exists( 'normalizer_normalize' ) ) {
+        require( 'lib/Normalizer/Normalizer.php' );
+        require( 'lib/Normalizer/bootstrap.php' );
+    }
+}
+
+load_normalizer_polyfill();
