@@ -823,20 +823,16 @@ function get_site_description() {
  *         'sizes' => '100vw',
  *         'alt' => 'Alt text',
  *         'class' => 'wp-image'
- *     ),
- *     true,
- *     true
+ *     )
  *  )
  *
  * @param  integer $id               image ID
  * @param  array $sizes              array of image size key words
  * @param  array $attributes         array of attribute / value pairs
- * @param  boolean $dimensions       add dimension attributes to <img>
- * @param  boolean|string $fallback  true to use first item in sizes array as fallback src, string to define custom fallback image size
  * @return string                    HTML <img> tag
  */
-function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array(), $dimensions = false, $fallback = false ) {
-    echo get_the_responsive_image( $id, $sizes, $attributes, $dimensions, $fallback );
+function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array() ) {
+    echo get_the_responsive_image( $id, $sizes, $attributes );
 }
 
 
@@ -855,19 +851,15 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
  *         'sizes' => '100vw',
  *         'alt' => 'Alt text',
  *         'class' => 'wp-image'
- *     ),
- *     true,
- *     true
+ *     )
  *  )
  *
  * @param  integer $id               image ID
  * @param  array $sizes              array of image size key words
  * @param  array $attributes         array of attribute / value pairs
- * @param  boolean $dimensions       add dimension attributes to <img>
- * @param  boolean|string $fallback  true to use first item in sizes array as fallback src, string to define custom fallback image size
  * @return string                    HTML <img> tag
  */
-function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array(), $dimensions = false, $fallback = false ) {
+function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array() ) {
     $html = '';
     $html .= '<img';
 
@@ -882,10 +874,8 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
 
             $widths[] = $src[1];
 
-            if( $dimensions ) {
-                $width = $src[1];
-                $height = $src[2];
-            }
+            $width = $src[1];
+            $height = $src[2];
         }
     }
 
@@ -893,24 +883,15 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
     $attributes['srcset'] = $srcset;
 
     // dimensions
-    if( $dimensions ) {
-        $attributes['width'] = $width;
-        $attributes['height'] = $height;
-    }
+    $attributes['width'] = $width;
+    $attributes['height'] = $height;
 
     // src
-    if( $fallback ) {
-        if( is_string( $fallback ) ) {
-            $src = wp_get_attachment_image_src( $id, $fallback );
-        } else  {
-            $src = wp_get_attachment_image_src( $id, $sizes[0] );
-        }
-
-        if( $base64 = get_base64( $src[0] ) ) {
-            $attributes['src'] = 'data:' . get_post_mime_type( $id ) . ';base64,' . $base64;
-        } else {
-            $attributes['src'] = $src[0];
-        }
+    if( $base64 = get_post_meta( $id, 'base64--tiny', true ) ) {
+        $attributes['src'] = 'data:' . get_post_mime_type( $id ) . ';base64,' . $base64;
+    } else {
+        $src = wp_get_attachment_image_src( $id, $sizes[0] );
+        $attributes['src'] = $src[0];
     }
 
     // attributes
@@ -971,6 +952,49 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
 }
 
 add_filter( 'get_image_tag', 'responsive_image_embed', 10, 6 );
+
+
+/**
+ * Save base64 encoded version of the tiny image size as post meta
+ * @param  array $metadata metadata
+ * @param  integer $id     attachment ID
+ * @return array           metadata
+ */
+function save_base64_thumbnail_image( $metadata, $id ) {
+    // quit if image size is not found in metadata
+    if( !isset( $metadata['sizes']['tiny'] ) ) {
+        delete_post_meta( $id, 'base64--tiny' );
+
+        return $metadata;
+    }
+
+    // save attachment meta data first to make it available to 'wp_get_attachment_image_src'
+    wp_update_attachment_metadata( $id, $metadata );
+    $src = wp_get_attachment_image_src( $id, 'tiny' );
+
+    // quit if source is not found
+    if( !$src ) {
+        delete_post_meta( $id, 'base64--tiny' );
+
+        return $metadata;
+    }
+
+    $base64 = get_base64( $src[0] );
+
+    // quit if base64 encoding failed
+    if( !$base64 ) {
+        delete_post_meta( $id, 'base64--tiny' );
+
+        return $metadata;
+    }
+
+    // save as meta field
+    update_post_meta( $id, 'base64--tiny', $base64 );
+
+    return $metadata;
+}
+
+add_filter( 'wp_generate_attachment_metadata', 'save_base64_thumbnail_image', 99, 2 );
 
 
 /**
