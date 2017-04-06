@@ -1,16 +1,41 @@
-<article class="post post--<?php echo get_post_type_advanced(); ?>">
+<?php
+    $coverID = get_post_thumbnail_id();
+
+    $class = '';
+    $class .= ( $coverID ) ? ' has-cover' : '';
+?>
+
+
+<article class="post post--<?php echo get_post_type_advanced(); ?><?php echo esc_attr( $class ); ?>">
 
 <?php
-    if( has_post_thumbnail() ) {
+    if( $coverID ) {
 ?>
     <a href="<?php the_permalink(); ?>">
-        <?php the_post_thumbnail( 'medium' ); ?>
+        <figure class="post-image post-image--<?php echo get_post_type_advanced(); ?>">
+<?php
+        the_responsive_image(
+            $coverID,
+            array(
+                'tiny',
+                'small',
+                'medium',
+                'large',
+                'larger',
+                'full'
+            ),
+            array(
+                'class' => 'post-image-image post-image-image--' . get_post_type_advanced()
+            )
+        );
+?>
+        </figure>
     </a>
 <?php
     }
 ?>
 
-    <h2>
+    <h2 class="post-title post-title--<?php echo get_post_type_advanced(); ?>">
         <a href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
         </a>
