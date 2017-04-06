@@ -1,6 +1,6 @@
 <article class="post post--<?php echo get_post_type_advanced(); ?>">
 
-    <h2>
+    <h2 class="post-title post-title--<?php echo get_post_type_advanced(); ?>">
         <a href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
         </a>
