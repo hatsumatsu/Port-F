@@ -124,7 +124,6 @@ module.exports = function( grunt ) {
                 },
                 files: {
                     'js/app--larger.js': [
-                        'js/src/app--larger/viewport.js',
                         'js/src/app--larger/module.js'
                     ]
                 }
