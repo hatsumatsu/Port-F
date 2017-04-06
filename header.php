@@ -26,7 +26,7 @@
     <div class="shell">
         <section class="head" role="banner">
 
-            <h1>
+            <h1 class="site-header">
                 <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                     <?php bloginfo( 'name' ); ?>
                 </a>
