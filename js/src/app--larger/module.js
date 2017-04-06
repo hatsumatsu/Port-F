@@ -4,9 +4,9 @@
 jQuery( function( $ ) {
 
     AppLarger.Module = ( function() {
-        var settings = {
-            selector: {}
-        }
+        var settings = {}
+
+        var selector = {}
 
         var state = {}
 
