@@ -5,6 +5,39 @@ Description: Starter Theme
 Author: Martin Wecke
 Version: 0.5
 */
+/**
+ * Colors
+ */
+/**
+ * Typography
+ */
+/**
+ * Breakpoints and Media Queries
+ */
+/**
+ * Transitions
+ */
+/**
+ * Inline Background Images
+ */
+/**
+ * A11n
+ */
+/**
+ * Layout
+ */
+/**
+ * Scroll
+ */
+/**
+ * Background Images
+ */
+/**
+ * Icon
+ */
+/**
+ * Transition
+ */
 .transition {
   -webkit-transition: all 250ms ease;
           transition: all 250ms ease;
@@ -13,6 +46,13 @@ Version: 0.5
   -webkit-transition: none !important;
           transition: none !important;
 }
+/**
+ * Performance
+ */
+/**
+ * Clearfix
+ * like it’s 1999
+ */
 .cf {
   zoom: 1;
 }
@@ -42,6 +82,9 @@ html {
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
 }
+/**
+ * Make CSS variables available for JS
+ */
 title {
   width: 690px;
   font-family: 'only screen and ( max-width: 690px )';
@@ -78,7 +121,7 @@ h1,
 h2,
 h3,
 h4 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   line-height: 1;
 }
 .nav-skip--head {
@@ -243,7 +286,7 @@ h4 {
   }
 }
 .post {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 .post:last-child {
   margin-bottom: 0;

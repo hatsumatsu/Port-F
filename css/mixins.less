@@ -1,4 +1,6 @@
-// A11Y
+/**
+ * A11n
+ */
 .hide-but-read() {
     position: absolute;
     left: -9999em;
@@ -11,7 +13,9 @@
 }
 
 
-// LAYOUT
+/**
+ * Layout
+ */
 .pseudo-box() {
     content: ' ';
 
@@ -22,6 +26,10 @@
     display: block;
 }
 
+
+/**
+ * Scroll
+ */
 .scroll() {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -40,13 +48,13 @@
 }
 
 
-// BACKGROUND IMAGES
-// data-uri
+/**
+ * Background Images
+ */
 .data-uri( @url ) {
     background-image: data-uri( 'img/@{url}' );
 }
 
-// PNG fallback for SVG
 .svg( @handle, @data-uri: false ) when ( @data-uri = false ) {
     background-image: url( 'img/@{handle}.svg' );
 
@@ -64,7 +72,10 @@
     }
 }
 
-// icon
+
+/**
+ * Icon
+ */
 .icon( @handle, @data-uri: false ) {
     .svg( @handle, @data-uri );
     background-position: center center;
@@ -72,7 +83,9 @@
 }
 
 
-// TRANSITION
+/**
+ * Transition
+ */
 .transition {
     transition: all @transition-duration ease;
 }
@@ -82,13 +95,18 @@
 }
 
 
-// PERFORMANCE
+/**
+ * Performance
+ */
 .new-layer() {
     transform: translateZ( 0 );
 }
 
 
-// CLEARFIX
+/**
+ * Clearfix
+ * like it’s 1999
+ */
 .cf {
 
     &:before,

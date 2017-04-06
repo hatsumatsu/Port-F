@@ -9,10 +9,9 @@ html {
     font-family: @font--1;
     font-size: 100%;
     line-height: @line-height;
-
     color: @color--text;
 
-    // enhanced typography
+    // Enhanced typography
     text-rendering: optimizeLegibility;
     font-feature-settings: 'liga', 'kern';
     text-size-adjust: 100%;
@@ -22,26 +21,30 @@ body {
 
 }
 
-// sync variables between CSS and JS
+/**
+ * Make CSS variables available for JS
+ */
 title {
-    // media query: break point
+    // Media query: break point
     width: @smaller-em;
-    // media query: string
+
+    // Media query: string
     font-family: '@{smaller}';
-    // transition duration
+
+    // Transition duration
     transition-duration: @transition-duration;
 }
 
 .shell {
     width: 90%;
     max-width: 64em;
-
     margin: 0 auto;
     padding: 2em 0;
 }
 
-// selection
+// Selection
 ::selection {
     color: @color--bg;
+
     background: @color--link;
 }
