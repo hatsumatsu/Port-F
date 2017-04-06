@@ -32,7 +32,7 @@
                 </a>
             </h1>
 
-            <?php get_inc( 'nav', 'head-primary', 0 ); ?>
+            <?php get_inc( 'nav', 'head', 0 ); ?>
 
         </section><!-- end .head -->
         <section class="content" role="main" id="content">

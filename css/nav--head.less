@@ -1,31 +1,31 @@
 // <nav>
-.nav--head-primary {
+.nav--head {
 
 }
 
 // skip link
-.nav-skip--head-primary {
+.nav-skip--head {
     .hide-but-read;
 }
 
 // toggle
-.nav-toggle--head-primary {
+.nav-toggle--head {
     display: none;
 }
 
 // <ul>
-.nav-list--head-primary {
+.nav-list--head {
     margin: 0 0 1rem 0;
     padding: 0;
 
     list-style-type: none;
 }
 
-.nav-list--head-primary > li {
+.nav-list--head > li {
 
 }
 
-.nav-list--head-primary > li a {
+.nav-list--head > li a {
 
 
     &:hover,
@@ -34,8 +34,8 @@
     }
 }
 
-.nav-list--head-primary > li.current-menu-item a,
-.nav-list--head-primary > li.current-menu-parent a {
+.nav-list--head > li.current-menu-item a,
+.nav-list--head > li.current-menu-parent a {
 
 
     &:hover,
@@ -45,7 +45,7 @@
 }
 
 // submenu
-.nav-list--head-primary ul {
+.nav-list--head ul {
     margin: 0 0 0 1rem;
     padding: 0;
 
@@ -56,7 +56,7 @@
 @media @smaller {
 
     // toggle
-    .nav-toggle--head-primary {
+    .nav-toggle--head {
         position: fixed;
         left: 0;
         top: 0;
@@ -125,7 +125,7 @@
             background: lighten( @color--text, 10% );
         }
 
-        .visible--head-primary & {
+        .visible--head & {
             left: 100%;
 
             margin-left: -4rem;
@@ -143,7 +143,7 @@
         }
     }
 
-    .nav-list--head-primary {
+    .nav-list--head {
         position: fixed;
         left: -100%;
         right: 100%;
@@ -159,7 +159,7 @@
 
         background: @color--text;
 
-        .scroll-y;
+        .scroll--y;
 
         .transition;
 
@@ -180,7 +180,7 @@
             .transition;
         }
 
-        .visible--head-primary & {
+        .visible--head & {
             left: -4rem;
             right: 4rem;
 
@@ -191,16 +191,16 @@
         }
     }
 
-    .nav-list--head-primary li {
+    .nav-list--head li {
         margin: 0;
         padding: 0;
     }
 
-    .nav-list--head-primary > li:last-child {
+    .nav-list--head > li:last-child {
         margin-bottom: 4rem;
     }
 
-    .nav-list--head-primary li a {
+    .nav-list--head li a {
         display: block;
         margin: 0;
         padding: 1.5rem 1rem;
@@ -209,25 +209,25 @@
         color: @color--bg;
     }
 
-    .nav-list--head-primary li a:hover,
-    .nav-list--head-primary li a:focus,
-    .nav-list--head-primary li.current-menu-item a {
+    .nav-list--head li a:hover,
+    .nav-list--head li a:focus,
+    .nav-list--head li.current-menu-item a {
         text-decoration: none;
 
         background: lighten( @color--text, 10% );
     }
 
     // submenu
-    .nav-list--head-primary li ul {
+    .nav-list--head li ul {
         margin: 0;
         padding: 0;
     }
 
-    .nav-list--head-primary li ul li {
+    .nav-list--head li ul li {
 
     }
 
-    .nav-list--head-primary li ul li a {
+    .nav-list--head li ul li a {
         padding-left: 2rem;
     }
 

@@ -231,8 +231,8 @@ add_filter( 'show_admin_bar', '__return_false' );
  * Register navigation menus
  */
 function register_navigation() {
-    register_nav_menu( 'head-primary', __( 'Primary Header Navigation', 'port-f' ) );
-    register_nav_menu( 'footer-primary', __( 'Primary Footer Navigation', 'port-f' ) );
+    register_nav_menu( 'head', __( 'Primary Header Navigation', 'port-f' ) );
+    register_nav_menu( 'footer', __( 'Primary Footer Navigation', 'port-f' ) );
 }
 
 add_action( 'after_setup_theme', 'register_navigation' );
@@ -249,7 +249,7 @@ function modify_nav_markup( $args = '' ) {
     $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-theme-location="' . esc_attr( $args['theme_location'] ) . '">';
     $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
 
-    if( $args['theme_location'] == 'head-primary' ) {
+    if( $args['theme_location'] == 'head' ) {
         $html .= '<a class="nav-toggle nav-toggle--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Toggle Navigation', 'port-f' ) ) . '">' . __( 'Navigation', 'port-f' ) . '</a>';
     }
 
