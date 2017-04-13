@@ -8,8 +8,27 @@
 
 
     // images
-    .inline-image {
+    img.inline-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 0 1em;
+    }
 
+    figure.inline-image {
+        max-width: 100%;
+        margin: 0 0 1em;
+
+        & > img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        & > figcaption {
+
+        }
     }
 
     // gallery

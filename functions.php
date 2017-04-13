@@ -50,6 +50,17 @@ add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
 
 
 /**
+ * Register admin JS
+ */
+function hm_admin_js() {
+    wp_register_script( 'hm-admin', get_template_directory_uri() . '/js/admin.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'hm-admin' );
+}
+
+add_action( 'admin_enqueue_scripts', 'hm_admin_js' );
+
+
+/**
  * Add inline HTML to <head>
  */
 function hm_theme_head() {
@@ -881,6 +892,7 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
 
     $srcset = rtrim( $srcset, ',' );
     $attributes['srcset'] = $srcset;
+    $attributes['data-srcset'] = $srcset;
 
     // dimensions
     $attributes['width'] = $width;
@@ -951,7 +963,7 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
     return $html;
 }
 
-add_filter( 'get_image_tag', 'responsive_image_embed', 10, 6 );
+add_filter( 'get_image_tag', 'responsive_image_embed', 10, 1000 );
 
 
 /**
@@ -1031,12 +1043,12 @@ function modify_caption_shortcode( $empty, $attr, $content ){
     $class .= ( $attr['align'] ) ? ' align--' .  str_replace( 'align', '', $attr['align'] ) : '';
 
     $html = '';
-    $html .= '<figure class="' . esc_attr( $class ) . '">';
+    $html .= '<figure class="inline-image ' . esc_attr( $class ) . '">';
 
     $html .= do_shortcode( strip_tags( $content, '<img><img/><figcaption>' ) );
 
     if( $attr['caption'] ) {
-        $html .= '<figcaption>';
+        $html .= '<figcaption class="inline-image-caption">';
         $html .= $attr['caption'];
         $html .= '</figcaption>';
     }
