@@ -1050,6 +1050,62 @@ add_filter( 'img_caption_shortcode', 'modify_caption_shortcode', 10, 3 );
 
 
 /**
+ * Modify output of the [gallery] shortcode
+ * @param  string  $output      original output
+ * @param  array   $attributes  shortcode attributes
+ * @param  integer $instance    unique ID of the gallery instance
+ * @return string               output
+ */
+function modify_gallery_shortcode( $output = '', $attributes, $instance ) {
+    if( !$attributes['ids'] ) {
+        return false;
+    }
+
+    $ids = explode( ',', $attributes['ids'] );
+
+    if( !$ids ) {
+        return false;
+    }
+
+    $html = '';
+
+    $html .= '<div class="inline-gallery">';
+    foreach( $ids as $id ) {
+        $attachment = get_post( $id );
+
+        $html .= '<figure class="inline-gallery-image">';
+        $html .=  get_the_responsive_image(
+            $id,
+            array(
+                'tiny',
+                'small',
+                'medium',
+                'large',
+                'larger',
+                'full'
+            ),
+            array(
+                'class' => 'inline-gallery-image-image'
+            )
+        );
+
+        if( $attachment->post_excerpt ) {
+            $html .= '<figcaption class="inline-gallery-image-caption">';
+            $html .= wptexturize( $attachment->post_excerpt );
+            $html .= '</figcaption>';
+        }
+
+        $html .= '</figure>';
+    }
+    $html .= '</div>';
+
+    return $html;
+}
+
+add_filter( 'post_gallery', 'modify_gallery_shortcode', 10, 100 );
+
+
+/**
  * Force minimum images dimensions on upload
  * @param  array $file file object
  * @return array       file object

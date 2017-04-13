@@ -124,6 +124,19 @@ h4 {
   margin: 0 0 1rem;
   line-height: 1;
 }
+.inline-content .inline-gallery {
+  margin: 1em 0;
+}
+.inline-content .inline-gallery-image {
+  width: 25%;
+  margin: 0 0 1em;
+}
+.inline-content .inline-gallery-image-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
 .nav-skip--head {
   position: absolute;
   left: -9999em;
