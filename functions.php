@@ -380,6 +380,9 @@ function hm_customize_tinyMCE( $init ) {
     // disable rich text pasting
     $init['paste_as_text'] = true;
 
+    // disable object resizing
+    $init['object_resizing'] = false;
+
     // format select entries
     $init['block_formats'] = __( 'Paragraph', 'port-f' ) . '=p;' . __( 'Heading 3', 'port-f' ) . '=h3;' . __( 'Heading 4', 'port-f' ) . '=h4';
 
