@@ -13,10 +13,10 @@ jQuery( function( $ ) {
         var init = function() {
             Debug.log( 'AppLarger.Module.init()' );
 
-            bindEventHandlers();
+            bindEvents();
         }
 
-        var bindEventHandlers = function() {
+        var bindEvents = function() {
 
         }
 

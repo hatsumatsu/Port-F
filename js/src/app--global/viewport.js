@@ -58,13 +58,13 @@ jQuery( function( $ ) {
 
             onResizeFinish();
 
-            bindEventHandlers();
+            bindEvents();
 
             onScroll();
             onLoop();
         }
 
-        var bindEventHandlers = function() {
+        var bindEvents = function() {
             // throttle resize event
             settings.element.on( 'resize', function() {
                 if( settings.resizeDelay ) {
