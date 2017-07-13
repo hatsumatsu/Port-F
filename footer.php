@@ -1,7 +1,7 @@
         </section><!-- end .content -->
         <section class="footer">
 
-            <?php get_inc( 'nav', 'footer-primary', 0 ); ?>
+            <?php get_inc( 'nav', 'footer', 0 ); ?>
 
             <?php get_inc( 'widgets', 'footer', 0 ); ?>
 
