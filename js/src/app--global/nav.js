@@ -5,31 +5,41 @@ jQuery( function( $ ) {
 
     AppGlobal.Nav = ( function() {
 
-        var settings = {
+        var settings = {}
 
-        };
-
-        var init = function() {
-            Debug.log( 'AppGlobal.Nav.init()' );
-
-            bindEventHandlers();
+        var selector = {
+            nav: '[data-nav-role="nav"]',
+            toggle: '[data-nav-role="toggle"]'
         }
 
-        var bindEventHandlers = function() {
+        var state = {}
+
+        var init = function() {
+            Debug.log( 'App Global.Nav.init()' );
+
+            bindEvents();
+        }
+
+        var bindEvents = function() {
             $( document )
-                .on( 'click', '.nav-toggle', function( e ) {
-                    e.preventDefault();
+                .on( 'click', selector.toggle, function( event ) {
+                    event.preventDefault();
 
-                    var navigation = $( this ).closest( 'nav' );
-                    var id = navigation.attr( 'data-theme-location' );
+                    var id = $( this ).attr( 'data-nav-id' );
 
-                    if( $( 'html' ).hasClass( 'visible--' + id  ) ) {
-                        $( document ).trigger( 'nav/hide' );
-                    } else {
-                        $( document ).trigger( 'nav/show' );
+                    if( id ) {
+                        if( $( 'html' ).hasClass( 'visible--nav-' + id  ) ) {
+                            $( document ).trigger( 'nav/hide', [{
+                                id: id
+                            }] );
+                        } else {
+                            $( document ).trigger( 'nav/show', [{
+                                id: id
+                            }] );
+                        }
+
+                        $( 'html' ).toggleClass( 'visible--nav-' + id );
                     }
-
-                    $( 'html' ).toggleClass( 'visible--' + id );
                 } );
         }
 

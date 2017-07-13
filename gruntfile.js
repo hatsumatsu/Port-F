@@ -235,7 +235,10 @@ module.exports = function( grunt ) {
             },
             js: {
                 files: ['js/**/*.js','!js/**/*.min.js'],
-                tasks: ['buildjs']
+                tasks: ['buildjs'],
+                options: {
+                    livereload: true
+                }
             },
             imgraster: {
                 files: ['img/src/**/*.{jpg,jpeg,gif,png}'],

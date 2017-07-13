@@ -97,27 +97,6 @@
             .transition;
         }
 
-        &::after {
-            content: ' ';
-
-            position: fixed;
-            right: 0;
-            top: 4rem;
-            bottom: 0;
-
-            display: block;
-            width: 0;
-            margin: 0 0 0 -4rem;
-
-            background: @color--bg;
-
-            opacity: 0;
-
-            .transition;
-            transition-property: width, opacity;
-            transition-delay: 0ms, @transition-duration;
-        }
-
         &:hover,
         &:focus {
             text-decoration: none;
@@ -125,7 +104,7 @@
             background: lighten( @color--text, 10% );
         }
 
-        .visible--head & {
+        .visible--nav-head & {
             left: 100%;
 
             margin-left: -4rem;
@@ -133,12 +112,6 @@
             &::before {
 
                 transform: rotate( 45deg );
-            }
-
-            &::after {
-                width: 4rem;
-
-                opacity: 0.8;
             }
         }
     }
@@ -180,7 +153,7 @@
             .transition;
         }
 
-        .visible--head & {
+        .visible--nav-head & {
             left: -4rem;
             right: 4rem;
 

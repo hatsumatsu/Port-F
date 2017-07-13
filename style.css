@@ -211,40 +211,18 @@ h4 {
     -webkit-transition: all 250ms ease;
             transition: all 250ms ease;
   }
-  .nav-toggle--head::after {
-    content: ' ';
-    position: fixed;
-    right: 0;
-    top: 4rem;
-    bottom: 0;
-    display: block;
-    width: 0;
-    margin: 0 0 0 -4rem;
-    background: #fff;
-    opacity: 0;
-    -webkit-transition: all 250ms ease;
-            transition: all 250ms ease;
-    -webkit-transition-property: width, opacity;
-            transition-property: width, opacity;
-    -webkit-transition-delay: 0ms, 250ms;
-            transition-delay: 0ms, 250ms;
-  }
   .nav-toggle--head:hover,
   .nav-toggle--head:focus {
     text-decoration: none;
     background: #2b2b2b;
   }
-  .visible--head .nav-toggle--head {
+  .visible--nav-head .nav-toggle--head {
     left: 100%;
     margin-left: -4rem;
   }
-  .visible--head .nav-toggle--head::before {
+  .visible--nav-head .nav-toggle--head::before {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
-  }
-  .visible--head .nav-toggle--head::after {
-    width: 4rem;
-    opacity: 0.8;
   }
   .nav-list--head {
     position: fixed;
@@ -278,11 +256,11 @@ h4 {
     -webkit-transition: all 250ms ease;
             transition: all 250ms ease;
   }
-  .visible--head .nav-list--head {
+  .visible--nav-head .nav-list--head {
     left: -4rem;
     right: 4rem;
   }
-  .visible--head .nav-list--head::after {
+  .visible--nav-head .nav-list--head::after {
     left: 0;
     right: 0;
   }
