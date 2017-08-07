@@ -359,7 +359,7 @@ function hm_remove_admin_dashboard_widgets() {
     global $wp_meta_boxes;
 
     unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
-//  unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
+    unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
     unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
     unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'] );
     unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] );
@@ -606,8 +606,8 @@ update_option( 'image_default_link_type', 'none' );
 
 
 /**
- * Get post type wherever get_post_type() is unreliable
- * p.e. outside of loop or on taxonomy archives
+ * More reliable way to get a post type
+ * (works outside of The Loop, too)
  *
  * @return  string  post type
  */
