@@ -628,27 +628,25 @@ function get_post_type_advanced() {
 
 
 /**
- * Save IDs of images inserted inline to a post or page
- * to later exclude them from imagelist.php
- *
+ * Save post ID’s of inline content images
  * @param  integer $post_id post ID
  */
 function hm_save_inline_images( $post_id ) {
     $post = get_post( $post_id );
 
-    $exclude = array();
-    preg_match_all( '/data-id="([0-9]*)"/i', $post->post_content, $exclude );
+    $images = array();
+    preg_match_all( '/data-id="([0-9]*)"/i', $post->post_content, $images );
 
-    $exclude = $exclude[1];
+    $images = $images[1];
 
     // convert strings to integers
-    foreach( $exclude as &$id ) {
+    foreach( $images as &$id ) {
         $id = intval( $id );
     }
     unset( $id );
 
     // save as postmeta
-    update_post_meta( $post_id, 'inline-images', json_encode( $exclude ) );
+    update_post_meta( $post_id, 'inline-images', json_encode( $images ) );
 }
 
 add_action( 'save_post', 'hm_save_inline_images' );
