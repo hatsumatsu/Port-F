@@ -18,7 +18,7 @@
             $coverID,
             array(
                 'tiny',
-                'small',
+                'thumbnail',
                 'medium',
                 'large',
                 'larger',

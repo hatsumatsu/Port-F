@@ -1093,7 +1093,7 @@ function modify_gallery_shortcode( $output = '', $attributes, $instance ) {
             $id,
             array(
                 'tiny',
-                'small',
+                'thumbnail',
                 'medium',
                 'large',
                 'larger',
