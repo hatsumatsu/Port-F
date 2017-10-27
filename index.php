@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="posts posts--<?php echo get_post_type_advanced(); ?>">
+<section class="posts posts--<?php echo esc_attr( get_post_type_advanced() ); ?>">
 
 <?php
     if( have_posts() ) {

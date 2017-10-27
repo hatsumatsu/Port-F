@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
-<head data-wpurl="<?php bloginfo( 'url' ); ?>" data-project="<?php echo esc_attr( get_theme_directory_name() ); ?>">
+<head data-wpurl="<?php echo esc_attr( get_bloginfo( 'url' ) ); ?>" data-project="<?php echo esc_attr( get_theme_directory_name() ); ?>">
     <meta charset="utf-8">
 
     <?php wp_head(); ?>
@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="cleartype" content="on">
 
-    <link rel="icon" href="<?php bloginfo( 'template_directory' ); ?>/img/favicon.png" type="image/png">
+    <link rel="icon" href="<?php echo esc_attr( get_bloginfo( 'template_directory' ) ); ?>/img/favicon.png" type="image/png">
 
     <?php get_inc( 'head', 'facebook', 0 ); ?>
 

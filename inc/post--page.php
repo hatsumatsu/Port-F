@@ -1,4 +1,4 @@
-<article class="post post--<?php echo get_post_type_advanced(); ?>">
+<article class="post post--<?php echo esc_attr( get_post_type_advanced() ); ?>">
 
     <h2 class="post-title post-title--<?php echo esc_attr( get_post_type_advanced() ); ?>">
         <a href="<?php the_permalink(); ?>">
@@ -6,7 +6,7 @@
         </a>
     </h2>
 
-    <time class="post-time post-time--<?php echo esc_attr( get_post_type_advanced() ); ?>" datetime="<?php the_time( 'Y-m-d\TH:i' ); ?>">
+    <time class="post-time post-time--<?php echo esc_attr( get_post_type_advanced() ); ?>" datetime="<?php echo esc_attr( get_the_time( 'Y-m-d\TH:i' ) ); ?>">
         <?php the_post_time(); ?>
     </time>
 
