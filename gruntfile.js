@@ -3,33 +3,34 @@ module.exports = function( grunt ) {
     require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
     grunt.initConfig( {
+
         pkg: grunt.file.readJSON( 'package.json' ),
         ftp: grunt.file.readJSON( '.ftppass' ),
 
         less: {
-          development: {
-            files: {
-              'style.css': 'style.less',
-              'css/editor.css': 'css/editor.less'
+            development: {
+                files: {
+                    'style.css': 'style.less',
+                    'css/editor.css': 'css/editor.less'
+                }
             }
-          }
         },
 
         autoprefixer: {
             style: {
-              src: 'style.css',
-              dest: 'style.css'
+                src: 'style.css',
+                dest: 'style.css'
             },
             editor: {
-              src: 'css/editor.css',
-              dest: 'css/editor.css'
+                src: 'css/editor.css',
+                dest: 'css/editor.css'
             }
         },
 
         modernizr: {
             dist: {
-                'dest' : 'js/src/critical/modernizr.min.js',
-                'options' : [
+                dest: 'js/src/critical/modernizr.min.js',
+                options : [
                     'setClasses',
                     'addTest',
                     'html5printshiv',
@@ -37,12 +38,12 @@ module.exports = function( grunt ) {
                     'fnBind',
                     'mq'
                 ],
-                'tests' : [
+                tests: [
                     'touchevents',
                     'pointerevents'
                 ],
-                'files' : {
-                    'src': [
+                files: {
+                    src: [
                         'js/**/*.js',
                         '**/*.css',
                         '!node_modules/**/*',
@@ -61,41 +62,52 @@ module.exports = function( grunt ) {
                     return 'js/sourcemaps/' + parts[parts.length-1] + '.map'
                 }
             },
+
             critical: {
-              files: {
-                'js/critical.min.js': [
-                    'js/src/critical/modernizr.min.js',
-                    'js/src/critical/yepnope.1.5.4.min.js',
-                    'js/src/critical/globals.js',
-                    'js/src/critical/debug.js',
-                    'js/src/critical/loader.js'
-                ]
-              }
+                files: {
+                    'js/critical.min.js': [
+                        'js/src/critical/modernizr.min.js',
+                        'js/src/critical/yepnope.1.5.4.min.js',
+                        'js/src/critical/globals.js',
+                        'js/src/critical/debug.js',
+                        'js/src/critical/loader.js'
+                    ]
+                }
             },
+
             dependenciesGlobal: {
                 options: {
                     compress: false
                 },
                 files: {
-                    'js/dependencies--global.js': ['js/src/dependencies--global/*.js']
+                    'js/dependencies--global.js': [
+                        'js/src/dependencies--global/*.js'
+                    ]
                 }
             },
+
             dependenciesSmaller: {
                 options: {
                     compress: false
                 },
                 files: {
-                    'js/dependencies--smaller.js': ['js/src/dependencies--smaller/*.js']
+                    'js/dependencies--smaller.js': [
+                        'js/src/dependencies--smaller/*.js'
+                    ]
                 }
             },
+
             dependenciesLarger: {
                 options: {
                     compress: false
                 },
                 files: {
-                    'js/dependencies--larger.js': ['js/src/dependencies--larger/*.js']
+                    'js/dependencies--larger.js': [
+                        'js/src/dependencies--larger/*.js'
+                    ]
                 }
             },
+
             appGlobal: {
                 options: {
                     compress: false
@@ -108,6 +120,7 @@ module.exports = function( grunt ) {
                     ]
                 }
             },
+
             appSmaller: {
                 options: {
                     compress: false
@@ -118,6 +131,7 @@ module.exports = function( grunt ) {
                     ]
                 }
             },
+
             appLarger: {
                 options: {
                     compress: false
@@ -128,6 +142,7 @@ module.exports = function( grunt ) {
                     ]
                 }
             },
+
             packageGlobal: {
                 files: {
                     'js/package--global.min.js': [
@@ -136,6 +151,7 @@ module.exports = function( grunt ) {
                     ]
                 }
             },
+
             packageSmaller: {
                 files: {
                     'js/package--smaller.min.js': [
@@ -146,6 +162,7 @@ module.exports = function( grunt ) {
                     ]
                 }
             },
+
             packageLarger: {
                 files: {
                     'js/package--larger.min.js': [
@@ -160,12 +177,12 @@ module.exports = function( grunt ) {
 
         imagemin: {
             all: {
-                files: [{
+                files: [ {
                     expand: true,
                     cwd: 'img/src/',
                     src: ['**/*.{png,jpeg,jpg,gif}'],
                     dest: 'img/'
-                }],
+                } ],
                 options: {
                     cache: false
                 }
@@ -175,26 +192,30 @@ module.exports = function( grunt ) {
         svgmin: {
             options: {
                 plugins: [
-                  { removeViewBox: false },
-                  { removeUselessStrokeAndFill: false }
+                    {
+                        removeViewBox: false
+                    },
+                    {
+                        removeUselessStrokeAndFill: false
+                    }
                 ]
             },
             dist: {
-                files: [{
+                files: [ {
                     expand: true,
                     cwd: 'img/src/',
                     src: ['**/*.svg'],
                     dest: 'img/'
-                }]
+                } ]
             }
         },
 
         svg2png: {
             all: {
-                files: [{
+                files: [ {
                     src: ['img/src/*.svg'],
                     dest: ''
-                }]
+                } ]
             }
         },
 
@@ -211,6 +232,7 @@ module.exports = function( grunt ) {
                 simple: false,
                 useList: false
             },
+
             production: {
                 auth: {
                     host: '<%= ftp.key2.host %>',
@@ -233,6 +255,7 @@ module.exports = function( grunt ) {
                     livereload: true
                 }
             },
+
             js: {
                 files: ['js/**/*.js','!js/**/*.min.js'],
                 tasks: ['buildjs'],
@@ -240,10 +263,12 @@ module.exports = function( grunt ) {
                     livereload: true
                 }
             },
+
             imgraster: {
                 files: ['img/src/**/*.{jpg,jpeg,gif,png}'],
                 tasks: ['buildimagesraster']
             },
+
             imgvector: {
                 files: ['img/src/**/*.svg'],
                 tasks: ['buildimagesvector']
@@ -251,6 +276,7 @@ module.exports = function( grunt ) {
         }
 
     } );
+
 
     grunt.registerTask( 'default', ['build'] );
 
@@ -265,4 +291,5 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'deploy_production',  ['ftpush:production'] );
 
     grunt.registerTask( 'build',  ['buildcss', 'buildmodernizr', 'buildjs', 'buildimages'] );
+
 };
