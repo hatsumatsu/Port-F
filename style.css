@@ -264,25 +264,28 @@ h4 {
     left: 0;
     right: 0;
   }
-  .nav-list--head li {
+  .nav-list-item--head {
     margin: 0;
     padding: 0;
   }
-  .nav-list--head > li:last-child {
-    margin-bottom: 4rem;
-  }
-  .nav-list--head li a {
+  .nav-list-item--head > a {
     display: block;
     margin: 0;
     padding: 1.5rem 1rem;
     line-height: 1;
     color: #fff;
   }
-  .nav-list--head li a:hover,
-  .nav-list--head li a:focus,
-  .nav-list--head li.current-menu-item a {
+  .nav-list-item--head > a:hover,
+  .nav-list-item--head > a:focus {
     text-decoration: none;
     background: #2b2b2b;
+  }
+  .nav-list-item--head.current-menu-item > a {
+    text-decoration: none;
+    background: #2b2b2b;
+  }
+  .nav-list-item--head:last-child {
+    margin-bottom: 4rem;
   }
   .nav-list--head li ul {
     margin: 0;
@@ -316,15 +319,7 @@ h4 {
   clear: both;
   margin: 1rem 0 0 0;
 }
-.nav-skip--footer-primary {
-  position: absolute;
-  left: -9999em;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.nav-list--footer-primary {
+.nav-list--footer {
   margin: 0;
   padding: 0;
   list-style-type: none;

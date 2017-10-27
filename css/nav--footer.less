@@ -1,37 +1,41 @@
 // <nav>
-.nav--footer-primary {
+.nav--footer {
 
 }
 
 // skip link
-.nav-skip--footer-primary {
-    .hide-but-read;
+.nav-skip--footer {
+
 }
 
-.nav-list--footer-primary {
+// <ul>
+.nav-list--footer {
     margin: 0;
     padding: 0;
 
     list-style-type: none;
 }
 
-.nav-list--footer-primary > li {
+// <li>
+.nav-list-item--footer  {
 
-}
+    & > a {
 
-.nav-list--footer-primary > li a {
+        &:hover,
+        &:focus {
 
-    &:hover,
-    &:focus {
-
+        }
     }
-}
 
-.nav-list--footer-primary > li.current_menu_item a,
-.nav-list--footer-primary > li.current_menu_parent a {
+    &.current_menu_item,
+    &.current_menu_parent {
 
-    &:hover,
-    &:focus {
+        & > a {
 
+            &:hover,
+            &:focus {
+
+            }
+        }
     }
 }

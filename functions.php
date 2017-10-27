@@ -277,6 +277,24 @@ add_filter( 'wp_nav_menu_args', 'modify_nav_markup' );
 
 
 /**
+ * Modify nav item class attributes
+ * @param  array $classes original class
+ * @param  object $item   nav menu item object
+ * @param  array $args    nav menu arguments
+ * @param  int $depth     nav menu item depth
+ * @return array          classes
+ */
+function modify_nav_item_class( $classes, $item, $args, $depth ) {
+    $classes[] = 'nav-list-item';
+    $classes[] = 'nav-list-item--' . esc_attr( $args->theme_location );
+
+    return $classes;
+}
+
+add_filter( 'nav_menu_css_class', 'modify_nav_item_class', 10, 4 );
+
+
+/**
  * Register footer widget area
  */
 function register_widgets() {
