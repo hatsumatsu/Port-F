@@ -343,7 +343,7 @@ function modify_image_sizes() {
     add_image_size( 'larger', 1800, 2700, false );
 }
 
-add_action( 'after_setup_theme', 'modify_image_sizes' );
+add_action( 'after_switch_theme', 'modify_image_sizes' );
 
 
 /**
