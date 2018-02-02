@@ -4,8 +4,6 @@
 Debug = ( function() {
 
     var settings = {
-        isLocal: false,
-        isActive: true,
         keyboard: {
             key:        68,
             count:      0,
@@ -15,9 +13,14 @@ Debug = ( function() {
         },
     }
 
+    var state = {
+        local: false,
+        active: true
+    }
+
     var init = function() {
-        settings.isLocal = ( location.href.indexOf( 'local' ) > -1 ) ? true : false;
-        settings.isActive = settings.isLocal;
+        state.local = ( location.href.indexOf( 'local' ) > -1 ) ? true : false;
+        state.active = state.local;
 
         bindEventHandlers();
     }
@@ -39,25 +42,24 @@ Debug = ( function() {
 
                     settings.keyboard.count = settings.keyboard.count + 1;
                     if( settings.keyboard.count == settings.keyboard.countMax ) {
-                        settings.isActive = !settings.isActive;
-                        log( 'toggle logging', settings.isActive );
+                        state.active = !state.active;
+                        log( 'toggle logging', state.active );
                     }
                 }
             } );
     }
 
     var log = function() {
-        if( settings.isActive ) {
+        if( state.active ) {
             console.log.apply( console, arguments );
         }
     }
 
     return {
         init: function() { init(); },
-        log:  log,
-        isActive: function() { return settings.isActive }
+        log:  log
     }
-
 } )();
+
 
 Debug.init();

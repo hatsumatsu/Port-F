@@ -3,7 +3,7 @@
  */
 jQuery( function( $ ) {
 
-    AppLarger.Module = ( function() {
+    Module = ( function() {
         var settings = {}
 
         var selector = {}
@@ -11,7 +11,7 @@ jQuery( function( $ ) {
         var state = {}
 
         var init = function() {
-            Debug.log( 'AppLarger.Module.init()' );
+            Debug.log( 'Module.init()' );
 
             bindEvents();
         }
@@ -25,8 +25,9 @@ jQuery( function( $ ) {
         }
     } )();
 
+
     $( document ).ready( function() {
-        AppLarger.Module.init();
+        Module.init();
     } );
 
 } );

@@ -1,2 +1,0 @@
-jQuery(function($){AppSmaller.Module=function(){var settings={};var selector={};var state={};var init=function(){Debug.log("AppSmaller.Module.init()");bindEvents()};var bindEvents=function(){};return{init:function(){init()}}}();$(document).ready(function(){AppSmaller.Module.init()})});
-//# sourceMappingURL=sourcemaps/app--smaller.js.map
