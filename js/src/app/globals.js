@@ -1,10 +1,6 @@
 /**
  * Globals
  */
-AppGlobal = {}
-AppSmaller = {}
-AppLarger = {}
-
 jQuery( function( $ ) {
 
     Globals = ( function() {
@@ -39,8 +35,8 @@ jQuery( function( $ ) {
             set:  function( key, value ) { set( key, value ) },
             get:  function( key ) { return get( key ) }
         }
-
     } )();
+
 
     $( document ).ready( function() {
         Globals.init();

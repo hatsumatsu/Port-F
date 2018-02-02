@@ -4,7 +4,7 @@
  */
 jQuery( function( $ ) {
 
-    AppGlobal.Viewport = ( function() {
+    Viewport = ( function() {
 
         var settings = {
             // dimensions
@@ -52,7 +52,7 @@ jQuery( function( $ ) {
         }
 
         var init = function() {
-            Debug.log( 'AppGlobal.Viewport.init()' );
+            Debug.log( 'Viewport.init()' );
 
             settings.element = $( window );
 
@@ -212,7 +212,7 @@ jQuery( function( $ ) {
         }
 
         var onResizeFinish = function() {
-            Debug.log( 'AppGlobal.Viewport.onResizeFinish()' );
+            Debug.log( 'Viewport.onResizeFinish()' );
 
             state._mediaQuery = state.mediaQuery;
             state.mediaQuery = Modernizr.mq( Globals.get( 'mediaQuery' ) );
@@ -230,7 +230,7 @@ jQuery( function( $ ) {
         }
 
         var onScroll = function() {
-            Debug.log( 'AppGlobal.Viewport.onScroll()' );
+            Debug.log( 'Viewport.onScroll()' );
 
             settings.scrollFactor = settings.scrollTop / ( settings.height - settings.documentHeight ) * -1;
 
@@ -296,7 +296,7 @@ jQuery( function( $ ) {
         }
 
         var scrollTo = function( target, offset, animate ) {
-            Debug.log( 'AppGlobal.Viewport.scrollTo()' );
+            Debug.log( 'Viewport.scrollTo()' );
             Debug.log( target );
 
             var top = 0;
@@ -374,11 +374,11 @@ jQuery( function( $ ) {
             getMousePosition:   function() { return getMousePosition() },
             get:                function( key ) { return get( key ) }
         }
-
     } )();
 
+
     $( document ).ready( function() {
-        AppGlobal.Viewport.init();
+        Viewport.init();
     } );
 
 } );

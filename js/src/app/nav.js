@@ -3,7 +3,7 @@
  */
 jQuery( function( $ ) {
 
-    AppGlobal.Nav = ( function() {
+    Nav = ( function() {
 
         var settings = {}
 
@@ -15,7 +15,7 @@ jQuery( function( $ ) {
         var state = {}
 
         var init = function() {
-            Debug.log( 'App Global.Nav.init()' );
+            Debug.log( 'Nav.init()' );
 
             bindEvents();
         }
@@ -50,7 +50,7 @@ jQuery( function( $ ) {
     } )();
 
     $( document ).ready( function () {
-        AppGlobal.Nav.init();
+        Nav.init();
     } );
 
 } );

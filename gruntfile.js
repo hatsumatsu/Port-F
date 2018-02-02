@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
 
         modernizr: {
             dist: {
-                dest: 'js/src/critical/modernizr.min.js',
+                dest: 'js/src/dependencies/modernizr.min.js',
                 options : [
                     'setClasses',
                     'addTest',
@@ -55,7 +55,7 @@ module.exports = function( grunt ) {
 
         uglify: {
             options: {
-                mangle: false,
+                mangle: true,
                 sourceMap: true,
                 sourceMapName: function( filename ) {
                     var parts = filename.split( '/' );
@@ -63,113 +63,16 @@ module.exports = function( grunt ) {
                 }
             },
 
-            critical: {
+            bundle: {
                 files: {
-                    'js/critical.min.js': [
-                        'js/src/critical/modernizr.min.js',
-                        'js/src/critical/yepnope.1.5.4.min.js',
-                        'js/src/critical/globals.js',
-                        'js/src/critical/debug.js',
-                        'js/src/critical/loader.js'
-                    ]
-                }
-            },
+                    'js/app.min.js': [
+                        'js/src/dependencies/*.js',
 
-            dependenciesGlobal: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'js/dependencies--global.js': [
-                        'js/src/dependencies--global/*.js'
-                    ]
-                }
-            },
-
-            dependenciesSmaller: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'js/dependencies--smaller.js': [
-                        'js/src/dependencies--smaller/*.js'
-                    ]
-                }
-            },
-
-            dependenciesLarger: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'js/dependencies--larger.js': [
-                        'js/src/dependencies--larger/*.js'
-                    ]
-                }
-            },
-
-            appGlobal: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'js/app--global.js': [
-                        'js/src/app--global/debug.js',
-                        'js/src/app--global/viewport.js',
-                        'js/src/app--global/nav.js'
-                    ]
-                }
-            },
-
-            appSmaller: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'js/app--smaller.js': [
-                        'js/src/app--smaller/module.js'
-                    ]
-                }
-            },
-
-            appLarger: {
-                options: {
-                    compress: false
-                },
-                files: {
-                    'js/app--larger.js': [
-                        'js/src/app--larger/module.js'
-                    ]
-                }
-            },
-
-            packageGlobal: {
-                files: {
-                    'js/package--global.min.js': [
-                        'js/dependencies--global.js',
-                        'js/app--global.js'
-                    ]
-                }
-            },
-
-            packageSmaller: {
-                files: {
-                    'js/package--smaller.min.js': [
-                        'js/dependencies--global.js',
-                        'js/app--global.js',
-                        'js/dependencies--smaller.js',
-                        'js/app--smaller.js'
-                    ]
-                }
-            },
-
-            packageLarger: {
-                files: {
-                    'js/package--larger.min.js': [
-                        'js/dependencies--global.js',
-                        'js/app--global.js',
-                        'js/dependencies--larger.js',
-                        'js/app--larger.js'
+                        'js/src/app/globals.js',
+                        'js/src/app/debug.js',
+                        'js/src/app/viewport.js',
+                        'js/src/app/nav.js',
+                        'js/src/app/module.js'
                     ]
                 }
             }

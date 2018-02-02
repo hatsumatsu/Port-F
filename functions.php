@@ -30,8 +30,8 @@ function hm_theme_js() {
         wp_enqueue_script('jquery');
     }
 
-    wp_register_script( 'hm-critical', get_template_directory_uri() . '/js/critical.min.js', array( 'jquery' ), '0.4', true );
-    wp_enqueue_script( 'hm-critical' );
+    wp_register_script( 'port-f--app', get_template_directory_uri() . '/js/app.min.js', array( 'jquery' ), '0.5', true );
+    wp_enqueue_script( 'port-f--app' );
 }
 
 add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
