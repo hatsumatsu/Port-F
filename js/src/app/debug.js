@@ -5,11 +5,11 @@ Debug = ( function() {
 
     var settings = {
         keyboard: {
-            key:        68,
-            count:      0,
-            countMax:   7,
-            timeDuration:   5000,
-            timer:      null
+            key: 68, // 'D'
+            count: 0,
+            countMax: 7,
+            timeDuration: 5000,
+            timer: null
         },
     }
 
@@ -21,6 +21,7 @@ Debug = ( function() {
     var init = function() {
         state.local = ( location.href.indexOf( 'local' ) > -1 ) ? true : false;
         state.active = state.local;
+        // state.active = false;
 
         bindEventHandlers();
     }
@@ -51,9 +52,9 @@ Debug = ( function() {
 
     var log = function() {
         if( state.active ) {
-            console.log.apply( console, arguments );
+            return Function.prototype.bind.call( console.log, console, 'Port-F:' );
         }
-    }
+    }();
 
     return {
         init: function() { init(); },
