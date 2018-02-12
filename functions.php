@@ -313,17 +313,12 @@ add_action( 'widgets_init', 'register_widgets' );
 
 
 /**
- * Define image sizes
- * tiny:          80 x  120px
+ * Modify core image sizes
  * thumbnail:    400 x  600px
  * medium:       800 x 1200px
  * large:       1200 x 1800px
- * larger:      1800 x 2700px
  */
 function modify_image_sizes() {
-    // tiny
-    add_image_size( 'tiny', 80, 120, false );
-
     // thumbnail
     update_option( 'thumbnail_size_w', 400 );
     update_option( 'thumbnail_size_h', 600 );
@@ -338,12 +333,26 @@ function modify_image_sizes() {
     update_option( 'large_size_w', 1200 );
     update_option( 'large_size_h', 1800 );
     update_option( 'large_crop', 0 );
+}
+
+add_action( 'after_switch_theme', 'modify_image_sizes' );
+
+
+/**
+ * Add custom image sizes
+ * tiny:          80 x  120px
+ * larger:      1800 x 2700px
+ */
+function add_image_sizes() {
+    // tiny
+    add_image_size( 'tiny', 80, 120, false );
 
     // larger
     add_image_size( 'larger', 1800, 2700, false );
 }
 
-add_action( 'after_switch_theme', 'modify_image_sizes' );
+add_action( 'after_setup_theme', 'add_image_sizes' );
+
 
 
 /**
