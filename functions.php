@@ -216,6 +216,7 @@ function hm_register_data_structure() {
                 'thumbnail'
             ),
             'public'            => true,
+            'show_in_rest'      => true,
             'menu_position'     => 5,
             'menu_icon'         => 'dashicons-smiley',
             'rewrite'           => array(
