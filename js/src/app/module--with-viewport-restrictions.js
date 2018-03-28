@@ -4,8 +4,10 @@
 jQuery( function( $ ) {
 
     Module = ( function() {
+        var namespace = '.module';
+
         var settings = {
-            minWidth: 640,
+            minWidth: 690,
             maxWidth: 9999
         }
 
@@ -15,33 +17,8 @@ jQuery( function( $ ) {
             initiated: false
         }
 
-        var init = function() {
-            console.log( 'Module.init()' );
-
-            // listen for resize event
-            $( document )
-                .on( 'viewport/resize/finish', function() {
-                    onResize();
-                } )
-
-            checkWidth();
-        }
-
-        var bindEvents = function() {
-            $( document )
-                .on( 'click.module', function() {
-                    alert( 'click' );
-                } );
-        }
-
-        var onResize = function() {
-            checkWidth();
-
-            /* custom resize behavior */
-        }
-
         var setup = function() {
-            console.log( 'Module.setup()' );
+            Debug.log( 'Module.setup()' );
 
             if( state.initiated ) {
                 return false;
@@ -52,29 +29,62 @@ jQuery( function( $ ) {
             state.initiated = true;
         }
 
-        var destroy = function() {
-            console.log( 'Module.destroy()' );
+        var bindEvents = function() {
+            $( document )
+                .on( 'click' + namespace, function() {
+                    alert( 'click' );
+                } );
+        }
 
+
+        /**
+         * Factory functions
+         */
+        var _init = function() {
+            Debug.log( 'Module._init()' );
+
+            // listen for resize event
+            $( document )
+                .on( 'viewport/resize/finish', function() {
+                    _onResize();
+                } )
+
+            _checkWidth();
+        }
+
+        var _onResize = function() {
+            _checkWidth();
+        }
+
+        var _setup = function() {
+            setup();
+        }
+
+        var _destroy = function() {
             if( !state.initiated ) {
                 return false;
             }
 
-            $( document ).off( '.module' )
+            $( document ).off( namespace )
             state.initiated = false;
-        }
 
-        var checkWidth = function() {
-            if( Viewport.get( 'width' ) >= settings.minWidth && Viewport.get( 'width' ) <= settings.maxWidth && !state.initiated ) {
-                setup();
-            }
-
-            if( ( Viewport.get( 'width' ) < settings.minWidth || Viewport.get( 'width' ) > settings.maxWidth ) && state.initiated ) {
+            if( typeof destroy === 'function' ) {
                 destroy();
             }
         }
 
+        var _checkWidth = function() {
+            if( Viewport.get( 'width' ) >= settings.minWidth && Viewport.get( 'width' ) <= settings.maxWidth && !state.initiated ) {
+                _setup();
+            }
+
+            if( ( Viewport.get( 'width' ) < settings.minWidth || Viewport.get( 'width' ) > settings.maxWidth ) && state.initiated ) {
+                _destroy();
+            }
+        }
+
         return {
-            init: function() { init(); }
+            init: function() { _init(); }
         }
     } )();
 
