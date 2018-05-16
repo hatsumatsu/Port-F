@@ -400,6 +400,12 @@ add_action( 'wp_dashboard_setup', 'hm_remove_admin_dashboard_widgets' );
 
 
 /**
+ * Disable the welcome panel on dashboard
+ */
+remove_action('welcome_panel', 'wp_welcome_panel');
+
+
+/**
  * Configure tinyMCE features
  * http://www.tinymce.com/wiki.php/Configuration
  */
