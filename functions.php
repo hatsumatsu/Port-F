@@ -10,7 +10,7 @@ load_theme_textdomain( 'port-f', get_stylesheet_directory() . '/languages' );
  */
 function hm_theme_css() {
     wp_register_style( 'hm-normalize', get_template_directory_uri() . '/css/normalize.css', 0, 'screen' );
-    wp_register_style( 'port-f', get_template_directory_uri() . '/style.css', array( 'hm-normalize' ), 0, 'screen' );
+    wp_register_style( 'port-f', get_template_directory_uri() . '/style.css', array( 'hm-normalize' ), '0.6', 'screen' );
 
     wp_enqueue_style( 'hm-normalize' );
     wp_enqueue_style( 'port-f' );
@@ -30,7 +30,7 @@ function hm_theme_js() {
         wp_enqueue_script('jquery');
     }
 
-    wp_register_script( 'port-f--app', get_template_directory_uri() . '/js/app.min.js', array( 'jquery' ), '0.5', true );
+    wp_register_script( 'port-f--app', get_template_directory_uri() . '/js/app.min.js', array( 'jquery' ), '0.6', true );
     wp_enqueue_script( 'port-f--app' );
 }
 
