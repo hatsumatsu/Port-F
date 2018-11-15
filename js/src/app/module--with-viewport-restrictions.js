@@ -7,8 +7,7 @@ jQuery( function( $ ) {
         var namespace = '.module';
 
         var settings = {
-            minWidth: 690,
-            maxWidth: 9999
+            mediaQuery: '( min-width: 680px )',
         }
 
         var selector = {}
@@ -49,11 +48,11 @@ jQuery( function( $ ) {
                     _onResize();
                 } )
 
-            _checkWidth();
+            _checkMediaQuery();
         }
 
         var _onResize = function() {
-            _checkWidth();
+            _checkMediaQuery();
         }
 
         var _setup = function() {
@@ -73,12 +72,10 @@ jQuery( function( $ ) {
             }
         }
 
-        var _checkWidth = function() {
-            if( Viewport.get( 'width' ) >= settings.minWidth && Viewport.get( 'width' ) <= settings.maxWidth && !state.initiated ) {
+        var _checkMediaQuery = function() {
+            if( window.matchMedia( settings.mediaQuery ).matches ) {
                 _setup();
-            }
-
-            if( ( Viewport.get( 'width' ) < settings.minWidth || Viewport.get( 'width' ) > settings.maxWidth ) && state.initiated ) {
+            } else {
                 _destroy();
             }
         }
