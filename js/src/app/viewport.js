@@ -1,19 +1,19 @@
 /**
  * Viewport
- * handy module to track viewport events and properties
+ * Handy module to track viewport related events and properties
  */
 jQuery( function( $ ) {
 
     Viewport = ( function() {
 
         var settings = {
-            // window / document
+            // screen
             maxPixelRatio: 2,
 
             // time
             fps: ( 1000 / 60 ),
 
-            // scrolling
+            // scroll
             scrollYOffset: 20,
             scrollBottomOffset: 20,
             scrollToOffset: 0,
@@ -69,7 +69,7 @@ jQuery( function( $ ) {
         }
 
         var bindEventHandlers = function() {
-            // throttle resize event
+            // debounce resize event
             element.viewport
                 .on( 'resize', function() {
                     if( settings.resizeDelay ) {
@@ -90,7 +90,7 @@ jQuery( function( $ ) {
                     }, 500 );
                 } );
 
-            // scroll event
+            // throttle scroll event
             element.scroller
                 .on( 'scroll', function() {
                     var now = Date.now();
@@ -238,6 +238,7 @@ jQuery( function( $ ) {
         }
 
     } )();
+
 
     $( document ).ready( function() {
         Viewport.init();
