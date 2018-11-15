@@ -109,15 +109,6 @@ module.exports = function( grunt ) {
             }
         },
 
-        svg2png: {
-            all: {
-                files: [ {
-                    src: ['img/src/*.svg'],
-                    dest: ''
-                } ]
-            }
-        },
-
         ftpush: {
             preview: {
                 auth: {
@@ -183,7 +174,7 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'buildmodernizr', ['modernizr'] );
     grunt.registerTask( 'buildjs',  ['uglify'] );
     grunt.registerTask( 'buildimagesraster',  ['imagemin'] );
-    grunt.registerTask( 'buildimagesvector',  ['svgmin', 'svg2png'] );
+    grunt.registerTask( 'buildimagesvector',  ['svgmin'] );
     grunt.registerTask( 'buildimages',  ['buildimagesraster', 'buildimagesvector'] );
 
     grunt.registerTask( 'deploy_preview',  ['ftpush:preview'] );
