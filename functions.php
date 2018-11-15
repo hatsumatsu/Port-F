@@ -372,6 +372,18 @@ add_filter( 'jpeg_quality', 'hm_jpeg_quality' );
 
 
 /**
+ * Modify <body> classes
+ * @param  array $classes body classes
+ * @return array          body classes
+ */
+function modify_body_class( $classes ) {
+    return $classes;
+}
+
+add_filter( 'body_class', 'modify_body_class' );
+
+
+/**
  * Remove unneccessary admin menus
  */
 function hm_remove_admin_menus () {
