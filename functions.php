@@ -1288,7 +1288,7 @@ function wrap_oembed( $html, $url, $attributes, $id ) {
     $class = '';
 
     if( strpos( $url, 'youtu' ) || strpos( $url, 'vimeo' ) ) {
-        $class .= ' embed-video';
+        $class .= ' embed embed--video';
     }
 
     return '<div class="' . esc_attr( $class ) . '">' . $html . '</div>';
