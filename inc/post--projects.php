@@ -1,21 +1,21 @@
 <?php
-    $coverID = get_post_thumbnail_id();
+    $imageID = get_post_thumbnail_id();
 
     $class = '';
-    $class .= ( $coverID ) ? ' has-cover' : '';
+    $class .= ( $imageID ) ? ' has-image' : '';
 ?>
 
 
 <article class="post post--<?php echo esc_attr( get_post_type_advanced() ); ?><?php echo esc_attr( $class ); ?>">
 
 <?php
-    if( $coverID ) {
+    if( $imageID ) {
 ?>
     <a href="<?php the_permalink(); ?>">
         <figure class="post-image post-image--<?php echo esc_attr( get_post_type_advanced() ); ?>">
 <?php
         the_responsive_image(
-            $coverID,
+            $imageID,
             array(
                 'tiny',
                 'thumbnail',

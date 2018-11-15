@@ -1,4 +1,5 @@
 <?php
+
 global $wp_rewrite;
 
 $current = ( $wp_query->query_vars['paged'] > 1 ) ? $wp_query->query_vars['paged'] : 1;
