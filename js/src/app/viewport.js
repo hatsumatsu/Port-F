@@ -7,39 +7,17 @@ jQuery( function( $ ) {
     Viewport = ( function() {
 
         var settings = {
-            // dimensions
-            width: 0,
-            height: 0,
-            documentHeight: 0,
-            pixelRatio: 1,
+            // window / document
             maxPixelRatio: 2,
 
             // time
-            nowLoop: Date.now(),
             fps: ( 1000 / 60 ),
 
             // scrolling
-            scrollTop: -1,
-            _scrollTop: -1,
-            scrollLeft: -1,
-            _scrollLeft: -1,
-            nowScroll: Date.now(),
-            scrollFactor: -1,
-            scrollTopOffset: 20,
+            scrollYOffset: 20,
             scrollBottomOffset: 20,
             scrollToOffset: 0,
             scrollTimer: null,
-
-            // mouse
-            mouseX: 0,
-            mouseY: 0,
-            mousePosition: {
-                x: 0,
-                y: 0,
-                factorX: 0.5,
-                factorY: 0.5
-            },
-            _mousePosition : {}
         };
 
         var element = {
@@ -48,9 +26,32 @@ jQuery( function( $ ) {
         }
 
         var state = {
+            // window / document
+            width: 0,
+            height: 0,
+            documentHeight: 0,
+            pixelRatio: 1,
+
+            // scroll
+            scrollY: -1,
+            _scrollY: -1,
+            scrollX: -1,
+            _scrollX: -1,
+            scrollFactorY: 0,
+
             scrolledToTop: false,
-            scrolledToBottom: false
+            scrolledToBottom: false,
+
+            // mouse
+            mousePosition: {
+                x: 0,
+                y: 0,
+                factorX: 0.5,
+                factorY: 0.5
+            }
         }
+
+        var _now = Date.now();
 
         var init = function() {
             Debug.log( 'Viewport.init()' );
@@ -63,7 +64,8 @@ jQuery( function( $ ) {
             bindEventHandlers();
 
             onScroll();
-            onLoop();
+
+            Debug.log( 'Viewport.state', state );
         }
 
         var bindEventHandlers = function() {
@@ -80,6 +82,9 @@ jQuery( function( $ ) {
 
                     settings.resizeDelay = setTimeout( function() {
                         $( 'html' ).removeClass( 'resizing' );
+
+                        onResizeFinish();
+
                         $( document ).trigger( 'viewport/resize/finish' );
                         settings.resizeDelay = null;
                     }, 500 );
@@ -89,24 +94,21 @@ jQuery( function( $ ) {
             element.scroller
                 .on( 'scroll', function() {
                     var now = Date.now();
-                    var elapsed = now - settings.nowScroll;
+                    var elapsed = now - _now;
 
                     if( elapsed > settings.fps ) {
-                        settings.nowScroll = now - ( elapsed % settings.fps );
+                        _now = now - ( elapsed % settings.fps );
 
-                        settings.scrollTop = element.scroller.scrollTop();
+                        state.scrollX = element.scroller.scrollLeft();
+                        state.scrollY = element.scroller.scrollTop();
+
+                        onScroll();
+
                         $( document ).trigger( 'viewport/scroll' );
                     }
                 } );
 
             $( document )
-                .on( 'viewport/scroll', function() {
-                    onScroll();
-                } )
-                .on( 'viewport/resize/finish', function() {
-                    onResizeFinish();
-                } )
-
                 // top
                 .on( 'viewport/scroll/toTop', function() {
                     Debug.log( 'scrolled to top' );
@@ -134,81 +136,37 @@ jQuery( function( $ ) {
             // mouse movement
             element.viewport
                 .on( 'mousemove', function( event ) {
-                    settings.mouseX = event.pageX - settings.scrollLeft;
-                    settings.mouseY = event.pageY - settings.scrollTop;
+                    state.mousePosition.x = event.pageX - state.scrollX;
+                    state.mousePosition.y = event.pageY - state.scrollY;
+                    state.mousePosition.factorX = ( state.mousePosition.x / state.width );
+                    state.mousePosition.factorY = ( state.mousePosition.y / state.height );
                 } );
-        }
-
-        /**
-         * requestAnimationFrame loop throttled at 60fps
-         */
-        var onLoop = function() {
-            requestAnimationFrame( onLoop );
-
-            var now = Date.now();
-            var elapsed = now - settings.nowLoop;
-
-            // the actual 'loop'
-            if( elapsed > settings.fps ) {
-                settings.nowLoop = now - ( elapsed % settings.fps );
-
-                $( document ).trigger( 'viewport/loop', [{ now: now }] );
-
-                // mousemove
-                settings._mousePosition = settings.mousePosition;
-
-                if( settings.mouseX != settings._mousePosition.x
-                 || settings.mouseY != settings._mousePosition.y ) {
-
-                    var factorX = ( settings.mouseX / settings.width );
-                    var factorY = ( settings.mousePosition.y / settings.height );
-
-                    settings.mousePosition = {
-                      x: settings.mouseX,
-                      y: settings.mouseY,
-                      factorX: factorX,
-                      factorY: factorY
-                    }
-
-                    $( document ).trigger( 'viewport/mousemove' );
-                }
-            }
         }
 
         var onResizeFinish = function() {
             Debug.log( 'Viewport.onResizeFinish()' );
 
-            settings.width = element.viewport.width();
-            settings.height = element.viewport.height();
-            settings.documentHeight = $( 'html' ).outerHeight();
-            settings.pixelRatio = window.devicePixelRatio || 1;
-            if( settings.pixelRatio > settings.maxPixelRatio ) {
-                settings.pixelRatio = settings.maxPixelRatio;
+            state.width = element.viewport.width();
+            state.height = element.viewport.height();
+            state.documentHeight = $( 'html' ).outerHeight();
+            state.pixelRatio = window.devicePixelRatio || 1;
+            if( state.pixelRatio > settings.maxPixelRatio ) {
+                state.pixelRatio = settings.maxPixelRatio;
             }
         }
 
         var onScroll = function() {
-            Debug.log( 'Viewport.onScroll()' );
-
-    /*
-            // time for scroll/finish event
-            clearTimeout( settings.scrollTimer  );
-            settings.scrollTimer = setTimeout( function() {
-              clearTimeout( settings.scrollTimer  );
-              $( document ).trigger( 'viewport/scroll/finish' );
-            }, 200 );
-    */
-            settings.scrollFactor = settings.scrollTop / ( settings.height - settings.documentHeight ) * -1;
+            state.scrollFactorY = state.scrollY / ( state.height - state.documentHeight ) * -1;
 
             // top
-            if( settings.scrollTop > settings.scrollTopOffset ) {
+            if( state.scrollY > settings.scrollYOffset ) {
                 if( state.scrolledToTop ) {
                     state.scrolledToTop = false;
                     $( document ).trigger( 'viewport/scroll/fromTop' );
                 }
             }
 
-            if( settings.scrollTop < settings.scrollTopOffset ) {
+            if( state.scrollY < settings.scrollYOffset ) {
                 if( !state.scrolledToTop ) {
                     state.scrolledToTop = true;
                     $( document ).trigger( 'viewport/scroll/toTop' );
@@ -216,14 +174,14 @@ jQuery( function( $ ) {
             }
 
             // bottom
-            if( settings.scrollTop > settings.documentHeight - settings.height - settings.scrollBottomOffset ) {
+            if( state.scrollY > state.documentHeight - state.height - settings.scrollBottomOffset ) {
                 if( !state.scrolledToBottom ) {
                     state.scrolledToBottom = true;
                     $( document ).trigger( 'viewport/scroll/toBottom' );
                 }
             }
 
-            if( settings.scrollTop < settings.documentHeight - settings.height - settings.scrollBottomOffset ) {
+            if( state.scrollY < state.documentHeight - state.height - settings.scrollBottomOffset ) {
                 if( state.scrolledToBottom ) {
                     state.scrolledToBottom = false;
                     $( document ).trigger( 'viewport/scroll/fromBottom' );
@@ -232,35 +190,34 @@ jQuery( function( $ ) {
         }
 
         var scrollTo = function( target, offset, animate ) {
-            Debug.log( 'Viewport.scrollTo()' );
-            Debug.log( target );
+            Debug.log( 'Viewport.scrollTo()', target );
 
-            var top = 0;
+            var y = 0;
 
             // scroll to position
             if( typeof target == 'number' ) {
-                top = target;
+                y = target;
             }
 
-            // scroll to id
-            if( typeof target == 'string' && $( '#' + target ).length > 0 ) {
-                top = parseInt( $( '#' + target ).offset().top );
+            // scroll to selector
+            if( typeof target == 'string' && $( target ).length > 0 ) {
+                y = parseInt( $( target ).first().offset().top );
             }
 
             // scroll to element
             if( typeof target == 'object' && target.length > 0 ) {
-                top = parseInt( target.offset().top );
+                y = parseInt( target.offset().top );
             }
 
             if( offset ) {
-                top = top + offset;
+                y = y + offset;
             } else {
-                top = top + settings.scrollToOffset;
+                y = y + settings.scrollToOffset;
             }
 
             if( animate ) {
-                element.scroller.scroll( {
-                    top: offset,
+                element.scroller[0].scroll( {
+                    top: y,
                     left: 0,
                     behavior: 'smooth'
                 } );
@@ -270,43 +227,13 @@ jQuery( function( $ ) {
 
         }
 
-        var getWidth = function() {
-            return settings.width;
-        }
-
-        var getHeight = function() {
-            return settings.height;
-        }
-
-        var getScrollTop = function() {
-            return settings.scrollTop;
-        }
-
-        var getScrollLeft = function() {
-            return settings.scrollLeft;
-        }
-
-        var getScrollFactor = function() {
-            return settings.scrollFactor;
-        }
-
-        var getMousePosition = function() {
-            return settings.mousePosition;
-        }
-
         var get = function( key ) {
-            return settings[key] || false;
+            return state[key] || false;
         }
 
         return {
             init:               function() { init(); },
             scrollTo:           function( target, offset, animate ) { scrollTo( target, offset, animate ) },
-            getWidth:           function() { return getWidth() },
-            getHeight:          function() { return getHeight() },
-            getScrollTop:       function() { return getScrollTop() },
-            getScrollLeft:      function() { return getScrollLeft() },
-            getScrollFactor:    function() { return getScrollFactor() },
-            getMousePosition:   function() { return getMousePosition() },
             get:                function( key ) { return get( key ) }
         }
 
