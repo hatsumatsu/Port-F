@@ -99,23 +99,25 @@ title {
 }
 ::-moz-selection {
   color: #fff;
-  background: #888;
+  background: #f00;
 }
 ::selection {
   color: #fff;
-  background: #888;
+  background: #f00;
+}
+*:focus-visible {
+  outline: 2px solid #f00;
+  outline-offset: 2px;
 }
 a {
-  color: #888;
+  color: #f00;
   text-decoration: none;
 }
-a:hover,
-a:focus {
+a:hover {
   text-decoration: underline;
-  outline: 0;
 }
 a:visited {
-  color: #959595;
+  color: #ff1a1a;
 }
 h1,
 h2,
@@ -159,6 +161,12 @@ h4 {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+.nav-skip--head:focus {
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
 }
 .nav-toggle--head {
   display: none;

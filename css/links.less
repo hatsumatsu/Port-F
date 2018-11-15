@@ -2,10 +2,12 @@ a {
     color: @color--link;
     text-decoration: none;
 
-    &:hover,
-    &:focus {
+    &:hover {
         text-decoration: underline;
-        outline: 0; // Do something else for a11y...
+    }
+
+    &:focus-visible {
+
     }
 
     &:active {

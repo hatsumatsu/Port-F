@@ -10,6 +10,22 @@
     height: 1px;
 
     overflow: hidden;
+
+    &:focus {
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+    }
+}
+
+.focus() {
+    outline: 2px solid @color--link;
+    outline-offset: 2px;
+}
+
+.no-focus() {
+    outline: none;
 }
 
 
