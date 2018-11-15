@@ -16,17 +16,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="cleartype" content="on">
 
-    <link rel="icon" href="<?php echo esc_attr( get_bloginfo( 'template_directory' ) ); ?>/img/favicon.png" type="image/png">
+    <?php get_inc( 'head', 'icons', 0 ); ?>
 
-    <?php get_inc( 'head', 'facebook', 0 ); ?>
+    <?php get_inc( 'head', 'social', 0 ); ?>
 
-    <?php get_inc( 'head', 'twitter', 0 ); ?>
 </head>
 <body <?php body_class(); ?>>
     <div class="shell">
         <section class="head" role="banner">
 
-            <h1 class="site-header">
+            <h1 class="head-title">
                 <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                     <?php bloginfo( 'name' ); ?>
                 </a>
