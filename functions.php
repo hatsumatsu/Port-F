@@ -53,7 +53,7 @@ add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
  * Register admin JS
  */
 function hm_admin_js() {
-    wp_register_script( 'hm-admin', get_template_directory_uri() . '/js/admin.js', array(), '1.0.0', true );
+    wp_register_script( 'hm-admin', get_template_directory_uri() . '/js/admin.js', array(), 0, true );
     wp_enqueue_script( 'hm-admin' );
 }
 
@@ -252,7 +252,9 @@ add_action( 'after_setup_theme', 'register_navigation' );
 
 
 /**
- * Add a toggle to the primary navigation menu
+ * Modify navigation markup
+ * + Wrap in <nav>
+ * + Add toggle
  *
  * @param   array   $args options of wp_nav_menu()
  * @return  array   $args
@@ -301,13 +303,14 @@ add_filter( 'nav_menu_css_class', 'modify_nav_item_class', 10, 4 );
  * Register footer widget area
  */
 function register_widgets() {
-    register_sidebar( array(
-        'name'=> __( 'Footer Widgets', 'port-f' ),
-        'id' => 'footer',
-        'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4>',
-        'after_title'   => '</h4>'
+    register_sidebar(
+        array(
+            'name'=> __( 'Footer Widgets', 'port-f' ),
+            'id' => 'footer',
+            'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4>',
+            'after_title'   => '</h4>'
         )
     );
 }
