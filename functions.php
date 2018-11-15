@@ -352,6 +352,9 @@ function add_image_sizes() {
 
     // larger
     add_image_size( 'larger', 1800, 2700, false );
+
+    // huge
+    add_image_size( 'huge', 2400, 3600, false );
 }
 
 add_action( 'after_setup_theme', 'add_image_sizes' );
