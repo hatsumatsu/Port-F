@@ -213,7 +213,8 @@ function hm_register_data_structure() {
                 'title',
                 'editor',
                 'author',
-                'thumbnail'
+                'thumbnail',
+                'revisions'
             ),
             'public'            => true,
             'show_in_rest'      => true,
