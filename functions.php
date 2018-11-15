@@ -921,6 +921,11 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
             $width = $src[1];
             $height = $src[2];
         }
+
+        // set src to smallest image
+        if( $size === $sizes[0] ) {
+            $attributes['src'] = $src[0];
+        }
     }
 
     $srcset = rtrim( $srcset, ',' );
@@ -930,14 +935,6 @@ function get_the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full
     // dimensions
     $attributes['width'] = $width;
     $attributes['height'] = $height;
-
-    // src
-    if( $base64 = get_post_meta( $id, 'base64--tiny', true ) ) {
-        $attributes['src'] = 'data:' . get_post_mime_type( $id ) . ';base64,' . $base64;
-    } else {
-        $src = wp_get_attachment_image_src( $id, $sizes[0] );
-        $attributes['src'] = $src[0];
-    }
 
     // attributes
     foreach( $attributes as $attribute => $value ) {
@@ -988,9 +985,7 @@ function responsive_image_embed( $html, $id, $alt, $title, $align = null, $size 
             'title'   => $title,
             'class'   => 'inline-image ' . $class,
             'data-id' => $id
-        ),
-        true,
-        true
+        )
     );
 
     return $html;
