@@ -32,11 +32,7 @@ module.exports = function( grunt ) {
                 dest: 'js/src/dependencies/modernizr.min.js',
                 options : [
                     'setClasses',
-                    'addTest',
-                    'html5printshiv',
-                    'testProp',
-                    'fnBind',
-                    'mq'
+                    'fnBind'
                 ],
                 tests: [
                     'touchevents',
