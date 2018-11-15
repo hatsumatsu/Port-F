@@ -788,12 +788,8 @@ add_filter( 'document_title_separator', 'modify_document_title_separator', 10 );
  * @return array        modified title parts
  */
 function modify_post_title( $title ){
-    if( is_home() ) {
+    if( is_home() || is_front_page() ) {
         $title['tagline'] = null;
-    }
-
-    if( !is_home() && is_front_page() ) {
-        $title['title'] = null;
     }
 
     return $title;
