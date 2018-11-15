@@ -127,7 +127,7 @@ module.exports = function( grunt ) {
                 auth: {
                     host: '<%= ftp.key2.host %>',
                     port: 21,
-                    authKey: 'key1'
+                    authKey: 'key2'
                 },
                 src: '',
                 dest: '/wp-content/themes/port-f',
