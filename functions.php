@@ -137,16 +137,6 @@ add_action( 'admin_notices', 'test_server' );
 
 
 /**
- * Enable page excerpts
- */
-function hm_page_excerpts() {
-    add_post_type_support( 'page', 'excerpt' );
-}
-
-add_filter( 'init', 'hm_page_excerpts' );
-
-
-/**
  * Register custom post types and taxonomies
  */
 function hm_register_data_structure() {
@@ -506,54 +496,6 @@ function hm_tinymce_custom_css() {
 }
 
 add_action( 'init', 'hm_tinymce_custom_css' );
-
-
-/**
- * Custom excerpt length
- */
-function hm_custom_excerpt_length( $length ) {
-    return 40;
-}
-
-add_filter( 'excerpt_length', 'hm_custom_excerpt_length' );
-
-
-/**
- * Customize auto excerpt
- * + custom word count
- * + Add ellispsis to auto-excerpts when text is too long
- * + keep basic text formats
- */
-function customize_auto_excerpt( $text ) {
-    global $post;
-
-    $raw_excerpt = $text;
-
-    if( !$post->post_excerpt || $post->post_excerpt == '' ) {
-        $text = get_the_content();
-        $text = strip_shortcodes( $text );
-        $text = apply_filters( 'the_content', $text );
-        $text = str_replace( '\]\]\>', ']]&gt;', $text );
-        $text = preg_replace( '@<script[^>]*?>.*?</script>@si', '', $text );
-        $text = strip_tags( $text, '<strong><b><em><i><code><p>' );
-        $words = explode( ' ', $text, 40 + 1 );
-
-        $words = preg_split( "/[\n\r\t ]+/", $text, 40 + 1, PREG_SPLIT_NO_EMPTY );
-
-        if( count( $words ) > 40 ) {
-            array_pop( $words );
-            array_push( $words, '&hellip;' );
-            $text = implode( ' ', $words );
-
-            $text = force_balance_tags( $text );
-        }
-
-    }
-
-    return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
-}
-
-add_filter( 'get_the_excerpt', 'customize_auto_excerpt' );
 
 
 /**
