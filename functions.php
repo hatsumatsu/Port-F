@@ -9,10 +9,10 @@ load_theme_textdomain( 'port-f', get_stylesheet_directory() . '/languages' );
  * Register theme CSS
  */
 function hm_theme_css() {
-    wp_register_style( 'hm-normalize', get_template_directory_uri() . '/css/normalize.css', 0, 'screen' );
-    wp_register_style( 'port-f', get_template_directory_uri() . '/style.css', array( 'hm-normalize' ), '0.6', 'screen' );
+    wp_register_style( 'port-f--normalize', get_template_directory_uri() . '/css/normalize.css', 0 );
+    wp_register_style( 'port-f', get_template_directory_uri() . '/style.css', array( 'port-f--normalize' ), '0.6' );
 
-    wp_enqueue_style( 'hm-normalize' );
+    wp_enqueue_style( 'port-f--normalize' );
     wp_enqueue_style( 'port-f' );
 }
 
@@ -30,6 +30,7 @@ function hm_theme_js() {
         wp_enqueue_script('jquery');
     }
 
+    // app.js
     wp_register_script( 'port-f--app', get_template_directory_uri() . '/js/app.min.js', array( 'jquery' ), '0.6', true );
     wp_enqueue_script( 'port-f--app' );
 }
@@ -41,8 +42,8 @@ add_action( 'wp_enqueue_scripts', 'hm_theme_js' );
  * Register admin CSS
  */
 function hm_admin_css() {
-    wp_register_style( 'hm-admin', get_template_directory_uri() . '/css/admin.css', array(), 0 );
-    wp_enqueue_style( 'hm-admin' );
+    wp_register_style( 'port-f--admin', get_template_directory_uri() . '/css/admin.css', array(), 0 );
+    wp_enqueue_style( 'port-f--admin' );
 }
 
 add_action( 'admin_print_styles', 'hm_admin_css' );
@@ -53,15 +54,15 @@ add_action( 'admin_print_styles-media-upload-popup', 'hm_admin_css' );
  * Register admin JS
  */
 function hm_admin_js() {
-    wp_register_script( 'hm-admin', get_template_directory_uri() . '/js/admin.js', array(), 0, true );
-    wp_enqueue_script( 'hm-admin' );
+    wp_register_script( 'port-f-admin', get_template_directory_uri() . '/js/admin.js', array(), 0, true );
+    wp_enqueue_script( 'port-f-admin' );
 }
 
 add_action( 'admin_enqueue_scripts', 'hm_admin_js' );
 
 
 /**
- * Add inline HTML to <head>
+ * Add markup to <head>
  */
 function hm_theme_head() {
     // add HTML here
@@ -83,7 +84,7 @@ add_action( 'wp_footer', 'hm_theme_footer', 1 );
 
 
 /**
- * Remove unneccessary or unsafe <meta> tags
+ * Remove unneccessary <meta> tags
  */
 remove_action( 'wp_head', 'rsd_link' );             // remove Really Simple Discovery Entry
 remove_action( 'wp_head', 'wlwmanifest_link' );     // remove Windows Live Writer Link
@@ -91,7 +92,7 @@ remove_action( 'wp_head', 'wp_generator' );         // remove Version number
 
 
 /**
- * Remove emoji inline CSS and JS from <head>
+ * Remove emoji inline CSS and JS
  */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -127,7 +128,7 @@ function test_server() {
 ?>
 <div class="error notice">
     <p>
-        <?php echo __( 'It seems that <strong>PHP Intl</strong> is missing on the server. File names are not santized safely on upload.', 'port-f' ); ?>
+        <?php echo __( 'It seems that <strong>PHP Intl</strong> is missing on the server. International file names are not sanitized on upload.', 'port-f' ); ?>
     </p>
 </div>
 <?php
@@ -338,6 +339,7 @@ add_action( 'after_switch_theme', 'modify_image_sizes' );
  * Add custom image sizes
  * tiny:          80 x  120px
  * larger:      1800 x 2700px
+ * huge:        2400 x 3600px
  */
 function add_image_sizes() {
     // tiny
@@ -412,8 +414,7 @@ add_action( 'wp_dashboard_setup', 'hm_remove_admin_dashboard_widgets' );
 /**
  * Disable the welcome panel on dashboard
  */
-remove_action('welcome_panel', 'wp_welcome_panel');
-
+remove_action( 'welcome_panel', 'wp_welcome_panel' );
 
 /**
  * Configure tinyMCE features
@@ -627,7 +628,7 @@ function get_post_type_advanced() {
  * Save post ID’s of inline content images
  * @param  integer $post_id post ID
  */
-function hm_save_inline_images( $post_id ) {
+function save_inline_images( $post_id ) {
     $post = get_post( $post_id );
 
     $images = array();
@@ -645,7 +646,7 @@ function hm_save_inline_images( $post_id ) {
     update_post_meta( $post_id, 'inline-images', json_encode( $images ) );
 }
 
-add_action( 'save_post', 'hm_save_inline_images' );
+add_action( 'save_post', 'save_inline_images' );
 
 
 /**
