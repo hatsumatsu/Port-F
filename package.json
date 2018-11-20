@@ -13,7 +13,6 @@
         "grunt-contrib-uglify":     "*",
         "grunt-contrib-imagemin":   "*",
         "grunt-svgmin":             "*",
-        "grunt-svg2png":            "*",
         "grunt-ftpush":             "*",
         "matchdep":                 "*"
     }
