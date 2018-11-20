@@ -9,7 +9,7 @@ load_theme_textdomain( 'port-f', get_stylesheet_directory() . '/languages' );
  * Register theme CSS
  */
 function hm_theme_css() {
-    wp_register_style( 'port-f--normalize', get_template_directory_uri() . '/css/normalize.css', 0 );
+    wp_register_style( 'port-f--normalize', get_template_directory_uri() . '/css/normalize.css', '8.0.1' );
     wp_register_style( 'port-f', get_template_directory_uri() . '/style.css', array( 'port-f--normalize' ), '0.6' );
 
     wp_enqueue_style( 'port-f--normalize' );
