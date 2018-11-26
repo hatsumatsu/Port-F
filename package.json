@@ -8,7 +8,6 @@
         "grunt":                    "*",
         "grunt-contrib-watch":      "*",
         "grunt-contrib-less":       "*",
-        "grunt-autoprefixer":       "*",
         "grunt-modernizr":          "*",
         "grunt-contrib-uglify":     "*",
         "grunt-contrib-imagemin":   "*",

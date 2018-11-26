@@ -16,17 +16,6 @@ module.exports = function( grunt ) {
             }
         },
 
-        autoprefixer: {
-            style: {
-                src: 'style.css',
-                dest: 'style.css'
-            },
-            editor: {
-                src: 'css/editor.css',
-                dest: 'css/editor.css'
-            }
-        },
-
         modernizr: {
             dist: {
                 dest: 'js/src/dependencies/modernizr.min.js',
@@ -170,7 +159,7 @@ module.exports = function( grunt ) {
 
     grunt.registerTask( 'default', ['build'] );
 
-    grunt.registerTask( 'buildcss',  ['less', 'autoprefixer'] );
+    grunt.registerTask( 'buildcss',  ['less'] );
     grunt.registerTask( 'buildmodernizr', ['modernizr'] );
     grunt.registerTask( 'buildjs',  ['uglify'] );
     grunt.registerTask( 'buildimagesraster',  ['imagemin'] );
