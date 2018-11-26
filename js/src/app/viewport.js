@@ -18,7 +18,7 @@ jQuery( function( $ ) {
             scrollBottomOffset: 20,
             scrollToOffset: 0,
             scrollTimer: null,
-        };
+        }
 
         var element = {
             viewport: null,
@@ -222,7 +222,7 @@ jQuery( function( $ ) {
                     behavior: 'smooth'
                 } );
             } else {
-                element.scroller.scrollTop( top );
+                element.scroller.scrollTop( y );
             }
 
         }
