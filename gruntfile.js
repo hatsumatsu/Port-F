@@ -56,8 +56,7 @@ module.exports = function( grunt ) {
                         'js/src/app/globals.js',
                         'js/src/app/debug.js',
                         'js/src/app/viewport.js',
-                        'js/src/app/nav.js',
-                        'js/src/app/module.js'
+                        'js/src/app/nav.js'
                     ]
                 }
             }

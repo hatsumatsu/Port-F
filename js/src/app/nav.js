@@ -12,7 +12,7 @@ jQuery( function( $ ) {
 
         var selector = {
             nav: '[data-nav-role="nav"]',
-            toggle: '[data-nav-role="toggle"]'            
+            toggle: '[data-nav-role="toggle"]'
         }
 
         var state = {
@@ -20,7 +20,7 @@ jQuery( function( $ ) {
         }
 
         var setup = function() {
-            Debug.log( 'Module.setup()' );
+            Debug.log( 'Nav.setup()' );
 
             if( state.initiated ) {
                 return false;
@@ -45,7 +45,7 @@ jQuery( function( $ ) {
         var toggle = function( id ) {
             Debug.log( 'Nav.toggle()', id );
 
-            if( !id ) { 
+            if( !id ) {
                 return false;
             }
 
@@ -113,7 +113,7 @@ jQuery( function( $ ) {
     } )();
 
 
-    $( document ).ready( function() {
+    $( function() {
         Nav.init();
     } );
 } );

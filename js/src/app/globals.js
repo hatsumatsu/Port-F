@@ -38,7 +38,7 @@ jQuery( function( $ ) {
     } )();
 
 
-    $( document ).ready( function() {
+    $( function() {
         Globals.init();
     } );
 

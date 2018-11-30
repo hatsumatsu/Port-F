@@ -26,7 +26,7 @@ jQuery( function( $ ) {
     } )();
 
 
-    $( document ).ready( function() {
+    $( function() {
         Module.init();
     } );
 
