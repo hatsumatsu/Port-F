@@ -10,17 +10,13 @@ jQuery( function( $ ) {
             // screen
             maxPixelRatio: 2,
 
-            // time
-            fps: ( 1000 / 60 ),
-
             // scroll
-            scrollYOffset: 20,
-            scrollBottomOffset: 20,
-            scrollToOffset: 0,
-            scrollTimer: null,
+            scrollOffsetY: 20,
+            scrollToOffset: 0
         }
 
-        var element = {
+        var elements = {
+            document: null,
             viewport: null,
             scroller: null
         }
@@ -51,13 +47,12 @@ jQuery( function( $ ) {
             }
         }
 
-        var _now = Date.now();
-
         var init = function() {
             Debug.log( 'Viewport.init()' );
 
-            element.viewport = $( window );
-            element.scroller = $( window );
+            elements.document = $( document );
+            elements.viewport = $( window );
+            elements.scroller = $( window );
 
             onResizeFinish();
 
@@ -70,14 +65,14 @@ jQuery( function( $ ) {
 
         var bindEventHandlers = function() {
             // debounce resize event
-            element.viewport
+            elements.viewport
                 .on( 'resize', function() {
                     if( settings.resizeDelay ) {
                         clearTimeout( settings.resizeDelay );
                         settings.resizeDelay = null;
                     } else {
                         $( 'html' ).addClass( 'resizing' );
-                        $( document ).trigger( 'viewport/resize/start' );
+                        elements.document.trigger( 'viewport/resize/start' );
                     }
 
                     settings.resizeDelay = setTimeout( function() {
@@ -85,30 +80,25 @@ jQuery( function( $ ) {
 
                         onResizeFinish();
 
-                        $( document ).trigger( 'viewport/resize/finish' );
+                        elements.document.trigger( 'viewport/resize/finish' );
                         settings.resizeDelay = null;
                     }, 500 );
                 } );
 
             // throttle scroll event
-            element.scroller
+            elements.scroller
                 .on( 'scroll', function() {
-                    var now = Date.now();
-                    var elapsed = now - _now;
+                    state.scrollX = elements.scroller.scrollLeft();
+                    state.scrollY = elements.scroller.scrollTop();
 
-                    if( elapsed > settings.fps ) {
-                        _now = now - ( elapsed % settings.fps );
-
-                        state.scrollX = element.scroller.scrollLeft();
-                        state.scrollY = element.scroller.scrollTop();
-
+                    requestAnimationFrame( function() {
                         onScroll();
 
-                        $( document ).trigger( 'viewport/scroll' );
-                    }
+                        elements.document.trigger( 'viewport/scroll' );
+                    } );
                 } );
 
-            $( document )
+            elements.document
                 // top
                 .on( 'viewport/scroll/toTop', function() {
                     Debug.log( 'scrolled to top' );
@@ -134,7 +124,7 @@ jQuery( function( $ ) {
                 } );
 
             // mouse movement
-            element.viewport
+            elements.viewport
                 .on( 'mousemove', function( event ) {
                     state.mousePosition.x = event.pageX - state.scrollX;
                     state.mousePosition.y = event.pageY - state.scrollY;
@@ -146,8 +136,8 @@ jQuery( function( $ ) {
         var onResizeFinish = function() {
             Debug.log( 'Viewport.onResizeFinish()' );
 
-            state.width = element.viewport.width();
-            state.height = element.viewport.height();
+            state.width = elements.viewport.width();
+            state.height = elements.viewport.height();
             state.documentHeight = $( 'html' ).outerHeight();
             state.pixelRatio = window.devicePixelRatio || 1;
             if( state.pixelRatio > settings.maxPixelRatio ) {
@@ -156,35 +146,36 @@ jQuery( function( $ ) {
         }
 
         var onScroll = function() {
+            Debug.log( state.scrollY );
             state.scrollFactorY = state.scrollY / ( state.height - state.documentHeight ) * -1;
 
             // top
-            if( state.scrollY > settings.scrollYOffset ) {
+            if( state.scrollY > settings.scrollOffsetY ) {
                 if( state.scrolledToTop ) {
                     state.scrolledToTop = false;
-                    $( document ).trigger( 'viewport/scroll/fromTop' );
+                    elements.document.trigger( 'viewport/scroll/fromTop' );
                 }
             }
 
-            if( state.scrollY < settings.scrollYOffset ) {
+            if( state.scrollY < settings.scrollOffsetY ) {
                 if( !state.scrolledToTop ) {
                     state.scrolledToTop = true;
-                    $( document ).trigger( 'viewport/scroll/toTop' );
+                    elements.document.trigger( 'viewport/scroll/toTop' );
                 }
             }
 
             // bottom
-            if( state.scrollY > state.documentHeight - state.height - settings.scrollBottomOffset ) {
+            if( state.scrollY > state.documentHeight - state.height - settings.scrollOffsetY ) {
                 if( !state.scrolledToBottom ) {
                     state.scrolledToBottom = true;
-                    $( document ).trigger( 'viewport/scroll/toBottom' );
+                    elements.document.trigger( 'viewport/scroll/toBottom' );
                 }
             }
 
-            if( state.scrollY < state.documentHeight - state.height - settings.scrollBottomOffset ) {
+            if( state.scrollY < state.documentHeight - state.height - settings.scrollOffsetY ) {
                 if( state.scrolledToBottom ) {
                     state.scrolledToBottom = false;
-                    $( document ).trigger( 'viewport/scroll/fromBottom' );
+                    elements.document.trigger( 'viewport/scroll/fromBottom' );
                 }
             }
         }
@@ -216,13 +207,13 @@ jQuery( function( $ ) {
             }
 
             if( animate ) {
-                element.scroller[0].scroll( {
+                elements.scroller[0].scroll( {
                     top: y,
                     left: 0,
                     behavior: 'smooth'
                 } );
             } else {
-                element.scroller.scrollTop( y );
+                elements.scroller.scrollTop( y );
             }
 
         }
@@ -240,7 +231,7 @@ jQuery( function( $ ) {
     } )();
 
 
-    $( document ).ready( function() {
+    $( function() {
         Viewport.init();
     } );
 
