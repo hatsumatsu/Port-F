@@ -3,8 +3,6 @@
 
             <?php get_inc( 'nav', 'footer', 0 ); ?>
 
-            <?php get_inc( 'widgets', 'footer', 0 ); ?>
-
         </section><!-- end .footer -->
 
     </div><!-- end .shell -->

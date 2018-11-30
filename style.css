@@ -5,64 +5,11 @@ Description: Starter Theme
 Author: Martin Wecke
 Version: 0.6
 */
-/**
- * Colors
- */
-/**
- * Typography
- */
-/**
- * Breakpoints and Media Queries
- */
-/**
- * Transitions
- */
-/**
- * Inline Background Images
- */
-/**
- * A11n
- */
-/**
- * Layout
- */
-/**
- * Scroll
- */
-/**
- * Background Images
- */
-/**
- * Icon
- */
-/**
- * Transition
- */
 .transition {
-  -webkit-transition: all 250ms ease;
-          transition: all 250ms ease;
+  transition: all 250ms ease;
 }
 .no-transition {
-  -webkit-transition: none !important;
-          transition: none !important;
-}
-/**
- * Performance
- */
-/**
- * Clearfix
- * like it’s 1999
- */
-.cf {
-  zoom: 1;
-}
-.cf:before,
-.cf:after {
-  content: ' ';
-  display: table;
-}
-.cf:after {
-  clear: both;
+  transition: none !important;
 }
 html,
 body {
@@ -75,31 +22,19 @@ html {
   line-height: 1.3;
   color: #000;
   text-rendering: optimizeLegibility;
-  -webkit-font-feature-settings: 'liga', 'kern';
-     -moz-font-feature-settings: 'liga', 'kern';
-          font-feature-settings: 'liga', 'kern';
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
+  font-feature-settings: 'liga', 'kern';
+  text-size-adjust: 100%;
 }
-/**
- * Make CSS variables available for JS
- */
 title {
   width: 690px;
   font-family: 'only screen and ( max-width: 690px )';
-  -webkit-transition-duration: 250ms;
-          transition-duration: 250ms;
+  transition-duration: 250ms;
 }
 .shell {
   width: 90%;
   max-width: 64em;
   margin: 0 auto;
   padding: 2em 0;
-}
-::-moz-selection {
-  color: #fff;
-  background: #f00;
 }
 ::selection {
   color: #fff;
@@ -196,12 +131,8 @@ h4 {
     color: #fff;
     background: #000;
     cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    -webkit-transition: all 250ms ease;
-            transition: all 250ms ease;
+    user-select: none;
+    transition: all 250ms ease;
   }
   .nav-toggle--head::before {
     content: '+';
@@ -215,8 +146,7 @@ h4 {
     line-height: 2;
     text-indent: 0;
     text-align: center;
-    -webkit-transition: all 250ms ease;
-            transition: all 250ms ease;
+    transition: all 250ms ease;
   }
   .nav-toggle--head:hover,
   .nav-toggle--head:focus {
@@ -228,8 +158,7 @@ h4 {
     margin-left: -4rem;
   }
   .visible--nav-head .nav-toggle--head::before {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+    transform: rotate(45deg);
   }
   .nav-list--head {
     position: fixed;
@@ -246,8 +175,7 @@ h4 {
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    -webkit-transition: all 250ms ease;
-            transition: all 250ms ease;
+    transition: all 250ms ease;
   }
   .nav-list--head::after {
     content: ' ';
@@ -258,10 +186,8 @@ h4 {
     display: block;
     height: 4rem;
     margin: 0 4rem 0 0;
-    background: -webkit-linear-gradient(bottom, #000, rgba(0, 0, 0, 0));
     background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
-    -webkit-transition: all 250ms ease;
-            transition: all 250ms ease;
+    transition: all 250ms ease;
   }
   .visible--nav-head .nav-list--head {
     left: -4rem;
@@ -317,15 +243,10 @@ h4 {
   height: auto;
 }
 .footer {
-  clear: both;
-  margin: 1rem 0 0 0;
+  margin: 0;
 }
 .nav-list--footer {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-.widgets--footer {
-  margin: 0;
-  padding: 0;
 }

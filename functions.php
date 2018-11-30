@@ -332,25 +332,6 @@ add_filter( 'nav_menu_css_class', 'modify_nav_item_class', 10, 4 );
 
 
 /**
- * Register footer widget area
- */
-function register_widgets() {
-    register_sidebar(
-        array(
-            'name'=> __( 'Footer Widgets', 'port-f' ),
-            'id' => 'footer',
-            'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h4>',
-            'after_title'   => '</h4>'
-        )
-    );
-}
-
-add_action( 'widgets_init', 'register_widgets' );
-
-
-/**
  * Modify core image sizes
  * thumbnail:    400 x  600px
  * medium:       800 x 1200px

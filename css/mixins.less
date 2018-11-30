@@ -1,6 +1,6 @@
-/**
- * A11n
- */
+//
+// A11n
+//
 .hide-but-read() {
     position: absolute;
     left: -9999em;
@@ -29,9 +29,9 @@
 }
 
 
-/**
- * Layout
- */
+//
+// Layout
+//
 .pseudo-box() {
     content: ' ';
 
@@ -43,9 +43,9 @@
 }
 
 
-/**
- * Scroll
- */
+//
+// Scroll
+//
 .scroll() {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -64,9 +64,9 @@
 }
 
 
-/**
- * Background Images
- */
+//
+// Background Images
+//
 .data-uri( @url ) {
     background-image: data-uri( 'img/@{url}' );
 }
@@ -81,9 +81,9 @@
 }
 
 
-/**
- * Icon
- */
+//
+// Icon
+//
 .icon( @handle, @data-uri: false ) {
     .svg( @handle, @data-uri );
     background-position: center center;
@@ -91,9 +91,9 @@
 }
 
 
-/**
- * Transition
- */
+//
+// Transition
+//
 .transition {
     transition: all @transition-duration ease;
 }
@@ -103,29 +103,9 @@
 }
 
 
-/**
- * Performance
- */
+//
+// Performance
+//
 .new-layer() {
     transform: translateZ( 0 );
-}
-
-
-/**
- * Clearfix
- * like it’s 1999
- */
-.cf {
-
-    &:before,
-    &:after {
-        content: ' ';
-        display: table;
-    }
-
-    &:after {
-        clear: both;
-    }
-
-    zoom: 1;
 }
