@@ -23,10 +23,16 @@ add_action( 'wp_enqueue_scripts', 'hm_theme_css' );
  * Register theme JS
  */
 function hm_theme_js() {
-    // load the bundled jQuery in the footer
+    // replace bundled jquery with more current version
     if( !is_admin() ) {
         wp_deregister_script( 'jquery' );
-        wp_register_script( 'jquery', includes_url( 'js/jquery/jquery.js' ), array(), '1.11.1', true );
+        wp_register_script(
+            'jquery',
+            get_template_directory_uri() . '/js/jquery-3.3.1.min.js',
+            array(),
+            '3.3.1',
+            true
+        );
         wp_enqueue_script('jquery');
     }
 
