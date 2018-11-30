@@ -1,0 +1,343 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Port F\n"
+"POT-Creation-Date: 2018-11-30 12:32+0100\n"
+"PO-Revision-Date: 2018-11-30 12:32+0100\n"
+"Last-Translator: hatsumatsu <mail@hatsumatsu.de>\n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.8\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;__;_e;_x\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPathExcluded-0: ../node_modules\n"
+"X-Poedit-SearchPathExcluded-1: ../.git\n"
+
+#: ../functions.php:172
+msgid ""
+"It seems that <strong>PHP Intl</strong> is missing on the server. "
+"International file names are not sanitized on upload."
+msgstr ""
+
+#: ../functions.php:193 ../functions.php:195
+#, fuzzy
+msgid "Project Types"
+msgstr "Projekt-Kategorien"
+
+#: ../functions.php:194
+#, fuzzy
+msgid "Project Type"
+msgstr "Projekt-Kategorie"
+
+#: ../functions.php:196
+#, fuzzy
+msgid "All Types"
+msgstr "Alle Typen"
+
+#: ../functions.php:197
+#, fuzzy
+msgid "Edit Type"
+msgstr "Typ bearbeiten"
+
+#: ../functions.php:198
+#, fuzzy
+msgid "View Type"
+msgstr "Kategorie anzeigen"
+
+#: ../functions.php:199
+msgid "Update Type"
+msgstr ""
+
+#: ../functions.php:200
+#, fuzzy
+msgid "Add New Type"
+msgstr "Typ hinzufügen"
+
+#: ../functions.php:201
+msgid "New Type Name"
+msgstr ""
+
+#: ../functions.php:202
+#, fuzzy
+msgid "Parent Type"
+msgstr "Übergeordneter Typ"
+
+#: ../functions.php:203
+#, fuzzy
+msgid "Parent Type:"
+msgstr "Übergeordneter Typ:"
+
+#: ../functions.php:204
+#, fuzzy
+msgid "Search Types"
+msgstr "Typen suchen"
+
+#: ../functions.php:205
+#, fuzzy
+msgid "Popular Types"
+msgstr "Beliebte Typen"
+
+#: ../functions.php:206
+msgid "Separate types with commas"
+msgstr ""
+
+#: ../functions.php:207
+msgid "Add or remove types"
+msgstr ""
+
+#: ../functions.php:208
+msgid "Choose from the most used types"
+msgstr ""
+
+#: ../functions.php:209
+#, fuzzy
+msgid "No types found."
+msgstr "Keine Typen gefunden."
+
+#: ../functions.php:210
+#, fuzzy
+msgid "Project Types list navigation"
+msgstr "Navigation Kategorien"
+
+#: ../functions.php:211
+#, fuzzy
+msgid "Project Types list"
+msgstr "Liste Projekt-Kategorien"
+
+#: ../functions.php:216 ../functions.php:256 ../functions.php:258
+msgid "projects"
+msgstr "projekte"
+
+#: ../functions.php:216
+#, fuzzy
+msgid "filter"
+msgstr "filter"
+
+#: ../functions.php:225 ../functions.php:227
+#, fuzzy
+msgid "Projects"
+msgstr "Projekte"
+
+#: ../functions.php:226 ../functions.php:228
+#, fuzzy
+msgid "Project"
+msgstr "Projekt"
+
+#: ../functions.php:229
+#, fuzzy
+msgid "All Projects"
+msgstr "Alle Arbeiten"
+
+#: ../functions.php:230
+#, fuzzy
+msgid "Add new"
+msgstr "Erstellen"
+
+#: ../functions.php:231
+#, fuzzy
+msgid "Add new Project"
+msgstr "Arbeit hinzufügen"
+
+#: ../functions.php:232
+#, fuzzy
+msgid "Edit Project"
+msgstr "Arbeit bearbeiten"
+
+#: ../functions.php:233
+#, fuzzy
+msgid "Add Project"
+msgstr "Neue Arbeit hinzufügen"
+
+#: ../functions.php:234
+#, fuzzy
+msgid "View Project"
+msgstr "Arbeit anzeigen"
+
+#: ../functions.php:235
+#, fuzzy
+msgid "Search Projects"
+msgstr "Arbeiten suchen"
+
+#: ../functions.php:236
+#, fuzzy
+msgid "No Projects found"
+msgstr "Keine Arbeiten vorhanden"
+
+#: ../functions.php:237
+#, fuzzy
+msgid "No Projects found in trash"
+msgstr "Keine Arbeiten im Papierkorb"
+
+#: ../functions.php:238
+#, fuzzy
+msgid "Parent Project:"
+msgstr "Übergeordnete Arbeit"
+
+#: ../functions.php:239
+#, fuzzy
+msgid "Filter Projects list"
+msgstr "Arbeiten filtern"
+
+#: ../functions.php:240
+#, fuzzy
+msgid "Projects list navigation"
+msgstr "Navigation Arbeiten"
+
+#: ../functions.php:241
+#, fuzzy
+msgid "Projects list"
+msgstr "Liste Arbeiten"
+
+#: ../functions.php:279
+#, fuzzy
+msgid "Primary Header Navigation"
+msgstr "Navigation Header I"
+
+#: ../functions.php:280
+#, fuzzy
+msgid "Primary Footer Navigation"
+msgstr "Navigation Footer I"
+
+#: ../functions.php:298
+#, fuzzy
+msgid "Toggle Navigation"
+msgstr "Navigation ein/ausblenden"
+
+#: ../functions.php:298
+#, fuzzy
+msgid "Navigation"
+msgstr "Menü"
+
+#: ../functions.php:302
+#, fuzzy
+msgid "Skip Navigation"
+msgstr "Navigation überspringen"
+
+#: ../functions.php:454
+#, fuzzy
+msgid "Paragraph"
+msgstr "Absatz"
+
+#: ../functions.php:454
+#, fuzzy
+msgid "Heading 3"
+msgstr "Überschrift 3"
+
+#: ../functions.php:454
+#, fuzzy
+msgid "Heading 4"
+msgstr "Überschrift 4"
+
+#: ../functions.php:460
+#, fuzzy
+msgid "Bigger"
+msgstr "Größer"
+
+#: ../functions.php:466
+#, fuzzy
+msgid "Button"
+msgstr "Button"
+
+#: ../functions.php:558 ../functions.php:573
+#, fuzzy
+msgid "search"
+msgstr "suche"
+
+#: ../functions.php:615 ../functions.php:1238 ../inc/pagination.php:18
+msgid "page"
+msgstr "seite"
+
+#: ../functions.php:699
+#, fuzzy
+msgid "Page"
+msgstr "seite"
+
+#: ../functions.php:718
+#, fuzzy
+msgid "Tag"
+msgstr "Tag"
+
+#: ../functions.php:721
+#, fuzzy
+msgid "Category"
+msgstr "Kategorie"
+
+#: ../functions.php:1155
+#, fuzzy, php-format
+msgid ""
+"Image is too small. Minimum width is %1$spx. Uploaded image width is %2$spx"
+msgstr ""
+"Das Bild ist zu klein. die Mindestbreite beträgt %1$spx. Die Breite des "
+"hochgeladenen Bildes ist %2$spx."
+
+#: ../functions.php:1157
+#, fuzzy, php-format
+msgid ""
+"Image is too small. Minimum height is %1$spx. Uploaded image height is %2$spx"
+msgstr ""
+"Das Bild ist zu klein. die Mindesthöhe beträgt %1$spx. Die Höhe des "
+"hochgeladenen Bildes ist %2$spx."
+
+#: ../inc/post--noposts.php:4
+#, fuzzy
+msgid "There are no posts in this section."
+msgstr "In diesem Bereich gibt es keine Einträge."
+
+#: ../search.php:9
+#, fuzzy, php-format
+msgid "There is one search result for <em>%1$s.</em>"
+msgstr "Es wurde ein Suchergebnisse gefunden für <em>%1$s.</em>"
+
+#: ../search.php:11
+#, fuzzy, php-format
+msgid "There are %1$s search results for <em>%2$s.</em>"
+msgstr "Es wurden %1$s Suchergebnisse gefunden für <em>%2$s.</em>"
+
+#: ../search.php:13
+#, fuzzy
+msgid "You search term has to have at least 3 characters."
+msgstr "Ihr Suchbegriff muss mindestens aus 3 Zeichen bestehen."
+
+#: ../search.php:15
+#, php-format
+msgid "Sorry, we couldn&apos;t find anything that matches <em>%1$s.</em>"
+msgstr ""
+
+#: ../searchform.php:2
+#, fuzzy
+msgid "Enter your search term..."
+msgstr "Geben Sie einen Suchbegriff ein..."
+
+#: ../searchform.php:3
+#, fuzzy
+msgid "Search"
+msgstr "Suchen"
+
+#, fuzzy
+#~ msgid "Sorry"
+#~ msgstr "Entschuldigung"
+
+#, fuzzy
+#~ msgid "This page doesn&apos;t exist."
+#~ msgstr "Diese Seite konnte nicht gefunden werden."
+
+#, fuzzy
+#~ msgid "Footer Widgets"
+#~ msgstr "Footer Widgets"
+
+#, fuzzy
+#~ msgid "Downloads"
+#~ msgstr "Downloads"
+
+#, fuzzy
+#~ msgid "Download"
+#~ msgstr "Download"
+
+#~ msgid "(%s)"
+#~ msgstr "(%s)"
