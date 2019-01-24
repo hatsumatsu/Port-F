@@ -10,14 +10,16 @@ function loadI11n() {
 add_action( 'after_setup_theme', 'loadI11n' );
 
 
+
 /**
  * Add markup to <head>
  */
 function modifyThemeHead() {
-    // add HTML here
+
 }
 
 add_action( 'wp_head', 'modifyThemeHead', 1 );
+
 
 
 /**
@@ -32,6 +34,7 @@ function modifyThemeFooter() {
 add_action( 'wp_footer', 'modifyThemeFooter', 1 );
 
 
+
 /**
  * Remove <meta> tags
  */
@@ -40,11 +43,13 @@ remove_action( 'wp_head', 'wlwmanifest_link' );     // remove Windows Live Write
 remove_action( 'wp_head', 'wp_generator' );         // remove Version number
 
 
+
 /**
  * Remove emoji inline CSS and JS
  */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
 
 
 /**
@@ -69,6 +74,7 @@ function themeSetup() {
 add_action( 'after_setup_theme', 'themeSetup' );
 
 
+
 /**
  * Modify <body> classes
  * @param  array $classes body classes
@@ -81,6 +87,7 @@ function modifyBodyClasses( $classes ) {
 add_filter( 'body_class', 'modifyBodyClasses' );
 
 
+
 /**
  * Get the theme directory name
  * @return string directory name
@@ -91,6 +98,7 @@ function get_theme_directory_name() {
 
     return $url;
 }
+
 
 
 /**
@@ -114,6 +122,7 @@ function wrapOembed( $html, $url, $attributes, $id ) {
 add_filter( 'embed_oembed_html', 'wrapOembed', 99, 4 );
 
 
+
 /**
  * Redirect views not used by the theme
  * + author archive > home
@@ -128,6 +137,7 @@ function redirectViews() {
 add_action( 'template_redirect', 'redirectViews' );
 
 
+
 /**
  * Modify pagination permalink fragment
  */
@@ -138,6 +148,7 @@ function modifyPaginationPermalinkSlug() {
 }
 
 add_action( 'init', 'modifyPaginationPermalinkSlug', 1 );
+
 
 
 /**
@@ -154,6 +165,7 @@ function modifyDocumentTitleSeparator( $separator ){
 add_filter( 'document_title_separator', 'modifyDocumentTitleSeparator', 10 );
 
 
+
 /**
  * Modify the parts of the automatic <title>
  * @param  array $title original title parts
@@ -168,6 +180,7 @@ function modifyPostTitle( $title ){
 }
 
 add_filter( 'document_title_parts', 'modifyPostTitle', 10 );
+
 
 
 /**
@@ -224,6 +237,7 @@ function get_site_description() {
 }
 
 
+
 /**
  * Get the current archive URL without page number
  * @return  int  $url URL of the archive
@@ -237,6 +251,7 @@ function get_current_archive_url() {
 
     return $url;
 }
+
 
 
 /**
@@ -259,6 +274,7 @@ function get_post_type_advanced() {
 
     return $post_type;
 }
+
 
 
 /**

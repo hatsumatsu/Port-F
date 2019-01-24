@@ -26,6 +26,7 @@ function modifyImageSizes() {
 add_action( 'after_switch_theme', 'modifyImageSizes' );
 
 
+
 /**
  * Add custom image sizes
  * tiny:          80 x  120px
@@ -57,6 +58,7 @@ function modifyJPEGQuality() {
 add_filter( 'jpeg_quality', 'modifyJPEGQuality' );
 
 
+
 /**
  * Save post ID’s of inline content images
  * @param  integer $post_id post ID
@@ -80,6 +82,7 @@ function saveInlineImages( $post_id ) {
 }
 
 add_action( 'save_post', 'saveInlineImages' );
+
 
 
 /**
@@ -129,6 +132,7 @@ function responsiveImageEmbed( $html, $id, $alt, $title, $align = null, $size = 
 add_filter( 'get_image_tag', 'responsiveImageEmbed', 10, 1000 );
 
 
+
 /**
  * Save base64 encoded version of the tiny image size as post meta
  * @param  array $metadata metadata
@@ -170,6 +174,7 @@ function saveBase64ThumbnailImage( $metadata, $id ) {
 }
 
 add_filter( 'wp_generate_attachment_metadata', 'saveBase64ThumbnailImage', 99, 2 );
+
 
 
 /**
@@ -222,6 +227,7 @@ function modifyCaptionShortcode( $empty, $attr, $content ){
 }
 
 add_filter( 'img_caption_shortcode', 'modifyCaptionShortcode', 10, 3 );
+
 
 
 /**
@@ -280,6 +286,7 @@ function modifyGalleryShortcode( $output = '', $attributes, $instance ) {
 add_filter( 'post_gallery', 'modifyGalleryShortcode', 10, 100 );
 
 
+
 /**
  * Force minimum images dimensions on upload
  * @param  array $file file object
@@ -315,6 +322,7 @@ function registerMinimumImageDimensions( $file ) {
 add_filter( 'wp_handle_upload_prefilter', 'registerMinimumImageDimensions' );
 
 
+
 /**
  * Add custom meta data to uploaded images
  * + orientation
@@ -340,6 +348,7 @@ function addImageMetaData( $metadata, $id ) {
 add_filter( 'wp_generate_attachment_metadata', 'addImageMetaData', 10, 2 );
 
 
+
 /**
  * Sanitize upload file names to prevent encoding problem in perticular server / browser environments
  * namely NFD / NFC confusion
@@ -361,10 +370,12 @@ function sanitizeUploadsFileName( $filename ) {
 add_filter( 'sanitize_file_name', 'sanitizeUploadsFileName' );
 
 
+
 /**
  * Set default of link field to 'none' in media library modal
  */
 update_option( 'image_default_link_type', 'none' );
+
 
 
 /**
@@ -383,6 +394,7 @@ function getBase64( $url ) {
 
     return $string;
 }
+
 
 
 /**

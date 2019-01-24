@@ -29,6 +29,7 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
 }
 
 
+
 /**
  * Template tag:
  * Post date and time based on global WP settings.
@@ -59,4 +60,3 @@ function get_inc( $type, $context, $fallback ) {
         get_template_part( '/inc/' . $type );
     }
 }
-

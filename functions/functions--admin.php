@@ -150,4 +150,5 @@ function testForNormalizer() {
 <?php
     }
 }
+
 add_action( 'admin_notices', 'testForNormalizer' );

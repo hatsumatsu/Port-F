@@ -2,15 +2,16 @@
 
 <?php
     global $wp_query;
+
     $count = $wp_query->post_count;
     $key = get_search_query();
 
-    if( $count == 1 ) {
+    if( get_query_var( 'error--search-term-length' ) ) {
+        $message = sprintf( __( 'You search term has to have at least 3 characters.', 'port-f' ) );
+    } elseif( $count == 1 ) {
         $message = sprintf( __( 'There is one search result for <em>%1$s.</em>', 'port-f' ), esc_html( $key ) );
     } elseif( $count > 1 ) {
         $message = sprintf( __( 'There are %1$s search results for <em>%2$s.</em>', 'port-f' ), esc_html( $count ), esc_html( $key ) );
-    } elseif( get_query_var( 'error--search-term-length' ) ) {
-        $message = sprintf( __( 'You search term has to have at least 3 characters.', 'port-f' ) );
     } else {
         $message = sprintf( __( 'Sorry, we couldn&apos;t find anything that matches <em>%1$s.</em>', 'port-f' ), esc_html( $key ) );
     }

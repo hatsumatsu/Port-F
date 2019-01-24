@@ -11,6 +11,7 @@ function registerNavigation() {
 add_action( 'after_setup_theme', 'registerNavigation' );
 
 
+
 /**
  * Modify navigation markup
  * + Wrap in <nav>
@@ -39,6 +40,7 @@ function modifyNavigationMarkup( $args = '' ) {
 }
 
 add_filter( 'wp_nav_menu_args', 'modifyNavigationMarkup' );
+
 
 
 /**

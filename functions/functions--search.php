@@ -14,6 +14,7 @@ function modifySearchRewriteRule() {
 add_action( 'template_redirect', 'modifySearchRewriteRule' );
 
 
+
 /**
  * Modify WP's search permalink fragment
  * @param  array $rules original rewrite rules
@@ -30,6 +31,23 @@ function modifySearchRewriteRules( $rules ) {
 }
 
 add_filter( 'search_rewrite_rules', 'modifySearchRewriteRules' );
+
+
+
+/**
+ * Register search related query vars
+ * + Is error: search term too short
+ * @param  array $vars query vars
+ * @return array       query vars
+ */
+function modifySearchQueryVars( $vars ) {
+    $vars[] = 'error--search-term-length';
+
+    return $vars;
+}
+
+add_filter( 'query_vars', 'modifySearchQueryVars' );
+
 
 
 /**
