@@ -35,8 +35,8 @@ jQuery( function( $ ) {
             _scrollX: -1,
             scrollFactorY: 0,
 
-            scrolledToTop: false,
-            scrolledToBottom: false,
+            scrolledToTop: undefined,
+            scrolledToBottom: undefined,
 
             // mouse
             mousePosition: {
@@ -151,14 +151,14 @@ jQuery( function( $ ) {
 
             // top
             if( state.scrollY > settings.scrollOffsetY ) {
-                if( state.scrolledToTop ) {
+                if( state.scrolledToTop || state.scrolledToTop === undefined ) {
                     state.scrolledToTop = false;
                     elements.document.trigger( 'viewport/scroll/fromTop' );
                 }
             }
 
             if( state.scrollY < settings.scrollOffsetY ) {
-                if( !state.scrolledToTop ) {
+                if( !state.scrolledToTop || state.scrolledToTop === undefined ) {
                     state.scrolledToTop = true;
                     elements.document.trigger( 'viewport/scroll/toTop' );
                 }
@@ -166,14 +166,14 @@ jQuery( function( $ ) {
 
             // bottom
             if( state.scrollY > state.documentHeight - state.height - settings.scrollOffsetY ) {
-                if( !state.scrolledToBottom ) {
+                if( !state.scrolledToBottom || state.scrolledToBottom === undefined ) {
                     state.scrolledToBottom = true;
                     elements.document.trigger( 'viewport/scroll/toBottom' );
                 }
             }
 
             if( state.scrollY < state.documentHeight - state.height - settings.scrollOffsetY ) {
-                if( state.scrolledToBottom ) {
+                if( state.scrolledToBottom || state.scrolledToBottom === undefined ) {
                     state.scrolledToBottom = false;
                     elements.document.trigger( 'viewport/scroll/fromBottom' );
                 }
