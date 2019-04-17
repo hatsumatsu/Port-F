@@ -12,9 +12,7 @@
 
     <meta name="description" content="<?php echo esc_attr( get_site_description() ); ?>">
 
-    <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="cleartype" content="on">
 
     <?php get_inc( 'head', 'icons', 0 ); ?>
 
