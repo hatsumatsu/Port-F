@@ -1,92 +1,88 @@
 /**
- * Module
+* Module
+*/
+
+import $ from 'jquery';
+
+import * as Debug from './debug.js';
+
+
+
+var namespace = '.module';
+var mediaQuery = '( min-width: 680px )';
+
+var settings = {}
+
+var selector = {}
+
+var state = {
+    initiated: false
+}
+
+var setup = function() {
+    Debug.log( 'Module.setup()' );
+
+    if( state.initiated ) {
+        return false;
+    }
+
+    bindEvents();
+
+    state.initiated = true;
+}
+
+var bindEvents = function() {
+    $( document )
+        .on( 'click' + namespace, function() {
+            alert( 'click' );
+        } );
+}
+
+
+/**
+ * Factory functions
  */
-jQuery( function( $ ) {
+var _init = function() {
+    Debug.log( 'Module._init()' );
 
-    Module = ( function() {
-        var namespace = '.module';
+    // listen for resize event
+    $( document )
+        .on( 'viewport/resize/finish', function() {
+            _onResize();
+        } )
 
-        var settings = {
-            mediaQuery: '( min-width: 680px )',
-        }
+    _checkMediaQuery();
+}
 
-        var selector = {}
+var _onResize = function() {
+    _checkMediaQuery();
+}
 
-        var state = {
-            initiated: false
-        }
+var _setup = function() {
+    setup();
+}
 
-        var setup = function() {
-            Debug.log( 'Module.setup()' );
+var _destroy = function() {
+    if( !state.initiated ) {
+        return false;
+    }
 
-            if( state.initiated ) {
-                return false;
-            }
+    $( document ).off( namespace )
+    state.initiated = false;
 
-            bindEvents();
+    if( typeof destroy === 'function' ) {
+        destroy();
+    }
+}
 
-            state.initiated = true;
-        }
-
-        var bindEvents = function() {
-            $( document )
-                .on( 'click' + namespace, function() {
-                    alert( 'click' );
-                } );
-        }
-
-
-        /**
-         * Factory functions
-         */
-        var _init = function() {
-            Debug.log( 'Module._init()' );
-
-            // listen for resize event
-            $( document )
-                .on( 'viewport/resize/finish', function() {
-                    _onResize();
-                } )
-
-            _checkMediaQuery();
-        }
-
-        var _onResize = function() {
-            _checkMediaQuery();
-        }
-
-        var _setup = function() {
-            setup();
-        }
-
-        var _destroy = function() {
-            if( !state.initiated ) {
-                return false;
-            }
-
-            $( document ).off( namespace )
-            state.initiated = false;
-
-            if( typeof destroy === 'function' ) {
-                destroy();
-            }
-        }
-
-        var _checkMediaQuery = function() {
-            if( window.matchMedia( settings.mediaQuery ).matches ) {
-                _setup();
-            } else {
-                _destroy();
-            }
-        }
-
-        return {
-            init: function() { _init(); }
-        }
-    } )();
+var _checkMediaQuery = function() {
+    if( window.matchMedia( mediaQuery ).matches ) {
+        _setup();
+    } else {
+        _destroy();
+    }
+}
 
 
-    $( function() {
-        Module.init();
-    } );
-} );
+
+export { _init as init }

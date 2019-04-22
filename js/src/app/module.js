@@ -1,33 +1,29 @@
 /**
- * Module
- */
-jQuery( function( $ ) {
+* Module
+*/
 
-    Module = ( function() {
-        var settings = {}
+import $ from 'jquery';
 
-        var selector = {}
-
-        var state = {}
-
-        var init = function() {
-            Debug.log( 'Module.init()' );
-
-            bindEvents();
-        }
-
-        var bindEvents = function() {
-
-        }
-
-        return {
-            init: function() { init(); }
-        }
-    } )();
+import * as Debug from './debug.js';
 
 
-    $( function() {
-        Module.init();
-    } );
 
-} );
+var settings = {}
+
+var selector = {}
+
+var state = {}
+
+var init = function() {
+    Debug.log( 'Module.init()' );
+
+    bindEvents();
+}
+
+var bindEvents = function() {
+
+}
+
+
+
+export { init }

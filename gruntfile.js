@@ -2,6 +2,9 @@ module.exports = function( grunt ) {
 
     require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
+    const webpackConfigDev = require( './webpack.dev.js');
+    const webpackConfigProd = require( './webpack.prod.js');
+
     grunt.initConfig( {
 
         pkg: grunt.file.readJSON( 'package.json' ),
@@ -16,50 +19,12 @@ module.exports = function( grunt ) {
             }
         },
 
-        modernizr: {
-            dist: {
-                dest: 'js/src/dependencies/modernizr.min.js',
-                options : [
-                    'setClasses',
-                    'fnBind'
-                ],
-                tests: [
-                    'touchevents',
-                    'pointerevents'
-                ],
-                files: {
-                    src: [
-                        'js/**/*.js',
-                        '**/*.css',
-                        '!node_modules/**/*',
-                        '!js/**/*.min.js'
-                    ]
-                }
-            }
-        },
-
-        uglify: {
+        webpack: {
             options: {
-                mangle: true,
-                sourceMap: true,
-                sourceMapName: function( filename ) {
-                    var parts = filename.split( '/' );
-                    return 'js/sourcemaps/' + parts[parts.length-1] + '.map'
-                }
+                stats: false
             },
-
-            bundle: {
-                files: {
-                    'js/app.min.js': [
-                        'js/src/dependencies/*.js',
-
-                        'js/src/app/globals.js',
-                        'js/src/app/debug.js',
-                        'js/src/app/viewport.js',
-                        'js/src/app/nav.js'
-                    ]
-                }
-            }
+            dev: webpackConfigDev,
+            prod: webpackConfigProd,
         },
 
         imagemin: {
@@ -160,7 +125,7 @@ module.exports = function( grunt ) {
 
     grunt.registerTask( 'buildcss',  ['less'] );
     grunt.registerTask( 'buildmodernizr', ['modernizr'] );
-    grunt.registerTask( 'buildjs',  ['uglify'] );
+    grunt.registerTask( 'buildjs',  ['webpack:dev','webpack:prod'] );
     grunt.registerTask( 'buildimagesraster',  ['imagemin'] );
     grunt.registerTask( 'buildimagesvector',  ['svgmin'] );
     grunt.registerTask( 'buildimages',  ['buildimagesraster', 'buildimagesvector'] );

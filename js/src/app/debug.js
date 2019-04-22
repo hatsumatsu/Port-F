@@ -1,22 +1,21 @@
 /**
- * Debug
- */
-Debug = {
-    state: {
-        local: false,
-        active: true
-    },
+* Debug
+*/
 
-    init: function() {
-        this.state.local = ( location.href.indexOf( 'local' ) > -1 ) ? true : false;
-        this.state.active = this.state.local;
-
-        if( this.state.active ) {
-            this.log = console.log.bind( window.console );
-        } else {
-            this.log = function() {}
-        }
-    }
+var state = {
+    local: false,
+    active: true
 }
 
-Debug.init();
+var log;
+
+state.local = ( location.href.indexOf( 'local' ) > -1 ) ? true : false;
+state.active = state.local;
+
+if( state.active ) {
+    log = console.log.bind( window.console );
+} else {
+    log = function() {}
+}
+
+export { log }

@@ -1,18 +1,22 @@
 {
-    "name":     "PortF",
-    "version":  "0.6.0",
-    "author":   "HATSUMATSU",
-    "private":  true,
-
+    "name": "PortF",
+    "version": "0.6.0",
+    "author": "HATSUMATSU",
+    "private": true,
     "devDependencies": {
-        "grunt":                    "*",
-        "grunt-contrib-watch":      "*",
-        "grunt-contrib-less":       "*",
-        "grunt-modernizr":          "*",
-        "grunt-contrib-uglify":     "*",
-        "grunt-contrib-imagemin":   "*",
-        "grunt-svgmin":             "*",
-        "grunt-ftpush":             "*",
-        "matchdep":                 "*"
+        "@babel/cli": "^7.4.3",
+        "@babel/core": "^7.4.3",
+        "@babel/preset-env": "^7.4.3",
+        "babel-loader": "^8.0.5",
+        "grunt": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-imagemin": "*",
+        "grunt-svgmin": "*",
+        "grunt-ftpush": "*",
+        "grunt-webpack": "^3.1.3",
+        "webpack": "^4.30.0",
+        "webpack-merge": "^4.2.1",
+        "matchdep": "*"
     }
 }
