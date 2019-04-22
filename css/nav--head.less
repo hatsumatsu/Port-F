@@ -55,114 +55,85 @@
 }
 
 
+
+
 @media @smaller {
 
     // toggle
     .nav-toggle--head {
         position: fixed;
-        left: 0;
+        right: 0;
         top: 0;
-        z-index: 13;
+        z-index: 1000;
 
         display: block;
-        width: auto;
-        height: auto;
+        width: 4rem;
+        height: 4rem;
         margin: 0;
-        padding: 1.5rem 1rem 1.5rem 4rem;
+        overflow: hidden;
 
         line-height: 1;
         color: @color--bg;
+        text-indent: 300%;
+        white-space: nowrap;
+        text-decoration: none !important;
 
         background: @color--text;
 
         cursor: pointer;
         user-select: none;
 
-        .transition;
-
         &::before {
-            content: '+';
+            content: '=';
 
             position: absolute;
             left: 0;
             top: 0;
 
             display: block;
-            width: 4rem;
-            height: 4rem;
+            width: 100%;
+            height: 100%;
 
             font-size: 2rem;
-            line-height: 2;
+            line-height: 1.8;
             text-indent: 0;
             text-align: center;
-
-            .transition;
         }
 
         &:hover,
         &:focus {
-            text-decoration: none;
 
-            background: lighten( @color--text, 10% );
         }
 
         .visible--nav-head & {
-            left: 100%;
-
-            margin-left: -4rem;
 
             &::before {
-
-                transform: rotate( 45deg );
+                content: '×'
             }
         }
     }
 
     .nav-list--head {
         position: fixed;
-        left: -100%;
-        right: 100%;
+        left: 0;
+        right: 0;
         top: 0;
         z-index: 11;
 
         display: block;
         height: 100%;
-        margin: 0;
-        padding: 0 0 0 4rem;
+        margin: 0 4rem 0 0;
+        padding: 0;
+        .scroll--y;
 
         color: @color--bg;
 
         background: @color--text;
 
-        .scroll--y;
-
-        .transition;
-
-        &::after {
-            content: ' ';
-
-            position: fixed;
-            left: -100%;
-            right: 100%;
-            bottom: 0;
-
-            display: block;
-            height: 4rem;
-            margin: 0 4rem 0 0;
-
-            background: linear-gradient( to top, @color--text, fade( @color--text, 0% ) );
-
-            .transition;
-        }
+        transform: translateX( -100% );
 
         .visible--nav-head & {
-            left: -4rem;
-            right: 4rem;
-
-            &::after {
-                left: 0;
-                right: 0;
-            }
+            transform: translateX( 0 );
         }
     }
 

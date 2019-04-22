@@ -119,83 +119,58 @@ h4 {
 @media only screen and ( max-width: 690px ) {
   .nav-toggle--head {
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
-    z-index: 13;
+    z-index: 1000;
     display: block;
-    width: auto;
-    height: auto;
+    width: 4rem;
+    height: 4rem;
     margin: 0;
-    padding: 1.5rem 1rem 1.5rem 4rem;
+    overflow: hidden;
     line-height: 1;
     color: #fff;
+    text-indent: 300%;
+    white-space: nowrap;
+    text-decoration: none !important;
     background: #000;
     cursor: pointer;
     user-select: none;
-    transition: all 250ms ease;
   }
   .nav-toggle--head::before {
-    content: '+';
+    content: '=';
     position: absolute;
     left: 0;
     top: 0;
     display: block;
-    width: 4rem;
-    height: 4rem;
+    width: 100%;
+    height: 100%;
     font-size: 2rem;
-    line-height: 2;
+    line-height: 1.8;
     text-indent: 0;
     text-align: center;
-    transition: all 250ms ease;
-  }
-  .nav-toggle--head:hover,
-  .nav-toggle--head:focus {
-    text-decoration: none;
-    background: #1a1a1a;
-  }
-  .visible--nav-head .nav-toggle--head {
-    left: 100%;
-    margin-left: -4rem;
   }
   .visible--nav-head .nav-toggle--head::before {
-    transform: rotate(45deg);
+    content: '×';
   }
   .nav-list--head {
     position: fixed;
-    left: -100%;
-    right: 100%;
+    left: 0;
+    right: 0;
     top: 0;
     z-index: 11;
     display: block;
     height: 100%;
-    margin: 0;
-    padding: 0 0 0 4rem;
-    color: #fff;
-    background: #000;
+    margin: 0 4rem 0 0;
+    padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    transition: all 250ms ease;
-  }
-  .nav-list--head::after {
-    content: ' ';
-    position: fixed;
-    left: -100%;
-    right: 100%;
-    bottom: 0;
-    display: block;
-    height: 4rem;
-    margin: 0 4rem 0 0;
-    background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
-    transition: all 250ms ease;
+    color: #fff;
+    background: #000;
+    transform: translateX(-100%);
   }
   .visible--nav-head .nav-list--head {
-    left: -4rem;
-    right: 4rem;
-  }
-  .visible--nav-head .nav-list--head::after {
-    left: 0;
-    right: 0;
+    transform: translateX(0);
   }
   .nav-list-item--head {
     margin: 0;
