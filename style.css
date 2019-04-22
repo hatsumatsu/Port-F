@@ -258,8 +258,7 @@ h4 > a:hover,
 /* HEADER */
 
 .head {
-	background-image: url( img/_icon--plus--24.svg );
-	background-image: url( "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 6.35 6.35'%3E%3Cg stroke-width='.08' stroke-opacity='.126' paint-order='markers fill stroke'%3E%3Cpath d='M.794 2.91h4.763v.529H.794z'/%3E%3Cpath d='M3.44.794v4.762h-.529V.794z'/%3E%3C/g%3E%3C/svg%3E" );
+
 }
 
 .head-title > a {
