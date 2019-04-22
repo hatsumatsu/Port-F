@@ -1,4 +1,9 @@
-import pictureFill from './dependencies/picturefill.min.js';
+import * as picturefill from 'picturefill';
+
+import * as lazysizes from 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import 'lazysizes/plugins/object-fit/ls.object-fit';
+
 import $ from 'jquery';
 
 import * as Globals from './app/globals.js';

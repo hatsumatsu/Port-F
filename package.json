@@ -18,5 +18,10 @@
         "webpack": "^4.30.0",
         "webpack-merge": "^4.2.1",
         "matchdep": "*"
+    },
+    "dependencies": {
+        "lazysizes": "^4.1.8",
+        "picturefill": "^3.0.3",
+        "smoothscroll-polyfill": "^0.4.4"
     }
 }

@@ -1,7 +1,7 @@
 const path = require( 'path' );
 
 module.exports = {
-    entry: './js/src/app.js',
+    entry: './js/src/main.js',
 
     output: {
         sourceMapFilename: 'sourcemaps/[file].map'

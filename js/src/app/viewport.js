@@ -3,11 +3,14 @@
 * Handy module to track viewport related events and properties
 */
 
-import smoothScroll from './../dependencies/smoothScroll.min.js';
 import $ from 'jquery';
+import smoothscroll from 'smoothscroll-polyfill';
 
 import * as Debug from './debug.js';
 
+
+
+smoothscroll.polyfill();
 
 
 var settings = {
