@@ -1,9 +1,10 @@
 a {
-    color: @color--link;
+    color: var( --color--link );
     text-decoration: none;
 
     &:hover {
         text-decoration: underline;
+        color: color( var( --color--link ) tint( 35% ) );
     }
 
     &:focus-visible {
@@ -15,6 +16,6 @@ a {
     }
 
     &:visited {
-        color: lighten( @color--link, 5% );
+        color: color( var( --color--link ) tint( 25% ) );
     }
 }

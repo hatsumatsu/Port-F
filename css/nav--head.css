@@ -1,6 +1,6 @@
 // skip link
 .nav-skip--head {
-    .hide-but-read;
+    @mixin hide-but-read;
 }
 
 // toggle
@@ -57,7 +57,7 @@
 
 
 
-@media @smaller {
+@media ( max-width: var( --smaller ) ) {
 
     // toggle
     .nav-toggle--head {
@@ -73,18 +73,18 @@
         overflow: hidden;
 
         line-height: 1;
-        color: @color--bg;
+        color: var( --color--bg );
         text-indent: 300%;
         white-space: nowrap;
         text-decoration: none !important;
 
-        background: @color--text;
+        background: var( --color--text );
 
         cursor: pointer;
         user-select: none;
 
         &::before {
-            content: '=';
+            content: '⨀';
 
             position: absolute;
             left: 0;
@@ -124,11 +124,11 @@
         height: 100%;
         margin: 0 4rem 0 0;
         padding: 0;
-        .scroll--y;
+        @mixin scroll--y;
 
-        color: @color--bg;
+        color: var( --color--bg );
 
-        background: @color--text;
+        background: var( --color--text );
 
         transform: translateX( -100% );
 
@@ -147,13 +147,13 @@
             padding: 1.5rem 1rem;
 
             line-height: 1;
-            color: @color--bg;
+            color: var( --color--bg );
 
             &:hover,
             &:focus {
                 text-decoration: none;
 
-                background: lighten( @color--text, 10% );
+                background: color( var( --color--text ) tint( 10% ) );
             }
         }
 
@@ -162,7 +162,7 @@
             & > a {
                 text-decoration: none;
 
-                background: lighten( @color--text, 10% );
+                background: color( var( --color--text ) tint( 10% ) );
 
                 &:hover,
                 &:focus {

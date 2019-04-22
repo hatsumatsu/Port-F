@@ -1,0 +1,41 @@
+html,
+body {
+    min-height: 100%;
+
+    background: var( --color--bg );
+}
+
+html {
+    font-family: var( --font--1 );
+    font-size: 100%;
+    line-height: var( --line-height );
+    color: var( --color--text );
+
+    // Enhanced typography
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga', 'kern';
+    text-size-adjust: 100%;
+}
+
+body {
+
+}
+
+.shell {
+    width: 90%;
+    max-width: 64em;
+    margin: 0 auto;
+    padding: 2em 0;
+}
+
+// Selection
+::selection {
+    color: var( --color--bg );
+
+    background: var( --color--link );
+}
+
+// focus style
+*:focus-visible {
+    @mixin focus;
+}

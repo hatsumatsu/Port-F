@@ -1,5 +1,5 @@
 .head {
-
+	@mixin svg _icon--plus--24;
 }
 
 .head-title {

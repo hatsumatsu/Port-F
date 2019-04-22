@@ -13,12 +13,6 @@ var globals = {}
 var init = function() {
     set( 'blogurl', $( 'head' ).attr( 'data-wpurl' ) );
     set( 'theme', $( 'head' ).attr( 'data-project' ) );
-    set( 'breakpoint', $( 'title' ).css( 'width' ) );
-    set( 'mediaQuery', $( 'title' ).css( 'fontFamily' )
-        .replace( /'/g, '' )
-        .replace( /"/g, '' )
-    );
-    set( 'transitionDuration', ( parseFloat( $( 'title' ).css( 'transitionDuration' ) ) * 1000 ) || 500 );
 
     Debug.log( globals );
 }

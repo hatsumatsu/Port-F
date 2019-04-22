@@ -10,12 +10,35 @@ module.exports = function( grunt ) {
         pkg: grunt.file.readJSON( 'package.json' ),
         ftp: grunt.file.readJSON( '.ftppass' ),
 
-        less: {
-            development: {
-                files: {
-                    'style.css': 'style.less',
-                    'css/editor.css': 'css/editor.less'
-                }
+        postcss: {
+            options: {
+                parser: require( 'postcss-comment' ),
+
+                processors: [
+                    require( 'postcss-partial-import' )(),
+                    require( 'postcss-mixins' )(),
+                    require( 'postcss-nested' )(),
+                    require( 'postcss-media-variables' )(),
+                    require( 'postcss-custom-properties' )( {
+                        preserve: false
+                    } ),
+                    require( 'postcss-color-function' )(),
+                    require( 'postcss-media-variables' )(),
+                    require( 'autoprefixer' )( {
+                        browsers: 'last 2 versions'
+                    } ),
+                    require( 'postcss-inline-svg' )(),
+                    // require( 'cssnano' )()
+                ],
+
+                map: {
+                    inline: false,
+                    annotation: 'css/maps/'
+                },
+            },
+            dist: {
+                src: 'css/style.css',
+                dest: 'style.css'
             }
         },
 
@@ -92,7 +115,7 @@ module.exports = function( grunt ) {
 
         watch: {
             css: {
-                files: ['**/*.less'],
+                files: ['css/**/*.css'],
                 tasks: ['buildcss'],
                 options: {
                     livereload: true
@@ -100,7 +123,7 @@ module.exports = function( grunt ) {
             },
 
             js: {
-                files: ['js/**/*.js','!js/**/*.min.js'],
+                files: ['js/src/**/*.js'],
                 tasks: ['buildjs'],
                 options: {
                     livereload: true
@@ -108,7 +131,7 @@ module.exports = function( grunt ) {
             },
 
             imgraster: {
-                files: ['img/src/**/*.{jpg,jpeg,gif,png}'],
+                files: ['img/src/**/*.{jspg,jpeg,gif,png}'],
                 tasks: ['buildimagesraster']
             },
 
@@ -123,7 +146,7 @@ module.exports = function( grunt ) {
 
     grunt.registerTask( 'default', ['build'] );
 
-    grunt.registerTask( 'buildcss',  ['less'] );
+    grunt.registerTask( 'buildcss',  ['postcss'] );
     grunt.registerTask( 'buildmodernizr', ['modernizr'] );
     grunt.registerTask( 'buildjs',  ['webpack:dev','webpack:prod'] );
     grunt.registerTask( 'buildimagesraster',  ['imagemin'] );

@@ -142,9 +142,6 @@ var globals = {};
 var init = function init() {
   set('blogurl', jquery__WEBPACK_IMPORTED_MODULE_0___default()('head').attr('data-wpurl'));
   set('theme', jquery__WEBPACK_IMPORTED_MODULE_0___default()('head').attr('data-project'));
-  set('breakpoint', jquery__WEBPACK_IMPORTED_MODULE_0___default()('title').css('width'));
-  set('mediaQuery', jquery__WEBPACK_IMPORTED_MODULE_0___default()('title').css('fontFamily').replace(/'/g, '').replace(/"/g, ''));
-  set('transitionDuration', parseFloat(jquery__WEBPACK_IMPORTED_MODULE_0___default()('title').css('transitionDuration')) * 1000 || 500);
   _debug_js__WEBPACK_IMPORTED_MODULE_1__["log"](globals);
 };
 
