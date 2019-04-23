@@ -1,10 +1,10 @@
 const path = require( 'path' );
 
 module.exports = {
-    entry: './js/src/main.js',
+    entry: './src/js/app.js',
 
     output: {
-        sourceMapFilename: 'sourcemaps/[file].map'
+        sourceMapFilename: '../src/js/sourcemaps/[file].map'
     },
 
     module: {

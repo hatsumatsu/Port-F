@@ -12,11 +12,11 @@ function registerThemeCSS() {
 
     wp_register_style(
         'port-f',
-        get_template_directory_uri() . '/style.css',
+        get_template_directory_uri() . '/css/app.css',
         array(
             'port-f--normalize'
         ),
-        '0.6' );
+        '0.7' );
 
     wp_enqueue_style( 'port-f--normalize' );
     wp_enqueue_style( 'port-f' );

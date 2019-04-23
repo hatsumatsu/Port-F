@@ -28,17 +28,17 @@ module.exports = function( grunt ) {
                         browsers: 'last 2 versions'
                     } ),
                     require( 'postcss-inline-svg' )(),
-                    // require( 'cssnano' )()
+                    require( 'cssnano' )()
                 ],
 
                 map: {
                     inline: false,
-                    annotation: 'css/maps/'
+                    annotation: 'src/css/sourcemaps/'
                 },
             },
             dist: {
-                src: 'css/style.css',
-                dest: 'style.css'
+                src: 'src/css/app.css',
+                dest: 'css/app.css'
             }
         },
 
@@ -54,7 +54,7 @@ module.exports = function( grunt ) {
             all: {
                 files: [ {
                     expand: true,
-                    cwd: 'img/src/',
+                    cwd: 'src/img/',
                     src: ['**/*.{png,jpeg,jpg,gif}'],
                     dest: 'img/'
                 } ],
@@ -78,7 +78,7 @@ module.exports = function( grunt ) {
             dist: {
                 files: [ {
                     expand: true,
-                    cwd: 'img/src/',
+                    cwd: 'src/img/',
                     src: ['**/*.svg'],
                     dest: 'img/'
                 } ]
@@ -94,7 +94,15 @@ module.exports = function( grunt ) {
                 },
                 src: '',
                 dest: '/preview/wp-content/themes/port-f',
-                exclusions: ['**/.*', '**/Thumbs.db', 'node_modules'],
+                exclusions: [
+                    '**/.*',
+                    'readme*',
+                    'package*.json',
+                    'webpack*.js',
+                    'gruntfile.js',
+                    '**/Thumbs.db',
+                    'node_modules'
+                    ],
                 simple: false,
                 useList: false
             },
@@ -107,7 +115,15 @@ module.exports = function( grunt ) {
                 },
                 src: '',
                 dest: '/wp-content/themes/port-f',
-                exclusions: ['**/.*', '**/Thumbs.db', 'node_modules'],
+                exclusions: [
+                    '**/.*',
+                    'readme*',
+                    'package*.json',
+                    'webpack*.js',
+                    'gruntfile.js',
+                    '**/Thumbs.db',
+                    'node_modules'
+                    ],
                 simple: false,
                 useList: false
             }
@@ -115,7 +131,7 @@ module.exports = function( grunt ) {
 
         watch: {
             css: {
-                files: ['css/**/*.css'],
+                files: ['src/css/**/*.css'],
                 tasks: ['buildcss'],
                 options: {
                     livereload: true
@@ -123,7 +139,7 @@ module.exports = function( grunt ) {
             },
 
             js: {
-                files: ['js/src/**/*.js'],
+                files: ['src/js/**/*.js'],
                 tasks: ['buildjs'],
                 options: {
                     livereload: true
@@ -131,12 +147,12 @@ module.exports = function( grunt ) {
             },
 
             imgraster: {
-                files: ['img/src/**/*.{jspg,jpeg,gif,png}'],
+                files: ['src/img/**/*.{jspg,jpeg,gif,png}'],
                 tasks: ['buildimagesraster']
             },
 
             imgvector: {
-                files: ['img/src/**/*.svg'],
+                files: ['src/img/**/*.svg'],
                 tasks: ['buildimagesvector']
             }
         }
