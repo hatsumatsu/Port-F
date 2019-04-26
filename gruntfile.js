@@ -163,7 +163,6 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'default', ['build'] );
 
     grunt.registerTask( 'buildcss',  ['postcss'] );
-    grunt.registerTask( 'buildmodernizr', ['modernizr'] );
     grunt.registerTask( 'buildjs',  ['webpack:dev','webpack:prod'] );
     grunt.registerTask( 'buildimagesraster',  ['imagemin'] );
     grunt.registerTask( 'buildimagesvector',  ['svgmin'] );
@@ -172,6 +171,6 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'deploy_preview',  ['ftpush:preview'] );
     grunt.registerTask( 'deploy_production',  ['ftpush:production'] );
 
-    grunt.registerTask( 'build',  ['buildcss', 'buildmodernizr', 'buildjs', 'buildimages'] );
+    grunt.registerTask( 'build',  ['buildcss', 'buildjs', 'buildimages'] );
 
 };
