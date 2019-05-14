@@ -67,7 +67,7 @@ add_action( 'wp_enqueue_scripts', 'registerThemeJS' );
 function registerAdminCSS() {
     wp_register_style(
         'port-f--admin',
-        get_template_directory_uri() . '/css/admin.css',
+        get_template_directory_uri() . '/src/css/admin.css',
         array(),
         0
     );
