@@ -24,9 +24,7 @@ module.exports = function( grunt ) {
                     } ),
                     require( 'postcss-color-function' )(),
                     require( 'postcss-media-variables' )(),
-                    require( 'autoprefixer' )( {
-                        browsers: 'last 2 versions'
-                    } ),
+                    require( 'autoprefixer' )(),
                     require( 'postcss-inline-svg' )(),
                     require( 'cssnano' )()
                 ],
