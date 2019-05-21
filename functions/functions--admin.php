@@ -122,7 +122,7 @@ add_filter( 'mce_buttons_2', 'customizeTinyMCEButtonsRow2' );
  * Register tinyMCE editor CSS
  */
 function registerTinyMCECSS() {
-    add_editor_style( 'css/editor.css' );
+    add_editor_style( 'css/editor.min.css' );
 }
 
 add_action( 'init', 'registerTinyMCECSS' );

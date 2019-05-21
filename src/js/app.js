@@ -1,9 +1,7 @@
 import * as picturefill from 'picturefill';
-
 import * as lazysizes from 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import 'lazysizes/plugins/object-fit/ls.object-fit';
-
 import $ from 'jquery';
 
 import * as Globals from './app/globals.js';
@@ -16,7 +14,7 @@ import * as Nav from './app/nav.js';
 
 
 
-$( document ).ready( function() {
+$( function() {
     Globals.init();
     Viewport.init();
     Nav.init();

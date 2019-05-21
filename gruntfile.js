@@ -36,11 +36,11 @@ module.exports = function( grunt ) {
             },
             dist: {
                 src: 'src/css/app.css',
-                dest: 'css/app.css'
+                dest: 'css/app.min.css'
             },
-            dist: {
+            editor: {
                 src: 'src/css/editor.css',
-                dest: 'css/editor.css'
+                dest: 'css/editor.min.css'
             }
         },
 

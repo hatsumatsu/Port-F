@@ -12,7 +12,7 @@ function registerThemeCSS() {
 
     wp_register_style(
         'port-f',
-        get_template_directory_uri() . '/css/app.css',
+        get_template_directory_uri() . '/css/app.min.css',
         array(
             'port-f--normalize'
         ),

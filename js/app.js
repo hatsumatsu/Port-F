@@ -3175,7 +3175,7 @@ __webpack_require__.r(__webpack_exports__);
  // import * as Module from './app/module.js';
 // import * as ModuleViewportRestictions from './app/module--with-viewport-restrictions.js';
 
-jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).ready(function () {
+jquery__WEBPACK_IMPORTED_MODULE_4___default()(function () {
   _app_globals_js__WEBPACK_IMPORTED_MODULE_5__["init"]();
   _app_viewport_js__WEBPACK_IMPORTED_MODULE_7__["init"]();
   _app_nav_js__WEBPACK_IMPORTED_MODULE_8__["init"](); // Module.init();
