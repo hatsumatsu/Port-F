@@ -1,7 +1,7 @@
 {
     "name": "PortF",
-    "version": "0.6.0",
-    "author": "HATSUMATSU",
+    "version": "0.8.0",
+    "author": "MartinWecke",
     "private": true,
     "devDependencies": {
         "@babel/cli": "^7.4.3",

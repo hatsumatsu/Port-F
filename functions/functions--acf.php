@@ -6,8 +6,8 @@
  * @return array           toolbars
  */
 function modifyACFEditorToolbars( $toolbars ) {
-    $toolbars['Minimal' ] = array();
-    $toolbars['Minimal' ][1] = array(
+    $toolbars['Minimal'] = array();
+    $toolbars['Minimal'][1] = array(
         'italic',
         'link',
         'unlink',
