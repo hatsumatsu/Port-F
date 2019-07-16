@@ -27,7 +27,7 @@ add_filter( 'acf/fields/wysiwyg/toolbars' , 'modifyACFEditorToolbars'  );
  * so changes in one site don't affect other sites...
  */
 add_filter( 'acf/settings/save_json', function( $path ) {
-    if( strpos( get_bloginfo( 'url' ), 'local' ) !== false ) {
+    if( strpos( get_bloginfo( 'blogurl' ), 'local' ) !== false ) {
         $path = $path . '/live';
     }
 
