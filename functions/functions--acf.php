@@ -40,14 +40,20 @@ add_filter( 'acf/settings/save_json', function( $path ) {
  * Add ACF option page
  */
 if( function_exists( 'acf_add_options_page' ) ) {
-    acf_add_options_page(
-        array(
-            'page_title' => __( 'Options', 'port-f' ),
-            'capability' => 'edit_posts',
-            'position' => false,
-            'icon_url' => false,
-            'autoload' => false
-        )
-    );
+
+    function addACFOptionsPage() {
+        acf_add_options_page(
+            array(
+                'menu_slug' => 'options',
+                'page_title' => __( 'Options', 'port-f' ),
+                'capability' => 'edit_posts',
+                'position' => false,
+                'icon_url' => false,
+                'autoload' => false
+            )
+        );
+    }
+
+    add_action( 'acf/init', 'addACFOptionsPage' );
 }
 
