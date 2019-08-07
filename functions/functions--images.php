@@ -60,6 +60,22 @@ add_filter( 'jpeg_quality', 'modifyJPEGQuality' );
 
 
 /**
+ * Modify allowed mime types
+ * + Add SVG
+ * @param  array $mimes allowed mime types
+ * @return array        allowed mime types
+ */
+function modifyMimeTypes( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+
+    return $mimes;
+}
+
+add_filter( 'upload_mimes', 'modifyMimeTypes' );
+
+
+
+/**
  * Save post ID’s of inline content images
  * @param  integer $post_id post ID
  */
