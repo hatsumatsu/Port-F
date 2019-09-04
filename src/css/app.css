@@ -1,10 +1,6 @@
-/*
-Theme Name: Port F
-Theme URI: http://martinwecke.de
-Description: Starter Theme
-Author: Martin Wecke
-Version: 0.7
-*/
+// NORMALIZE.CSS
+@import 'normalize';
+
 
 // VARIABLES
 @import 'variables';

@@ -7,20 +7,11 @@ function registerThemeCSS() {
     // - block library styles
     wp_dequeue_style( 'wp-block-library' );
 
-    // + normalize
-    wp_register_style(
-        'port-f--normalize',
-        get_template_directory_uri() . '/css/normalize.css',
-        '8.0.1'
-    );
-
     // + theme
     wp_register_style(
         'port-f',
         get_template_directory_uri() . '/css/app.min.css',
-        array(
-            'port-f--normalize'
-        ),
+        array(),
         '0.8'
     );
 
