@@ -15,11 +15,11 @@ function registerThemeCSS() {
         '0.8'
     );
 
-    wp_enqueue_style( 'port-f--normalize' );
     wp_enqueue_style( 'port-f' );
 }
 
 add_action( 'wp_enqueue_scripts', 'registerThemeCSS' );
+
 
 
 /**
@@ -61,6 +61,7 @@ function registerThemeJS() {
 add_action( 'wp_enqueue_scripts', 'registerThemeJS' );
 
 
+
 /**
  * Register admin CSS
  */
@@ -77,6 +78,7 @@ function registerAdminCSS() {
 
 add_action( 'admin_print_styles', 'registerAdminCSS' );
 add_action( 'admin_print_styles-media-upload-popup', 'registerAdminCSS' );
+
 
 
 /**
