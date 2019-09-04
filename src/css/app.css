@@ -32,29 +32,29 @@
 
 // HEADER
 @import 'head';
-
-// navigation
 @import 'nav--head';
 
 
 // MAIN CONTENT
 @import 'content';
 
-// posts
+
+// POSTS
 @import 'posts';
 
-// pagination
+
+// PAGINATION
 @import 'pagination';
 
-// searchform
+
+// SEARCHFORM
 @import 'searchform';
 
-// single
+
+// SINGLE
 @import 'single';
 
 
 // FOOTER
 @import 'footer';
-
-// navigation
 @import 'nav--footer';
