@@ -41,6 +41,10 @@ module.exports = function( grunt ) {
             editor: {
                 src: 'src/css/editor.css',
                 dest: 'css/editor.min.css'
+            },
+            admin: {
+                src: 'src/css/admin.css',
+                dest: 'css/admin.min.css'
             }
         },
 

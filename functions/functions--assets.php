@@ -35,9 +35,9 @@ function registerThemeJS() {
 
         wp_register_script(
             'jquery',
-            get_template_directory_uri() . '/js/jquery-3.3.1.min.js',
+            get_template_directory_uri() . '/js/jquery-3.4.1.min.js',
             array(),
-            '3.3.1',
+            '3.4.1',
             true
         );
 
