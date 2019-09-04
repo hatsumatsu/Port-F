@@ -1,15 +1,20 @@
 <?php
 
 /**
- * Register theme CSS
+ * Register / Deregister theme CSS
  */
 function registerThemeCSS() {
+    // - block library styles
+    wp_dequeue_style( 'wp-block-library' );
+
+    // + normalize
     wp_register_style(
         'port-f--normalize',
         get_template_directory_uri() . '/css/normalize.css',
         '8.0.1'
     );
 
+    // + theme
     wp_register_style(
         'port-f',
         get_template_directory_uri() . '/css/app.min.css',
@@ -27,9 +32,12 @@ add_action( 'wp_enqueue_scripts', 'registerThemeCSS' );
 
 
 /**
- * Register theme JS
+ * Register / Deregister theme JS
  */
 function registerThemeJS() {
+    // - post embed script
+    wp_deregister_script( 'wp-embed' );
+
     // replace bundled jquery with more current version
     if( !is_admin() ) {
         wp_deregister_script( 'jquery' );
@@ -45,7 +53,7 @@ function registerThemeJS() {
         wp_enqueue_script('jquery');
     }
 
-    // app.js
+    // + theme
     wp_register_script(
         'port-f--app',
         get_template_directory_uri() . '/js/app.min.js',
