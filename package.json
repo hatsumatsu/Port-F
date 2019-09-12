@@ -30,8 +30,7 @@
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
-        "lazysizes": "^4.1.8",
-        "picturefill": "^3.0.3",
+        "lazysizes": "*",
         "smoothscroll-polyfill": "^0.4.4"
     }
 }
