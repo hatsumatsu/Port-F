@@ -2040,7 +2040,8 @@ var selector = {
   toggle: '[data-nav-role="toggle"]'
 };
 var state = {
-  initiated: false
+  initiated: false,
+  visible: {}
 };
 
 var setup = function setup() {
@@ -2069,17 +2070,29 @@ var toggle = function toggle(id) {
     return false;
   }
 
-  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').hasClass('visible--nav-' + id)) {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).trigger('nav/hide', [{
-      id: id
-    }]);
+  if (!state.visible[id]) {
+    show(id);
   } else {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).trigger('nav/show', [{
-      id: id
-    }]);
+    hide(id);
   }
+};
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').toggleClass('visible--nav-' + id);
+var show = function show(id) {
+  _debug_js__WEBPACK_IMPORTED_MODULE_1__["log"]('Nav.show()', id);
+  state.visible[id] = true;
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').addClass('visible--nav-' + id);
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).trigger('nav/show', [{
+    id: id
+  }]);
+};
+
+var hide = function hide(id) {
+  _debug_js__WEBPACK_IMPORTED_MODULE_1__["log"]('Nav.hide()', id);
+  state.visible[id] = false;
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').removeClass('visible--nav-' + id);
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).trigger('nav/hide', [{
+    id: id
+  }]);
 };
 /**
  * Factory functions

@@ -19,7 +19,8 @@ var selector = {
 }
 
 var state = {
-    initiated: false
+    initiated: false,
+    visible: {}
 }
 
 var setup = function() {
@@ -52,18 +53,34 @@ var toggle = function( id ) {
         return false;
     }
 
-    if( $( 'html' ).hasClass( 'visible--nav-' + id  ) ) {
-        $( document ).trigger( 'nav/hide', [ {
-            id: id
-        } ] );
+    if( !state.visible[id] ) {
+        show( id );
     } else {
-        $( document ).trigger( 'nav/show', [ {
-            id: id
-        } ] );
+        hide( id );
     }
-
-    $( 'html' ).toggleClass( 'visible--nav-' + id );
 }
+
+var show = function( id ) {
+    Debug.log( 'Nav.show()', id );
+
+    state.visible[id] = true;
+
+    $( 'html' ).addClass( 'visible--nav-' + id );
+
+    $( document ).trigger( 'nav/show', [{ id: id }] );
+}
+
+var hide = function( id ) {
+    Debug.log( 'Nav.hide()', id );
+
+    state.visible[id] = false;
+
+    $( 'html' ).removeClass( 'visible--nav-' + id );
+
+    $( document ).trigger( 'nav/hide', [{ id: id }] );
+
+}
+
 
 
 /**

@@ -66,6 +66,7 @@
         top: 0;
         z-index: 1000;
 
+        appearance: none;
         display: block;
         width: 4rem;
         height: 4rem;
@@ -78,13 +79,16 @@
         white-space: nowrap;
         text-decoration: none !important;
 
-        background: var( --color--text );
+        background-color: var( --color--text );
+        border: none;
+        outline: none !important;
+        box-shadow: none !important;
 
         cursor: pointer;
         user-select: none;
 
         &::before {
-            content: '⨀';
+            content: '...';
 
             position: absolute;
             left: 0;
@@ -113,7 +117,7 @@
         }
     }
 
-    .nav-list--head {
+    .nav--head {
         position: fixed;
         left: 0;
         right: 0;
@@ -128,7 +132,7 @@
 
         color: var( --color--bg );
 
-        background: var( --color--text );
+        background-color: var( --color--text );
 
         transform: translateX( -100% );
 
@@ -137,32 +141,32 @@
         }
     }
 
+    .nav-list--head {
+        display: block;
+        padding: 1.5rem 1rem;
+    }
+
     .nav-list-item--head {
         margin: 0;
-        padding: 0;
+        padding: 1rem 0;
 
         & > a {
             display: block;
             margin: 0;
-            padding: 1.5rem 1rem;
 
             line-height: 1;
             color: var( --color--bg );
 
             &:hover,
             &:focus {
-                text-decoration: none;
-
-                background: color( var( --color--text ) tint( 10% ) );
+                text-decoration: underline;
             }
         }
 
         &.current-menu-item {
 
             & > a {
-                text-decoration: none;
-
-                background: color( var( --color--text ) tint( 10% ) );
+                text-decoration: underline;
 
                 &:hover,
                 &:focus {
@@ -172,7 +176,7 @@
         }
 
         &:last-child {
-            margin-bottom: 4rem;
+
         }
     }
 

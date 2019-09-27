@@ -23,10 +23,6 @@ add_action( 'after_setup_theme', 'registerNavigation' );
 function modifyNavigationMarkup( $args = '' ) {
     $html  = '';
 
-    if( $args['theme_location'] == 'head' ) {
-        $html .= '<a class="nav-toggle nav-toggle--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Toggle Navigation', 'port-f' ) ) . '" data-nav-role="toggle" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">' . __( 'Navigation', 'port-f' ) . '</a>';
-    }
-
     $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-nav-role="nav" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">';
     $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
 
