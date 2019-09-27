@@ -56,7 +56,11 @@ add_filter( 'query_vars', 'modifySearchQueryVars' );
  * + Set search result post count to infinity
  */
 function modifySearchQuery( $query ) {
-    if( is_search() && !is_admin() ) {
+    if( is_admin() ) {
+        return;
+    }
+
+    if( is_search() ) {
         $query->set( 'posts_per_page', -1 );
     }
 
