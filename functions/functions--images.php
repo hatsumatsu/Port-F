@@ -435,7 +435,19 @@ function getBase64( $url ) {
  * @param  array $attributes         array of attribute / value pairs
  * @return string                    HTML <img> tag
  */
-function getTheResponsiveImage( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array() ) {
+function getTheResponsiveImage(
+    $id,
+    $attributes = array(),
+    $sizes = array(
+        'tiny',
+        'thumbnail',
+        'medium',
+        'large',
+        'larger',
+        'huge',
+        'full',
+    )
+) {
     $html = '';
     $html .= '<img';
 
@@ -446,7 +458,7 @@ function getTheResponsiveImage( $id, $sizes = array( 'medium', 'large', 'full' )
         $src = wp_get_attachment_image_src( $id, $size );
         // check if width is equal to one of the previous versions
         if( !in_array( $src[1], $widths ) ) {
-            $srcset .= $src[0] . ' ' . $src[1] . 'w,';
+            $srcset .= $src[0] . ' ' . $src[1] . 'w ' . $src[2] . 'h,';
 
             $widths[] = $src[1];
 
@@ -461,12 +473,15 @@ function getTheResponsiveImage( $id, $sizes = array( 'medium', 'large', 'full' )
     }
 
     $srcset = rtrim( $srcset, ',' );
-    $attributes['srcset'] = $srcset;
     $attributes['data-srcset'] = $srcset;
+    $attributes['data-sizes'] = 'auto';
 
     // dimensions
     $attributes['width'] = $width;
     $attributes['height'] = $height;
+
+    $attributes['class'] .= ' lazyload';
+
 
     // attributes
     foreach( $attributes as $attribute => $value ) {

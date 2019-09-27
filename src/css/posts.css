@@ -22,8 +22,17 @@
     margin: 0 0 1rem;
 }
 
-.post-image-image {
+.post-image-img {
     display: block;
     width: 100%;
     height: auto;
+
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-duration: 150ms;
+
+    &.lazyloaded {
+    	opacity: 1;
+    }
 }
