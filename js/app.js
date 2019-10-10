@@ -2274,7 +2274,9 @@ var onResizeFinish = function onResizeFinish() {
   state.documentHeight = jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').outerHeight();
   state.pixelRatio = Math.min(window.devicePixelRatio, settings.maxPixelRatio);
   state.scroll.x = elements.scroller.scrollLeft();
-  state.scroll.y = elements.scroller.scrollTop();
+  state.scroll.y = elements.scroller.scrollTop(); // write 1vw to CSS custom property
+
+  document.documentElement.style.setProperty('--vh', state.height / 100 + 'px');
 };
 
 var onScroll = function onScroll() {
