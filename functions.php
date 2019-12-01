@@ -9,4 +9,7 @@ require_once( 'functions/functions--images.php' );
 require_once( 'functions/functions--template-tags.php' );
 require_once( 'functions/functions--theme.php' );
 require_once( 'functions/functions--query.php' );
+
+// plugin related functions
 require_once( 'functions/functions--acf.php' );
+require_once( 'functions/functions--w3tc.php' );
