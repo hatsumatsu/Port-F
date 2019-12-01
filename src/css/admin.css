@@ -1,0 +1,15 @@
+/**
+ * Admn Bar
+ */
+
+// site title
+#wp-admin-bar-site-name {
+
+	& > a {
+		padding-left: 8px !important;
+
+		&::before {
+			content: "\f11f" !important;
+		}
+	}
+}
