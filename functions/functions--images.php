@@ -76,6 +76,16 @@ add_filter( 'upload_mimes', 'modifyMimeTypes' );
 
 
 /**
+ * Modify the threshold to downscale images
+ */
+add_filter( 'big_image_size_threshold', function() {
+    return 3800;
+} );
+
+
+
+
+/**
  * Save post ID’s of inline content images
  * @param  integer $post_id post ID
  */
