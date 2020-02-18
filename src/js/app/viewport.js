@@ -86,9 +86,15 @@ var bindEventHandlers = function() {
             settings.resizeDelay = setTimeout( function() {
                 $( 'html' ).removeClass( 'resizing' );
 
-                onResizeFinish();
+                var isMobileUIResize = (
+                    elements.viewport.width() <= 800 &&
+                    state.width === elements.viewport.width() &&
+                    Math.abs( state.height - elements.viewport.height() ) < 140
+                );
 
-                elements.document.trigger( 'viewport/resize/finish' );
+                onResizeFinish( isMobileUIResize );
+
+                elements.document.trigger( 'viewport/resize/finish', [{  isMobileUIResize: isMobileUIResize }] );
                 settings.resizeDelay = null;
             }, 500 );
         } );
@@ -141,8 +147,8 @@ var bindEventHandlers = function() {
         } );
 }
 
-var onResizeFinish = function() {
-    Debug.log( 'Viewport.onResizeFinish()' );
+var onResizeFinish = function( isMobileUIResize ) {
+    Debug.log( 'Viewport.onResizeFinish()', isMobileUIResize );
 
     state.width = elements.viewport.width();
     state.height = elements.viewport.height();
