@@ -134,7 +134,7 @@ function responsiveImageEmbed( $html, $id, $alt, $title, $align = null, $size = 
     $html = '';
 
     $html .= getTheResponsiveImage(
-        $id
+        $id,
         array(
             'sizes'   => '100vw',
             'alt'     => $alt,
