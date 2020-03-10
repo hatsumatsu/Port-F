@@ -143,6 +143,7 @@ var onResizeFinish = function( isMobileUIResize ) {
 
     // write 1vw to CSS custom property
     document.documentElement.style.setProperty( '--vh', ( state.height / 100 ) + 'px' );
+    document.documentElement.style.setProperty( '--scrollbar-width', getScrollbarWidth() + 'px' );
 }
 
 var onScroll = function() {
@@ -211,6 +212,28 @@ var scrollTo = function( target, offset, animate ) {
         elements.scroller.scrollTop( y );
     }
 
+}
+
+var getScrollbarWidth = function() {
+    var testElementParent = $( '<div></div>' );
+    testElementParent.css( {
+        'visibility': 'hidden',
+        'overflow': 'scroll',
+        'msOverflowStyle': 'scrollbar'
+    } );
+
+    var testElementChild = $( '<div></div>' );
+
+    testElementParent
+        .append( testElementChild )
+        .appendTo( 'body' )
+
+
+    var scrollbarWidth = ( testElementParent[0].offsetWidth - testElementChild[0].offsetWidth );
+
+    testElementParent.remove();
+
+    return scrollbarWidth;
 }
 
 var get = function( key ) {

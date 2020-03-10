@@ -2351,6 +2351,7 @@ var onResizeFinish = function onResizeFinish(isMobileUIResize) {
   state.scroll.y = elements.scroller.scrollTop(); // write 1vw to CSS custom property
 
   document.documentElement.style.setProperty('--vh', state.height / 100 + 'px');
+  document.documentElement.style.setProperty('--scrollbar-width', getScrollbarWidth() + 'px');
 };
 
 var onScroll = function onScroll() {
@@ -2415,6 +2416,20 @@ var scrollTo = function scrollTo(target, offset, animate) {
   } else {
     elements.scroller.scrollTop(y);
   }
+};
+
+var getScrollbarWidth = function getScrollbarWidth() {
+  var testElementParent = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div></div>');
+  testElementParent.css({
+    'visibility': 'hidden',
+    'overflow': 'scroll',
+    'msOverflowStyle': 'scrollbar'
+  });
+  var testElementChild = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div></div>');
+  testElementParent.append(testElementChild).appendTo('body');
+  var scrollbarWidth = testElementParent[0].offsetWidth - testElementChild[0].offsetWidth;
+  testElementParent.remove();
+  return scrollbarWidth;
 };
 
 var get = function get(key) {
