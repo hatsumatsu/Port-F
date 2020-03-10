@@ -2280,13 +2280,6 @@ var state = {
     factorY: 0,
     toTop: undefined,
     toBottom: undefined
-  },
-  // mouse
-  mouse: {
-    x: 0,
-    y: 0,
-    factorX: 0.5,
-    factorY: 0.5
   }
 };
 
@@ -2345,13 +2338,6 @@ var bindEventHandlers = function bindEventHandlers() {
   }).on('viewport/scroll/fromBottom', function () {
     _debug_js__WEBPACK_IMPORTED_MODULE_2__["log"]('scrolled from bottom');
     jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').removeClass('scrolled-to-bottom');
-  }); // mouse movement
-
-  elements.viewport.on('mousemove', function (event) {
-    state.mouse.x = event.pageX - state.scroll.x;
-    state.mouse.y = event.pageY - state.scroll.y;
-    state.mouse.factorX = state.mouse.x / state.width;
-    state.mouse.factorY = state.mouse.y / state.height;
   });
 };
 

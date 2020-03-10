@@ -44,14 +44,6 @@ var state = {
 
         toTop: undefined,
         toBottom: undefined
-    },
-
-    // mouse
-    mouse: {
-        x: 0,
-        y: 0,
-        factorX: 0.5,
-        factorY: 0.5
     }
 }
 
@@ -135,15 +127,6 @@ var bindEventHandlers = function() {
             Debug.log( 'scrolled from bottom' );
 
             $( 'html' ).removeClass( 'scrolled-to-bottom' );
-        } );
-
-    // mouse movement
-    elements.viewport
-        .on( 'mousemove', function( event ) {
-            state.mouse.x = event.pageX - state.scroll.x;
-            state.mouse.y = event.pageY - state.scroll.y;
-            state.mouse.factorX = ( state.mouse.x / state.width );
-            state.mouse.factorY = ( state.mouse.y / state.height );
         } );
 }
 
