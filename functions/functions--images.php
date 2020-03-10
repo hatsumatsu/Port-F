@@ -136,19 +136,19 @@ function responsiveImageEmbed( $html, $id, $alt, $title, $align = null, $size = 
     $html .= getTheResponsiveImage(
         $id,
         array(
-            'sizes'   => '100vw',
-            'alt'     => $alt,
-            'title'   => $title,
-            'class'   => 'inline-image ' . $class,
-            'data-id' => $id
-        ),
-        array(
             'tiny',
             'thumbnail',
             'medium',
             'large',
             'larger',
             'full'
+        ),
+        array(
+            'sizes'   => '100vw',
+            'alt'     => $alt,
+            'title'   => $title,
+            'class'   => 'inline-image ' . $class,
+            'data-id' => $id
         )
     );
 
@@ -284,15 +284,15 @@ function modifyGalleryShortcode( $output = '', $attributes, $instance ) {
         $html .=  getTheResponsiveImage(
             $id,
             array(
-                'class' => 'inline-gallery-image-image'
-            ),
-            array(
                 'tiny',
                 'thumbnail',
                 'medium',
                 'large',
                 'larger',
                 'full'
+            ),
+            array(
+                'class' => 'inline-gallery-image-image'
             )
         );
 
@@ -427,22 +427,22 @@ function getBase64( $url ) {
  * Get responsive image tag
  * Example:
  * getTheResponsiveImage(
- *     $image_id
- *     array(
- *         'sizes' => '100vw',
- *         'alt' => 'Alt text',
- *         'class' => 'wp-image'
- *     ),
+ *     $image_id,
  *     array(
  *         'medium',
  *         'large',
  *         'full'
+ *     ),
+ *     array(
+ *         'sizes' => '100vw',
+ *         'alt' => 'Alt text',
+ *         'class' => 'wp-image'
  *     )
  *  )
  *
  * @param  integer $id               image ID
- * @param  array $attributes         array of attribute / value pairs
  * @param  array $sizes              array of image size key words
+ * @param  array $attributes         array of attribute / value pairs
  * @return string                    HTML <img> tag
  */
 function getTheResponsiveImage(
