@@ -134,7 +134,14 @@ function responsiveImageEmbed( $html, $id, $alt, $title, $align = null, $size = 
     $html = '';
 
     $html .= getTheResponsiveImage(
-        $id,
+        $id
+        array(
+            'sizes'   => '100vw',
+            'alt'     => $alt,
+            'title'   => $title,
+            'class'   => 'inline-image ' . $class,
+            'data-id' => $id
+        ),
         array(
             'tiny',
             'thumbnail',
@@ -142,13 +149,6 @@ function responsiveImageEmbed( $html, $id, $alt, $title, $align = null, $size = 
             'large',
             'larger',
             'full'
-        ),
-        array(
-            'sizes'   => '100vw',
-            'alt'     => $alt,
-            'title'   => $title,
-            'class'   => 'inline-image ' . $class,
-            'data-id' => $id
         )
     );
 
@@ -284,15 +284,15 @@ function modifyGalleryShortcode( $output = '', $attributes, $instance ) {
         $html .=  getTheResponsiveImage(
             $id,
             array(
+                'class' => 'inline-gallery-image-image'
+            ),
+            array(
                 'tiny',
                 'thumbnail',
                 'medium',
                 'large',
                 'larger',
                 'full'
-            ),
-            array(
-                'class' => 'inline-gallery-image-image'
             )
         );
 
@@ -429,14 +429,14 @@ function getBase64( $url ) {
  * getTheResponsiveImage(
  *     $image_id,
  *     array(
- *         'medium',
- *         'large',
- *         'full'
- *     ),
- *     array(
  *         'sizes' => '100vw',
  *         'alt' => 'Alt text',
  *         'class' => 'wp-image'
+ *     ),
+ *     array(
+ *         'medium',
+ *         'large',
+ *         'full'
  *     )
  *  )
  *
