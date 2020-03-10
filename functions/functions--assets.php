@@ -12,7 +12,7 @@ function registerThemeCSS() {
         'port-f',
         get_template_directory_uri() . '/css/app.min.css',
         array(),
-        '0.9'
+        wp_get_theme()->version
     );
 
     wp_enqueue_style( 'port-f' );
@@ -51,7 +51,7 @@ function registerThemeJS() {
         array(
             'jquery'
         ),
-        '0.9',
+        wp_get_theme()->version,
         true
     );
 
@@ -70,7 +70,7 @@ function registerAdminCSS() {
         'port-f--admin',
         get_template_directory_uri() . '/css/admin.min.css',
         array(),
-        '0.9'
+        wp_get_theme()->version
     );
 
     wp_enqueue_style( 'port-f--admin' );
@@ -89,7 +89,7 @@ function registerAdminJS() {
         'port-f-admin',
         get_template_directory_uri() . '/js/admin.js',
         array(),
-        '0.9',
+        wp_get_theme()->version,
         true
     );
 
