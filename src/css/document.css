@@ -2,7 +2,7 @@ html,
 body {
     min-height: 100%;
 
-    background: var( --color--bg );
+    background-color: var( --color--bg );
 }
 
 html {
@@ -12,8 +12,8 @@ html {
     color: var( --color--text );
 
     // Enhanced typography
-    text-rendering: optimizeLegibility;
-    font-feature-settings: 'liga', 'kern';
+    font-kerning: normal;
+    font-variant: common-ligatures; // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/OpenType_fonts_guide
     text-size-adjust: 100%;
 }
 
@@ -32,7 +32,7 @@ body {
 ::selection {
     color: var( --color--bg );
 
-    background: var( --color--link );
+    background-color: var( --color--text );
 }
 
 // focus style
