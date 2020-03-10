@@ -1,13 +1,13 @@
 {
     "name": "PortF",
-    "version": "0.9.0",
+    "version": "0.10.0",
     "author": "MartinWecke",
     "private": true,
     "devDependencies": {
-        "@babel/cli": "^7.7.4",
-        "@babel/core": "^7.7.4",
-        "@babel/preset-env": "^7.7.4",
-        "autoprefixer": "^9.7.3",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.7",
+        "@babel/preset-env": "^7.8.7",
+        "autoprefixer": "^9.7.4",
         "babel-loader": "^8.0.6",
         "cssnano": "^4.1.10",
         "grunt": "*",
@@ -26,11 +26,11 @@
         "postcss-mixins": "^6.2.3",
         "postcss-nested": "^4.2.1",
         "postcss-partial-import": "^4.1.0",
-        "webpack": "^4.41.2",
+        "webpack": "^4.42.0",
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
-        "lazysizes": "^5.1.2",
+        "lazysizes": "^5.2.0",
         "smoothscroll-polyfill": "^0.4.4"
     }
 }
