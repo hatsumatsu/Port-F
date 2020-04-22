@@ -1,6 +1,21 @@
 <?php
 
 /**
+ * Check for dev environment
+ * define( 'WP_DEV', true )
+ * in wp-config.php to use this
+ */
+function themeIsDev() {
+    if( defined( 'WP_DEV' ) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
+/**
  * i11n
  */
 function loadI11n() {

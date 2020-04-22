@@ -47,7 +47,7 @@ function registerThemeJS() {
     // + theme
     wp_register_script(
         'port-f--app',
-        get_template_directory_uri() . '/js/app.min.js',
+        ( themeIsDev() ) ? get_template_directory_uri() . '/js/app.js' : get_template_directory_uri() . '/js/app.min.js',
         array(
             'jquery'
         ),

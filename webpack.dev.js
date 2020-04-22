@@ -7,8 +7,15 @@ module.exports = merge( common, {
 
     output: {
         path: path.resolve( __dirname, 'js' ),
-        filename: 'app.js'
+        filename: 'app.js',
+        pathinfo: false
     },
 
-    devtool: 'source-map'
+    optimization: {
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
+    },
+
+    devtool: 'cheap-module-eval-source-map'
 } );

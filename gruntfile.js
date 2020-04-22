@@ -140,15 +140,17 @@ module.exports = function( grunt ) {
                 files: ['src/css/**/*.css'],
                 tasks: ['buildcss'],
                 options: {
-                    livereload: true
+                    livereload: true,
+                    spawn: false
                 }
             },
 
             js: {
                 files: ['src/js/**/*.js'],
-                tasks: ['buildjs'],
+                tasks: ['webpack:dev'],
                 options: {
-                    livereload: true
+                    livereload: true,
+                    spawn: false
                 }
             },
 
@@ -174,8 +176,8 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'buildimagesvector',  ['svgmin'] );
     grunt.registerTask( 'buildimages',  ['buildimagesraster', 'buildimagesvector'] );
 
-    grunt.registerTask( 'deploy_preview',  ['ftpush:preview'] );
-    grunt.registerTask( 'deploy_production',  ['ftpush:production'] );
+    grunt.registerTask( 'deploy_preview',  ['webpack:prod','ftpush:preview'] );
+    grunt.registerTask( 'deploy_production',  ['webpack:prod','ftpush:production'] );
 
     grunt.registerTask( 'build',  ['buildcss', 'buildjs', 'buildimages'] );
 
