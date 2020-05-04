@@ -13,3 +13,5 @@ js/sourcemaps/*
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.code-workspace
+package-lock.json

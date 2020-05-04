@@ -1,30 +1,28 @@
+import M from '@superstructure.net/m';
+import E from '@superstructure.net/e';
+import C from '@superstructure.net/c';
+
 /**
-* Globals
-*/
+ * Globals
+ */
+export default class Globals {
+    constructor() {
+        this.globals = {};
+        this.init();
+    }
 
-import $ from 'jquery';
+    init() {
+        this.set('blogurl', new E('head').getAttr('data-wpurl'));
+        this.set('theme', new E('head').getAttr('data-project'));
 
-import * as Debug from './debug.js';
+        Debug.log(this.globals);
+    }
 
+    set(key, value) {
+        this.globals[key] = value;
+    }
 
-
-var globals = {}
-
-var init = function() {
-    set( 'blogurl', $( 'head' ).attr( 'data-wpurl' ) );
-    set( 'theme', $( 'head' ).attr( 'data-project' ) );
-
-    Debug.log( globals );
+    get(key) {
+        return this.globals[key];
+    }
 }
-
-var set = function( key, value ) {
-    globals[key] = value;
-}
-
-var get = function( key ) {
-    return globals[key];
-}
-
-
-
-export { init, set, get }

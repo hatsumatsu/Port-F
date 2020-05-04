@@ -1,29 +1,24 @@
+import M from '@superstructure.net/m';
+import E from '@superstructure.net/e';
+import C from '@superstructure.net/c';
+
 /**
-* Module
-*/
+ * Module
+ */
+export default class MyModule extends M {
+    constructor(mediaQuery) {
+        super(mediaQuery);
+    }
 
-import $ from 'jquery';
+    onInit() {
+        Debug.log('Module.onInit()');
+    }
 
-import * as Debug from './debug.js';
+    onResize(viewport, isUIResize) {
+        Debug.log('Module.onResize()');
+    }
 
-
-
-var settings = {}
-
-var selector = {}
-
-var state = {}
-
-var init = function() {
-    Debug.log( 'Module.init()' );
-
-    bindEvents();
+    onDestroy() {
+        Debug.log('Module.onDestroy()');
+    }
 }
-
-var bindEvents = function() {
-
-}
-
-
-
-export { init }

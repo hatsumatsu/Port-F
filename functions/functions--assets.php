@@ -29,28 +29,11 @@ function registerThemeJS() {
     // - post embed script
     wp_deregister_script( 'wp-embed' );
 
-    // replace bundled jquery with more current version
-    if( !is_admin() ) {
-        wp_deregister_script( 'jquery' );
-
-        wp_register_script(
-            'jquery',
-            get_template_directory_uri() . '/js/jquery-3.4.1.min.js',
-            array(),
-            '3.4.1',
-            true
-        );
-
-        wp_enqueue_script('jquery');
-    }
-
     // + theme
     wp_register_script(
         'port-f--app',
         ( themeIsDev() ) ? get_template_directory_uri() . '/js/app.js' : get_template_directory_uri() . '/js/app.min.js',
-        array(
-            'jquery'
-        ),
+        array(),
         wp_get_theme()->version,
         true
     );

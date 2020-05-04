@@ -1,132 +1,74 @@
-/**
-* Nav
-*/
-
-import $ from 'jquery';
-
-import * as Debug from './debug.js';
-
-
-
-var namespace = '.nav';
-var mediaQuery = 'screen';
-
-var settings = {}
-
-var selector = {
-    nav: '[data-nav-role="nav"]',
-    toggle: '[data-nav-role="toggle"]'
-}
-
-var state = {
-    initiated: false,
-    visible: {}
-}
-
-var setup = function() {
-    Debug.log( 'Nav.setup()' );
-
-    if( state.initiated ) {
-        return false;
-    }
-
-    bindEvents();
-
-    state.initiated = true;
-}
-
-var bindEvents = function() {
-    $( document )
-        .on( 'click', selector.toggle, function( event ) {
-            event.preventDefault();
-
-            var id = $( this ).attr( 'data-nav-id' );
-
-            toggle( id );
-        } );
-}
-
-var toggle = function( id ) {
-    Debug.log( 'Nav.toggle()', id );
-
-    if( !id ) {
-        return false;
-    }
-
-    if( !state.visible[id] ) {
-        show( id );
-    } else {
-        hide( id );
-    }
-}
-
-var show = function( id ) {
-    Debug.log( 'Nav.show()', id );
-
-    state.visible[id] = true;
-
-    $( 'html' ).addClass( 'visible--nav-' + id );
-
-    $( document ).trigger( 'nav/show', [{ id: id }] );
-}
-
-var hide = function( id ) {
-    Debug.log( 'Nav.hide()', id );
-
-    state.visible[id] = false;
-
-    $( 'html' ).removeClass( 'visible--nav-' + id );
-
-    $( document ).trigger( 'nav/hide', [{ id: id }] );
-
-}
-
-
+import M from '@superstructure.net/m';
+import E from '@superstructure.net/e';
+import C from '@superstructure.net/c';
 
 /**
- * Factory functions
+ * Nav
  */
-var _init = function() {
-    Debug.log( 'Nav._init()' );
+export default class Nav extends M {
+    constructor(mediaQuery) {
+        super(mediaQuery);
 
-    // listen for resize event
-    $( document )
-        .on( 'viewport/resize/finish', function() {
-            _onResize();
-        } )
-
-    _checkMediaQuery();
-}
-
-var _onResize = function() {
-    _checkMediaQuery();
-}
-
-var _setup = function() {
-    setup();
-}
-
-var _destroy = function() {
-    if( !state.initiated ) {
-        return false;
+        this.visible = {};
     }
 
-    $( document ).off( namespace )
-    state.initiated = false;
+    onInit() {
+        Debug.log('Nav.onInit()');
 
-    if( typeof destroy === 'function' ) {
-        destroy();
+        this.events = new C();
+
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        this.events.on('click', this.selector('toggle'), this.onClick.bind(this));
+    }
+
+    onClick(event) {
+        event.preventDefault();
+
+        let id = new E(event.actualTarget || event.target).getAttr('id', 'Nav');
+
+        this.toggle(id);
+    }
+
+    toggle(id) {
+        Debug.log('Nav.toggle()', id);
+
+        if (!id) {
+            return false;
+        }
+
+        if (!this.visible[id]) {
+            this.show(id);
+        } else {
+            this.hide(id);
+        }
+    }
+
+    show(id) {
+        Debug.log('Nav.show()', id);
+
+        this.visible[id] = true;
+
+        new E('html').addClass('visible--nav-' + id);
+
+        this.events.trigger('nav/show', { id: id });
+    }
+
+    hide(id) {
+        Debug.log('Nav.hide()', id);
+
+        this.visible[id] = false;
+
+        new E('html').removeClass('visible--nav-' + id);
+
+        this.events.trigger('nav/hide', { id: id });
+    }
+
+    onDestroy() {
+        Debug.log('Nav.onDestroy()');
+
+        this.events.off();
     }
 }
-
-var _checkMediaQuery = function() {
-    if( window.matchMedia( mediaQuery ).matches ) {
-        _setup();
-    } else {
-        _destroy();
-    }
-}
-
-
-
-export { _init as init }

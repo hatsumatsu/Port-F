@@ -30,6 +30,9 @@
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
+        "@superstructure.net/c": "^1.0.0",
+        "@superstructure.net/e": "^1.2.5",
+        "@superstructure.net/m": "^1.1.0",
         "lazysizes": "^5.2.0",
         "smoothscroll-polyfill": "^0.4.4"
     }

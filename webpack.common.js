@@ -11,7 +11,12 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules)/,
+                include: [
+                    path.join(__dirname, './'), 
+                    /\/node_modules\/@superstructure.net\/m/,
+                    /\/node_modules\/@superstructure.net\/e/,
+                    /\/node_modules\/@superstructure.net\/c/
+                ],                
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -22,9 +27,7 @@ module.exports = {
         ]
     },
 
-    externals: {
-        jquery: 'jQuery'
-    },
+    externals: {},
 
     plugins: []
 };
