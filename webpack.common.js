@@ -12,11 +12,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: [
-                    path.join(__dirname, './'), 
-                    /\/node_modules\/@superstructure.net\/m/,
-                    /\/node_modules\/@superstructure.net\/e/,
-                    /\/node_modules\/@superstructure.net\/c/
-                ],                
+                    path.resolve( __dirname, 'src' ),
+                    path.resolve( __dirname, 'node_modules/@superstructure.net' )
+                ],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -25,9 +23,5 @@ module.exports = {
                 }
             }
         ]
-    },
-
-    externals: {},
-
-    plugins: []
+    }
 };
