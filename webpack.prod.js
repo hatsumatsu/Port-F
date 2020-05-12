@@ -10,5 +10,17 @@ module.exports = merge( common, {
         filename: 'app.min.js'
     },
 
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    compress: {
+                        drop_console: true,
+                    },
+                },
+            }),
+        ],
+    },
+
     devtool: 'source-map'
 } );
