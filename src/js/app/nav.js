@@ -13,7 +13,7 @@ export default class Nav extends M {
     }
 
     onInit() {
-        Debug.log('Nav.onInit()');
+        console.log('Nav.onInit()');
 
         this.events = new C();
 
@@ -33,7 +33,7 @@ export default class Nav extends M {
     }
 
     toggle(id) {
-        Debug.log('Nav.toggle()', id);
+        console.log('Nav.toggle()', id);
 
         if (!id) {
             return false;
@@ -47,7 +47,7 @@ export default class Nav extends M {
     }
 
     show(id) {
-        Debug.log('Nav.show()', id);
+        console.log('Nav.show()', id);
 
         this.visible[id] = true;
 
@@ -57,7 +57,7 @@ export default class Nav extends M {
     }
 
     hide(id) {
-        Debug.log('Nav.hide()', id);
+        console.log('Nav.hide()', id);
 
         this.visible[id] = false;
 
@@ -67,7 +67,7 @@ export default class Nav extends M {
     }
 
     onDestroy() {
-        Debug.log('Nav.onDestroy()');
+        console.log('Nav.onDestroy()');
 
         this.events.off();
     }

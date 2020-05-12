@@ -15,7 +15,7 @@ export default class Globals {
         this.set('blogurl', new E('head').getAttr('data-wpurl'));
         this.set('theme', new E('head').getAttr('data-project'));
 
-        Debug.log(this.globals);
+        console.log(this.globals);
     }
 
     set(key, value) {

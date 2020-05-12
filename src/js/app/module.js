@@ -11,14 +11,14 @@ export default class MyModule extends M {
     }
 
     onInit() {
-        Debug.log('Module.onInit()');
+        console.log('Module.onInit()');
     }
 
     onResize(viewport, isUIResize) {
-        Debug.log('Module.onResize()');
+        console.log('Module.onResize()');
     }
 
     onDestroy() {
-        Debug.log('Module.onDestroy()');
+        console.log('Module.onDestroy()');
     }
 }
