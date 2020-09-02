@@ -22,7 +22,9 @@ add_action( 'template_redirect', 'modifySearchRewriteRule' );
  */
 function modifySearchRewriteRules( $rules ) {
     foreach( $rules as $rule => $target ) {
-        $new_rule = str_replace( 'search', __( 'search', 'port-f' ), $rule );
+        $new_rule = $rule;
+        $new_rule = str_replace( 'search', __( 'search', 'port-f' ), $new_rule );
+        $new_rule = str_replace( 'page', get_option( 'custom_pagination_base', 'page' ), $new_rule );
         unset( $rules[$rule] );
         $rules[$new_rule] = $target;
     }
@@ -58,10 +60,6 @@ add_filter( 'query_vars', 'modifySearchQueryVars' );
 function modifySearchQuery( $query ) {
     if( is_admin() ) {
         return;
-    }
-
-    if( is_search() ) {
-        $query->set( 'posts_per_page', -1 );
     }
 
     if( is_search() && $query->is_main_query() && strlen( get_query_var( 's' ) ) < 3 ) {

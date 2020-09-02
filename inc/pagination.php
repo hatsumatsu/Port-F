@@ -15,11 +15,7 @@ $pagination = array(
 );
 
 if( $wp_rewrite->using_permalinks() ) {
-    $pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . __( 'page', 'port-f' ) . '/%#%/', 'paged' );
-}
-
-if( !empty( $wp_query->query_vars['s'] ) ) {
-    $pagination['add_args'] = array( 's' => get_query_var( 's' ) );
+    $pagination['base'] = user_trailingslashit( trailingslashit( get_pagenum_link( 1 ) ) . __( 'page', 'port-f' ) . '/%#%/', 'paged' );
 }
 
 ?>

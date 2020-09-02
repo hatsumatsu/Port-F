@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Port F\n"
-"POT-Creation-Date: 2018-11-30 12:32+0100\n"
-"PO-Revision-Date: 2018-11-30 12:32+0100\n"
+"POT-Creation-Date: 2020-08-25 16:29+0200\n"
+"PO-Revision-Date: 2020-09-02 14:26+0200\n"
 "Last-Translator: hatsumatsu <mail@hatsumatsu.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -19,256 +19,212 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: ../node_modules\n"
 "X-Poedit-SearchPathExcluded-1: ../.git\n"
 
-#: ../functions.php:172
+#: ../functions/functions--acf.php:48
+msgid "Options"
+msgstr ""
+
+#: ../functions/functions--admin.php:79
+#, fuzzy
+msgid "Paragraph"
+msgstr "Absatz"
+
+#: ../functions/functions--admin.php:79
+#, fuzzy
+msgid "Heading 3"
+msgstr "Überschrift 3"
+
+#: ../functions/functions--admin.php:79
+#, fuzzy
+msgid "Heading 4"
+msgstr "Überschrift 4"
+
+#: ../functions/functions--admin.php:85
+#, fuzzy
+msgid "Bigger"
+msgstr "Größer"
+
+#: ../functions/functions--admin.php:91
+#, fuzzy
+msgid "Button"
+msgstr "Button"
+
+#: ../functions/functions--admin.php:168
 msgid ""
 "It seems that <strong>PHP Intl</strong> is missing on the server. "
 "International file names are not sanitized on upload."
 msgstr ""
 
-#: ../functions.php:193 ../functions.php:195
+#: ../functions/functions--data.php:15 ../functions/functions--data.php:17
 #, fuzzy
 msgid "Project Types"
 msgstr "Projekt-Kategorien"
 
-#: ../functions.php:194
+#: ../functions/functions--data.php:16
 #, fuzzy
 msgid "Project Type"
 msgstr "Projekt-Kategorie"
 
-#: ../functions.php:196
+#: ../functions/functions--data.php:18
 #, fuzzy
 msgid "All Types"
 msgstr "Alle Typen"
 
-#: ../functions.php:197
+#: ../functions/functions--data.php:19
 #, fuzzy
 msgid "Edit Type"
 msgstr "Typ bearbeiten"
 
-#: ../functions.php:198
+#: ../functions/functions--data.php:20
 #, fuzzy
 msgid "View Type"
 msgstr "Kategorie anzeigen"
 
-#: ../functions.php:199
+#: ../functions/functions--data.php:21
 msgid "Update Type"
 msgstr ""
 
-#: ../functions.php:200
+#: ../functions/functions--data.php:22
 #, fuzzy
 msgid "Add New Type"
 msgstr "Typ hinzufügen"
 
-#: ../functions.php:201
+#: ../functions/functions--data.php:23
 msgid "New Type Name"
 msgstr ""
 
-#: ../functions.php:202
+#: ../functions/functions--data.php:24
 #, fuzzy
 msgid "Parent Type"
 msgstr "Übergeordneter Typ"
 
-#: ../functions.php:203
+#: ../functions/functions--data.php:25
 #, fuzzy
 msgid "Parent Type:"
 msgstr "Übergeordneter Typ:"
 
-#: ../functions.php:204
+#: ../functions/functions--data.php:26
 #, fuzzy
 msgid "Search Types"
 msgstr "Typen suchen"
 
-#: ../functions.php:205
+#: ../functions/functions--data.php:27
 #, fuzzy
 msgid "Popular Types"
 msgstr "Beliebte Typen"
 
-#: ../functions.php:206
+#: ../functions/functions--data.php:28
 msgid "Separate types with commas"
 msgstr ""
 
-#: ../functions.php:207
+#: ../functions/functions--data.php:29
 msgid "Add or remove types"
 msgstr ""
 
-#: ../functions.php:208
+#: ../functions/functions--data.php:30
 msgid "Choose from the most used types"
 msgstr ""
 
-#: ../functions.php:209
+#: ../functions/functions--data.php:31
 #, fuzzy
 msgid "No types found."
 msgstr "Keine Typen gefunden."
 
-#: ../functions.php:210
+#: ../functions/functions--data.php:32
 #, fuzzy
 msgid "Project Types list navigation"
 msgstr "Navigation Kategorien"
 
-#: ../functions.php:211
+#: ../functions/functions--data.php:33
 #, fuzzy
 msgid "Project Types list"
 msgstr "Liste Projekt-Kategorien"
 
-#: ../functions.php:216 ../functions.php:256 ../functions.php:258
+#: ../functions/functions--data.php:38 ../functions/functions--data.php:78
+#: ../functions/functions--data.php:80
 msgid "projects"
 msgstr "projekte"
 
-#: ../functions.php:216
+#: ../functions/functions--data.php:38
 #, fuzzy
 msgid "filter"
 msgstr "filter"
 
-#: ../functions.php:225 ../functions.php:227
+#: ../functions/functions--data.php:47 ../functions/functions--data.php:49
 #, fuzzy
 msgid "Projects"
 msgstr "Projekte"
 
-#: ../functions.php:226 ../functions.php:228
+#: ../functions/functions--data.php:48 ../functions/functions--data.php:50
 #, fuzzy
 msgid "Project"
 msgstr "Projekt"
 
-#: ../functions.php:229
+#: ../functions/functions--data.php:51
 #, fuzzy
 msgid "All Projects"
 msgstr "Alle Arbeiten"
 
-#: ../functions.php:230
+#: ../functions/functions--data.php:52
 #, fuzzy
 msgid "Add new"
 msgstr "Erstellen"
 
-#: ../functions.php:231
+#: ../functions/functions--data.php:53
 #, fuzzy
 msgid "Add new Project"
 msgstr "Arbeit hinzufügen"
 
-#: ../functions.php:232
+#: ../functions/functions--data.php:54
 #, fuzzy
 msgid "Edit Project"
 msgstr "Arbeit bearbeiten"
 
-#: ../functions.php:233
+#: ../functions/functions--data.php:55
 #, fuzzy
 msgid "Add Project"
 msgstr "Neue Arbeit hinzufügen"
 
-#: ../functions.php:234
+#: ../functions/functions--data.php:56
 #, fuzzy
 msgid "View Project"
 msgstr "Arbeit anzeigen"
 
-#: ../functions.php:235
+#: ../functions/functions--data.php:57
 #, fuzzy
 msgid "Search Projects"
 msgstr "Arbeiten suchen"
 
-#: ../functions.php:236
+#: ../functions/functions--data.php:58
 #, fuzzy
 msgid "No Projects found"
 msgstr "Keine Arbeiten vorhanden"
 
-#: ../functions.php:237
+#: ../functions/functions--data.php:59
 #, fuzzy
 msgid "No Projects found in trash"
 msgstr "Keine Arbeiten im Papierkorb"
 
-#: ../functions.php:238
+#: ../functions/functions--data.php:60
 #, fuzzy
 msgid "Parent Project:"
 msgstr "Übergeordnete Arbeit"
 
-#: ../functions.php:239
+#: ../functions/functions--data.php:61
 #, fuzzy
 msgid "Filter Projects list"
 msgstr "Arbeiten filtern"
 
-#: ../functions.php:240
+#: ../functions/functions--data.php:62
 #, fuzzy
 msgid "Projects list navigation"
 msgstr "Navigation Arbeiten"
 
-#: ../functions.php:241
+#: ../functions/functions--data.php:63
 #, fuzzy
 msgid "Projects list"
 msgstr "Liste Arbeiten"
 
-#: ../functions.php:279
-#, fuzzy
-msgid "Primary Header Navigation"
-msgstr "Navigation Header I"
-
-#: ../functions.php:280
-#, fuzzy
-msgid "Primary Footer Navigation"
-msgstr "Navigation Footer I"
-
-#: ../functions.php:298
-#, fuzzy
-msgid "Toggle Navigation"
-msgstr "Navigation ein/ausblenden"
-
-#: ../functions.php:298
-#, fuzzy
-msgid "Navigation"
-msgstr "Menü"
-
-#: ../functions.php:302
-#, fuzzy
-msgid "Skip Navigation"
-msgstr "Navigation überspringen"
-
-#: ../functions.php:454
-#, fuzzy
-msgid "Paragraph"
-msgstr "Absatz"
-
-#: ../functions.php:454
-#, fuzzy
-msgid "Heading 3"
-msgstr "Überschrift 3"
-
-#: ../functions.php:454
-#, fuzzy
-msgid "Heading 4"
-msgstr "Überschrift 4"
-
-#: ../functions.php:460
-#, fuzzy
-msgid "Bigger"
-msgstr "Größer"
-
-#: ../functions.php:466
-#, fuzzy
-msgid "Button"
-msgstr "Button"
-
-#: ../functions.php:558 ../functions.php:573
-#, fuzzy
-msgid "search"
-msgstr "suche"
-
-#: ../functions.php:615 ../functions.php:1238 ../inc/pagination.php:18
-msgid "page"
-msgstr "seite"
-
-#: ../functions.php:699
-#, fuzzy
-msgid "Page"
-msgstr "seite"
-
-#: ../functions.php:718
-#, fuzzy
-msgid "Tag"
-msgstr "Tag"
-
-#: ../functions.php:721
-#, fuzzy
-msgid "Category"
-msgstr "Kategorie"
-
-#: ../functions.php:1155
+#: ../functions/functions--images.php:340
 #, fuzzy, php-format
 msgid ""
 "Image is too small. Minimum width is %1$spx. Uploaded image width is %2$spx"
@@ -276,7 +232,7 @@ msgstr ""
 "Das Bild ist zu klein. die Mindestbreite beträgt %1$spx. Die Breite des "
 "hochgeladenen Bildes ist %2$spx."
 
-#: ../functions.php:1157
+#: ../functions/functions--images.php:342
 #, fuzzy, php-format
 msgid ""
 "Image is too small. Minimum height is %1$spx. Uploaded image height is %2$spx"
@@ -284,40 +240,86 @@ msgstr ""
 "Das Bild ist zu klein. die Mindesthöhe beträgt %1$spx. Die Höhe des "
 "hochgeladenen Bildes ist %2$spx."
 
+#: ../functions/functions--nav.php:7
+#, fuzzy
+msgid "Primary Header Navigation"
+msgstr "Navigation Header I"
+
+#: ../functions/functions--nav.php:8
+#, fuzzy
+msgid "Primary Footer Navigation"
+msgstr "Navigation Footer I"
+
+#: ../functions/functions--nav.php:27
+#, fuzzy
+msgid "Skip Navigation"
+msgstr "Navigation überspringen"
+
+#: ../functions/functions--search.php:9 ../functions/functions--search.php:25
+msgid "search"
+msgstr "suche"
+
+#: ../functions/functions--theme.php:162 ../functions/functions--theme.php:264
+#: ../inc/pagination.php:18
+msgid "page"
+msgstr "seite"
+
+#: ../inc/nav--head.php:3
+#, fuzzy
+msgid "Toggle Navigation"
+msgstr "Navigation ein/ausblenden"
+
+#: ../inc/nav--head.php:7
+#, fuzzy
+msgid "Navigation"
+msgstr "Menü"
+
 #: ../inc/post--noposts.php:4
 #, fuzzy
 msgid "There are no posts in this section."
 msgstr "In diesem Bereich gibt es keine Einträge."
 
-#: ../search.php:9
-#, fuzzy, php-format
-msgid "There is one search result for <em>%1$s.</em>"
-msgstr "Es wurde ein Suchergebnisse gefunden für <em>%1$s.</em>"
-
-#: ../search.php:11
-#, fuzzy, php-format
-msgid "There are %1$s search results for <em>%2$s.</em>"
-msgstr "Es wurden %1$s Suchergebnisse gefunden für <em>%2$s.</em>"
-
-#: ../search.php:13
+#: ../search.php:10
 #, fuzzy
 msgid "You search term has to have at least 3 characters."
 msgstr "Ihr Suchbegriff muss mindestens aus 3 Zeichen bestehen."
 
-#: ../search.php:15
+#: ../search.php:12
+#, fuzzy, php-format
+msgid "There is one search result for <em>%1$s.</em>"
+msgstr "Es wurde ein Suchergebnisse gefunden für <em>%1$s.</em>"
+
+#: ../search.php:14
+#, fuzzy, php-format
+msgid "There are %1$s search results for <em>%2$s.</em>"
+msgstr "Es wurden %1$s Suchergebnisse gefunden für <em>%2$s.</em>"
+
+#: ../search.php:16
 #, php-format
 msgid "Sorry, we couldn&apos;t find anything that matches <em>%1$s.</em>"
 msgstr ""
 
-#: ../searchform.php:2
+#: ../searchform.php:13
 #, fuzzy
 msgid "Enter your search term..."
 msgstr "Geben Sie einen Suchbegriff ein..."
 
-#: ../searchform.php:3
+#: ../searchform.php:18
 #, fuzzy
 msgid "Search"
 msgstr "Suchen"
+
+#, fuzzy
+#~ msgid "Page"
+#~ msgstr "seite"
+
+#, fuzzy
+#~ msgid "Tag"
+#~ msgstr "Tag"
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "Kategorie"
 
 #, fuzzy
 #~ msgid "Sorry"

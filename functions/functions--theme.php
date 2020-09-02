@@ -159,10 +159,39 @@ add_action( 'template_redirect', 'redirectViews' );
 function modifyPaginationPermalinkSlug() {
     global $wp_rewrite;
 
-    $wp_rewrite->pagination_base = __( 'page', 'port-f' );
+    $wp_rewrite->pagination_base = get_option( 'custom_pagination_base', 'page' );
 }
 
 add_action( 'init', 'modifyPaginationPermalinkSlug', 1 );
+
+
+
+/**
+ * Add settings for pagination permalink fragment
+ */
+function addPaginationPermalinkSlugSettings() {
+    add_settings_section(
+		'custom_permalink',
+		'Translation Settings',
+		function() {},
+		'general'
+	);
+    
+    add_settings_field( 
+        'custom_pagination_base', 
+        'Pagination Base', 
+        function() {
+            $value = get_option( 'custom_pagination_base' );	
+            echo '<input type="text" value="' . esc_attr( $value ) . '" name="custom_pagination_base" id="custom_pagination_base" class="regular-text" />';
+        }, 
+        'general', 
+        'custom_permalink'
+     );
+
+     register_setting( 'general', 'custom_pagination_base' );
+}
+
+add_action( 'admin_init', 'addPaginationPermalinkSlugSettings' );
 
 
 

@@ -23,63 +23,23 @@
     <?php echo $message; ?>
 </p>
 
-<?php
-    if( have_posts() ) {
-?>
-
 <section class="posts posts--results">
 
 <?php
-        $post_types = get_post_types(
-            array(
-                'public' => true,
-                'exclude_from_search' => false
-                )
-            );
+    if( have_posts() ) {
+        while( have_posts() ) {
+            the_post();
 
-        foreach( $post_types as $post_type ) {
-
-            wp_reset_query();
-            $query = new WP_Query(
-                array(
-                    'post_type' => $post_type,
-                    'posts_per_page' => -1,
-                    's' => $key
-                )
-            );
-
-            $post_type_object = get_post_type_object( $post_type );
-
-            if( $query->post_count > 0 ) {
-?>
-
-        <section class="posts posts--<?php echo esc_attr( $post_type ); ?>">
-            <h4>
-                <?php echo esc_html( $post_type_object->labels->name ) ?>
-            </h4>
-
-<?php
-                while( $query->have_posts() ) {
-                    $query->the_post();
-                    get_inc( 'post', $post_type, true );
-
-                }
-?>
-
-        </section>
-
-<?php
-            }
-?>
-
-<?php
+            get_inc( 'post', get_post_type(), true );
         }
+
+        get_inc( 'pagination', 0, 0 );
+
+    } else {
+        get_inc( 'post', 'noposts', true );
+    }
 ?>
 
 </section>
-
-<?php
-    }
-?>
 
 <?php get_footer(); ?>
