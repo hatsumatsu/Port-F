@@ -6,33 +6,12 @@
  */
 function modifySearchRewriteRule() {
     if( is_search() && !empty( $_GET['s'] ) && !is_admin() ) {
-        wp_redirect( home_url( '/' . __( 'search', 'port-f' ) . '/' ) . urlencode( get_query_var( 's' ) ) );
+        wp_redirect( home_url( '/' . get_option( 'custom_search_base', 'search' ) . '/' ) . urlencode( get_query_var( 's' ) ) );
         exit();
     }
 }
 
 add_action( 'template_redirect', 'modifySearchRewriteRule' );
-
-
-
-/**
- * Modify WP's search permalink fragment
- * @param  array $rules original rewrite rules
- * @return array        modified rules
- */
-function modifySearchRewriteRules( $rules ) {
-    foreach( $rules as $rule => $target ) {
-        $new_rule = $rule;
-        $new_rule = str_replace( 'search', __( 'search', 'port-f' ), $new_rule );
-        $new_rule = str_replace( 'page', get_option( 'custom_pagination_base', 'page' ), $new_rule );
-        unset( $rules[$rule] );
-        $rules[$new_rule] = $target;
-    }
-
-    return $rules;
-}
-
-add_filter( 'search_rewrite_rules', 'modifySearchRewriteRules' );
 
 
 

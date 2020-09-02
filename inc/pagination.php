@@ -15,7 +15,7 @@ $pagination = array(
 );
 
 if( $wp_rewrite->using_permalinks() ) {
-    $pagination['base'] = user_trailingslashit( trailingslashit( get_pagenum_link( 1 ) ) . __( 'page', 'port-f' ) . '/%#%/', 'paged' );
+    $pagination['base'] = user_trailingslashit( trailingslashit( get_pagenum_link( 1 ) ) . get_option( 'custom_pagination_base', 'page' ) . '/%#%/', 'paged' );
 }
 
 ?>

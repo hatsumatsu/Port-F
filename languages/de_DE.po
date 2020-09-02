@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Port F\n"
-"POT-Creation-Date: 2020-08-25 16:29+0200\n"
-"PO-Revision-Date: 2020-09-02 14:26+0200\n"
+"POT-Creation-Date: 2020-09-02 16:18+0200\n"
+"PO-Revision-Date: 2020-09-02 16:20+0200\n"
 "Last-Translator: hatsumatsu <mail@hatsumatsu.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -21,30 +21,25 @@ msgstr ""
 
 #: ../functions/functions--acf.php:48
 msgid "Options"
-msgstr ""
+msgstr "Optionen"
 
 #: ../functions/functions--admin.php:79
-#, fuzzy
 msgid "Paragraph"
 msgstr "Absatz"
 
 #: ../functions/functions--admin.php:79
-#, fuzzy
 msgid "Heading 3"
 msgstr "Überschrift 3"
 
 #: ../functions/functions--admin.php:79
-#, fuzzy
 msgid "Heading 4"
 msgstr "Überschrift 4"
 
 #: ../functions/functions--admin.php:85
-#, fuzzy
 msgid "Bigger"
 msgstr "Größer"
 
 #: ../functions/functions--admin.php:91
-#, fuzzy
 msgid "Button"
 msgstr "Button"
 
@@ -55,38 +50,32 @@ msgid ""
 msgstr ""
 
 #: ../functions/functions--data.php:15 ../functions/functions--data.php:17
-#, fuzzy
 msgid "Project Types"
 msgstr "Projekt-Kategorien"
 
 #: ../functions/functions--data.php:16
-#, fuzzy
 msgid "Project Type"
 msgstr "Projekt-Kategorie"
 
 #: ../functions/functions--data.php:18
-#, fuzzy
 msgid "All Types"
-msgstr "Alle Typen"
+msgstr "Alle Kategorien"
 
 #: ../functions/functions--data.php:19
-#, fuzzy
 msgid "Edit Type"
-msgstr "Typ bearbeiten"
+msgstr "Kategorie bearbeiten"
 
 #: ../functions/functions--data.php:20
-#, fuzzy
 msgid "View Type"
 msgstr "Kategorie anzeigen"
 
 #: ../functions/functions--data.php:21
 msgid "Update Type"
-msgstr ""
+msgstr "Kategorie aktualisieren"
 
 #: ../functions/functions--data.php:22
-#, fuzzy
 msgid "Add New Type"
-msgstr "Typ hinzufügen"
+msgstr "Kategorie hinzufügen"
 
 #: ../functions/functions--data.php:23
 msgid "New Type Name"
@@ -145,34 +134,28 @@ msgid "projects"
 msgstr "projekte"
 
 #: ../functions/functions--data.php:38
-#, fuzzy
 msgid "filter"
 msgstr "filter"
 
 #: ../functions/functions--data.php:47 ../functions/functions--data.php:49
-#, fuzzy
 msgid "Projects"
 msgstr "Projekte"
 
 #: ../functions/functions--data.php:48 ../functions/functions--data.php:50
-#, fuzzy
 msgid "Project"
 msgstr "Projekt"
 
 #: ../functions/functions--data.php:51
-#, fuzzy
 msgid "All Projects"
-msgstr "Alle Arbeiten"
+msgstr "Alle Projekte"
 
 #: ../functions/functions--data.php:52
-#, fuzzy
 msgid "Add new"
 msgstr "Erstellen"
 
 #: ../functions/functions--data.php:53
-#, fuzzy
 msgid "Add new Project"
-msgstr "Arbeit hinzufügen"
+msgstr "Projekt hinzufügen"
 
 #: ../functions/functions--data.php:54
 #, fuzzy
@@ -255,14 +238,14 @@ msgstr "Navigation Footer I"
 msgid "Skip Navigation"
 msgstr "Navigation überspringen"
 
-#: ../functions/functions--search.php:9 ../functions/functions--search.php:25
-msgid "search"
-msgstr "suche"
+#: ../functions/functions--permalink.php:10
+msgid "Pagination Base"
+msgstr ""
 
-#: ../functions/functions--theme.php:162 ../functions/functions--theme.php:264
-#: ../inc/pagination.php:18
-msgid "page"
-msgstr "seite"
+#: ../functions/functions--permalink.php:23
+#, fuzzy
+msgid "Search Base"
+msgstr "Suchen"
 
 #: ../inc/nav--head.php:3
 #, fuzzy
@@ -308,6 +291,12 @@ msgstr "Geben Sie einen Suchbegriff ein..."
 #, fuzzy
 msgid "Search"
 msgstr "Suchen"
+
+#~ msgid "search"
+#~ msgstr "suche"
+
+#~ msgid "page"
+#~ msgstr "seite"
 
 #, fuzzy
 #~ msgid "Page"

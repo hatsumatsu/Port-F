@@ -154,48 +154,6 @@ add_action( 'template_redirect', 'redirectViews' );
 
 
 /**
- * Modify pagination permalink fragment
- */
-function modifyPaginationPermalinkSlug() {
-    global $wp_rewrite;
-
-    $wp_rewrite->pagination_base = get_option( 'custom_pagination_base', 'page' );
-}
-
-add_action( 'init', 'modifyPaginationPermalinkSlug', 1 );
-
-
-
-/**
- * Add settings for pagination permalink fragment
- */
-function addPaginationPermalinkSlugSettings() {
-    add_settings_section(
-		'custom_permalink',
-		'Translation Settings',
-		function() {},
-		'general'
-	);
-    
-    add_settings_field( 
-        'custom_pagination_base', 
-        'Pagination Base', 
-        function() {
-            $value = get_option( 'custom_pagination_base' );	
-            echo '<input type="text" value="' . esc_attr( $value ) . '" name="custom_pagination_base" id="custom_pagination_base" class="regular-text" />';
-        }, 
-        'general', 
-        'custom_permalink'
-     );
-
-     register_setting( 'general', 'custom_pagination_base' );
-}
-
-add_action( 'admin_init', 'addPaginationPermalinkSlugSettings' );
-
-
-
-/**
  * Modify the separator of the automatic <title>
  * @param  [type] $separator [description]
  * @return [type]            [description]
@@ -290,7 +248,7 @@ function get_current_archive_url() {
     global $wp;
 
     $url = home_url( $wp->request );
-    $url = explode( __( 'page', 'port-f' ) . '/', $url );
+    $url = explode( get_option( 'custom_pagination_base', 'page' ) . '/', $url );
     $url = trailingslashit( $url[0] );
 
     return $url;
