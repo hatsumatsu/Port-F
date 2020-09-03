@@ -4,14 +4,14 @@
  * Rewrite the search page's permalink
  * http://example.com/search/{query}
  */
-function modifySearchRewriteRule() {
+function searchRedirect() {
     if( is_search() && !empty( $_GET['s'] ) && !is_admin() ) {
         wp_redirect( home_url( '/' . get_option( 'custom_search_base', 'search' ) . '/' ) . urlencode( get_query_var( 's' ) ) );
         exit();
     }
 }
 
-add_action( 'template_redirect', 'modifySearchRewriteRule' );
+add_action( 'template_redirect', 'searchRedirect' );
 
 
 
@@ -21,13 +21,13 @@ add_action( 'template_redirect', 'modifySearchRewriteRule' );
  * @param  array $vars query vars
  * @return array       query vars
  */
-function modifySearchQueryVars( $vars ) {
+function searchModifyQueryVars( $vars ) {
     $vars[] = 'error--search-term-length';
 
     return $vars;
 }
 
-add_filter( 'query_vars', 'modifySearchQueryVars' );
+add_filter( 'query_vars', 'searchModifyQueryVars' );
 
 
 
@@ -36,7 +36,7 @@ add_filter( 'query_vars', 'modifySearchQueryVars' );
  * + Force minimum search term length
  * + Set search result post count to infinity
  */
-function modifySearchQuery( $query ) {
+function searchModifyQuery( $query ) {
     if( is_admin() ) {
         return;
     }
@@ -47,4 +47,4 @@ function modifySearchQuery( $query ) {
     }
 }
 
-add_action( 'pre_get_posts', 'modifySearchQuery' );
+add_action( 'pre_get_posts', 'searchModifyQuery' );

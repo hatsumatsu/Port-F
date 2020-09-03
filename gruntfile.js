@@ -1,56 +1,54 @@
-module.exports = function( grunt ) {
+module.exports = function (grunt) {
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
+    const webpackConfigDev = require('./webpack.dev.js');
+    const webpackConfigProd = require('./webpack.prod.js');
 
-    const webpackConfigDev = require( './webpack.dev.js');
-    const webpackConfigProd = require( './webpack.prod.js');
-
-    grunt.initConfig( {
-
-        pkg: grunt.file.readJSON( 'package.json' ),
-        ftp: grunt.file.readJSON( '.ftppass' ),
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        ftp: grunt.file.readJSON('.ftppass'),
 
         postcss: {
             options: {
-                parser: require( 'postcss-comment' ),
+                parser: require('postcss-comment'),
 
                 processors: [
-                    require( 'postcss-partial-import' )(),
-                    require( 'postcss-mixins' )(),
-                    require( 'postcss-nested' )(),
-                    require( 'postcss-media-variables' )(),
-                    require( 'postcss-custom-properties' )( {
-                        preserve: false
-                    } ),
-                    require( 'postcss-color-function' )(),
-                    require( 'postcss-media-variables' )(),
-                    require( 'autoprefixer' )(),
-                    require( 'postcss-inline-svg' )(),
-                    require( 'cssnano' )()
+                    require('postcss-partial-import')(),
+                    require('postcss-mixins')(),
+                    require('postcss-nested')(),
+                    require('postcss-media-variables')(),
+                    require('postcss-custom-properties')({
+                        preserve: false,
+                    }),
+                    require('postcss-color-function')(),
+                    require('postcss-media-variables')(),
+                    require('autoprefixer')(),
+                    require('postcss-inline-svg')(),
+                    require('cssnano')(),
                 ],
 
                 map: {
                     inline: false,
-                    annotation: 'src/css/sourcemaps/'
+                    annotation: 'css/sourcemaps/',
                 },
             },
             dist: {
                 src: 'src/css/app.css',
-                dest: 'css/app.min.css'
+                dest: 'css/app.min.css',
             },
             editor: {
                 src: 'src/css/editor.css',
-                dest: 'css/editor.min.css'
+                dest: 'css/editor.min.css',
             },
             admin: {
                 src: 'src/css/admin.css',
-                dest: 'css/admin.min.css'
-            }
+                dest: 'css/admin.min.css',
+            },
         },
 
         webpack: {
             options: {
-                stats: false
+                stats: false,
             },
             dev: webpackConfigDev,
             prod: webpackConfigProd,
@@ -58,37 +56,41 @@ module.exports = function( grunt ) {
 
         imagemin: {
             all: {
-                files: [ {
-                    expand: true,
-                    cwd: 'src/img/',
-                    src: ['**/*.{png,jpeg,jpg,gif}'],
-                    dest: 'img/'
-                } ],
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/img/',
+                        src: ['**/*.{png,jpeg,jpg,gif}'],
+                        dest: 'img/',
+                    },
+                ],
                 options: {
-                    cache: false
-                }
-            }
+                    cache: false,
+                },
+            },
         },
 
         svgmin: {
             options: {
                 plugins: [
                     {
-                        removeViewBox: false
+                        removeViewBox: false,
                     },
                     {
-                        removeUselessStrokeAndFill: false
-                    }
-                ]
+                        removeUselessStrokeAndFill: false,
+                    },
+                ],
             },
             dist: {
-                files: [ {
-                    expand: true,
-                    cwd: 'src/img/',
-                    src: ['**/*.svg'],
-                    dest: 'img/'
-                } ]
-            }
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/img/',
+                        src: ['**/*.svg'],
+                        dest: 'img/',
+                    },
+                ],
+            },
         },
 
         ftpush: {
@@ -96,7 +98,7 @@ module.exports = function( grunt ) {
                 auth: {
                     host: '<%= ftp.key1.host %>',
                     port: 21,
-                    authKey: 'key1'
+                    authKey: 'key1',
                 },
                 src: '',
                 dest: '/preview/wp-content/themes/port-f',
@@ -107,17 +109,17 @@ module.exports = function( grunt ) {
                     'webpack*.js',
                     'gruntfile.js',
                     '**/Thumbs.db',
-                    'node_modules'
-                    ],
+                    'node_modules',
+                ],
                 simple: false,
-                useList: false
+                useList: false,
             },
 
             production: {
                 auth: {
                     host: '<%= ftp.key2.host %>',
                     port: 21,
-                    authKey: 'key2'
+                    authKey: 'key2',
                 },
                 src: '',
                 dest: '/wp-content/themes/port-f',
@@ -128,11 +130,11 @@ module.exports = function( grunt ) {
                     'webpack*.js',
                     'gruntfile.js',
                     '**/Thumbs.db',
-                    'node_modules'
-                    ],
+                    'node_modules',
+                ],
                 simple: false,
-                useList: false
-            }
+                useList: false,
+            },
         },
 
         watch: {
@@ -141,8 +143,8 @@ module.exports = function( grunt ) {
                 tasks: ['buildcss'],
                 options: {
                     livereload: true,
-                    spawn: false
-                }
+                    spawn: false,
+                },
             },
 
             js: {
@@ -150,35 +152,32 @@ module.exports = function( grunt ) {
                 tasks: ['webpack:dev'],
                 options: {
                     livereload: true,
-                    spawn: false
-                }
+                    spawn: false,
+                },
             },
 
             imgraster: {
                 files: ['src/img/**/*.{jspg,jpeg,gif,png}'],
-                tasks: ['buildimagesraster']
+                tasks: ['buildimagesraster'],
             },
 
             imgvector: {
                 files: ['src/img/**/*.svg'],
-                tasks: ['buildimagesvector']
-            }
-        }
+                tasks: ['buildimagesvector'],
+            },
+        },
+    });
 
-    } );
+    grunt.registerTask('default', ['build']);
 
+    grunt.registerTask('buildcss', ['postcss']);
+    grunt.registerTask('buildjs', ['webpack:dev', 'webpack:prod']);
+    grunt.registerTask('buildimagesraster', ['imagemin']);
+    grunt.registerTask('buildimagesvector', ['svgmin']);
+    grunt.registerTask('buildimages', ['buildimagesraster', 'buildimagesvector']);
 
-    grunt.registerTask( 'default', ['build'] );
+    grunt.registerTask('deploy_preview', ['webpack:prod', 'ftpush:preview']);
+    grunt.registerTask('deploy_production', ['webpack:prod', 'ftpush:production']);
 
-    grunt.registerTask( 'buildcss',  ['postcss'] );
-    grunt.registerTask( 'buildjs',  ['webpack:dev','webpack:prod'] );
-    grunt.registerTask( 'buildimagesraster',  ['imagemin'] );
-    grunt.registerTask( 'buildimagesvector',  ['svgmin'] );
-    grunt.registerTask( 'buildimages',  ['buildimagesraster', 'buildimagesvector'] );
-
-    grunt.registerTask( 'deploy_preview',  ['webpack:prod','ftpush:preview'] );
-    grunt.registerTask( 'deploy_production',  ['webpack:prod','ftpush:production'] );
-
-    grunt.registerTask( 'build',  ['buildcss', 'buildjs', 'buildimages'] );
-
+    grunt.registerTask('build', ['buildcss', 'buildjs', 'buildimages']);
 };

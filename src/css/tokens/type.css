@@ -1,0 +1,9 @@
+:root {
+    --type--font-1: sans-serif;
+    --type--font-2: serif;
+
+    --type--line-height: 1.3;
+}
+
+@define-mixin type--1 {
+}

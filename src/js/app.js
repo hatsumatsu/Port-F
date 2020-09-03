@@ -7,7 +7,6 @@ import Globals from './app/globals.js';
 import Nav from './app/nav.js';
 import Module from './app/module.js';
 
-
 window.Globals = new Globals();
 new Nav('( max-width: 680px )');
 new Module();

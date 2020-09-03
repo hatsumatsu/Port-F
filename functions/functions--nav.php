@@ -24,7 +24,10 @@ function modifyNavigationMarkup( $args = '' ) {
     $html  = '';
 
     $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-nav-role="nav" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">';
-    $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
+    
+    if( $args['theme_location'] === 'head' ) {
+        $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
+    }
 
     $html .= '<ul class="nav-list nav-list--' . esc_attr( $args['theme_location'] ) . '">%3$s</ul>';
     $html .= '</nav>';

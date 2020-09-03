@@ -73,7 +73,7 @@ add_action( 'init', 'permalinkModifyPaginationSlug', 1 );
 
 
 /**
- * Modify pagination permalink fragment
+ * Modify search permalink fragment
  */
 function permalinkModifySearchSlug() {
     global $wp_rewrite;

@@ -1,60 +1,35 @@
 // NORMALIZE.CSS
 @import 'normalize';
 
+// TOKEMS
+// variables
+@import 'tokens/colors';
+@import 'tokens/type';
+@import 'tokens/mixins';
+@import 'tokens/transitions';
+@import 'tokens/animations';
+@import 'tokens/breakpoints';
 
-// VARIABLES
-@import 'variables';
+// ELEMENTS
+@import 'elements/document';
+@import 'elements/links';
+@import 'elements/headings';
 
+// COMPONENTS
+@import 'components/inline-content';
 
-// MIXINS
-@import 'mixins';
+@import 'components/head';
+@import 'components/nav--head';
 
+@import 'components/content';
 
-// ANIMATIONS
-@import 'animations';
+@import 'components/posts';
 
+@import 'components/pagination';
 
-// DOCUMENT
-@import 'document';
+@import 'components/searchform';
 
+@import 'components/single';
 
-// LINKS
-@import 'links';
-
-
-// HEADINGS
-@import 'headings';
-
-
-// INLINE CONTENT
-@import 'inline-content';
-
-
-// HEADER
-@import 'head';
-@import 'nav--head';
-
-
-// MAIN CONTENT
-@import 'content';
-
-
-// POSTS
-@import 'posts';
-
-
-// PAGINATION
-@import 'pagination';
-
-
-// SEARCHFORM
-@import 'searchform';
-
-
-// SINGLE
-@import 'single';
-
-
-// FOOTER
-@import 'footer';
-@import 'nav--footer';
+@import 'components/footer';
+@import 'components/nav--footer';

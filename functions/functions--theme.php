@@ -6,7 +6,7 @@
  * in wp-config.php to use this
  */
 function themeIsDev() {
-    if( defined( 'WP_DEV' ) ) {
+    if( defined( 'WP_DEV' ) || wp_get_environment_type() === 'development' ) {
         return true;
     } else {
         return false;
@@ -290,3 +290,22 @@ function loadNormalizerPolyfill() {
 }
 
 loadNormalizerPolyfill();
+
+
+
+/**
+ * Show admin warning when String Normalizer is not available
+ */
+function testForNormalizer() {
+    if( !function_exists( 'normalizer_normalize' ) ) {
+?>
+<div class="error notice">
+    <p>
+        <?php echo __( 'It seems that <strong>PHP Intl</strong> is missing on the server. International file names are not sanitized on upload.', 'port-f' ); ?>
+    </p>
+</div>
+<?php
+    }
+}
+
+add_action( 'admin_notices', 'testForNormalizer' );

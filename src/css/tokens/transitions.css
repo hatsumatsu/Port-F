@@ -1,0 +1,5 @@
+:root {
+    --transition--duration: 250ms;
+
+    --easing--out: cubic-bezier(0.165, 0.84, 0.44, 1); // https://easings.net/en#easeOutQuart
+}

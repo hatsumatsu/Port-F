@@ -5,7 +5,7 @@ import C from '@superstructure.net/c';
 /**
  * Module
  */
-export default class MyModule extends M {
+export default class Module extends M {
     constructor(mediaQuery) {
         super(mediaQuery);
     }

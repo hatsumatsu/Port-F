@@ -10,7 +10,6 @@
 
 // <nav>
 .nav--head {
-
 }
 
 // <ul>
@@ -23,28 +22,21 @@
 
 // <li>
 .nav-list-item--head {
-
     & > a {
-
         &:hover,
         &:focus {
-
         }
     }
 
     &.current-menu-item,
     &.current-menu-parent {
-
         & > a {
-
             &:hover,
             &:focus {
-
             }
         }
     }
 }
-
 
 // submenu
 .nav-list--head ul {
@@ -54,11 +46,7 @@
     list-style-type: none;
 }
 
-
-
-
-@media ( max-width: var( --smaller ) ) {
-
+@media (max-width: var( --breakpoint--smaller )) {
     // toggle
     .nav-toggle--head {
         position: fixed;
@@ -74,12 +62,12 @@
         overflow: hidden;
 
         line-height: 1;
-        color: var( --color--bg );
+        color: var(--color--bg);
         text-indent: 300%;
         white-space: nowrap;
         text-decoration: none !important;
 
-        background-color: var( --color--text );
+        background-color: var(--color--text);
         border: none;
         outline: none !important;
         box-shadow: none !important;
@@ -106,13 +94,11 @@
 
         &:hover,
         &:focus {
-
         }
 
         .visible--nav-head & {
-
             &::before {
-                content: '×'
+                content: '×';
             }
         }
     }
@@ -130,14 +116,14 @@
         padding: 0;
         @mixin scroll--y;
 
-        color: var( --color--bg );
+        color: var(--color--bg);
 
-        background-color: var( --color--text );
+        background-color: var(--color--text);
 
-        transform: translateX( -100% );
+        transform: translateX(-100%);
 
         .visible--nav-head & {
-            transform: translateX( 0 );
+            transform: translateX(0);
         }
     }
 
@@ -155,7 +141,7 @@
             margin: 0;
 
             line-height: 1;
-            color: var( --color--bg );
+            color: var(--color--bg);
 
             &:hover,
             &:focus {
@@ -164,19 +150,16 @@
         }
 
         &.current-menu-item {
-
             & > a {
                 text-decoration: underline;
 
                 &:hover,
                 &:focus {
-
                 }
             }
         }
 
         &:last-child {
-
         }
     }
 
@@ -187,11 +170,9 @@
     }
 
     .nav-list--head li ul li {
-
     }
 
     .nav-list--head li ul li a {
         padding-left: 2rem;
     }
-
 }

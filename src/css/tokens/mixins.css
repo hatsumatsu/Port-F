@@ -20,14 +20,13 @@
 }
 
 @define-mixin focus {
-    outline: 2px solid var ( --color--link );
+    outline: 2px solid var (--color--link);
     outline-offset: 2px;
 }
 
 @define-mixin no-focus {
     outline: none;
 }
-
 
 //
 // Layout
@@ -41,7 +40,6 @@
 
     display: block;
 }
-
 
 //
 // Scroll
@@ -66,11 +64,10 @@
     overscroll-behavior-y: contain;
 }
 
-
 //
 // Images
 //
 @define-mixin svg $filename {
-    background-image: url( img/$(filename).svg );
-    background-image: svg-load( '../img/$(filename).svg' );
+    background-image: url(img/$(filename).svg);
+    background-image: svg-load('../img/$(filename).svg');
 }
