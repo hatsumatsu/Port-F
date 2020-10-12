@@ -3,12 +3,12 @@
 /**
  * Register navigation menus
  */
-function registerNavigation() {
+function navRegisterMenus() {
     register_nav_menu( 'head', __( 'Primary Header Navigation', 'port-f' ) );
     register_nav_menu( 'footer', __( 'Primary Footer Navigation', 'port-f' ) );
 }
 
-add_action( 'after_setup_theme', 'registerNavigation' );
+add_action( 'after_setup_theme', 'navRegisterMenus' );
 
 
 
@@ -20,7 +20,7 @@ add_action( 'after_setup_theme', 'registerNavigation' );
  * @param   array   $args options of wp_nav_menu()
  * @return  array   $args
  */
-function modifyNavigationMarkup( $args = '' ) {
+function navModifyMarkup( $args = '' ) {
     $html  = '';
 
     $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-nav-role="nav" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">';
@@ -38,7 +38,7 @@ function modifyNavigationMarkup( $args = '' ) {
     return $args;
 }
 
-add_filter( 'wp_nav_menu_args', 'modifyNavigationMarkup' );
+add_filter( 'wp_nav_menu_args', 'navModifyMarkup' );
 
 
 
@@ -50,11 +50,11 @@ add_filter( 'wp_nav_menu_args', 'modifyNavigationMarkup' );
  * @param  int $depth     nav menu item depth
  * @return array          classes
  */
-function modifyNavigationItemClasses( $classes, $item, $args, $depth ) {
+function navModifyItemClasses( $classes, $item, $args, $depth ) {
     $classes[] = 'nav-list-item';
     $classes[] = 'nav-list-item--' . esc_attr( $args->theme_location );
 
     return $classes;
 }
 
-add_filter( 'nav_menu_css_class', 'modifyNavigationItemClasses', 10, 4 );
+add_filter( 'nav_menu_css_class', 'navModifyItemClasses', 10, 4 );

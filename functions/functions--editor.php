@@ -4,7 +4,7 @@
  * Configure tinyMCE features
  * http://www.tinymce.com/wiki.php/Configuration
  */
-function customizeTinyMCE( $init ) {
+function editorCustomize( $init ) {
 
     // disable rich text pasting
     $init['paste_as_text'] = true;
@@ -37,7 +37,7 @@ function customizeTinyMCE( $init ) {
     return $init;
 }
 
-add_filter( 'tiny_mce_before_init', 'customizeTinyMCE' );
+add_filter( 'tiny_mce_before_init', 'editorCustomize' );
 
 
 
@@ -45,7 +45,7 @@ add_filter( 'tiny_mce_before_init', 'customizeTinyMCE' );
  * Configure tinyMCE button row 1
  * http://www.tinymce.com/wiki.php/TinyMCE3x:Buttons/controls
  */
-function customizeTinyMCEButtonsRow1( $buttons ) {
+function editorCustomizeToolbar( $buttons ) {
     return array(
         'formatselect',
         'styleselect',
@@ -60,7 +60,7 @@ function customizeTinyMCEButtonsRow1( $buttons ) {
     );
 }
 
-add_filter( 'mce_buttons', 'customizeTinyMCEButtonsRow1' );
+add_filter( 'mce_buttons', 'editorCustomizeToolbar' );
 
 
 
@@ -68,19 +68,19 @@ add_filter( 'mce_buttons', 'customizeTinyMCEButtonsRow1' );
  * Configure tinyMCE button row 2
  * http://www.tinymce.com/wiki.php/TinyMCE3x:Buttons/controls
  */
-function customizeTinyMCEButtonsRow2( $buttons ) {
+function editorCustomizeToolbar2( $buttons ) {
     return array();
 }
 
-add_filter( 'mce_buttons_2', 'customizeTinyMCEButtonsRow2' );
+add_filter( 'mce_buttons_2', 'editorCustomizeToolbar2' );
 
 
 
 /**
  * Register tinyMCE editor CSS
  */
-function registerTinyMCECSS() {
+function editorRegisterCSS() {
     add_editor_style( 'css/editor.min.css' );
 }
 
-add_action( 'init', 'registerTinyMCECSS' );
+add_action( 'init', 'editorRegisterCSS' );
