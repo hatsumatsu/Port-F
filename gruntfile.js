@@ -14,14 +14,10 @@ module.exports = function (grunt) {
 
                 processors: [
                     require('postcss-partial-import')(),
+                    require('postcss-custom-media')(),
                     require('postcss-mixins')(),
                     require('postcss-nested')(),
-                    require('postcss-media-variables')(),
-                    require('postcss-custom-properties')({
-                        preserve: false,
-                    }),
                     require('postcss-color-function')(),
-                    require('postcss-media-variables')(),
                     require('autoprefixer')(),
                     require('postcss-inline-svg')(),
                     require('cssnano')(),

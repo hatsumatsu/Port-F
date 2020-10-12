@@ -46,7 +46,7 @@
     list-style-type: none;
 }
 
-@media (max-width: var( --breakpoint--smaller )) {
+@media (--viewport--smaller) {
     // toggle
     .nav-toggle--head {
         position: fixed;

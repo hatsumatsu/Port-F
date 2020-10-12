@@ -7,7 +7,7 @@
 @import 'tokens/mixins';
 @import 'tokens/transitions';
 @import 'tokens/animations';
-@import 'tokens/breakpoints';
+@import 'tokens/media-queries';
 
 // ELEMENTS
 @import 'elements/document';
