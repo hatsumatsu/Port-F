@@ -3,7 +3,7 @@
 /**
  * Register / Deregister theme CSS
  */
-function registerThemeCSS() {
+function assetsRegisterThemeCSS() {
     // - block library styles
     wp_dequeue_style( 'wp-block-library' );
 
@@ -18,14 +18,14 @@ function registerThemeCSS() {
     wp_enqueue_style( 'port-f' );
 }
 
-add_action( 'wp_enqueue_scripts', 'registerThemeCSS' );
+add_action( 'wp_enqueue_scripts', 'assetsRegisterThemeCSS' );
 
 
 
 /**
  * Register / Deregister theme JS
  */
-function registerThemeJS() {
+function assetsRegisterThemeJS() {
     // - post embed script
     wp_deregister_script( 'wp-embed' );
 
@@ -41,14 +41,14 @@ function registerThemeJS() {
     wp_enqueue_script( 'port-f--app' );
 }
 
-add_action( 'wp_enqueue_scripts', 'registerThemeJS' );
+add_action( 'wp_enqueue_scripts', 'assetsRegisterThemeJS' );
 
 
 
 /**
  * Register admin CSS
  */
-function registerAdminCSS() {
+function assetsRegisterAdminCSS() {
     wp_register_style(
         'port-f--admin',
         get_template_directory_uri() . '/css/admin.min.css',
@@ -59,15 +59,15 @@ function registerAdminCSS() {
     wp_enqueue_style( 'port-f--admin' );
 }
 
-add_action( 'admin_print_styles', 'registerAdminCSS' );
-add_action( 'admin_print_styles-media-upload-popup', 'registerAdminCSS' );
+add_action( 'admin_print_styles', 'assetsRegisterAdminCSS' );
+add_action( 'admin_print_styles-media-upload-popup', 'assetsRegisterAdminCSS' );
 
 
 
 /**
  * Register admin JS
  */
-function registerAdminJS() {
+function assetsRegisterAdminJS() {
     wp_register_script(
         'port-f-admin',
         get_template_directory_uri() . '/js/admin.js',
@@ -79,4 +79,4 @@ function registerAdminJS() {
     wp_enqueue_script( 'port-f-admin' );
 }
 
-add_action( 'admin_enqueue_scripts', 'registerAdminJS' );
+add_action( 'admin_enqueue_scripts', 'assetsRegisterAdminJS' );

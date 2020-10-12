@@ -5,7 +5,7 @@
  * @param  array $toolbars toolbars
  * @return array           toolbars
  */
-function modifyACFEditorToolbars( $toolbars ) {
+function ACFModifyEditorToolbars( $toolbars ) {
     $toolbars['Minimal'] = array();
     $toolbars['Minimal'][1] = array(
         'italic',
@@ -17,7 +17,7 @@ function modifyACFEditorToolbars( $toolbars ) {
     return $toolbars;
 }
 
-add_filter( 'acf/fields/wysiwyg/toolbars' , 'modifyACFEditorToolbars'  );
+add_filter( 'acf/fields/wysiwyg/toolbars' , 'ACFModifyEditorToolbars'  );
 
 
 
@@ -41,7 +41,7 @@ add_filter( 'acf/settings/save_json', function( $path ) {
  */
 if( function_exists( 'acf_add_options_page' ) ) {
 
-    function addACFOptionsPage() {
+    function ACFAddOptionsPage() {
         acf_add_options_page(
             array(
                 'menu_slug' => 'options',
@@ -54,6 +54,6 @@ if( function_exists( 'acf_add_options_page' ) ) {
         );
     }
 
-    add_action( 'acf/init', 'addACFOptionsPage' );
+    add_action( 'acf/init', 'ACFAddOptionsPage' );
 }
 
