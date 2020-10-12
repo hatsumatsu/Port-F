@@ -3,7 +3,7 @@
 /**
  * Modify query
  */
-function modifyQuery( $query ) {
+function queryModifyQuery( $query ) {
     if( is_admin() ) {
         return $query;
     }
@@ -17,4 +17,4 @@ function modifyQuery( $query ) {
     }
 }
 
-// add_action( 'pre_get_posts', 'modifyQuery' );
+// add_action( 'pre_get_posts', 'queryModifyQuery' );

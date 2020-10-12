@@ -1,8 +1,7 @@
 // NORMALIZE.CSS
 @import 'normalize';
 
-// TOKEMS
-// variables
+// TOKENS
 @import 'tokens/colors';
 @import 'tokens/type';
 @import 'tokens/mixins';
