@@ -3,6 +3,11 @@
     "version": "0.12.0",
     "author": "MartinWecke",
     "private": true,
+    "scripts": {
+        "dev": "grunt watch",
+        "build": "grunt build",
+        "deploy": "grunt deploy"
+    },
     "devDependencies": {
         "@babel/cli": "^7.11.6",
         "@babel/core": "^7.11.6",
