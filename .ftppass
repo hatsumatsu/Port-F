@@ -3,10 +3,5 @@
     "host": "my.example.com",
     "username": "",
     "password": ""
-  },
-  "key2": {
-    "host": "my.example.com",
-    "username": "",
-    "password": ""
   }
 }

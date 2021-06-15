@@ -90,32 +90,11 @@ module.exports = function (grunt) {
         },
 
         ftpush: {
-            preview: {
+            production: {
                 auth: {
                     host: '<%= ftp.key1.host %>',
                     port: 21,
                     authKey: 'key1',
-                },
-                src: '',
-                dest: '/preview/wp-content/themes/port-f',
-                exclusions: [
-                    '**/.*',
-                    'readme*',
-                    'package*.json',
-                    'webpack*.js',
-                    'gruntfile.js',
-                    '**/Thumbs.db',
-                    'node_modules',
-                ],
-                simple: false,
-                useList: false,
-            },
-
-            production: {
-                auth: {
-                    host: '<%= ftp.key2.host %>',
-                    port: 21,
-                    authKey: 'key2',
                 },
                 src: '',
                 dest: '/wp-content/themes/port-f',
@@ -172,8 +151,7 @@ module.exports = function (grunt) {
     grunt.registerTask('buildimagesvector', ['svgmin']);
     grunt.registerTask('buildimages', ['buildimagesraster', 'buildimagesvector']);
 
-    grunt.registerTask('deploy_preview', ['webpack:prod', 'ftpush:preview']);
-    grunt.registerTask('deploy_production', ['webpack:prod', 'ftpush:production']);
+    grunt.registerTask('deploy', ['build', 'ftpush:production']);
 
     grunt.registerTask('build', ['buildcss', 'buildjs', 'buildimages']);
 };
