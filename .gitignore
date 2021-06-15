@@ -3,6 +3,7 @@ node_modules
 
 # JS sourcemaps
 js/sourcemaps/*
+css/sourcemaps/*
 
 
 # OS related files
