@@ -14,7 +14,7 @@
     <a href="<?php the_permalink(); ?>">
         <figure class="Post-image PostProjects-image">
 <?php
-        responsiveImage(
+        echo getResponsiveImage(
             $imageId,
             array(
                 'class' => 'Post-image-img PostProjects-image-img'

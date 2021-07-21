@@ -133,7 +133,7 @@ function responsiveImageEmbed( $html, $id, $alt, $title, $align = null, $size = 
 
     $html = '';
 
-    $html .= getTheResponsiveImage(
+    $html .= getResponsiveImage(
         $id,
         array(
             'sizes'   => '100vw',
@@ -281,7 +281,7 @@ function modifyGalleryShortcode( $output = '', $attributes, $instance ) {
         $attachment = get_post( $id );
 
         $html .= '<figure class="inline-gallery-image">';
-        $html .=  getTheResponsiveImage(
+        $html .=  getResponsiveImage(
             $id,
             array(
                 'class' => 'inline-gallery-image-image'
@@ -426,7 +426,7 @@ function getBase64( $url ) {
 /**
  * Get responsive image tag
  * Example:
- * getTheResponsiveImage(
+ * getResponsiveImage(
  *     $image_id,
  *     array(
  *         'sizes' => '100vw',
@@ -445,7 +445,7 @@ function getBase64( $url ) {
  * @param  array $attributes         array of attribute / value pairs
  * @return string                    HTML <img> tag
  */
-function getTheResponsiveImage(
+function getResponsiveImage(
     $id,
     $attributes = array(),
     $sizes = array(

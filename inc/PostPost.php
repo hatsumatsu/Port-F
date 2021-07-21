@@ -6,8 +6,8 @@
         </a>
     </h2>
 
-    <time class="Post-time PostPost-time" datetime="<?php echo esc_attr( postTime( 'Y-m-d\TH:i' ) ); ?>">
-        <?php postTime(); ?>
+    <time class="Post-time PostPost-time" datetime="<?php echo esc_attr( getPostTime( 'Y-m-d\TH:i' ) ); ?>">
+        <?php getPostTime(); ?>
     </time>
 
     <div class="Post-content PostPost-content RichText">
