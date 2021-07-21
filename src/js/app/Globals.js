@@ -1,7 +1,3 @@
-import M from '@superstructure.net/m';
-import E from '@superstructure.net/e';
-import C from '@superstructure.net/c';
-
 /**
  * Globals
  */
@@ -12,8 +8,8 @@ export default class Globals {
     }
 
     init() {
-        this.set('blogurl', new E('head').getAttr('data-wpurl'));
-        this.set('theme', new E('head').getAttr('data-project'));
+        this.set('blogurl', document.head.getAttribute('data-wpurl'));
+        this.set('theme', document.head.getAttribute('data-project'));
 
         console.log(this.globals);
     }

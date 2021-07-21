@@ -1,5 +1,4 @@
 import M from '@superstructure.net/m';
-import E from '@superstructure.net/e';
 import C from '@superstructure.net/c';
 
 /**

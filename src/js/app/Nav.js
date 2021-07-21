@@ -1,5 +1,4 @@
 import M from '@superstructure.net/m';
-import E from '@superstructure.net/e';
 import C from '@superstructure.net/c';
 
 /**
@@ -27,7 +26,7 @@ export default class Nav extends M {
     onClick(event) {
         event.preventDefault();
 
-        let id = new E(event.actualTarget || event.target).getAttr('id', 'Nav');
+        let id = (event.actualTarget || event.target).getAttribute('data-Nav-id');
 
         this.toggle(id);
     }
@@ -51,7 +50,7 @@ export default class Nav extends M {
 
         this.visible[id] = true;
 
-        new E('html').addClass('visible--nav-' + id);
+        document.documentElement.classList.add('visible--nav-' + id);
 
         this.events.trigger('nav/show', { id: id });
     }
@@ -61,7 +60,7 @@ export default class Nav extends M {
 
         this.visible[id] = false;
 
-        new E('html').removeClass('visible--nav-' + id);
+        document.documentElement.classList.remove('visible--nav-' + id);
 
         this.events.trigger('nav/hide', { id: id });
     }
