@@ -21,9 +21,9 @@ document.documentElement.classList.remove( 'no-js' );
         name="viewport"
         content="width=device-width,initial-scale=1.0">
 
-    <?php get_inc( 'head', 'icons', 0 ); ?>
+    <?php getPart( 'Head', 'icons', 0 ); ?>
 
-    <?php get_inc( 'head', 'social', 0 ); ?>
+    <?php getPart( 'Head', 'social', 0 ); ?>
 
 </head>
 <body <?php body_class(); ?>>
@@ -44,7 +44,7 @@ document.documentElement.classList.remove( 'no-js' );
                 </a>
             </h1>
 
-            <?php get_inc( 'nav', 'head', 0 ); ?>
+            <?php getPart( 'Nav', 'head', 0 ); ?>
 
         </section><!-- end .head -->
 

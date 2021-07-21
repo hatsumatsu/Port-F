@@ -1,11 +1,8 @@
-.inline-content {
+.RichText {
     p {
-
         &:last-child {
-
         }
     }
-
 
     // images
     img.inline-image {
@@ -27,7 +24,6 @@
         }
 
         & > figcaption {
-
         }
     }
 

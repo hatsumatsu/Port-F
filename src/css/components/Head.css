@@ -1,0 +1,7 @@
+.Head {
+}
+
+.Head-title {
+    & > a {
+    }
+}

@@ -1,0 +1,26 @@
+@define-mixin a11y--hidebutread {
+    position: absolute;
+    left: -9999em;
+    top: auto;
+
+    width: 1px;
+    height: 1px;
+
+    overflow: hidden;
+
+    &:focus {
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+    }
+}
+
+@define-mixin a11y--focus {
+    outline: 2px solid var (--color--link);
+    outline-offset: 2px;
+}
+
+@define-mixin a11y--nofocus {
+    outline: none;
+}

@@ -1,0 +1,21 @@
+.Pagination {
+}
+
+.Pagination .page-numbers {
+}
+
+.Pagination .prev,
+.Pagination .next {
+    &:hover,
+    &:focus {
+    }
+}
+
+.Pagination .prev {
+}
+
+.Pagination .next {
+}
+
+.Pagination .dots {
+}

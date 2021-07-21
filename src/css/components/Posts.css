@@ -1,8 +1,7 @@
-.posts {
-
+.Posts {
 }
 
-.post {
+.Post {
     margin: 0 0 1rem;
 
     &:last-child {
@@ -10,19 +9,17 @@
     }
 }
 
-.post-title {
-
+.Post-title {
 }
 
-.post-content {
-
+.Post-content {
 }
 
-.post-image {
+.Post-image {
     margin: 0 0 1rem;
 }
 
-.post-image-img {
+.Post-image-img {
     display: block;
     width: 100%;
     height: auto;
@@ -33,6 +30,6 @@
     transition-duration: 150ms;
 
     &.lazyloaded {
-    	opacity: 1;
+        opacity: 1;
     }
 }

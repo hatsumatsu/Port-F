@@ -5,5 +5,17 @@
     --type--line-height: 1.3;
 }
 
+html {
+    font-family: var(--type--font-1);
+    font-size: 100%;
+    line-height: var(--type--line-height);
+    color: var(--color--text);
+
+    // Enhanced typography
+    font-kerning: normal;
+    font-variant: common-ligatures; // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/OpenType_fonts_guide
+    text-size-adjust: 100%;
+}
+
 @define-mixin type--1 {
 }

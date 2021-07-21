@@ -4,31 +4,35 @@
 // TOKENS
 @import 'tokens/colors';
 @import 'tokens/type';
-@import 'tokens/mixins';
 @import 'tokens/transitions';
 @import 'tokens/animations';
 @import 'tokens/media-queries';
 
+// UTILS
+@import 'utils/a11y';
+@import 'utils/pseudo';
+@import 'utils/scroll';
+@import 'utils/svg';
+
 // ELEMENTS
-@import 'elements/document';
-@import 'elements/links';
-@import 'elements/headings';
+@import 'elements/Document';
+@import 'elements/Link';
 
 // COMPONENTS
-@import 'components/inline-content';
+@import 'components/RichText';
 
-@import 'components/head';
-@import 'components/nav--head';
+@import 'components/Head';
+@import 'components/NavHead';
 
-@import 'components/content';
+@import 'components/Content';
 
-@import 'components/posts';
+@import 'components/Posts';
 
-@import 'components/pagination';
+@import 'components/Pagination';
 
-@import 'components/searchform';
+@import 'components/Searchform';
 
-@import 'components/single';
+@import 'components/Single';
 
-@import 'components/footer';
-@import 'components/nav--footer';
+@import 'components/Footer';
+@import 'components/NavFooter';

@@ -1,21 +1,19 @@
 a {
-    color: var( --color--link );
+    color: var(--color--link);
     text-decoration: none;
 
     &:hover {
         text-decoration: underline;
-        color: color( var( --color--link ) tint( 35% ) );
+        color: color(var(--color--link) tint(35%));
     }
 
     &:focus-visible {
-
     }
 
     &:active {
-
     }
 
     &:visited {
-        color: color( var( --color--link ) tint( 25% ) );
+        color: color(var(--color--link) tint(25%));
     }
 }

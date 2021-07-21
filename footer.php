@@ -2,7 +2,7 @@
 
         <section class="footer">
 
-            <?php get_inc( 'nav', 'footer', 0 ); ?>
+            <?php getPart( 'Nav', 'footer', 0 ); ?>
 
         </section><!-- end .footer -->
 

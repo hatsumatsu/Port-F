@@ -1,19 +1,19 @@
 // skip link
-.nav-skip--head {
-    @mixin hide-but-read;
+.NavHead-skip {
+    @mixin a11y--hidebutread;
 }
 
 // toggle
-.nav-toggle--head {
+.NavHead-toggle {
     display: none;
 }
 
 // <nav>
-.nav--head {
+.NavHead {
 }
 
 // <ul>
-.nav-list--head {
+.NavHead-list {
     margin: 0 0 1rem 0;
     padding: 0;
 
@@ -21,7 +21,7 @@
 }
 
 // <li>
-.nav-list-item--head {
+.NavHead-list-item {
     & > a {
         &:hover,
         &:focus {
@@ -39,7 +39,7 @@
 }
 
 // submenu
-.nav-list--head ul {
+.NavHead-list ul {
     margin: 0 0 0 1rem;
     padding: 0;
 
@@ -48,7 +48,7 @@
 
 @media (--viewport--smaller) {
     // toggle
-    .nav-toggle--head {
+    .NavHead-toggle {
         position: fixed;
         right: 0;
         top: 0;
@@ -103,7 +103,7 @@
         }
     }
 
-    .nav--head {
+    .NavHead {
         position: fixed;
         left: 0;
         right: 0;
@@ -127,12 +127,12 @@
         }
     }
 
-    .nav-list--head {
+    .NavHead-list {
         display: block;
         padding: 1.5rem 1rem;
     }
 
-    .nav-list-item--head {
+    .NavHead-list-item {
         margin: 0;
         padding: 1rem 0;
 
@@ -164,15 +164,15 @@
     }
 
     // submenu
-    .nav-list--head li ul {
+    .NavHead-list li ul {
         margin: 0;
         padding: 0;
     }
 
-    .nav-list--head li ul li {
+    .NavHead-list li ul li {
     }
 
-    .nav-list--head li ul li a {
+    .NavHead-list li ul li a {
         padding-left: 2rem;
     }
 }

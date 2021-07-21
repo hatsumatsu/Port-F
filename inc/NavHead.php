@@ -1,5 +1,5 @@
 <button
-    class="nav-toggle nav-toggle--head"
+    class="Nav-toggle NavHead-toggle"
     title="<?php echo esc_attr( __( 'Toggle Navigation', 'port-f' ) ); ?>"
     data-nav-role="toggle"
     data-nav-id="head">

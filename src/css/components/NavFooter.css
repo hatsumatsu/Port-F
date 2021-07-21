@@ -1,15 +1,13 @@
 // <nav>
-.nav--footer {
-
+.NavFooter {
 }
 
 // skip link
-.nav-skip--footer {
-
+.NavFooter-skip {
 }
 
 // <ul>
-.nav-list--footer {
+.NavFooter-list {
     margin: 0;
     padding: 0;
 
@@ -17,24 +15,18 @@
 }
 
 // <li>
-.nav-list-item--footer  {
-
+.NavFooter-list-item {
     & > a {
-
         &:hover,
         &:focus {
-
         }
     }
 
     &.current_menu_item,
     &.current_menu_parent {
-
         & > a {
-
             &:hover,
             &:focus {
-
             }
         }
     }

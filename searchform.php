@@ -1,12 +1,12 @@
 <form
     action="<?php echo esc_attr( get_bloginfo( 'wpurl' ) ); ?>"
     method="get"
-    class="searchform"
+    class="Searchform"
     role="search">
 
     <input
         type="text"
-        class="searchform-text"
+        class="Searchform-text"
         name="s"
         id="search"
         value="<?php the_search_query(); ?>"
@@ -14,7 +14,7 @@
 
     <input
         type="submit"
-        class="searchform-submit"
+        class="Searchform-submit"
         value="<?php echo __( 'Search', 'port-f' ); ?>">
 
 </form>

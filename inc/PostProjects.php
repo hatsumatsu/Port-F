@@ -6,18 +6,18 @@
 ?>
 
 
-<article class="post post--<?php echo esc_attr( get_post_type_advanced() ); ?><?php echo esc_attr( $class ); ?>">
+<article class="Post PostProjects">
 
 <?php
     if( $imageId ) {
 ?>
     <a href="<?php the_permalink(); ?>">
-        <figure class="post-image post-image--<?php echo esc_attr( get_post_type_advanced() ); ?>">
+        <figure class="Post-image PostProjects-image">
 <?php
-        echo getTheResponsiveImage(
+        responsiveImage(
             $imageId,
             array(
-                'class' => 'post-image-img post-image-img--' . get_post_type_advanced()
+                'class' => 'Post-image-img PostProjects-image-img'
             )
         );
 ?>
@@ -27,7 +27,7 @@
     }
 ?>
 
-    <h2 class="post-title post-title--<?php echo esc_attr( get_post_type_advanced() ); ?>">
+    <h2 class="Post-title PostProjects-title">
         <a href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
         </a>

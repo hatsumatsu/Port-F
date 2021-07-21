@@ -24,7 +24,7 @@
  * @param  array $attributes         array of attribute / value pairs
  * @return string                    HTML <img> tag
  */
-function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array() ) {
+function responsiveImage( $id, $sizes = array( 'medium', 'large', 'full' ), $attributes = array() ) {
     echo getTheResponsiveImage( $id, $sizes, $attributes );
 }
 
@@ -34,7 +34,7 @@ function the_responsive_image( $id, $sizes = array( 'medium', 'large', 'full' ),
  * Template tag:
  * Post date and time based on global WP settings.
  */
-function the_post_time() {
+function postTime() {
     echo get_the_time( get_option( 'date_format' ) ) . ' ' . get_the_time( get_option( 'time_format' ) );
 }
 
@@ -47,10 +47,10 @@ function the_post_time() {
  * @param  string $context    context of template e.g. post_type 'projects'
  * @param  boolean $fallback  ignore context in case temoplate does not exist
  */
-function get_inc( $type, $context, $fallback ) {
+function getPart( $type, $context = null, $fallback = false ) {
     if( $context ) {
-        if( is_file( TEMPLATEPATH . '/inc/' . $type . '--' . $context . '.php' ) ) {
-            get_template_part( '/inc/' . $type . '--' . $context );
+        if( is_file( TEMPLATEPATH . '/inc/' . $type . ucfirst( $context ) . '.php' ) ) {
+            get_template_part( '/inc/' . $type . ucfirst( $context ) );
         } else {
             if( $fallback ) {
                 get_template_part( '/inc/' . $type );

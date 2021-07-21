@@ -1,0 +1,4 @@
+@define-mixin svg $filename {
+    background-image: url(img/$(filename).svg);
+    background-image: svg-load('../img/$(filename).svg');
+}

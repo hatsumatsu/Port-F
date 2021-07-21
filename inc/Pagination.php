@@ -20,6 +20,6 @@ if( $wp_rewrite->using_permalinks() ) {
 
 ?>
 
-<nav class="pagination">
+<nav class="Pagination">
     <?php echo paginate_links( $pagination ); ?>
 </nav>

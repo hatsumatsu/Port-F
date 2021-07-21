@@ -23,13 +23,13 @@ add_action( 'after_setup_theme', 'navRegisterMenus' );
 function navModifyMarkup( $args = '' ) {
     $html  = '';
 
-    $html .= '<nav class="nav--' . esc_attr( $args['theme_location'] ) . '" id="nav--' . esc_attr( $args['theme_location'] ) . '" role="navigation" data-nav-role="nav" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">';
+    $html .= '<nav class=" Nav Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '" id="Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '" role="navigation" data-nav-role="nav" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">';
     
     if( $args['theme_location'] === 'head' ) {
-        $html .= '<a href="#content" class="nav-skip nav-skip--' . esc_attr( $args['theme_location'] ) . '" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
+        $html .= '<a href="#content" class="Nav-skip Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '-skip" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
     }
 
-    $html .= '<ul class="nav-list nav-list--' . esc_attr( $args['theme_location'] ) . '">%3$s</ul>';
+    $html .= '<ul class="Nav-list Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '-list">%3$s</ul>';
     $html .= '</nav>';
 
     $args['items_wrap'] = $html;
@@ -51,8 +51,8 @@ add_filter( 'wp_nav_menu_args', 'navModifyMarkup' );
  * @return array          classes
  */
 function navModifyItemClasses( $classes, $item, $args, $depth ) {
-    $classes[] = 'nav-list-item';
-    $classes[] = 'nav-list-item--' . esc_attr( $args->theme_location );
+    $classes[] = 'Nav-list-item';
+    $classes[] = 'Nav' . esc_attr( ucfirst( $args->theme_location ) ) . '-list-item';
 
     return $classes;
 }

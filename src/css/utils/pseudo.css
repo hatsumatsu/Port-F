@@ -1,0 +1,9 @@
+@define-mixin pseudo--box {
+    content: ' ';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: block;
+}

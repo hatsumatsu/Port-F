@@ -6,11 +6,11 @@
             the_post();
 ?>
 
-    <h2 class="single-title single-title--<?php echo esc_attr( get_post_type_advanced() ); ?>">
+    <h2 class="Single-title Single<?php echo esc_attr( ucfirst( get_post_type_advanced() ) ); ?>-title">
         <?php the_title(); ?>
     </h2>
 
-    <div class="single-content single-content--<?php echo esc_attr( get_post_type_advanced() ); ?> inline-content">
+    <div class="Single-content Single<?php echo esc_attr( ucfirst( get_post_type_advanced() ) ); ?>-content RichText">
         <?php the_content(); ?>
     </div>
 

@@ -19,24 +19,24 @@
     get_search_form();
 ?>
 
-<p class="posts-message posts-message--results">
+<p class="Posts-message PostsResults-message">
     <?php echo $message; ?>
 </p>
 
-<section class="posts posts--results">
+<section class="Posts PostsResults">
 
 <?php
     if( have_posts() ) {
         while( have_posts() ) {
             the_post();
 
-            get_inc( 'post', get_post_type(), true );
+            getPart( 'Post', get_post_type(), true );
         }
 
-        get_inc( 'pagination', 0, 0 );
+        getPart( 'Pagination' );
 
     } else {
-        get_inc( 'post', 'noposts', true );
+        getPart( 'Post', 'noposts', true );
     }
 ?>
 
