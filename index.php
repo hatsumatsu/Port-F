@@ -13,7 +13,7 @@
         getPart( 'Pagination' );
 
     } else {
-        getPart( 'Post', 'noposts', true );
+        getPart( 'Post', 'none', true );
     }
 ?>
 

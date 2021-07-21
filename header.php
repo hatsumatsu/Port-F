@@ -28,7 +28,7 @@ document.documentElement.classList.remove( 'no-js' );
 </head>
 <body <?php body_class(); ?>>
 
-    <div class="shell">
+    <div class="Shell">
 
         <section
             class="head"
