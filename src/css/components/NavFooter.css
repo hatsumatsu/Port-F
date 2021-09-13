@@ -17,16 +17,29 @@
 // <li>
 .NavFooter-list-item {
     & > a {
-        &:hover,
-        &:focus {
+        &:focus-visible {
         }
     }
 
     &.current_menu_item,
     &.current_menu_parent {
         & > a {
-            &:hover,
-            &:focus {
+            &:focus-visible {
+            }
+        }
+    }
+
+    @media (--hover) {
+        & > a {
+            &:hover {
+            }
+        }
+
+        &.current_menu_item,
+        &.current_menu_parent {
+            & > a {
+                &:hover {
+                }
             }
         }
     }

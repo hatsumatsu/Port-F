@@ -1,6 +1,6 @@
         </section><!-- end .content -->
 
-        <section class="footer">
+        <section class="Footer">
 
             <?php getPart( 'Nav', 'footer', 0 ); ?>
 

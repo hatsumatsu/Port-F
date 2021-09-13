@@ -31,10 +31,10 @@ document.documentElement.classList.remove( 'no-js' );
     <div class="Shell">
 
         <section
-            class="head"
+            class="Head"
             role="banner">
 
-            <h1 class="head-title">
+            <h1 class="Head-title">
                 <a
                     href="<?php echo home_url( '/' ); ?>"
                     title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
@@ -49,6 +49,6 @@ document.documentElement.classList.remove( 'no-js' );
         </section><!-- end .head -->
 
         <section
-            class="content"
+            class="Content"
             role="main"
             id="content">

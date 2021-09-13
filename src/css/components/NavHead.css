@@ -23,16 +23,29 @@
 // <li>
 .NavHead-list-item {
     & > a {
-        &:hover,
-        &:focus {
+        &:focus-visible {
         }
     }
 
     &.current-menu-item,
     &.current-menu-parent {
         & > a {
-            &:hover,
-            &:focus {
+            &:focus-visible {
+            }
+        }
+    }
+
+    @media (--hover) {
+        & > a {
+            &:hover {
+            }
+        }
+
+        &.current-menu-item,
+        &.current-menu-parent {
+            & > a {
+                &:hover {
+                }
             }
         }
     }
@@ -92,13 +105,19 @@
             text-align: center;
         }
 
-        &:hover,
-        &:focus {
+        &:focus-visible {
         }
 
         .visible--nav-head & {
             &::before {
                 content: '×';
+            }
+        }
+
+        @media (--hover) {
+            & > a {
+                &:hover {
+                }
             }
         }
     }
@@ -143,8 +162,7 @@
             line-height: 1;
             color: var(--color--bg);
 
-            &:hover,
-            &:focus {
+            &:focus-visible {
                 text-decoration: underline;
             }
         }
@@ -153,13 +171,25 @@
             & > a {
                 text-decoration: underline;
 
-                &:hover,
-                &:focus {
+                &:focus-visible {
                 }
             }
         }
 
         &:last-child {
+        }
+
+        @media (--hover) {
+            & > a {
+                &:hover {
+                }
+            }
+            &.current-menu-item {
+                & > a {
+                    &:hover {
+                    }
+                }
+            }
         }
     }
 
