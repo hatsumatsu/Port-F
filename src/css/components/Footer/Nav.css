@@ -1,13 +1,13 @@
 // <nav>
-.NavFooter {
+.FooterNav {
 }
 
 // skip link
-.NavFooter-skip {
+.FooterNav-skip {
 }
 
 // <ul>
-.NavFooter-list {
+.FooterNav-list {
     margin: 0;
     padding: 0;
 
@@ -15,7 +15,7 @@
 }
 
 // <li>
-.NavFooter-list-item {
+.FooterNav-list-item {
     & > a {
         &:focus-visible {
         }

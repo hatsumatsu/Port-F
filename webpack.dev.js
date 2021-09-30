@@ -1,14 +1,14 @@
-const path = require( 'path' );
-const merge = require( 'webpack-merge' );
-const common = require( './webpack.common.js' );
+const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = merge( common, {
+module.exports = merge(common, {
     mode: 'development',
 
     output: {
-        path: path.resolve( __dirname, 'js' ),
+        path: path.resolve(__dirname, 'js'),
         filename: 'app.js',
-        pathinfo: false // improves performance
+        pathinfo: false, // improves performance
     },
 
     // improves performance
@@ -18,5 +18,5 @@ module.exports = merge( common, {
         splitChunks: false,
     },
 
-    devtool: 'cheap-module-eval-source-map' // improves performance
-} );
+    devtool: 'cheap-module-eval-source-map', // improves performance
+});

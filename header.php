@@ -17,13 +17,13 @@ document.documentElement.classList.remove( 'no-js' );
         name="description"
         content="<?php echo esc_attr( get_site_description() ); ?>">
 
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1.0">
+    <meta 
+        name="viewport" 
+        content="width=device-width, initial-scale=1">
 
-    <?php getPart( 'Head', 'icons', 0 ); ?>
+    <?php getPart( 'Head/Icons' ); ?>
 
-    <?php getPart( 'Head', 'social', 0 ); ?>
+    <?php getPart( 'Head/Social' ); ?>
 
 </head>
 <body <?php body_class(); ?>>
@@ -31,20 +31,12 @@ document.documentElement.classList.remove( 'no-js' );
     <div class="Shell">
 
         <section
-            class="Head"
+            class="Header"
             role="banner">
 
-            <h1 class="Head-title">
-                <a
-                    href="<?php echo home_url( '/' ); ?>"
-                    title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+            <?php getPart( 'Header/Title' ); ?>
 
-                    <?php bloginfo( 'name' ); ?>
-
-                </a>
-            </h1>
-
-            <?php getPart( 'Nav', 'head', 0 ); ?>
+            <?php getPart( 'Header/Nav' ); ?>
 
         </section><!-- end .head -->
 

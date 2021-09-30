@@ -21,8 +21,8 @@
 // COMPONENTS
 @import 'components/RichText';
 
-@import 'components/Head';
-@import 'components/NavHead';
+@import 'components/Header/Header';
+@import 'components/Header/Nav';
 
 @import 'components/Content';
 
@@ -34,5 +34,5 @@
 
 @import 'components/Single';
 
-@import 'components/Footer';
-@import 'components/NavFooter';
+@import 'components/Footer/Footer';
+@import 'components/Footer/Nav';

@@ -1,12 +1,12 @@
-        </section><!-- end .content -->
+        </section><!-- end .Content -->
 
         <section class="Footer">
 
-            <?php getPart( 'Nav', 'footer', 0 ); ?>
+            <?php getPart( 'Footer/Nav' ); ?>
 
-        </section><!-- end .footer -->
+        </section><!-- end .Footer -->
 
-    </div><!-- end .shell -->
+    </div><!-- end .Shell -->
 
 <?php wp_footer(); ?>
 

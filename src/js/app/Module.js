@@ -1,10 +1,13 @@
 import M from '@superstructure.net/m';
 import C from '@superstructure.net/c';
+import { S } from '@superstructure.net/s';
+
+const state = new S({});
 
 /**
  * Module
  */
-export default class Module extends M {
+class Module extends M {
     constructor(mediaQuery) {
         super(mediaQuery);
     }
@@ -21,3 +24,5 @@ export default class Module extends M {
         console.log('Module.onDestroy()');
     }
 }
+
+export { Module, state };

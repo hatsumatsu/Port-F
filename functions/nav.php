@@ -4,7 +4,7 @@
  * Register navigation menus
  */
 function navRegisterMenus() {
-    register_nav_menu( 'head', __( 'Primary Header Navigation', 'port-f' ) );
+    register_nav_menu( 'header', __( 'Primary Header Navigation', 'port-f' ) );
     register_nav_menu( 'footer', __( 'Primary Footer Navigation', 'port-f' ) );
 }
 
@@ -23,13 +23,13 @@ add_action( 'after_setup_theme', 'navRegisterMenus' );
 function navModifyMarkup( $args = '' ) {
     $html  = '';
 
-    $html .= '<nav class=" Nav Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '" id="Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '" role="navigation" data-nav-role="nav" data-nav-id="' . esc_attr( $args['theme_location'] ) . '">';
+    $html .= '<nav class="Nav ' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav" id="' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav" role="navigation" data-Nav-role="nav" data-Nav-id="' . esc_attr( $args['theme_location'] ) . '">';
     
     if( $args['theme_location'] === 'head' ) {
-        $html .= '<a href="#content" class="Nav-skip Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '-skip" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
+        $html .= '<a href="#content" class="Nav-skip ' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav-skip" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
     }
 
-    $html .= '<ul class="Nav-list Nav' . esc_attr( ucfirst( $args['theme_location'] ) ) . '-list">%3$s</ul>';
+    $html .= '<ul class="Nav-list ' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav-list">%3$s</ul>';
     $html .= '</nav>';
 
     $args['items_wrap'] = $html;
@@ -52,7 +52,7 @@ add_filter( 'wp_nav_menu_args', 'navModifyMarkup' );
  */
 function navModifyItemClasses( $classes, $item, $args, $depth ) {
     $classes[] = 'Nav-list-item';
-    $classes[] = 'Nav' . esc_attr( ucfirst( $args->theme_location ) ) . '-list-item';
+    $classes[] = '' . esc_attr( ucfirst( $args->theme_location ) ) . 'Nav-list-item';
 
     return $classes;
 }

@@ -1,24 +1,24 @@
+import { S } from '@superstructure.net/s';
+
 /**
  * Globals
  */
-export default class Globals {
+const state = new S({
+    blogurl: null,
+    theme: null,
+});
+
+class Globals {
     constructor() {
-        this.globals = {};
         this.init();
     }
 
     init() {
-        this.set('blogurl', document.head.getAttribute('data-wpurl'));
-        this.set('theme', document.head.getAttribute('data-project'));
+        state.set('blogurl', document.head.getAttribute('data-wpurl'));
+        state.set('theme', document.head.getAttribute('data-project'));
 
-        console.log(this.globals);
-    }
-
-    set(key, value) {
-        this.globals[key] = value;
-    }
-
-    get(key) {
-        return this.globals[key];
+        console.log(state.get('blogurl'), state.get('theme'));
     }
 }
+
+export { Globals, state };

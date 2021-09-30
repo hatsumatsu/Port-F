@@ -1,8 +1,8 @@
 <button
-    class="Nav-toggle NavHead-toggle"
+    class="HeaderNav-toggle"
     title="<?php echo esc_attr( __( 'Toggle Navigation', 'port-f' ) ); ?>"
-    data-nav-role="toggle"
-    data-nav-id="head">
+    data-HeaderNav-role="toggle"
+    data-HeaderNav-id="header">
 
     <?php echo __( 'Navigation', 'port-f' ); ?>
 
@@ -13,6 +13,6 @@
 
 wp_nav_menu(
     array(
-        'theme_location' => 'head'
+        'theme_location' => 'header'
     )
 );

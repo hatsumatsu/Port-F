@@ -1,19 +1,19 @@
 <?php get_header(); ?>
 
-<section class="Posts Posts<?php echo esc_attr( ucfirst( get_post_type_advanced() ) ); ?>">
+<section class="Posts">
 
 <?php
     if( have_posts() ) {
         while( have_posts() ) {
             the_post();
 
-            getPart( 'Post', get_post_type(), true );
+            getPart( 'Post' );
         }
 
         getPart( 'Pagination' );
 
     } else {
-        getPart( 'Post', 'none', true );
+        getPart( 'PostNone' );
     }
 ?>
 
