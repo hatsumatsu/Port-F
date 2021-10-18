@@ -42,16 +42,30 @@ add_filter( 'acf/settings/save_json', function( $path ) {
 if( function_exists( 'acf_add_options_page' ) ) {
 
     function ACFAddOptionsPage() {
+        // top level page
         acf_add_options_page(
             array(
-                'menu_slug' => 'options',
-                'page_title' => __( 'Options', 'port-f' ),
+                'menu_slug' => 'options-a',
+                'page_title' => __( 'Options A', 'port-f' ),
                 'capability' => 'edit_posts',
                 'position' => false,
                 'icon_url' => false,
                 'autoload' => false
             )
         );
+
+        // page under 'Settings'
+        acf_add_options_page(
+            array(
+                'menu_slug' => 'options-b',
+                'page_title' => __( 'Options B', 'port-f' ),
+                'capability' => 'manage_options',
+                'parent_slug' => 'options-general.php',
+                'position' => false,
+                'icon_url' => false,
+                'autoload' => false
+            )
+        );        
     }
 
     add_action( 'acf/init', 'ACFAddOptionsPage' );

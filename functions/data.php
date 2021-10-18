@@ -73,7 +73,7 @@ function registerDataStructure() {
             'public'            => true,
             'show_in_rest'      => true,
             'menu_position'     => 5,
-            'menu_icon'         => 'dashicons-smiley',
+            'menu_icon'         => 'dashicons-screenoptions',
             'rewrite'           => array(
                 'slug' => __( 'projects', 'port-f' )
             ),

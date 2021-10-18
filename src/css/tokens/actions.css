@@ -1,0 +1,17 @@
+@define-mixin actions--none {
+    pointer-events: none;
+    touch-action: none;
+}
+
+@define-mixin actions--auto {
+    pointer-events: auto;
+    touch-action: auto;
+}
+
+@define-mixin select--none {
+    user-select: none;
+}
+
+@define-mixin select--auto {
+    user-select: auto;
+}

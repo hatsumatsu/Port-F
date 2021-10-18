@@ -23,7 +23,7 @@ class HeaderNav extends M {
     }
 
     bindEvents() {
-        this.events.on('click', '[data-HeaderNav-role="toggle"]', this.onClick.bind(this));
+        this.events.on('click', this.selector('toggle'), this.onClick.bind(this));
 
         state.on('visible', () => {
             if (state.get('visible')) {
