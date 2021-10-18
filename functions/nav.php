@@ -21,15 +21,17 @@ add_action( 'after_setup_theme', 'navRegisterMenus' );
  * @return  array   $args
  */
 function navModifyMarkup( $args = '' ) {
-    $html  = '';
-
-    $html .= '<nav class="Nav ' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav" id="' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav" role="navigation" data-Nav-role="nav" data-Nav-id="' . esc_attr( $args['theme_location'] ) . '">';
-    
-    if( $args['theme_location'] === 'head' ) {
-        $html .= '<a href="#content" class="Nav-skip ' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav-skip" title="' . esc_attr( __( 'Skip Navigation', 'port-f' ) ) . '">' . __( 'Skip Navigation', 'port-f' ) . '</a>';
+    if( isset( $args['base_class'] ) ) {
+        $baseClass = $args['base_class'];
+    } else {
+        $baseClass =  ucfirst( $args['theme_location'] ) . 'Nav';
     }
 
-    $html .= '<ul class="Nav-list ' . esc_attr( ucfirst( $args['theme_location'] ) ) . 'Nav-list">%3$s</ul>';
+    $html  = '';
+
+    $html .= '<nav class="Nav ' . esc_attr( $baseClass ) . '" id="' . esc_attr( $baseClass ) . '" role="navigation" data-Nav-role="nav" data-Nav-id="' . esc_attr( $args['theme_location'] ) . '">';
+
+    $html .= '<ul class="Nav-list ' . esc_attr( $baseClass ) . '-list">%3$s</ul>';
     $html .= '</nav>';
 
     $args['items_wrap'] = $html;
@@ -51,8 +53,14 @@ add_filter( 'wp_nav_menu_args', 'navModifyMarkup' );
  * @return array          classes
  */
 function navModifyItemClasses( $classes, $item, $args, $depth ) {
+    if( isset( $args->base_class ) ) {
+        $baseClass = $args->base_class;
+    } else {
+        $baseClass =  ucfirst( $args['theme_location'] ) . 'Nav';
+    }
+
     $classes[] = 'Nav-list-item';
-    $classes[] = '' . esc_attr( ucfirst( $args->theme_location ) ) . 'Nav-list-item';
+    $classes[] = '' . esc_attr( $baseClass ) . '-list-item';
 
     return $classes;
 }

@@ -13,6 +13,7 @@
 
 wp_nav_menu(
     array(
-        'theme_location' => 'header'
+        'theme_location' => 'header',
+        'base_class' => 'HeaderNav'
     )
 );
