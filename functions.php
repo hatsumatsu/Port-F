@@ -11,6 +11,7 @@ require_once( 'functions/template-tags.php' );
 require_once( 'functions/theme.php' );
 require_once( 'functions/permalink.php' );
 require_once( 'functions/query.php' );
+require_once( 'functions/sites.php' );
 
 // plugin related functions
 require_once( 'functions/acf.php' );
