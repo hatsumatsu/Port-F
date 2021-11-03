@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 
         postcss: {
             options: {
-                parser: require('postcss-comment'),
+                parser: require('postcss-scss'),
 
                 processors: [
                     require('postcss-partial-import')(),
