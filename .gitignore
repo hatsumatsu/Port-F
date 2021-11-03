@@ -1,10 +1,12 @@
 node_modules
 .ftppass
+.grunt
 
 # JS sourcemaps
 js/sourcemaps/*
 css/sourcemaps/*
 
+js/report.html
 
 # OS related files
 .DS_Store
