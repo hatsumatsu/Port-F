@@ -1,0 +1,20 @@
+production:
+    host: 'ftp.myserver.com'
+    user: 'user'
+    pass: 'password'
+    path:
+        local: ''
+        remote: 'html/'
+    exclude:
+        [
+            '**/.*',
+            'readme*',
+            'package*.json',
+            'webpack*.js',
+            'gruntfile.js',
+            '**/Thumbs.db',
+            'node_modules',
+            'dploy*',
+            '*.code-*',
+            'postcss.config.js',
+        ]
