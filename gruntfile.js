@@ -1,5 +1,6 @@
 module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    grunt.loadNpmTasks('@lodder/grunt-postcss');
 
     const webpackConfigDev = require('./webpack.dev.js');
     const webpackConfigProd = require('./webpack.prod.js');
