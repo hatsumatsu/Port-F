@@ -4,7 +4,7 @@ a {
 
     &:hover {
         text-decoration: underline;
-        color: color(var(--color--link) tint(35%));
+        color: var(--color--link);
     }
 
     &:focus-visible {
@@ -14,6 +14,6 @@ a {
     }
 
     &:visited {
-        color: color(var(--color--link) tint(25%));
+        color: var(--color--link);
     }
 }
