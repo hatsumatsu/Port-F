@@ -4,7 +4,7 @@
     "author": "MartinWecke",
     "private": true,
     "scripts": {
-        "dev": "( sleep 2 && npm run message:dev ) & ( npx livereload './js/*.js, ./css/app.min.css' & npm run js:watch & npm run css:watch & npm run img:watch )",
+        "dev": "( sleep 2 && npm run message:dev ) & ( npm run js:watch & npm run css:watch & npm run img:watch & npx livereload './js/*.js, ./css/app.min.css' )",
         "js:watch": "onchange 'src/js/**/*.js' -- npm run js:build:dev",
         "js:build:dev": "npx webpack build --config ./webpack.dev.js",
         "js:build:prod": "npx webpack build --config ./webpack.prod.js",
