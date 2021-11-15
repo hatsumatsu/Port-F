@@ -3,7 +3,6 @@ import C from '@superstructure.net/c';
 import { S } from '@superstructure.net/s';
 
 const state = new S({});
-
 /**
  * Module
  */
@@ -13,7 +12,7 @@ class Module extends M {
     }
 
     onInit() {
-        console.log('Module.onInit()');
+        console.log('Module.onInitB(E)');
     }
 
     onResize(viewport, isUIResize) {
