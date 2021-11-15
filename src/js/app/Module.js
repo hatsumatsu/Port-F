@@ -12,7 +12,7 @@ class Module extends M {
     }
 
     onInit() {
-        console.log('Module.onInitB()');
+        console.log('Module.onInit()');
     }
 
     onResize(viewport, isUIResize) {

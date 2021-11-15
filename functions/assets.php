@@ -10,7 +10,7 @@ function assetsRegisterThemeCSS() {
     // + theme
     wp_register_style(
         'port-f',
-        get_template_directory_uri() . '/css/app.min.css',
+        ( themeIsDev() ) ? get_template_directory_uri() . '/css/app.css' : get_template_directory_uri() . '/css/app.min.css',        
         array(),
         ( themeIsDev() ) ? time() : wp_get_theme()->version
     );
@@ -51,7 +51,7 @@ add_action( 'wp_enqueue_scripts', 'assetsRegisterThemeJS' );
 function assetsRegisterAdminCSS() {
     wp_register_style(
         'port-f--admin',
-        get_template_directory_uri() . '/css/admin.min.css',
+        ( themeIsDev() ) ? get_template_directory_uri() . '/css/admin.css' : get_template_directory_uri() . '/css/admin.min.css',
         array(),
         ( themeIsDev() ) ? time() : wp_get_theme()->version
     );

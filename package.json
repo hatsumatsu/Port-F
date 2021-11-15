@@ -9,7 +9,7 @@
         "js:build:dev": "webpack build --config ./webpack.dev.js",
         "js:build:prod": "webpack build --config ./webpack.prod.js",
         "css:watch": "chokidar 'src/css/**/*.css' -c 'npm run css:build:dev'",
-        "css:build:dev": "npx postcss src/css/app.css -o css/app.min.css --env 'development' && npx postcss src/css/admin.css -o css/admin.min.css --env 'development' && npx postcss src/css/editor.css -o css/editor.min.css --env 'development'",
+        "css:build:dev": "npx postcss src/css/app.css -o css/app.css --env 'development' && npx postcss src/css/admin.css -o css/admin.css --env 'development' && npx postcss src/css/editor.css -o css/editor.css --env 'development'",
         "css:build:prod": "npx postcss src/css/app.css -o css/app.min.css --env 'production' && npx postcss src/css/admin.css -o css/admin.min.css --env 'production' && npx postcss src/css/editor.css -o css/editor.min.css --env 'production'",
         "img:build": "npx imagemin src/img/* --out-dir=img",
         "img:watch": "chokidar 'src/img/**/*' -c 'npm run img:build'",

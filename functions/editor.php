@@ -80,7 +80,9 @@ add_filter( 'mce_buttons_2', 'editorCustomizeToolbar2' );
  * Register tinyMCE editor CSS
  */
 function editorRegisterCSS() {
-    add_editor_style( 'css/editor.min.css' );
+    add_editor_style( 
+      ( themeIsDev() ) ? 'css/editor.css' : 'css/editor.min.css'
+    );
 }
 
 add_action( 'init', 'editorRegisterCSS' );

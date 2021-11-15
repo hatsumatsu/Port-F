@@ -25,17 +25,17 @@ class HeaderNav extends M {
     bindEvents() {
         this.events.on('click', this.selector('toggle'), this.onClick.bind(this));
 
-        state.on('visible', () => {
-            if (state.get('visible')) {
-                document.documentElement.classList.add('visible--HeaderNav');
-
-                this.events.trigger('HeaderNav/show');
-            } else {
-                document.documentElement.classList.remove('visible--HeaderNav');
-
-                this.events.trigger('HeaderNav/hide');
-            }
-        });
+        state.on(
+            'visible',
+            () => {
+                if (state.get('visible')) {
+                    document.documentElement.classList.add('visible--HeaderNav');
+                } else {
+                    document.documentElement.classList.remove('visible--HeaderNav');
+                }
+            },
+            'HeaderNav'
+        );
     }
 
     onClick(event) {
@@ -70,6 +70,7 @@ class HeaderNav extends M {
         console.log('Nav.onDestroy()');
 
         this.events.off();
+        state.off(null, 'HeaderNav');
     }
 }
 
