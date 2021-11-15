@@ -9,7 +9,7 @@ module.exports = (ctx) => ({
         require('postcss-color-function')(),
         require('autoprefixer')(),
         require('postcss-inline-svg')(),
-        require('cssnano')(),
+        ctx.env === 'production' ? require('cssnano')() : null,
     ],
 
     map: {

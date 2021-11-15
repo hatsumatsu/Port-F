@@ -1,20 +1,21 @@
 {
     "name": "PortF",
     "version": "0.13.0",
-    "author": "MartinWecke",
+    "author": "https://github.com/hatsumatsu/",
     "private": true,
     "scripts": {
-        "dev": "( sleep 2 && npm run message:dev ) & ( npm run js:watch & npm run css:watch & npm run img:watch & npx livereload './js/*.js, ./css/app.min.css' )",
+        "dev": "( sleep 2 && npm run message:dev ) & ( npm run js:watch & npm run css:watch & npm run img:watch & npx livereload './js/app*.js, ./css/app.min.css' )",
         "js:watch": "chokidar 'src/js/**/*.js' -c 'npm run js:build:dev'",
         "js:build:dev": "webpack build --config ./webpack.dev.js",
         "js:build:prod": "webpack build --config ./webpack.prod.js",
-        "css:watch": "chokidar 'src/css/**/*.css' -c 'npm run css:build'",
-        "css:build": "npx postcss src/css/app.css -o css/app.min.css && npx postcss src/css/admin.css -o css/admin.min.css && npx postcss src/css/editor.css -o css/editor.min.css",
+        "css:watch": "chokidar 'src/css/**/*.css' -c 'npm run css:build:dev'",
+        "css:build:dev": "npx postcss src/css/app.css -o css/app.min.css --env 'development' && npx postcss src/css/admin.css -o css/admin.min.css --env 'development' && npx postcss src/css/editor.css -o css/editor.min.css --env 'development'",
+        "css:build:prod": "npx postcss src/css/app.css -o css/app.min.css --env 'production' && npx postcss src/css/admin.css -o css/admin.min.css --env 'production' && npx postcss src/css/editor.css -o css/editor.min.css --env 'production'",
         "img:build": "npx imagemin src/img/* --out-dir=img",
         "img:watch": "chokidar 'src/img/**/*' -c 'npm run img:build'",
-        "message:dev": "npx chalk yellow bold '👀 Watching CSS, JS and images... ' && npx chalk yellow bold '🔗 Please connect your browser’s livereload plugin...'",
-        "build": "npm run js:build:prod && npm run css:build",
-        "deploy": "npx deploy production"
+        "message:dev": "npx chalk magenta bold '👀 Watching CSS, JS and images for changes... ' && npx chalk magenta '🔗 Please connect your browser’s livereload plugin...'",
+        "build": "npm run img:build && npm run js:build:prod && npm run css:build:prod",
+        "deploy": "npm run build & npx deploy production"
     },
     "devDependencies": {
         "@babel/cli": "^7.16.0",
@@ -30,7 +31,6 @@
         "imagemin": "^8.0.1",
         "imagemin-cli": "^7.0.0",
         "livereload": "^0.9.3",
-        "onchange": "^7.1.0",
         "postcss": "^8.3.11",
         "postcss-cli": "^9.0.1",
         "postcss-color-function": "^4.1.0",
