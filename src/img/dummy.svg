@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Shapes" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1224 1224" style="enable-background:new 0 0 1224 1224;" xml:space="preserve">
+<polygon points="666,216 666,0 72,0 72,216 360,216 " fill="#ff0000" />
+<polygon points="1080,504 1080,0 360,0 360,216 360,432 360,504 648,504 "/>
+<path d="M216,936v0.2c-85.4,0-144,0-144,0v0c0,159,128.9,287.8,287.8,287.8H817V936H216z"/>
+<path d="M657,576h-9v-72h9v-72H360H216v504.2c-16,0-31.1,0-45,0v89.8h486V576z"/>
+<path d="M864,576L864,576L864,576H648H363v648h789V864C1152,704.9,1023.1,576,864,576z"/>
+</svg>
