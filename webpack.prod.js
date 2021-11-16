@@ -1,14 +1,15 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
 
-module.exports = merge(common, {
+module.exports = {
     mode: 'production',
+
+    entry: './src/js/app.js',
 
     output: {
         path: path.resolve(__dirname, 'js'),
         filename: 'app.min.js',
+        sourceMapFilename: '../js/sourcemaps/[file].map',
     },
 
     module: {
@@ -44,4 +45,4 @@ module.exports = merge(common, {
     },
 
     devtool: 'source-map',
-});
+};

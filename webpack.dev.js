@@ -1,14 +1,15 @@
 const path = require('path');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
 
-module.exports = merge(common, {
+module.exports = {
     mode: 'development',
+
+    entry: './src/js/app.js',
 
     output: {
         path: path.resolve(__dirname, 'js'),
         filename: 'app.js',
+        sourceMapFilename: '../js/sourcemaps/[file].map',
     },
 
     devtool: 'eval',
-});
+};
