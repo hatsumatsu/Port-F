@@ -14,6 +14,8 @@ module.exports = (ctx) => ({
 
     map: {
         inline: false,
-        annotation: `sourcemaps/${ctx.file.basename}.map`,
+        annotation: `sourcemaps/${ctx.file.basename.replace(ctx.file.extname, '')}${
+            ctx.env === 'production' ? '.min' : ''
+        }${ctx.file.extname}.map`,
     },
 });
