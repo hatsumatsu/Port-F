@@ -3,6 +3,7 @@ import C from '@superstructure.net/c';
 import { S } from '@superstructure.net/s';
 
 const state = new S({});
+
 /**
  * Module
  */
