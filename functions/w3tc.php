@@ -21,6 +21,7 @@ function W3TCflushCustomPostTypesPageCache( $post_id ) {
 
 add_action( 'save_post', 'W3TCflushCustomPostTypesPageCache', 1000, 1 );
 add_action( 'edit_post', 'W3TCflushCustomPostTypesPageCache', 1000, 1 );
+add_action( 'wp_trash_post', 'W3TCflushCustomPostTypesPageCache', 1000, 1 );
 add_action( 'delete_post', 'W3TCflushCustomPostTypesPageCache', 1000, 1 );
 
 
