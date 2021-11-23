@@ -1,6 +1,7 @@
 node_modules
 .ftppass
 .grunt
+dploy.yaml
 
 # JS sourcemaps
 js/sourcemaps/*
