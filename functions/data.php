@@ -78,6 +78,7 @@ function registerDataStructure() {
                 'slug' => __( 'projects', 'port-f' )
             ),
             'has_archive'       => __( 'projects', 'port-f' ),
+            'query_var'         => __( 'projects', 'port-f' ),
             'taxonomies'        => array(
                 'project_types'
             )
