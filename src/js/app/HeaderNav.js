@@ -15,7 +15,7 @@ class HeaderNav extends M {
     }
 
     onInit() {
-        console.log('Nav.onInit()');
+        console.log('HeaderNav.onInit()');
 
         this.events = new C();
 
@@ -45,7 +45,7 @@ class HeaderNav extends M {
     }
 
     toggle() {
-        console.log('Nav.toggle()');
+        console.log('HeaderNav.toggle()');
 
         if (!state.get('visible')) {
             this.show();
@@ -55,19 +55,19 @@ class HeaderNav extends M {
     }
 
     show() {
-        console.log('Nav.show()');
+        console.log('HeaderNav.show()');
 
         state.set('visible', true);
     }
 
     hide() {
-        console.log('Nav.hide()');
+        console.log('HeaderNav.hide()');
 
         state.set('visible', false);
     }
 
     onDestroy() {
-        console.log('Nav.onDestroy()');
+        console.log('HeaderNav.onDestroy()');
 
         this.events.off();
         state.off(null, 'HeaderNav');
