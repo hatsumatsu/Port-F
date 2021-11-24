@@ -5,18 +5,18 @@
     "private": true,
     "scripts": {
         "dev": "( npm run message:dev:start && sleep 2 && npm run message:dev:ready ) & ( npm run js:watch & npm run css:watch & npm run img:watch & npx livereload './js/app*.js, ./css/app*.css' )",
-        "js:watch": "chokidar 'src/js/**/*.js' -c 'npm run js:build:dev'",
-        "js:build:dev": "webpack build --config ./webpack.dev.js",
+        "js:watch": "chokidar 'src/js/**/*.js' -c 'npm run js:build:dev' --silent",
+        "js:build:dev": "webpack build --config ./webpack.dev.js --no-stats",
         "js:build:prod": "webpack build --config ./webpack.prod.js",
-        "css:watch": "chokidar 'src/css/**/*.css' -c 'npm run css:build:dev'",
+        "css:watch": "chokidar 'src/css/**/*.css' -c 'npm run css:build:dev' --silent",
         "css:build:dev": "npx postcss src/css/app.css -o css/app.css --env 'development' && npx postcss src/css/admin.css -o css/admin.css --env 'development' && npx postcss src/css/editor.css -o css/editor.css --env 'development'",
         "css:build:prod": "npx postcss src/css/app.css -o css/app.min.css --env 'production' && npx postcss src/css/admin.css -o css/admin.min.css --env 'production' && npx postcss src/css/editor.css -o css/editor.min.css --env 'production'",
         "img:build": "npx imagemin src/img/* --out-dir=img --plugin=jpegtran --plugin=optipng --plugin=svgo",
-        "img:watch": "chokidar 'src/img/**/*' -c 'npm run img:build'",
+        "img:watch": "chokidar 'src/img/**/*' -c 'npm run img:build' --silent",
         "message:dev:start": "npx chalk magenta bold '🚀 Starting up ...'",
         "message:dev:ready": "npx chalk magenta bold '👀 Watching CSS, JS and images for changes ...' && npx chalk magenta '🔗 Please connect your browser’s livereload plugin...'",
         "build": "npm run img:build && npm run js:build:prod && npm run css:build:prod",
-        "deploy": "npm run build & npx deploy production"
+        "deploy": "npm run build --silent & npx deploy production"
     },
     "devDependencies": {
         "@babel/cli": "^7.16.0",
