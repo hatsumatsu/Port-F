@@ -8,6 +8,7 @@ production:
     exclude:
         [
             '**/.*',
+            '.DS_Store',
             'readme*',
             'package*.json',
             'webpack*.js',
@@ -16,5 +17,6 @@ production:
             'node_modules',
             'dploy*',
             '*.code-*',
-            'postcss.config.js',
+            'postcss.config*',
+            'babel.config*',
         ]
