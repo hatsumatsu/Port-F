@@ -125,16 +125,17 @@ function get_theme_directory_name() {
  * @return string   modified markup
  */
 function wrapOembed( $html, $url, $attributes, $id ) {
-    $class = '';
+    $class = array( 'embed' );
 
-    if( strpos( $url, 'youtu' ) || strpos( $url, 'vimeo' ) ) {
-        $class .= ' embed embed--video';
+    if( $urlParts = parse_url( $url ) ) {
+        $class[] = str_replace( '.', '', $urlParts['host'] );
     }
 
-    return '<div class="' . esc_attr( $class ) . '">' . $html . '</div>';
+    return '<div class="' . esc_attr( implode( ' ', $class ) ) . '">' . $html . '</div>';
 }
 
 add_filter( 'embed_oembed_html', 'wrapOembed', 99, 4 );
+
 
 
 
@@ -190,7 +191,7 @@ add_filter( 'document_title_parts', 'modifyPostTitle', 10 );
  * Get <meta> description
  * @return string description text
  */
-function get_site_description() {
+function getPageDescription() {
     global $wp_query,
            $post;
 
@@ -198,8 +199,27 @@ function get_site_description() {
 
     // single / page
     if( ( is_single() || is_page() ) && !is_front_page() ) {
-        $excerpt = $post->post_content;
-        $description = ( !empty( $excerpt ) ) ? $excerpt : $description;
+        $_description = $post->post_content;
+
+        // try fetching first text blocks
+        if( function_exists( 'get_field' ) ) {
+            if( $blocks = get_field( 'blocks', $post->ID ) ) {
+                for( $i = 0; $i < count( $blocks ); $i++ ) {
+                    if( $blocks[$i]['acf_fc_layout'] === 'text' ) {
+                        $_description = $blocks[$i]['text'];
+                        break;
+                    }
+                }
+            }
+        }
+
+        if( function_exists( 'get_field' ) ) {
+            if( get_field( 'linkpreview--description', $post->ID ) ) {
+                $_description = get_field( 'linkpreview--description', $post->ID );
+            }
+        }
+
+        $description = ( !empty( $_description ) ) ? $_description : $description;
     }
 
     // custom taxonomy terms
@@ -236,6 +256,84 @@ function get_site_description() {
     }
 
     return wp_trim_words( $description, 115, null );
+}
+
+
+
+/**
+ * Template tag:
+ * Get <meta> title
+ * @return string title text
+ */
+function getPageTitle() {
+    global $wp_query,
+           $post;
+
+    $title = get_bloginfo( 'name' );
+
+    // single / page
+    if( ( is_single() || is_page() ) && !is_front_page() ) {
+        $title = get_the_title( $post->ID );
+    }
+
+    // custom taxonomy terms
+    if( !empty( $wp_query->query_vars['term'] ) ) {
+        $term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+        if( $term ) {
+            $title = $term->name;
+        }
+    }
+
+    // tags
+    if( is_tag() ) {
+        $tag = get_term_by( 'slug', $wp_query->query['tag'], 'post_tag' );
+        if( $tag ) {
+            $title = $tag->name;
+        }
+    }
+
+    // category
+    if( is_category() ) {
+        $category = get_term_by( 'slug', $wp_query->query['category_name'], 'category' );
+        if( $category ) {
+            $title = $category->name;        
+        }
+    }
+
+    // author
+    if( !empty( $wp_query->query['author_name'] ) ) {
+        $author = get_user_by( 'slug', $wp_query->query['author_name'] );
+        if( $author ) {
+            $title = get_the_author_meta( 'display_name', $author->ID );
+        }
+    }
+
+    return $title;
+}
+
+
+
+/**
+ * Template tag:
+ * Get <meta> image URL
+ * @return string description text
+ */
+function getPageImage() {
+    global $post;
+
+    $imageUrl = esc_url( trailingslashit( get_template_directory_uri() ) . 'img/preview.png' );
+
+    // single / page
+    if( ( is_single() || is_page() ) && !is_front_page() ) {
+        if( function_exists( 'get_field' ) ) {
+            $imageId = get_field( 'linkpreview--image', $post->ID );
+            if( $imageId ) {
+                $imageUrl = wp_get_attachment_image_src( $imageId, 'large' )[0];
+            }
+        }
+    }
+
+    return $imageUrl;
 }
 
 
