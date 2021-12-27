@@ -85,3 +85,11 @@ add_filter( 'admin_bar_menu', function( $wp_admin_bar ) {
         ) 
     );
 } );
+
+
+/**
+ * Disable profile avatars on theme activation
+ */
+add_action( 'after_switch_theme', function() {
+    update_option( 'show_avatars', '' );
+} );
