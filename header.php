@@ -15,7 +15,7 @@ document.documentElement.classList.remove( 'no-js' );
 
     <meta
         name="description"
-        content="<?php echo esc_attr( get_site_description() ); ?>">
+        content="<?php echo esc_attr( getPageDescription() ); ?>">
 
     <meta 
         name="viewport" 
