@@ -68,3 +68,20 @@ remove_action( 'welcome_panel', 'wp_welcome_panel' );
  */
 add_filter( 'show_admin_bar', '__return_false' );
 
+
+
+/**
+ * Modify user greeting
+ */
+add_filter( 'admin_bar_menu', function( $wp_admin_bar ) {
+    $node = $wp_admin_bar->get_node( 'my-account' );
+    
+    $label = str_replace( 'Howdy,', '', $node->title );
+    
+    $wp_admin_bar->add_node( 
+        array(
+            'id' => 'my-account',
+            'title' => $label,
+        ) 
+    );
+} );
