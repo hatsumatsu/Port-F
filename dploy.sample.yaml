@@ -5,18 +5,5 @@ production:
     path:
         local: ''
         remote: 'html/'
-    exclude:
-        [
-            '**/.*',
-            '.DS_Store',
-            'readme*',
-            'package*.json',
-            'webpack*.js',
-            'gruntfile.js',
-            '**/Thumbs.db',
-            'node_modules',
-            'dploy*',
-            '*.code-*',
-            'postcss.config*',
-            'babel.config*',
-        ]
+        exclude: [ '**/.*', 'readme*', 'package*.json', 'webpack*.js', 'gruntfile.js', '**/Thumbs.db', 'node_modules', 'dploy*', '*.code-*', 'postcss.config.js']
+
