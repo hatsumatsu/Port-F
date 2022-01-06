@@ -6,9 +6,9 @@
 <meta property="og:image" content="<?php echo esc_attr( getPageImage() ); ?>">
 
 <!-- TWITTER -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="<?php echo esc_attr( esc_url(  $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) ); ?>">
-<meta name="twitter:title" content="<?php echo esc_attr( getPageTitle() ); ?>">
+<meta name="twitter:title" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 <meta name="twitter:description" content="<?php echo esc_attr( getPageDescription() ); ?>">
 <meta name="twitter:image" content="<?php echo esc_attr( getPageImage() ); ?>">
 
