@@ -337,9 +337,9 @@ function registerMinimumImageDimensions( $file ) {
     $image = getimagesize( $file['tmp_name'] );
 
     if ( $image[0] < $minimum['width'] ) {
-        $file['error'] = sprintf( __( 'Image is too small. Minimum width is %1$spx. Uploaded image width is %2$spx', 'port-f' ), $minimum['width'], $image[0] );
+        $file['error'] = sprintf( __( 'Image is too small. Minimum width is %1$spx. Uploaded image width is %2$spx.', 'port-f' ), $minimum['width'], $image[0] );
     } elseif ( $image[1] < $minimum['height'] ) {
-        $file['error'] = sprintf( __( 'Image is too small. Minimum height is %1$spx. Uploaded image height is %2$spx', 'port-f' ), $minimum['height'], $image[1] );
+        $file['error'] = sprintf( __( 'Image is too small. Minimum height is %1$spx. Uploaded image height is %2$spx.', 'port-f' ), $minimum['height'], $image[1] );
     }
 
     return $file;

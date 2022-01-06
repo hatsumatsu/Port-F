@@ -13,7 +13,7 @@ function editorCustomize( $init ) {
     $init['object_resizing'] = false;
 
     // format select entries
-    $init['block_formats'] = __( 'Paragraph', 'port-f' ) . '=p;' . __( 'Heading 3', 'port-f' ) . '=h3;' . __( 'Heading 4', 'port-f' ) . '=h4';
+    $init['block_formats'] = __( 'Paragraph', 'port-f' ) . '=p;' . __( 'Heading 1', 'port-f' ) . '=h3;' . __( 'Heading 2', 'port-f' ) . '=h4';
 
 
     // style formats
