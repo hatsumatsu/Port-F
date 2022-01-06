@@ -18,3 +18,4 @@ require_once( 'functions/sitemap.php' );
 // plugin related functions
 require_once( 'functions/acf.php' );
 require_once( 'functions/w3tc.php' );
+require_once( 'functions/msls.php' );
