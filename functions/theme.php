@@ -407,3 +407,15 @@ function testForNormalizer() {
 }
 
 add_action( 'admin_notices', 'testForNormalizer' );
+
+
+/**
+ * Disable update noptification emails
+ */
+add_filter( 'auto_core_update_send_email', function( $send, $type, $core_update, $result ) {
+    if ( !empty( $type ) && $type === 'success' ) {
+        return false;
+    }
+    
+    return true;
+} );
