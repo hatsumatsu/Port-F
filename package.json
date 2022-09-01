@@ -16,7 +16,7 @@
         "message:dev:start": "npx chalk magenta bold '🚀 Starting up ...'",
         "message:dev:ready": "npx chalk magenta bold '👀 Watching CSS, JS and images for changes ...' && npx chalk magenta '🔗 Please connect your browser’s livereload plugin...'",
         "build": "npm run img:build && npm run js:build:prod && npm run css:build:prod",
-        "deploy": "npm run build --silent && npx dploy production"
+        "deploy": "npm run build --silent && git add -A && git commit '🏗 build for deployment' && npx dploy production"
     },
     "devDependencies": {
         "@babel/cli": "^7.16.0",
