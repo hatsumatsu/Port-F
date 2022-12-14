@@ -1,4 +1,5 @@
 production:
+    scheme: "ftp"
     host: 'ftp.myserver.com'
     user: 'user'
     pass: 'password'
