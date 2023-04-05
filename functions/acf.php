@@ -1,5 +1,14 @@
 <?php
 
+
+
+/**
+ * Disable the custom post type and taxonomy registration feature of ACF 
+ * 
+ */
+add_filter( 'acf/settings/enable_post_types', '__return_false' );
+
+
 /**
  * Modify ACF's WYSIWYG field toolbar
  * @param  array $toolbars toolbars
@@ -27,7 +36,7 @@ add_filter( 'acf/fields/wysiwyg/toolbars' , 'ACFModifyEditorToolbars'  );
  * so changes in one site don't affect other sites...
  */
 add_filter( 'acf/settings/save_json', function( $path ) {
-    if( strpos( get_bloginfo( 'blogurl' ), 'local' ) !== false ) {
+    if( wp_get_environment_type() === 'production' ) {
         $path = $path . '/live';
     }
 
