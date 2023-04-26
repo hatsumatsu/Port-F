@@ -14,16 +14,16 @@ class HeaderNav extends M {
         super(mediaQuery);
     }
 
-    onInit() {
-        console.log('HeaderNav.onInit()');
+    toggle() {
+        console.log('HeaderNav.toggle()');
 
-        this.events = new C();
-
-        this.bindEvents();
+        state.set('visible', state.get('visible') ? false : true);
     }
 
     bindEvents() {
-        this.events.on('click', this.selector('toggle'), this.onClick.bind(this));
+        this.onClick = this.onClick.bind(this);
+
+        this.events.on('click', this.selector('toggle'), this.onClick);
 
         state.on(
             'visible',
@@ -38,32 +38,18 @@ class HeaderNav extends M {
         );
     }
 
+    onInit() {
+        console.log('HeaderNav.onInit()');
+
+        this.events = new C();
+
+        this.bindEvents();
+    }
+
     onClick(event) {
         event.preventDefault();
 
         this.toggle();
-    }
-
-    toggle() {
-        console.log('HeaderNav.toggle()');
-
-        if (!state.get('visible')) {
-            this.show();
-        } else {
-            this.hide();
-        }
-    }
-
-    show() {
-        console.log('HeaderNav.show()');
-
-        state.set('visible', true);
-    }
-
-    hide() {
-        console.log('HeaderNav.hide()');
-
-        state.set('visible', false);
     }
 
     onDestroy() {
