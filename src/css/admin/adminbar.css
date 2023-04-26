@@ -1,0 +1,27 @@
+/**
+ * Admin bar
+ * > Single site
+ */
+#wp-admin-bar-site-name {
+    & > a {
+        padding-left: 8px !important;
+
+        &::before {
+            content: '\f11f' !important;
+        }
+    }
+}
+
+/**
+ * Admin bar
+ * > Sites
+ */
+#wp-admin-bar-my-sites {
+    & > a {
+        padding-left: 8px !important;
+
+        &::before {
+            content: '\f326' !important;
+        }
+    }
+}

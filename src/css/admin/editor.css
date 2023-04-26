@@ -1,0 +1,30 @@
+/**
+ * Editor
+ * > Toolbar
+ */
+.wp-admin {
+    .mce-menu-item.mce-menu-item-preview {
+    }
+
+    .mce-menu-item.mce-menu-item-preview.mce-active {
+        display: flex;
+        align-items: center;
+
+        border-left: none;
+
+        &::after {
+            content: '\f15e';
+
+            font-family: dashicons;
+        }
+    }
+
+    .mce-menu-item.mce-menu-item-preview.mce-active .mce-text,
+    .mce-menu-item.mce-menu-item-preview.mce-active .mce-ico {
+        color: #fff;
+    }
+
+    .mce-menu-item.mce-menu-item-preview.mce-active .mce-text {
+        width: 100%;
+    }
+}
