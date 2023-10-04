@@ -1,21 +1,61 @@
 :root {
-    --type--font-1: sans-serif;
-    --type--font-2: serif;
+    --type--family--1: sans-serif;
+    --type--family--2: serif;
 
-    --type--line-height: 1.3;
+    --type--size--0: 16;
+
+    --type--line-height--0: 1;
+    --type--line-height--1: 1.3;
+
+    --type--fluidsize--min: 1440;
+}
+
+@custom-media --type--fluidsize--min--mq (min-width: 1440px);
+
+/**
+ * Family
+ */
+@define-mixin type--family--1 {
+    font-family: var(--type--family--1);
+}
+
+@define-mixin type--family--2 {
+    font-family: var(--type--family--2);
+}
+
+/**
+ * Fluid size
+ */
+@define-mixin type--fluidsize--0 {
+    font-size: calc(var(--type--size--0) * 1px);
+
+    @media --type--fluidsize--min--mq {
+        font-size: calc(var(--type--size--0) / var(--type--fluidsize--min) * 100vw);
+    }
+}
+
+/**
+ * Line Height
+ */
+@define-mixin type--line-height--0 {
+    line-height: var(--type--line-height--0);
+}
+
+@define-mixin type--line-height--1 {
+    line-height: var(--type--line-height--1);
 }
 
 html {
-    font-family: var(--type--font-1);
+    @mixin type--family--1;
     font-size: 100%;
-    line-height: var(--type--line-height);
+    @mixin type--line-height--1;
     color: var(--color--text);
 
     // Enhanced typography
     font-kerning: normal;
     font-variant: common-ligatures; // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/OpenType_fonts_guide
     text-size-adjust: 100%;
-}
 
-@define-mixin type--1 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
