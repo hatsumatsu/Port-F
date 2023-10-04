@@ -61,7 +61,7 @@ function assetsRegisterAdminCSS() {
 
 add_action( 'admin_print_styles', 'assetsRegisterAdminCSS' );
 add_action( 'admin_print_styles-media-upload-popup', 'assetsRegisterAdminCSS' );
-
+add_action( 'login_enqueue_scripts', 'assetsRegisterAdminCSS' );
 
 
 /**

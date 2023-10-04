@@ -3,7 +3,7 @@
  * > Single site
  */
 #wp-admin-bar-site-name {
-    & > a {
+    & > .ab-item {
         padding-left: 8px !important;
 
         &::before {
@@ -17,7 +17,7 @@
  * > Sites
  */
 #wp-admin-bar-my-sites {
-    & > a {
+    & > .ab-item {
         padding-left: 8px !important;
 
         &::before {

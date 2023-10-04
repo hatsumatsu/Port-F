@@ -1,0 +1,32 @@
+.login h1 {
+    & a {
+        background-image: url(../img/admin-brand--black.svg);
+        background-size: contain;
+    }
+}
+
+#wp-admin-bar-site-name {
+    & > .ab-item.ab-item.ab-item.ab-item {
+        padding-left: 36px !important;
+
+        &::before {
+            content: ' ' !important;
+            position: absolute;
+            top: 0 !important;
+            left: 0;
+
+            height: 32px;
+            width: 36px; /** 32px with colored background **/
+            margin: 0;
+            padding: 0;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: transparent;
+            background-size: auto 60%;
+            background-image: url(../img/admin-brand--white.svg) !important;
+
+            opacity: 0.8; /** adjust lightness */
+        }
+    }
+}

@@ -2,20 +2,20 @@
  * Admin bar
  * > Single site
  */
-#wp-admin-bar-site-name > a {
+#wp-admin-bar-site-name > .ab-item {
         padding-left: 8px !important;
     }
-#wp-admin-bar-site-name > a::before {
+#wp-admin-bar-site-name > .ab-item::before {
             content: '\f11f' !important;
         }
 /**
  * Admin bar
  * > Sites
  */
-#wp-admin-bar-my-sites > a {
+#wp-admin-bar-my-sites > .ab-item {
         padding-left: 8px !important;
     }
-#wp-admin-bar-my-sites > a::before {
+#wp-admin-bar-my-sites > .ab-item::before {
             content: '\f326' !important;
         }
 /**
@@ -68,5 +68,31 @@
     height: 120px !important;
     min-height: 0 !important;
 }
+.login h1 a {
+        background-image: url(../img/admin-brand--black.svg);
+        background-size: contain;
+    }
+#wp-admin-bar-site-name > .ab-item.ab-item.ab-item.ab-item {
+        padding-left: 36px !important;
+    }
+#wp-admin-bar-site-name > .ab-item.ab-item.ab-item.ab-item::before {
+            content: ' ' !important;
+            position: absolute;
+            top: 0 !important;
+            left: 0;
+
+            height: 32px;
+            width: 36px; /** 32px with colored background **/
+            margin: 0;
+            padding: 0;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: transparent;
+            background-size: auto 60%;
+            background-image: url(../img/admin-brand--white.svg) !important;
+
+            opacity: 0.8; /** adjust lightness */
+        }
 
 /*# sourceMappingURL=sourcemaps/admin.css.map */
