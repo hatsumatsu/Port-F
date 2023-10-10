@@ -87,9 +87,18 @@ add_filter( 'admin_bar_menu', function( $wp_admin_bar ) {
 } );
 
 
+
 /**
  * Disable profile avatars on theme activation
  */
 add_action( 'after_switch_theme', function() {
     update_option( 'show_avatars', '' );
 } );
+
+
+
+/**
+ * Remove footer text
+ */
+add_filter( 'admin_footer_text', '__return_empty_string', 11 ); 
+add_filter( 'update_footer', '__return_empty_string', 11 );

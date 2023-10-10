@@ -7,7 +7,14 @@
 
 #wp-admin-bar-site-name {
     & > .ab-item.ab-item.ab-item.ab-item {
-        padding-left: 36px !important;
+        display: block;
+        width: 160px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow: hidden;
+
+        white-space: nowrap;
+        text-indent: 300%;
 
         &::before {
             content: ' ' !important;
@@ -15,18 +22,40 @@
             top: 0 !important;
             left: 0;
 
-            height: 32px;
-            width: 36px; /** 32px with colored background **/
+            width: 100% !important;
+            height: 100%;
             margin: 0;
             padding: 0;
 
             background-repeat: no-repeat;
             background-position: center center;
-            background-color: transparent;
+            background-color: #7a10c2;
             background-size: auto 60%;
             background-image: url(../img/admin-brand--white.svg) !important;
 
-            opacity: 0.8; /** adjust lightness */
+            opacity: 1;
+        }
+    }
+
+    .folded & {
+        & > .ab-item.ab-item.ab-item.ab-item {
+            width: 36px !important;
+
+            &::before {
+                width: 36px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 782px) {
+        & > .ab-item.ab-item.ab-item.ab-item {
+            width: 52px !important;
+        }
+
+        .folded & {
+            & > .ab-item.ab-item.ab-item.ab-item {
+                width: 52px !important;
+            }
         }
     }
 }
