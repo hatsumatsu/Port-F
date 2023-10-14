@@ -1,3 +1,5 @@
+@custom-media --type--fluidsize--min--mq (min-width: 1440px);
+
 :root {
     --type--family--1: sans-serif;
     --type--family--2: serif;
@@ -9,8 +11,6 @@
 
     --type--fluidsize--min: 1440;
 }
-
-@custom-media --type--fluidsize--min--mq (min-width: 1440px);
 
 /**
  * Family
