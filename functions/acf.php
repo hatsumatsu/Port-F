@@ -80,3 +80,9 @@ if( function_exists( 'acf_add_options_page' ) ) {
     add_action( 'acf/init', 'ACFAddOptionsPage' );
 }
 
+
+
+/**
+ * Disable custom post types and taxonomies feature
+ */
+add_filter( 'acf/settings/enable_post_types', '__return_false' );
