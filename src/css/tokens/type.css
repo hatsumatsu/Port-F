@@ -26,7 +26,7 @@
 }
 
 html {
-    @mixin type--family--1;
+    font-family: var(--type--family--1);
     font-size: max(
         calc(1 * var(--type--base-size) * 1px),
         calc(1 * var(--type--base-size) / var(--type--fluidsize--min) * 100vw)
