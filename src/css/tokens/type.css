@@ -1,54 +1,37 @@
 @custom-media --type--fluidsize--min--mq (min-width: 1440px);
 
 :root {
+    // type family
     --type--family--1: sans-serif;
     --type--family--2: serif;
 
-    --type--size--0: 16;
+    // type scale
+    --type--scale---2: 0.75rem;
+    --type--scale---1: 0.875rem;
+    --type--scale--0: 1rem;
+    --type--scale--1: 1.25rem;
+    --type--scale--2: 1.75rem;
+    --type--scale--3: 2.5rem;
 
     --type--line-height--0: 1;
     --type--line-height--1: 1.3;
 
-    --type--fluidsize--min: 1440;
-}
+    // typ fluid size
+    --type--base-size: 14;
+    --type--fluidsize--min: 1280;
 
-/**
- * Family
- */
-@define-mixin type--family--1 {
-    font-family: var(--type--family--1);
-}
-
-@define-mixin type--family--2 {
-    font-family: var(--type--family--2);
-}
-
-/**
- * Fluid size
- */
-@define-mixin type--fluidsize--0 {
-    font-size: calc(var(--type--size--0) * 1px);
-
-    @media --type--fluidsize--min--mq {
-        font-size: calc(var(--type--size--0) / var(--type--fluidsize--min) * 100vw);
+    @media (max-width: 800px) {
+        --type--base-size: 14;
     }
-}
-
-/**
- * Line Height
- */
-@define-mixin type--line-height--0 {
-    line-height: var(--type--line-height--0);
-}
-
-@define-mixin type--line-height--1 {
-    line-height: var(--type--line-height--1);
 }
 
 html {
     @mixin type--family--1;
-    font-size: 100%;
-    @mixin type--line-height--1;
+    font-size: max(
+        calc(1 * var(--type--base-size) * 1px),
+        calc(1 * var(--type--base-size) / var(--type--fluidsize--min) * 100vw)
+    );
+    line-height: var(--type--line-height--1);
     color: var(--color--text);
 
     // Enhanced typography
