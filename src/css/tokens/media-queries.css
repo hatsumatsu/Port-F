@@ -1,4 +1,4 @@
-@custom-media --viewport--smaller (max-width: 690px);
+@custom-media --viewport--smaller (max-width: 680px);
 
 @custom-media --hover (hover: hover) and (pointer: fine);
 @custom-media --nohover (hover: none) and (pointer: coarse);

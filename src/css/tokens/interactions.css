@@ -15,3 +15,15 @@
 @define-mixin select--auto {
     user-select: auto;
 }
+
+@define-mixin scroll--x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+@define-mixin scroll--y {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
