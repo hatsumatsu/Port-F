@@ -30,6 +30,7 @@ function removeAdminDashboardWidgets() {
     unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments'] );
     unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
     unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
+    unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_site_health'] );
 }
 
 add_action( 'wp_dashboard_setup', 'removeAdminDashboardWidgets' );
@@ -102,3 +103,18 @@ add_action( 'after_switch_theme', function() {
  */
 add_filter( 'admin_footer_text', '__return_empty_string', 11 ); 
 add_filter( 'update_footer', '__return_empty_string', 11 );
+
+
+
+/**
+ * Custom admin theme
+ * https://wpadmincolors.com/
+ */
+add_action('admin_init', function() {
+    wp_admin_css_color( 
+        'port-f', 
+        'Port F',
+        get_stylesheet_directory_uri() . '/css/admin-themes/port-f.css',
+        array( '#282828', '#fff', '#7101e0' , '#565656')
+    );
+} );

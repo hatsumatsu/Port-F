@@ -1,0 +1,7 @@
+.meta-box-sortables.empty-container {
+    visibility: hidden;
+}
+
+.wp-admin.index-php #wpbody-content h1 {
+    display: none;
+}

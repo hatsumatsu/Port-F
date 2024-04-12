@@ -59,3 +59,33 @@
         }
     }
 }
+
+.wp-admin.index-php #wpbody {
+    min-height: 80vh;
+
+    & > * {
+        position: relative;
+    }
+
+    &::after {
+        content: ' ';
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-image: url(../img/admin-brand--black.svg);
+
+        opacity: 0.1;
+
+        pointer-events: none;
+        touch-action: none;
+    }
+}
