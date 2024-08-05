@@ -74,18 +74,21 @@ add_filter( 'show_admin_bar', '__return_false' );
 /**
  * Modify user greeting
  */
-add_filter( 'admin_bar_menu', function( $wp_admin_bar ) {
+add_filter( 'admin_bar_menu', function( &$wp_admin_bar ) {
     $node = $wp_admin_bar->get_node( 'my-account' );
-    
-    $label = str_replace( 'Howdy,', '', $node->title );
-    
+
+    if( !$node ) return;
+    if( !property_exists( $node, 'title' ) ) return;
+
+    $label = str_replace( 'Howdy, ', '', $node->title );
+
     $wp_admin_bar->add_node( 
         array(
             'id' => 'my-account',
             'title' => $label,
         ) 
     );
-} );
+}, 9999 );
 
 
 
