@@ -63,7 +63,7 @@ add_action( 'phpmailer_init', function( $phpmailer ) {
     $phpmailer->Port = $settings['smtp_port']; 
 
     // 'none'|'ssl'|'tls'
-    if( $settings['smtp_security'] && $settings['smtp_security'] !== 'none' ) {
+    if( $settings['smtp_security'] && $settings['smtp_security'] !== 'none' && in_array( $settings['smtp_security'], array( 'ssl', 'tls' ) ) ) {
         $phpmailer->SMTPSecure = $settings['smtp_security'];
     }
 
