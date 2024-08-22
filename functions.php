@@ -14,6 +14,7 @@ require_once( 'functions/permalink.php' );
 require_once( 'functions/query.php' );
 require_once( 'functions/sites.php' );
 require_once( 'functions/sitemap.php' );
+require_once( 'functions/email.php' );
 
 // plugin related functions
 require_once( 'functions/acf.php' );
