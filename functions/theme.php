@@ -19,7 +19,7 @@ function themeIsDev() {
  * i11n
  */
 function loadI11n() {
-    load_theme_textdomain( 'port-f', get_stylesheet_directory() . '/languages' );
+    load_textdomain( 'port-f', get_template_directory() . '/languages/' . determine_locale() . '.mo' );
 }
 
 add_action( 'after_setup_theme', 'loadI11n' );
