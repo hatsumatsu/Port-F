@@ -409,8 +409,12 @@ function testForNormalizer() {
 add_action( 'admin_notices', 'testForNormalizer' );
 
 
+
 /**
  * Disable update noptification emails
+ * + Core
+ * + Plugins
+ * + Themes
  */
 add_filter( 'auto_core_update_send_email', function( $send, $type, $core_update, $result ) {
     if ( !empty( $type ) && $type === 'success' ) {
@@ -419,3 +423,6 @@ add_filter( 'auto_core_update_send_email', function( $send, $type, $core_update,
     
     return true;
 } );
+
+add_filter( 'auto_plugin_update_send_email', '__return_false' );
+add_filter( 'auto_theme_update_send_email', '__return_false' );
