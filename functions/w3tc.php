@@ -8,6 +8,10 @@ function W3TCflushCustomPostTypesPageCache( $post_id ) {
         return false;
     }
 
+    if( !$post_id || !get_post_type( $post_id ) ) {
+        return false;
+    }
+
     $postTypes = array(
         'page' => true,
         'post' => true
